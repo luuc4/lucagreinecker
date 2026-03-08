@@ -33,13 +33,22 @@ function initAnimations() {
 }
 
 // ===========================
-// Header scroll
+// Header scroll + Scroll-to-Top
 // ===========================
 const header = document.getElementById('header');
+const scrollTopBtn = document.getElementById('scrollTop');
 
-if (header) {
+if (header || scrollTopBtn) {
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 40);
+    const y = window.scrollY;
+    if (header) header.classList.toggle('scrolled', y > 40);
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', y > 500);
+  }, { passive: true });
+}
+
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
@@ -77,6 +86,7 @@ if (menuBtn && mobileMenu) {
   menuBtn.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     menuBtn.classList.toggle('active');
+    menuBtn.setAttribute('aria-expanded', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
@@ -84,6 +94,7 @@ if (menuBtn && mobileMenu) {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
       menuBtn.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
   });
@@ -94,7 +105,16 @@ if (menuBtn && mobileMenu) {
 // ===========================
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (e) => {
-    const target = document.querySelector(anchor.getAttribute('href'));
+    const href = anchor.getAttribute('href');
+
+    // Handle logo click (href="#") — scroll to top
+    if (href === '#') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });

@@ -9,6 +9,7 @@
   <meta property="og:description" content="Von der Industrie in die digitale Welt. Websites mit Leidenschaft, gebaut in den Bergen.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_AT">
+  <meta name="theme-color" content="#faf9f6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>L</text></svg>">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -23,7 +24,7 @@
         <a href="#projekte">Projekte</a>
         <a href="#kontakt" class="nav-cta">Kontakt</a>
       </nav>
-      <button class="menu-btn" id="menuBtn" aria-label="Menü">
+      <button class="menu-btn" id="menuBtn" aria-label="Menü" aria-expanded="false">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
       </button>
@@ -31,7 +32,7 @@
   </header>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
     <nav class="mobile-nav">
       <a href="#ueber-mich">Über mich</a>
       <a href="#projekte">Projekte</a>
@@ -349,6 +350,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Nach oben scrollen">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <script src="script.js"></script>
 </body>
