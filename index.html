@@ -98,12 +98,14 @@
           <p class="bento-card-text">
             Mein Weg war nicht geradlinig – und genau das macht ihn spannend.
             Nach der <strong>Lehre als Elektrotechniker</strong> und dem <strong>Zivildienst
-            beim Roten Kreuz</strong> bin ich in die Industrie eingestiegen.
+            beim Roten Kreuz</strong> habe ich als Elektrotechniker in der
+            <strong>Instandhaltung im Schichtbetrieb</strong> gearbeitet, bevor ich
+            bei Ball Beverage Packaging eingestiegen bin.
           </p>
           <p class="bento-card-text">
-            Heute arbeite ich als <strong>Continuous Improvement / Lean Leader</strong>
-            bei Ball Beverage Packaging in Ludesch und studiere parallel
-            <strong>Informatik – Digital Innovation</strong> an der FH Vorarlberg.
+            Heute arbeite ich dort als <strong>Continuous Improvement / Lean Leader</strong>
+            und studiere parallel <strong>Informatik – Digital Innovation</strong>
+            an der FH Vorarlberg.
           </p>
           <p class="bento-card-text">
             Vor einigen Monaten habe ich angefangen, Websites zu bauen – und
@@ -133,6 +135,10 @@
             <div class="timeline-item">
               <span class="timeline-dot"></span>
               <span>Zivildienst – Rotes Kreuz</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span>Instandhaltung Elektrotechnik (Schicht)</span>
             </div>
             <div class="timeline-item">
               <span class="timeline-dot"></span>
@@ -239,16 +245,37 @@
   <!-- Contact -->
   <section class="section" id="kontakt">
     <div class="container">
-      <div class="contact-layout">
-        <div class="contact-text">
-          <p class="section-label">Kontakt</p>
-          <h2 class="section-title">Projekt im Kopf<span class="accent">?</span></h2>
-          <p class="contact-desc">
-            Du brauchst eine Website oder hast eine Idee, die online gehen soll?
-            Melde dich – ich freue mich, von dir zu hören.
-          </p>
-        </div>
-        <div class="contact-links">
+      <div class="section-header">
+        <p class="section-label">Kontakt</p>
+        <h2 class="section-title">Projekt im Kopf<span class="accent">?</span></h2>
+        <p class="section-desc">
+          Du brauchst eine Website oder hast eine Idee, die online gehen soll?
+          Schreib mir – ich freue mich, von dir zu hören.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xyknzrgg" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Dein Name">
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" required placeholder="deine@email.at">
+          </div>
+          <div class="form-group">
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Erzähl mir von deinem Projekt..."></textarea>
+          </div>
+          <button type="submit" class="btn-pill btn-submit" id="form-submit">Nachricht senden</button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+
+        <!-- Sidebar links -->
+        <div class="contact-sidebar">
+          <p class="contact-sidebar-label">Oder direkt erreichen</p>
           <a href="mailto:greineckerluca@hotmail.com" class="contact-link">
             <div class="contact-link-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
@@ -277,6 +304,10 @@
     <div class="container footer-inner">
       <p class="footer-name">luca<span class="accent">.</span></p>
       <p class="footer-copy">&copy; 2026 Luca Greinecker</p>
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
     </div>
   </footer>
 

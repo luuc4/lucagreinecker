@@ -612,24 +612,96 @@ strong { font-weight: 700; }
 /* ===========================
    Contact
    =========================== */
-.contact-layout {
+.contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
 }
 
-.contact-desc {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.75;
-  margin-top: 8px;
-}
-
-.contact-links {
+.contact-sidebar {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.contact-sidebar-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  transition: var(--transition);
+  outline: none;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.btn-submit {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-status {
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-height: 1.4em;
+}
+
+.form-status.success {
+  color: #2e7d32;
+}
+
+.form-status.error {
+  color: var(--accent);
 }
 
 .contact-link {
@@ -698,6 +770,93 @@ strong { font-weight: 700; }
 .footer-copy {
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.footer-legal a:hover {
+  color: var(--accent);
+}
+
+/* ===========================
+   Legal Pages (Impressum / Datenschutz)
+   =========================== */
+.legal-page {
+  padding: 140px 0 80px;
+}
+
+.legal-page h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.legal-page .legal-update {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.legal-page h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+
+.legal-page h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.legal-page p {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.legal-page ul {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  padding-left: 24px;
+  line-height: 1.8;
+}
+
+.legal-page a {
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+.legal-page a:hover {
+  color: var(--accent-light);
+}
+
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 32px;
+  transition: var(--transition);
+}
+
+.legal-back:hover {
+  color: var(--accent);
 }
 
 /* ===========================
@@ -769,7 +928,7 @@ strong { font-weight: 700; }
   }
 
   /* Contact */
-  .contact-layout {
+  .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
@@ -811,8 +970,12 @@ strong { font-weight: 700; }
 
   .footer-inner {
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     text-align: center;
+  }
+
+  .footer-legal {
+    justify-content: center;
   }
 
   .section-title {

@@ -99,6 +99,52 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 });
 
 // ===========================
+// Contact form (Formspree AJAX)
+// ===========================
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = document.getElementById('form-status');
+    const submitBtn = document.getElementById('form-submit');
+    const data = new FormData(contactForm);
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet...';
+    status.textContent = '';
+    status.className = 'form-status';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' },
+      });
+
+      if (response.ok) {
+        status.textContent = 'Nachricht erfolgreich gesendet!';
+        status.classList.add('success');
+        contactForm.reset();
+      } else {
+        const json = await response.json();
+        if (json.errors) {
+          status.textContent = json.errors.map((err) => err.message).join(', ');
+        } else {
+          status.textContent = 'Es gab ein Problem. Bitte versuch es erneut.';
+        }
+        status.classList.add('error');
+      }
+    } catch {
+      status.textContent = 'Es gab ein Problem. Bitte versuch es erneut.';
+      status.classList.add('error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Nachricht senden';
+    }
+  });
+}
+
+// ===========================
 // Init
 // ===========================
 initAnimations();
