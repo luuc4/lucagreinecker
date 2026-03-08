@@ -9,9 +9,7 @@
   <meta property="og:description" content="Von der Industrie in die digitale Welt. Websites mit Leidenschaft, gebaut in den Bergen.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_AT">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>L</text></svg>">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -46,6 +44,10 @@
     <div class="container">
       <div class="hero-layout">
         <div class="hero-text">
+          <div class="availability">
+            <span class="availability-dot"></span>
+            Offen für neue Projekte
+          </div>
           <p class="hero-label">Bludenz, Vorarlberg</p>
           <h1 class="hero-title">
             Ich bin Luca<span class="accent">.</span><br>
@@ -84,6 +86,33 @@
       </div>
     </div>
   </section>
+
+  <!-- Marquee -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>HTML &amp; CSS</span><span class="marquee-dot">&bull;</span>
+      <span>JavaScript</span><span class="marquee-dot">&bull;</span>
+      <span>Astro</span><span class="marquee-dot">&bull;</span>
+      <span>TypeScript</span><span class="marquee-dot">&bull;</span>
+      <span>Responsive Design</span><span class="marquee-dot">&bull;</span>
+      <span>CMS-Integration</span><span class="marquee-dot">&bull;</span>
+      <span>DSGVO-konform</span><span class="marquee-dot">&bull;</span>
+      <span>SEO</span><span class="marquee-dot">&bull;</span>
+      <span>Performance</span><span class="marquee-dot">&bull;</span>
+      <span>Git &amp; Deployment</span><span class="marquee-dot">&bull;</span>
+      <!-- Duplicate for seamless loop -->
+      <span>HTML &amp; CSS</span><span class="marquee-dot">&bull;</span>
+      <span>JavaScript</span><span class="marquee-dot">&bull;</span>
+      <span>Astro</span><span class="marquee-dot">&bull;</span>
+      <span>TypeScript</span><span class="marquee-dot">&bull;</span>
+      <span>Responsive Design</span><span class="marquee-dot">&bull;</span>
+      <span>CMS-Integration</span><span class="marquee-dot">&bull;</span>
+      <span>DSGVO-konform</span><span class="marquee-dot">&bull;</span>
+      <span>SEO</span><span class="marquee-dot">&bull;</span>
+      <span>Performance</span><span class="marquee-dot">&bull;</span>
+      <span>Git &amp; Deployment</span><span class="marquee-dot">&bull;</span>
+    </div>
+  </div>
 
   <!-- About / Bento Grid -->
   <section class="section" id="ueber-mich">
@@ -173,68 +202,78 @@
         <p class="section-desc">Von der Business-Landingpage bis zum CMS-gestützten Portfolio – jedes Projekt war eine neue Herausforderung.</p>
       </div>
 
-      <div class="projects-list">
+      <div class="projects-grid">
 
         <!-- Project 1 -->
-        <a href="https://oz-calisthenics.at" target="_blank" rel="noopener noreferrer" class="project">
-          <div class="project-index">01</div>
-          <div class="project-info">
-            <h3 class="project-name">OZ Calisthenics</h3>
-            <p class="project-type">Business Landing Page</p>
+        <a href="https://oz-calisthenics.at" target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-card-body">
+            <div class="project-card-header">
+              <span class="project-number">01</span>
+              <h3 class="project-name">OZ Calisthenics</h3>
+            </div>
+            <span class="project-type-badge">Business Landing Page</span>
+            <p class="project-desc-short">
+              Webauftritt für einen Calisthenics Coach in Bludenz – mit Online-Buchung,
+              Kontaktformular und DSGVO-konformem Cookie-Setup.
+            </p>
+            <div class="project-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Formspree</span>
+              <span>GitHub Pages</span>
+            </div>
           </div>
-          <p class="project-desc-short">
-            Webauftritt für einen Calisthenics Coach – mit Online-Buchung,
-            Kontaktformular und DSGVO-konformem Setup.
-          </p>
-          <div class="project-stack">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-          <div class="project-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <div class="project-card-action">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
         <!-- Project 2 -->
-        <a href="https://jonathanwalch.at" target="_blank" rel="noopener noreferrer" class="project">
-          <div class="project-index">02</div>
-          <div class="project-info">
-            <h3 class="project-name">Jonathan Walch</h3>
-            <p class="project-type">Portfolio-Website</p>
+        <a href="https://jonathanwalch.at" target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-card-body">
+            <div class="project-card-header">
+              <span class="project-number">02</span>
+              <h3 class="project-name">Jonathan Walch</h3>
+            </div>
+            <span class="project-type-badge">Portfolio-Website</span>
+            <p class="project-desc-short">
+              Persönliches Portfolio für einen UI/UX Design Studenten an der
+              FH Vorarlberg – mit Projektgalerie und animiertem Interface.
+            </p>
+            <div class="project-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>GitHub Pages</span>
+            </div>
           </div>
-          <p class="project-desc-short">
-            Persönliches Portfolio für einen UI/UX Design Studenten
-            mit Projektgalerie und animiertem Interface.
-          </p>
-          <div class="project-stack">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-          <div class="project-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <div class="project-card-action">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
         <!-- Project 3 -->
-        <a href="https://nadkah.netlify.app" target="_blank" rel="noopener noreferrer" class="project">
-          <div class="project-index">03</div>
-          <div class="project-info">
-            <h3 class="project-name">NAD.KAH Kreativarbeit</h3>
-            <p class="project-type">Portfolio mit CMS</p>
+        <a href="https://nadkah.netlify.app" target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-card-body">
+            <div class="project-card-header">
+              <span class="project-number">03</span>
+              <h3 class="project-name">NAD.KAH Kreativarbeit</h3>
+            </div>
+            <span class="project-type-badge">Portfolio mit CMS</span>
+            <p class="project-desc-short">
+              Website für ein Kreativunternehmen aus Feldkirch – mit integriertem
+              CMS zur eigenständigen Inhaltspflege und dynamischer Markttermin-Verwaltung.
+            </p>
+            <div class="project-stack">
+              <span>Astro</span>
+              <span>TypeScript</span>
+              <span>Decap CMS</span>
+              <span>Netlify</span>
+            </div>
           </div>
-          <p class="project-desc-short">
-            Website für ein Kreativunternehmen aus Feldkirch – mit integriertem
-            CMS zur eigenständigen Inhaltspflege.
-          </p>
-          <div class="project-stack">
-            <span>Astro</span>
-            <span>TypeScript</span>
-            <span>Decap CMS</span>
-          </div>
-          <div class="project-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <div class="project-card-action">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
