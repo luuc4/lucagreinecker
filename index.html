@@ -3,111 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luca Greinecker – Webentwicklung & Digitale Lösungen</title>
-  <meta name="description" content="Luca Greinecker aus Bludenz, Vorarlberg – Webentwickler mit Leidenschaft für moderne, performante Websites. Portfolio und Projekte.">
-  <meta property="og:title" content="Luca Greinecker – Webentwicklung & Digitale Lösungen">
-  <meta property="og:description" content="Webentwickler aus Vorarlberg. Moderne Websites mit Fokus auf Design, Performance und Benutzerfreundlichkeit.">
+  <title>Luca Greinecker – Digitale Lösungen aus Vorarlberg</title>
+  <meta name="description" content="Luca Greinecker aus Bludenz, Vorarlberg – Von der Industrie in die digitale Welt. Websites mit Leidenschaft.">
+  <meta property="og:title" content="Luca Greinecker – Digitale Lösungen aus Vorarlberg">
+  <meta property="og:description" content="Von der Industrie in die digitale Welt. Websites mit Leidenschaft, gebaut in den Bergen.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_AT">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">LG<span class="logo-dot">.</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
-        <span></span>
-        <span></span>
-        <span></span>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">luca<span>.</span></a>
+      <nav class="nav-desktop">
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#kontakt" class="nav-cta">Kontakt</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
       </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#ueber-mich">Über mich</a></li>
-        <li><a href="#projekte">Projekte</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav">
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#projekte">Projekte</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
   <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="gradient-orb orb-1"></div>
-      <div class="gradient-orb orb-2"></div>
-      <div class="gradient-orb orb-3"></div>
-    </div>
-    <div class="hero-content">
-      <p class="hero-greeting reveal">Hallo, ich bin</p>
-      <h1 class="hero-name reveal">Luca Greinecker<span class="logo-dot">.</span></h1>
-      <p class="hero-tagline reveal">Ich baue moderne Websites, die begeistern.</p>
-      <p class="hero-sub reveal">Webentwickler aus Bludenz, Vorarlberg</p>
-      <div class="hero-cta reveal">
-        <a href="#projekte" class="btn btn-primary">Meine Projekte</a>
-        <a href="#kontakt" class="btn btn-outline">Kontakt aufnehmen</a>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="mouse">
-        <div class="mouse-wheel"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="section about" id="ueber-mich">
     <div class="container">
-      <h2 class="section-title reveal">Über mich</h2>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p class="about-intro">
-            Ich bin Luca – 26 Jahre, aufgewachsen in den Vorarlberger Bergen und neugierig auf alles Digitale.
+      <div class="hero-layout">
+        <div class="hero-text">
+          <p class="hero-label">Bludenz, Vorarlberg</p>
+          <h1 class="hero-title">
+            Ich bin Luca<span class="accent">.</span><br>
+            <span class="hero-italic">Ich baue Websites.</span>
+          </h1>
+          <p class="hero-desc">
+            Informatik-Student, Lean Leader in der Industrie – und mit
+            wachsender Leidenschaft für Webentwicklung. Ich bringe Ideen
+            ins Netz.
           </p>
-          <p>
-            Nach meiner Lehre als <strong>Elektrotechniker</strong> und dem <strong>Zivildienst beim Roten Kreuz</strong> bin ich bei
-            <strong>Ball Beverage Packaging</strong> in Ludesch eingestiegen. Dort habe ich im Rahmen eines internen Trainee-Programms
-            verschiedenste Bereiche der Getränkedosenherstellung kennengelernt und arbeite aktuell als
-            <strong>Continuous Improvement / Lean Leader</strong>.
-          </p>
-          <p>
-            Parallel dazu studiere ich berufsbegleitend <strong>Informatik – Digital Innovation</strong> an der
-            FH Vorarlberg in Dornbirn. So verbinde ich industrielle Praxis mit technischem Know-how.
-          </p>
-          <p>
-            Vor einigen Monaten habe ich meine Leidenschaft fürs <strong>Webentwickeln</strong> entdeckt – und seitdem bereits
-            drei Projekte für echte Kunden umgesetzt. Von der ersten Zeile Code bis zum fertigen Deployment:
-            Ich liebe es, Ideen in funktionierende Websites zu verwandeln.
-          </p>
+          <div class="hero-actions">
+            <a href="#projekte" class="btn-pill">Projekte ansehen</a>
+            <a href="#kontakt" class="btn-text">Schreib mir &rarr;</a>
+          </div>
         </div>
-        <div class="about-details reveal">
-          <div class="detail-card">
-            <div class="detail-icon">📍</div>
-            <div>
-              <h3>Standort</h3>
-              <p>Bludenz, Vorarlberg</p>
+        <div class="hero-visual">
+          <div class="bento-mini">
+            <div class="bento-item bento-location">
+              <span class="bento-emoji">&#9968;</span>
+              <span>Vorarlberg, AT</span>
             </div>
-          </div>
-          <div class="detail-card">
-            <div class="detail-icon">💼</div>
-            <div>
-              <h3>Beruf</h3>
-              <p>CI / Lean Leader bei Ball Beverage Packaging</p>
+            <div class="bento-item bento-study">
+              <span class="bento-emoji">&#127891;</span>
+              <span>FH Vorarlberg</span>
             </div>
-          </div>
-          <div class="detail-card">
-            <div class="detail-icon">🎓</div>
-            <div>
-              <h3>Studium</h3>
-              <p>Informatik – Digital Innovation, FH Vorarlberg</p>
+            <div class="bento-item bento-work">
+              <span class="bento-emoji">&#9881;</span>
+              <span>Lean Leader</span>
             </div>
-          </div>
-          <div class="detail-card">
-            <div class="detail-icon">⛰️</div>
-            <div>
-              <h3>Freizeit</h3>
-              <p>Wandern, Reisen, Natur & Coding</p>
+            <div class="bento-item bento-passion">
+              <span class="bento-emoji">&#128187;</span>
+              <span>3 Websites gebaut</span>
             </div>
           </div>
         </div>
@@ -115,119 +85,198 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section class="section projects" id="projekte">
+  <!-- About / Bento Grid -->
+  <section class="section" id="ueber-mich">
     <div class="container">
-      <h2 class="section-title reveal">Meine Projekte</h2>
-      <p class="section-subtitle reveal">Drei echte Kundenprojekte – von der Idee bis zum Launch.</p>
+      <div class="section-header">
+        <p class="section-label">Über mich</p>
+        <h2 class="section-title">Ein ungewöhnlicher Weg<br>in die digitale Welt<span class="accent">.</span></h2>
+      </div>
 
-      <div class="projects-grid">
+      <div class="bento-grid">
+        <div class="bento-card bento-main">
+          <p class="bento-card-text">
+            Mein Weg war nicht geradlinig – und genau das macht ihn spannend.
+            Nach der <strong>Lehre als Elektrotechniker</strong> und dem <strong>Zivildienst
+            beim Roten Kreuz</strong> bin ich in die Industrie eingestiegen.
+          </p>
+          <p class="bento-card-text">
+            Heute arbeite ich als <strong>Continuous Improvement / Lean Leader</strong>
+            bei Ball Beverage Packaging in Ludesch und studiere parallel
+            <strong>Informatik – Digital Innovation</strong> an der FH Vorarlberg.
+          </p>
+          <p class="bento-card-text">
+            Vor einigen Monaten habe ich angefangen, Websites zu bauen – und
+            sofort Feuer gefangen. Drei Projekte für echte Kunden sind bereits live.
+          </p>
+        </div>
+
+        <div class="bento-card bento-job">
+          <p class="bento-card-label">Aktueller Job</p>
+          <p class="bento-card-big">CI / Lean Leader</p>
+          <p class="bento-card-sub">Ball Beverage Packaging, Ludesch</p>
+        </div>
+
+        <div class="bento-card bento-edu">
+          <p class="bento-card-label">Studium</p>
+          <p class="bento-card-big">Informatik</p>
+          <p class="bento-card-sub">Digital Innovation (berufsbegl.)<br>FH Vorarlberg, Dornbirn</p>
+        </div>
+
+        <div class="bento-card bento-bg">
+          <p class="bento-card-label">Werdegang</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span>Lehre Elektrotechnik</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span>Zivildienst – Rotes Kreuz</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span>Trainee-Programm bei Ball</span>
+            </div>
+            <div class="timeline-item active">
+              <span class="timeline-dot"></span>
+              <span>Lean Leader & Informatik-Studium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-card bento-hobbies">
+          <p class="bento-card-label">Wenn ich nicht code</p>
+          <div class="hobby-tags">
+            <span class="hobby-tag">Wandern</span>
+            <span class="hobby-tag">Reisen</span>
+            <span class="hobby-tag">Berge</span>
+            <span class="hobby-tag">Natur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section section-alt" id="projekte">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Projekte</p>
+        <h2 class="section-title">Drei Kunden<span class="accent">,</span><br>drei Websites<span class="accent">.</span></h2>
+        <p class="section-desc">Von der Business-Landingpage bis zum CMS-gestützten Portfolio – jedes Projekt war eine neue Herausforderung.</p>
+      </div>
+
+      <div class="projects-list">
+
         <!-- Project 1 -->
-        <article class="project-card reveal">
-          <div class="project-header">
-            <span class="project-number">01</span>
-            <span class="project-type">Business Landing Page</span>
+        <a href="https://oz-calisthenics.at" target="_blank" rel="noopener noreferrer" class="project">
+          <div class="project-index">01</div>
+          <div class="project-info">
+            <h3 class="project-name">OZ Calisthenics</h3>
+            <p class="project-type">Business Landing Page</p>
           </div>
-          <h3 class="project-title">OZ Calisthenics</h3>
-          <p class="project-desc">
-            Webauftritt für einen Calisthenics Coach in Bludenz. Die Seite informiert über Trainingsangebote,
-            ermöglicht Online-Buchungen und bietet ein Kontaktformular – alles DSGVO-konform.
+          <p class="project-desc-short">
+            Webauftritt für einen Calisthenics Coach – mit Online-Buchung,
+            Kontaktformular und DSGVO-konformem Setup.
           </p>
-          <div class="project-tech">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Formspree</span>
-            <span class="tech-tag">GitHub Pages</span>
+          <div class="project-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
           </div>
-          <a href="https://oz-calisthenics.at" target="_blank" rel="noopener noreferrer" class="project-link">
-            Website besuchen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
-        </article>
+          <div class="project-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
 
         <!-- Project 2 -->
-        <article class="project-card reveal">
-          <div class="project-header">
-            <span class="project-number">02</span>
-            <span class="project-type">Portfolio-Website</span>
+        <a href="https://jonathanwalch.at" target="_blank" rel="noopener noreferrer" class="project">
+          <div class="project-index">02</div>
+          <div class="project-info">
+            <h3 class="project-name">Jonathan Walch</h3>
+            <p class="project-type">Portfolio-Website</p>
           </div>
-          <h3 class="project-title">Jonathan Walch Portfolio</h3>
-          <p class="project-desc">
-            Persönliche Portfolio-Website für einen InterMedia-Studenten der FH Vorarlberg mit Schwerpunkt UI/UX Design.
-            Zeigt Hochschulprojekte, Skills und Kontaktmöglichkeiten mit Custom Cursor und Animationen.
+          <p class="project-desc-short">
+            Persönliches Portfolio für einen UI/UX Design Studenten
+            mit Projektgalerie und animiertem Interface.
           </p>
-          <div class="project-tech">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">GitHub Pages</span>
+          <div class="project-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
           </div>
-          <a href="https://jonathanwalch.at" target="_blank" rel="noopener noreferrer" class="project-link">
-            Website besuchen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
-        </article>
+          <div class="project-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
 
         <!-- Project 3 -->
-        <article class="project-card reveal">
-          <div class="project-header">
-            <span class="project-number">03</span>
-            <span class="project-type">Portfolio mit CMS</span>
+        <a href="https://nadkah.netlify.app" target="_blank" rel="noopener noreferrer" class="project">
+          <div class="project-index">03</div>
+          <div class="project-info">
+            <h3 class="project-name">NAD.KAH Kreativarbeit</h3>
+            <p class="project-type">Portfolio mit CMS</p>
           </div>
-          <h3 class="project-title">NAD.KAH Kreativarbeit</h3>
-          <p class="project-desc">
-            Website für ein kreatives Einzelunternehmen aus Feldkirch – Dekoration und Textilplott.
-            Mit integriertem CMS zur eigenständigen Inhaltspflege und dynamischer Markttermin-Verwaltung.
+          <p class="project-desc-short">
+            Website für ein Kreativunternehmen aus Feldkirch – mit integriertem
+            CMS zur eigenständigen Inhaltspflege.
           </p>
-          <div class="project-tech">
-            <span class="tech-tag">Astro</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">Decap CMS</span>
-            <span class="tech-tag">Netlify</span>
+          <div class="project-stack">
+            <span>Astro</span>
+            <span>TypeScript</span>
+            <span>Decap CMS</span>
           </div>
-          <a href="https://nadkah.netlify.app" target="_blank" rel="noopener noreferrer" class="project-link">
-            Website besuchen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
-        </article>
+          <div class="project-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="section contact" id="kontakt">
+  <!-- Contact -->
+  <section class="section" id="kontakt">
     <div class="container">
-      <h2 class="section-title reveal">Lass uns zusammenarbeiten</h2>
-      <p class="section-subtitle reveal">
-        Du brauchst eine Website? Ich freue mich auf deine Nachricht.
-      </p>
-      <div class="contact-grid reveal">
-        <a href="mailto:greineckerluca@hotmail.com" class="contact-card">
-          <div class="contact-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
-          </div>
-          <h3>E-Mail</h3>
-          <p>greineckerluca@hotmail.com</p>
-        </a>
-        <a href="https://www.linkedin.com/in/luca-greinecker/" target="_blank" rel="noopener noreferrer" class="contact-card">
-          <div class="contact-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <h3>LinkedIn</h3>
-          <p>Luca Greinecker</p>
-        </a>
+      <div class="contact-layout">
+        <div class="contact-text">
+          <p class="section-label">Kontakt</p>
+          <h2 class="section-title">Projekt im Kopf<span class="accent">?</span></h2>
+          <p class="contact-desc">
+            Du brauchst eine Website oder hast eine Idee, die online gehen soll?
+            Melde dich – ich freue mich, von dir zu hören.
+          </p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:greineckerluca@hotmail.com" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
+            </div>
+            <div>
+              <p class="contact-link-label">E-Mail</p>
+              <p class="contact-link-value">greineckerluca@hotmail.com</p>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/luca-greinecker/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <p class="contact-link-label">LinkedIn</p>
+              <p class="contact-link-value">Luca Greinecker</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <p class="footer-logo">LG<span class="logo-dot">.</span></p>
-        <p class="footer-copy">&copy; 2026 Luca Greinecker. Alle Rechte vorbehalten.</p>
-      </div>
+    <div class="container footer-inner">
+      <p class="footer-name">luca<span class="accent">.</span></p>
+      <p class="footer-copy">&copy; 2026 Luca Greinecker</p>
     </div>
   </footer>
 
