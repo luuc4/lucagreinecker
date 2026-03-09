@@ -180,7 +180,7 @@ Projekt 3:
 Projekt-Header
 
     Name: NAD.KAH – Kreativarbeit
-    URL: https://nadkah.netlify.app
+    URL: https://nadkah-kreativarbeit.netlify.app/
     Typ: Portfolio-Website / One-Pager mit Detailseiten
     Branche: Kunsthandwerk, Dekoration & Textilplott (Einzelunternehmen)
 
