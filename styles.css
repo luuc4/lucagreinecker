@@ -405,34 +405,6 @@ body::after {
   flex-wrap: wrap;
 }
 
-/* Availability Badge */
-.availability {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  background: #e8f5e9;
-  border: 1px solid #c8e6c9;
-  border-radius: 50px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #2e7d32;
-  margin-bottom: 20px;
-}
-
-.availability-dot {
-  width: 8px;
-  height: 8px;
-  background: #4caf50;
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(76, 175, 80, 0); }
-}
-
 /* Buttons */
 .btn-pill {
   display: inline-block;
@@ -1263,10 +1235,6 @@ body::after {
   }
 
   .marquee-track {
-    animation: none;
-  }
-
-  .availability-dot {
     animation: none;
   }
 }

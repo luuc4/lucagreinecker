@@ -4,7 +4,7 @@
 function initAnimations() {
   const targets = document.querySelectorAll(
     '.section-header, .bento-card, .bento-item, .project-card, ' +
-    '.hero-label, .hero-title, .hero-desc, .hero-actions, .hero-visual, .availability, ' +
+    '.hero-label, .hero-title, .hero-desc, .hero-actions, .hero-visual, ' +
     '.contact-form, .contact-sidebar'
   );
 
