@@ -126,6 +126,26 @@ strong { font-weight: 700; }
   outline-offset: 3px;
 }
 
+/* Skip link: nur sichtbar bei Tastatur-Fokus */
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 300;
+  padding: 10px 18px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* ===========================
    Noise Texture Overlay
    =========================== */
@@ -264,7 +284,8 @@ body::after {
   transition: var(--transition);
 }
 
-.nav-desktop a:hover {
+.nav-desktop a:hover,
+.nav-desktop a.is-active {
   color: var(--text);
 }
 
@@ -662,8 +683,77 @@ body::after {
 }
 
 /* ===========================
-   Projects – Card Style
+   Projects
    =========================== */
+
+/* Featured (Punktetafel) */
+.project-featured {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+  margin-bottom: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.project-featured-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.project-featured-body .project-type-badge {
+  margin-bottom: 16px;
+}
+
+.project-featured-body .project-stack {
+  margin-bottom: 28px;
+}
+
+.project-featured-cta {
+  align-self: flex-start;
+}
+
+.project-featured-media {
+  display: block;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-featured-media:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-featured-media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 750;
+  object-fit: cover;
+}
+
+/* Client project cards */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -672,10 +762,10 @@ body::after {
 
 .project-card {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: start;
-  padding: 36px 40px;
+  grid-template-columns: 5fr 7fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 28px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -705,6 +795,25 @@ body::after {
 
 .project-card:hover::before {
   opacity: 1;
+}
+
+.project-card-media {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+
+.project-card-media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 750;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-card-media img {
+  transform: scale(1.03);
 }
 
 .project-card-body {
@@ -797,6 +906,63 @@ body::after {
 /* ===========================
    Contact
    =========================== */
+
+/* Ablauf in drei Schritten */
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-bg);
+  border-radius: 50%;
+}
+
+.step-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.step-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Honeypot: für Menschen unsichtbar, für Bots ein normales Feld */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -821,6 +987,7 @@ body::after {
 
 /* Form */
 .contact-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1133,11 +1300,30 @@ body::after {
   }
 
   /* Projects */
-  .project-card {
+  .project-featured {
+    grid-template-columns: 1fr;
     padding: 28px 24px;
   }
 
+  .project-featured-media {
+    order: -1;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .project-card-action {
+    display: none;
+  }
+
   /* Contact */
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1175,13 +1361,12 @@ body::after {
   }
 
   /* Projects mobile */
-  .project-card {
-    grid-template-columns: 1fr;
-    padding: 24px;
+  .project-featured {
+    padding: 20px;
   }
 
-  .project-card-action {
-    display: none;
+  .project-card {
+    padding: 20px;
   }
 
   .project-number {
@@ -1236,5 +1421,9 @@ body::after {
 
   .marquee-track {
     animation: none;
+  }
+
+  .project-card:hover .project-card-media img {
+    transform: none;
   }
 }

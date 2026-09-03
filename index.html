@@ -4,27 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luca Greinecker – Lean Leader & Webentwickler aus Vorarlberg</title>
-  <meta name="description" content="Luca Greinecker aus Bludenz – Continuous Improvement Leader bei Ball, Informatiker (BSc) und Webentwickler. Baut Websites und Web-Apps wie die Punktetafel.">
+  <meta name="description" content="Luca Greinecker aus Bludenz: Continuous Improvement Leader bei Ball, Informatiker (BSc) und Webentwickler. Baut Websites für Leute aus der Region und Web-Apps wie die Punktetafel.">
+  <link rel="canonical" href="https://lucagreinecker.at/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lucagreinecker.at/">
+  <meta property="og:site_name" content="Luca Greinecker">
   <meta property="og:title" content="Luca Greinecker – Lean Leader & Webentwickler aus Vorarlberg">
   <meta property="og:description" content="Prozesse verbessern, Websites bauen, eigene Web-Apps entwickeln. Lean Leader bei Ball und Informatiker aus Vorarlberg.">
-  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://lucagreinecker.at/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ich bin Luca. Ich schraub gern an Dingen.">
   <meta property="og:locale" content="de_AT">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luca Greinecker – Lean Leader & Webentwickler aus Vorarlberg">
+  <meta name="twitter:description" content="Prozesse verbessern, Websites bauen, eigene Web-Apps entwickeln. Lean Leader bei Ball und Informatiker aus Vorarlberg.">
+  <meta name="twitter:image" content="https://lucagreinecker.at/images/og-image.png">
   <meta name="theme-color" content="#faf9f6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>L</text></svg>">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Luca Greinecker",
+    "url": "https://lucagreinecker.at/",
+    "image": "https://lucagreinecker.at/images/og-image.png",
+    "jobTitle": "Continuous Improvement / Lean Leader",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Ball Beverage Packaging",
+      "address": { "@type": "PostalAddress", "addressLocality": "Ludesch", "addressCountry": "AT" }
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "FH Vorarlberg",
+      "address": { "@type": "PostalAddress", "addressLocality": "Dornbirn", "addressCountry": "AT" }
+    },
+    "address": { "@type": "PostalAddress", "addressLocality": "Bludenz", "addressRegion": "Vorarlberg", "addressCountry": "AT" },
+    "knowsAbout": ["Webentwicklung", "Lean Management", "Continuous Improvement", "Elektrotechnik"],
+    "sameAs": ["https://www.linkedin.com/in/luca-greinecker/"]
+  }
+  </script>
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
   <!-- Header -->
   <header class="header" id="header">
     <div class="header-inner">
       <a href="#" class="logo">luca<span>.</span></a>
-      <nav class="nav-desktop">
+      <nav class="nav-desktop" aria-label="Hauptnavigation">
         <a href="#ueber-mich">Über mich</a>
         <a href="#projekte">Projekte</a>
         <a href="#kontakt" class="nav-cta">Kontakt</a>
       </nav>
-      <button class="menu-btn" id="menuBtn" aria-label="Menü" aria-expanded="false">
+      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
       </button>
@@ -32,13 +71,15 @@
   </header>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
     <nav class="mobile-nav">
       <a href="#ueber-mich">Über mich</a>
       <a href="#projekte">Projekte</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
   </div>
+
+  <main id="main">
 
   <!-- Hero -->
   <section class="hero" id="hero">
@@ -51,10 +92,10 @@
             <span class="hero-italic">Ich schraub gern an Dingen.</span>
           </h1>
           <p class="hero-desc">
-            Früher an Maschinen, heute an Prozessen – als Lean Leader bei Ball
-            in Ludesch. Und am Abend an eigenen Projekten: Websites für Leute
-            aus der Region und die Punktetafel, eine Web-App zum Punktezählen
-            am Spieltisch.
+            Hauptberuflich bin ich Lean Leader bei Ball in Ludesch und kümmere
+            mich um Produktionsprozesse. Nebenbei baue ich Websites für Leute
+            aus der Region und die Punktetafel, meine eigene Web-App zum
+            Punktezählen am Spieltisch.
           </p>
           <div class="hero-actions">
             <a href="#projekte" class="btn-pill">Projekte ansehen</a>
@@ -64,19 +105,19 @@
         <div class="hero-visual">
           <div class="bento-mini">
             <div class="bento-item bento-location">
-              <span class="bento-emoji">&#9968;</span>
+              <span class="bento-emoji" aria-hidden="true">&#9968;</span>
               <span>Vorarlberg, AT</span>
             </div>
             <div class="bento-item bento-study">
-              <span class="bento-emoji">&#127891;</span>
+              <span class="bento-emoji" aria-hidden="true">&#127891;</span>
               <span>BSc Informatik</span>
             </div>
             <div class="bento-item bento-work">
-              <span class="bento-emoji">&#9881;</span>
+              <span class="bento-emoji" aria-hidden="true">&#9881;</span>
               <span>Continuous Improvement</span>
             </div>
             <div class="bento-item bento-passion">
-              <span class="bento-emoji">&#128187;</span>
+              <span class="bento-emoji" aria-hidden="true">&#128187;</span>
               <span>4 Projekte live</span>
             </div>
           </div>
@@ -127,19 +168,25 @@
       <div class="bento-grid">
         <div class="bento-card bento-main">
           <p class="bento-card-text">
-            Gelernt hab ich <strong>Elektrotechnik</strong> bei <strong>Ball</strong>,
-            danach im <strong>Schichtbetrieb</strong> geschraubt, beim
-            <strong>Roten Kreuz</strong> Zivildienst gemacht und mich über ein
-            Trainee-Programm zum <strong>Lean Leader</strong> entwickelt.
-            Geradlinig ist anders – aber genau so bin ich dort gelandet, wo's passt.
+            Angefangen hab ich mit einer Lehre als <strong>Elektrotechniker</strong> bei
+            <strong>Ball</strong>. Danach Instandhaltung im Schichtbetrieb, Zivildienst beim
+            <strong>Roten Kreuz</strong>, dann zurück zu Ball ins Trainee-Programm, wo ich
+            quer durch alle möglichen Bereiche gekommen bin. Heute bin ich dort
+            <strong>Continuous Improvement / Lean Leader</strong>.
           </p>
           <p class="bento-card-text">
-            Dinge hinterfragen und verbessern zieht sich bei mir durch, bei
-            Fertigungsprozessen genauso wie bei Codezeilen. Deshalb hab ich
-            berufsbegleitend <strong>Informatik</strong> studiert – seit 2026 ist der
-            <strong>BSc in Informatik – Digital Innovation</strong> in der Tasche.
-            Gebaut wird trotzdem weiter: Websites für Leute aus der Region und
-            zuletzt die Punktetafel, meine eigene Web-App.
+            Was sich durchzieht: Ich will wissen, warum etwas so läuft, wie es läuft,
+            und ob es besser geht. Das gilt für eine Produktionslinie und für eine
+            Website. Deshalb hab ich neben dem Job <strong>Informatik</strong> an der
+            FH Vorarlberg studiert, Schwerpunkt Digital Innovation, seit 2026 mit
+            <strong>BSc</strong>.
+          </p>
+          <p class="bento-card-text">
+            Die Kombination ist mein Vorteil: Ich kenne den Alltag in einem
+            Produktionsbetrieb aus eigener Erfahrung und kann Software bauen.
+            Wenn irgendwo eine Excel-Liste aus allen Nähten platzt oder eine Info
+            ständig auf Zetteln herumgeht, seh ich das schnell und weiß, wie man
+            es löst.
           </p>
         </div>
 
@@ -152,7 +199,7 @@
         <div class="bento-card bento-edu">
           <p class="bento-card-label">Studium</p>
           <p class="bento-card-big">BSc Informatik</p>
-          <p class="bento-card-sub">Digital Innovation, berufsbegleitend<br>FH Vorarlberg – 2026 abgeschlossen</p>
+          <p class="bento-card-sub">Digital Innovation, berufsbegleitend<br>FH Vorarlberg, 2026 abgeschlossen</p>
         </div>
 
         <div class="bento-card bento-bg">
@@ -168,7 +215,7 @@
             </div>
             <div class="timeline-item">
               <span class="timeline-dot"></span>
-              <span>Zivildienst – Rotes Kreuz</span>
+              <span>Zivildienst beim Roten Kreuz</span>
             </div>
             <div class="timeline-item">
               <span class="timeline-dot"></span>
@@ -176,7 +223,7 @@
             </div>
             <div class="timeline-item">
               <span class="timeline-dot"></span>
-              <span>Informatik-Studium neben dem Job – BSc 2026</span>
+              <span>Informatik-Studium neben dem Job, BSc 2026</span>
             </div>
             <div class="timeline-item active">
               <span class="timeline-dot"></span>
@@ -191,8 +238,6 @@
             <span class="hobby-tag">Wandern</span>
             <span class="hobby-tag">Skifahren</span>
             <span class="hobby-tag">Reisen</span>
-            <span class="hobby-tag">Berge</span>
-            <span class="hobby-tag">Natur</span>
           </div>
         </div>
       </div>
@@ -205,75 +250,87 @@
       <div class="section-header">
         <p class="section-label">Projekte</p>
         <h2 class="section-title">Was bisher entstanden ist<span class="accent">.</span></h2>
-        <p class="section-desc">Eine eigene Web-App und drei Websites für Leute aus der Region – bei jedem Projekt ist was Neues hängengeblieben.</p>
+        <p class="section-desc">Eine eigene Web-App und drei Websites für Leute aus der Region.</p>
       </div>
+
+      <!-- Featured: Punktetafel -->
+      <article class="project-featured">
+        <div class="project-featured-body">
+          <span class="project-type-badge">Eigene Web-App &middot; PWA</span>
+          <h3 class="project-featured-name">Punktetafel</h3>
+          <p class="project-desc-short">
+            Punktezählen bei Karten- und Würfelspielen, ohne Zettel und ohne Account.
+            Spieler eintragen, Runden anschreiben, die Tafel rechnet zusammen, zeigt den
+            Stand und kürt den Sieger. Läuft komplett im Browser, auch offline, und lässt
+            sich als App installieren. Die Daten bleiben am Gerät.
+          </p>
+          <p class="project-desc-short">
+            Aktuell drin: Wizard, Flip 7, Skyjo, Jassen, Kniffel, Watten und 6 nimmt!
+          </p>
+          <div class="project-stack">
+            <span>Next.js</span>
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>PWA</span>
+          </div>
+          <a href="https://punktetafel.at" target="_blank" rel="noopener noreferrer" class="btn-pill project-featured-cta">Jetzt ausprobieren &rarr;</a>
+        </div>
+        <a href="https://punktetafel.at" target="_blank" rel="noopener noreferrer" class="project-featured-media" aria-label="Punktetafel öffnen">
+          <img src="images/projekte/punktetafel.jpg" width="1200" height="750" alt="Screenshot der Punktetafel" loading="lazy" decoding="async">
+        </a>
+      </article>
 
       <div class="projects-grid">
 
-        <!-- Project 1 -->
-        <a href="https://punktetafel.at" target="_blank" rel="noopener noreferrer" class="project-card">
+        <!-- Project 2 -->
+        <a href="https://oz-calisthenics.at" target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-card-media">
+            <img src="images/projekte/oz-calisthenics.jpg" width="1200" height="750" alt="Screenshot der Website oz-calisthenics.at" loading="lazy" decoding="async">
+          </div>
           <div class="project-card-body">
             <div class="project-card-header">
               <span class="project-number">01</span>
-              <h3 class="project-name">Punktetafel</h3>
-            </div>
-            <span class="project-type-badge">Eigene Web-App &middot; PWA</span>
-            <p class="project-desc-short">
-              Kostenlose Web-App zum Punktezählen bei Karten- und Würfelspielen am Tisch:
-              Spieler eintragen, Runden anschreiben, die Tafel rechnet, zeigt den Stand
-              und kürt den Sieger. Läuft offline im Browser (auch als App installierbar),
-              ohne Account – Daten bleiben am Gerät. Kann aktuell Wizard, Flip 7, Skyjo,
-              Jassen, Kniffel, Watten und 6 nimmt!.
-            </p>
-            <div class="project-stack">
-              <span>Next.js</span>
-              <span>React</span>
-              <span>TypeScript</span>
-              <span>PWA</span>
-            </div>
-          </div>
-          <div class="project-card-action">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </a>
-
-        <!-- Project 2 -->
-        <a href="https://oz-calisthenics.at" target="_blank" rel="noopener noreferrer" class="project-card">
-          <div class="project-card-body">
-            <div class="project-card-header">
-              <span class="project-number">02</span>
               <h3 class="project-name">OZ Calisthenics</h3>
             </div>
             <span class="project-type-badge">Business Landing Page</span>
             <p class="project-desc-short">
-              Ein Calisthenics Coach aus Bludenz brauchte eine Website, über die
-              Leute direkt buchen und Kontakt aufnehmen können. Simpel, schnell, DSGVO-konform.
+              Ein Calisthenics-Coach aus Bludenz wollte, dass Leute direkt online einen
+              Platz im Kurs buchen können. Die Seite bindet dafür einen SuperSaaS-Kalender
+              ein, dazu eine Preistabelle mit Umschalter für Schülertarife, ein FAQ und ein
+              Kontaktformular. Weil Google Analytics mit drin ist, musste auch der
+              Cookie-Consent sauber sitzen. Gebaut in zwei Wochen ohne Framework.
             </p>
             <div class="project-stack">
               <span>HTML</span>
               <span>CSS</span>
               <span>JavaScript</span>
+              <span>SuperSaaS</span>
               <span>Formspree</span>
               <span>GitHub Pages</span>
             </div>
           </div>
-          <div class="project-card-action">
+          <div class="project-card-action" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
         <!-- Project 3 -->
         <a href="https://jonathanwalch.at" target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-card-media">
+            <img src="images/projekte/jonathan-walch.jpg" width="1200" height="750" alt="Screenshot der Website jonathanwalch.at" loading="lazy" decoding="async">
+          </div>
           <div class="project-card-body">
             <div class="project-card-header">
-              <span class="project-number">03</span>
+              <span class="project-number">02</span>
               <h3 class="project-name">Jonathan Walch</h3>
             </div>
             <span class="project-type-badge">Portfolio-Website</span>
             <p class="project-desc-short">
-              Ein Studienkollege von der FH brauchte ein Portfolio, um seine
-              UI/UX-Arbeiten zu zeigen. Entstanden ist eine Seite mit Projektgalerie
-              und animiertem Interface.
+              Jonathan studiert InterMedia an der FH Vorarlberg und wollte seine
+              UI/UX-Projekte zeigen. Die Seite hat einen eigenen Cursor, animierte
+              Farbverläufe im Hero und Galerien mit Beschreibung beim Hover. Der
+              hartnäckigste Bug war das Bild-Rendering in Chrome, das in anderen
+              Browsern von Anfang an gepasst hat.
             </p>
             <div class="project-stack">
               <span>HTML</span>
@@ -282,22 +339,29 @@
               <span>GitHub Pages</span>
             </div>
           </div>
-          <div class="project-card-action">
+          <div class="project-card-action" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
         <!-- Project 4 -->
         <a href="https://nadkah-kreativarbeit.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-card">
+          <div class="project-card-media">
+            <img src="images/projekte/nadkah.jpg" width="1200" height="750" alt="Screenshot der Website von NAD.KAH Kreativarbeit" loading="lazy" decoding="async">
+          </div>
           <div class="project-card-body">
             <div class="project-card-header">
-              <span class="project-number">04</span>
+              <span class="project-number">03</span>
               <h3 class="project-name">NAD.KAH Kreativarbeit</h3>
             </div>
             <span class="project-type-badge">Portfolio mit CMS</span>
             <p class="project-desc-short">
-              Ein kreatives Unternehmen aus Feldkirch wollte seine Arbeiten online
-              zeigen – und die Inhalte selbst pflegen können. Deshalb gibts ein CMS dazu.
+              NAD.KAH macht Dekorationen und Textilplott in Feldkirch und verkauft vor
+              allem auf Märkten. Die Inhaberin wollte Texte, Bilder und Markttermine
+              selbst pflegen, ohne jedes Mal mich zu fragen. Deshalb Astro plus Decap CMS:
+              Sie loggt sich ein, trägt den nächsten Markt ein, die Seite baut sich neu.
+              Vergangene Termine verschwinden automatisch, der nächste bekommt ein
+              „Heute“ oder „in 3 Tagen“.
             </p>
             <div class="project-stack">
               <span>Astro</span>
@@ -306,7 +370,7 @@
               <span>Netlify</span>
             </div>
           </div>
-          <div class="project-card-action">
+          <div class="project-card-action" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
@@ -322,28 +386,58 @@
         <p class="section-label">Kontakt</p>
         <h2 class="section-title">Lass uns reden<span class="accent">.</span></h2>
         <p class="section-desc">
-          Du hast eine Idee für eine Website oder ein Projekt? Schreib mir einfach –
-          unverbindlich, unkompliziert. Ich freu mich über jede Nachricht.
+          Du brauchst eine Website oder ein kleines Web-Tool für deinen Betrieb?
+          Schreib mir, was du vorhast. Ich melde mich.
         </p>
       </div>
+
+      <ol class="steps" aria-label="So läuft ein Projekt ab">
+        <li class="step">
+          <span class="step-number">1</span>
+          <div>
+            <p class="step-title">Schreiben</p>
+            <p class="step-text">Du schreibst mir kurz, worum es geht. Formular oder Mail, egal.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-number">2</span>
+          <div>
+            <p class="step-title">Reden</p>
+            <p class="step-text">Wir telefonieren oder treffen uns und klären, was du brauchst und was nicht.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-number">3</span>
+          <div>
+            <p class="step-title">Bauen</p>
+            <p class="step-text">Du bekommst einen ersten Entwurf, wir passen an, dann geht die Seite live.</p>
+          </div>
+        </li>
+      </ol>
 
       <div class="contact-grid">
         <!-- Form -->
         <form id="contact-form" class="contact-form" action="https://formspree.io/f/xyknzrgg" method="POST">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Dein Name">
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Dein Name">
           </div>
           <div class="form-group">
             <label for="email">E-Mail</label>
-            <input type="email" id="email" name="email" required placeholder="deine@email.at">
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="deine@email.at">
           </div>
           <div class="form-group">
             <label for="message">Nachricht</label>
             <textarea id="message" name="message" rows="5" required placeholder="Was hast du vor? Erzähl einfach drauflos..."></textarea>
           </div>
+          <!-- Honeypot gegen Spam: bleibt für Menschen unsichtbar und leer -->
+          <div class="form-honeypot" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="_subject" value="Neue Nachricht über lucagreinecker.at">
           <button type="submit" class="btn-pill btn-submit" id="form-submit">Nachricht senden</button>
-          <p class="form-status" id="form-status"></p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
 
         <!-- Sidebar links -->
@@ -371,6 +465,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
