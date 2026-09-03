@@ -6,20 +6,23 @@
   <title>Datenschutzerklärung – Luca Greinecker</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>L</text></svg>">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
   <!-- Header -->
   <header class="header scrolled" id="header">
     <div class="header-inner">
       <a href="index.html" class="logo">luca<span>.</span></a>
-      <nav class="nav-desktop">
+      <nav class="nav-desktop" aria-label="Hauptnavigation">
         <a href="index.html#ueber-mich">Über mich</a>
         <a href="index.html#projekte">Projekte</a>
         <a href="index.html#kontakt" class="nav-cta">Kontakt</a>
       </nav>
-      <button class="menu-btn" id="menuBtn" aria-label="Menü">
+      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
       </button>
@@ -27,7 +30,7 @@
   </header>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
     <nav class="mobile-nav">
       <a href="index.html#ueber-mich">Über mich</a>
       <a href="index.html#projekte">Projekte</a>
@@ -35,11 +38,11 @@
     </nav>
   </div>
 
-  <main class="legal-page">
+  <main class="legal-page" id="main">
     <div class="container">
       <a href="index.html" class="legal-back">&larr; Zurück zur Startseite</a>
       <h1>Datenschutzerklärung</h1>
-      <p class="legal-update">Stand: März 2026</p>
+      <p class="legal-update">Stand: September 2026</p>
 
       <h2>1. Verantwortlicher</h2>
       <p>
@@ -90,7 +93,9 @@
         Die Verarbeitung erfolgt auf Basis von Art. 6 Abs. 1 lit. b DSGVO (Durchführung
         vorvertraglicher Maßnahmen) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
         der Beantwortung von Anfragen). Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage
-        verwendet und nicht an Dritte weitergegeben. Weitere Informationen finden Sie in der
+        verwendet. Außer an Formspree als technischen Dienstleister werden sie nicht weitergegeben.
+        Das Formular enthält zusätzlich ein verstecktes Feld zur Spam-Erkennung, das von Menschen
+        nicht ausgefüllt wird und keine personenbezogenen Daten erfasst. Weitere Informationen finden Sie in der
         <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Formspree</a>.
       </p>
 
