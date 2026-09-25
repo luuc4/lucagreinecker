@@ -1,3 +1,10 @@
+> **Stand 25.09.2026:** Lucas Rohnotizen von der alten Seite. Projekt 1
+> (OZ Calisthenics) beschreibt die **alte** statische OZ-Seite (Google
+> Analytics, SuperSaaS, Formspree, GitHub Pages), die vom Netz geht – daraus
+> nichts übernehmen. Fakten zu OZ nur aus `~/projects/ozcalisthenics`
+> (Next.js, Umami, Buchung, Stripe, Konto, Admin). NAD.KAH kommt nicht auf
+> die Seite. Gültig bleibt Projekt 2 (Jonathan Walch).
+
 Projekt 1:
 
 Projekt-Header

@@ -17,15 +17,18 @@ DNS, Coolify-Tokens, secrets.env, Image öffentlich, Script).
 bevor Luca eine von zwei Richtungen gewählt hat.
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
-von Luca):
+von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
+Analytics, SuperSaaS, Formspree) geht vom Netz; was die alte
+lucagreinecker-Seite und `docs/alt/projekt-notizen.md` dazu sagen, gilt
+nicht mehr.
 
-| Projekt         | Quelle                                                                        | Live                                                        |
-| --------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| OZ Calisthenics | `~/projects/ozcalisthenics` (AGENTS.md „Stand", `docs/konzept/`)              | `https://neu.oz-calisthenics.at` (Apex noch die alte Seite) |
-| USTA Streetfood | `~/projects/usta-streetfood` (AGENTS.md „Stand")                              | Übergangsadresse, Domain `ustastreetfood.com` im Umzug      |
-| punktetafel     | `~/projects/punktetafel` (AGENTS.md)                                          | `https://punktetafel.at`                                    |
-| Jonathan Walch  | `docs/alt/projekt-notizen.md`                                                 | `https://jonathanwalch.at`                                  |
-| Werdegang       | alte Startseite (Tag `statisch-2026-09`, `index.html`, Abschnitt „Über mich") | –                                                           |
+| Projekt         | Quelle                                                                        | Live                                                                                                              |
+| --------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| OZ Calisthenics | `~/projects/ozcalisthenics` (AGENTS.md „Stand", `docs/konzept/`)              | `https://neu.oz-calisthenics.at`, nach dem OZ-Umzug (frühestens nach dem 03.10.2026) `https://oz-calisthenics.at` |
+| USTA Streetfood | `~/projects/usta-streetfood` (AGENTS.md „Stand")                              | Übergangsadresse, Domain `ustastreetfood.com` im Umzug                                                            |
+| punktetafel     | `~/projects/punktetafel` (AGENTS.md)                                          | `https://punktetafel.at`                                                                                          |
+| Jonathan Walch  | `docs/alt/projekt-notizen.md`                                                 | `https://jonathanwalch.at`                                                                                        |
+| Werdegang       | alte Startseite (Tag `statisch-2026-09`, `index.html`, Abschnitt „Über mich") | –                                                                                                                 |
 
 ## Nächste Etappen
 

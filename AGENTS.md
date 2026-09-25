@@ -180,8 +180,11 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   punktetafel-Feedback (`punktetafel/app/api/feedback/route.ts`) statt per
   Mail: kein Versanddienst, keine DNS-Einträge für `mail.`, Luca bekommt die
   Anfrage als Push.
-- **25.09.2026 – Projekte auf der Seite:** OZ Calisthenics (neue Version mit
-  Buchung, Konto, Admin), USTA Streetfood, punktetafel, Jonathan Walch.
+- **25.09.2026 – Projekte auf der Seite:** OZ Calisthenics nur in der neuen
+  Version (Next.js, Umami, Buchung mit Stripe, Konto, Admin; Link auf
+  `oz-calisthenics.at`, sobald OZ umgezogen ist) – die alte statische Seite
+  mit Google Analytics und SuperSaaS geht vom Netz und kommt nicht vor.
+  Dazu USTA Streetfood, punktetafel, Jonathan Walch.
   Nicht: NAD.KAH, ländle isst (geparkt), LEX/PRiME (intern bei Ball).
 - **25.09.2026 – Texte:** Projektseiten zeigen Fakten aus den Repos als
   Listen (Funktionen, Stack, Zeitraum, gemessene Werte). Jeder Satz über
