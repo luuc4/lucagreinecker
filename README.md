@@ -1,49 +1,46 @@
-# lucagreinecker.at
+# Luca Greinecker
 
-Persönliche Website von Luca Greinecker: Vorstellung, Werdegang, Projekte und Kontaktformular.
-Statische Seite ohne Build-Schritt, gehostet über GitHub Pages unter der Domain `lucagreinecker.at` (siehe `CNAME`).
+Lucas eigene Website: seine Webprojekte, kurz über ihn, Kontakt.
+Die alte statische Seite liegt auf Branch `alt` (Tag `statisch-2026-09`).
 
-## Struktur
+Entstanden aus dem Starter der webprojekt-vorlage
+(`luuc4/webprojekt-vorlage`). Arbeitsdoku für Claude Code und alle
+Konventionen: `AGENTS.md`. Server, Konten, Deploy: `SETUP.md`. Backlog:
+`TODO.md`.
 
-| Datei / Ordner | Zweck |
-| --- | --- |
-| `index.html` | Startseite (Hero, Über mich, Projekte, Kontakt) |
-| `impressum.html`, `datenschutz.html` | Rechtliche Seiten, `noindex` |
-| `404.html` | Fehlerseite, wird von GitHub Pages automatisch ausgeliefert |
-| `styles.css` | Gesamtes Styling inkl. Responsive-Breakpoints (900px, 640px) |
-| `script.js` | Fade-in beim Scrollen, Header, Mobile-Menü, Smooth Scroll, Formular-Versand |
-| `fonts/` | Self-hosted Webfonts (DM Sans, Playfair Display), keine Google-Fonts-Verbindung |
-| `images/og-image.png` | Vorschaubild für LinkedIn, WhatsApp und Co. (1200x630) |
-| `images/apple-touch-icon.png` | Icon für den iOS-Homescreen |
-| `images/projekte/` | Bilder der Projektkarten (1200x750) |
-| `robots.txt`, `sitemap.xml` | Für Suchmaschinen |
-| `docs/projekt-notizen.md` | Rohnotizen zu den Kundenprojekten (Stack, Features, Umfang) |
+## Entwickeln
 
-## Projektbilder ersetzen
-
-Die Dateien in `images/projekte/` sind generierte Platzhalter. Echte Screenshots einfach unter demselben Namen ablegen:
-
-- `punktetafel.jpg`
-- `oz-calisthenics.jpg`
-- `jonathan-walch.jpg`
-- `nadkah.jpg`
-
-Empfohlen: 1200x750 Pixel (Seitenverhältnis 16:10), JPG oder WebP, unter 150 KB. Bei WebP zusätzlich die Endung in `index.html` anpassen.
-
-## Kontaktformular
-
-Läuft über Formspree (Formular-ID in `index.html`). Das Formular hat ein verstecktes Honeypot-Feld (`_gotcha`) gegen Spam und setzt den Betreff über `_subject`.
-
-## Lokal ansehen
-
-Kein Build nötig. Ein beliebiger statischer Server reicht, zum Beispiel:
-
-```
-python3 -m http.server 8000
+```bash
+pnpm install
+pnpm dev
 ```
 
-Danach `http://localhost:8000` im Browser öffnen.
+Vor jedem Push, identisch mit der CI:
 
-## Deployment
+```bash
+pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build
+pnpm test:e2e --project=chromium
+```
 
-Push auf `main` reicht, GitHub Pages liefert die Dateien direkt aus.
+## Was der Starter mitbringt
+
+- Next.js 16 mit `output: "standalone"`, Tailwind 4 mit Design-Tokens,
+  TypeScript strict, pnpm 11, Node 24
+- Sicherheits-Header und enge CSP (`next.config.ts`), `robots` sperrt alles
+  außer der echten Domain (`lib/site.ts`), Sitemap, OG-Bild, JSON-LD
+- Kopf mit Menü am Handy, Fuß mit Spalten, Sprunglink, Fokus auf die h1
+  nach Seitenwechsel, Fehler- und 404-Seiten
+- Kontaktformular mit Mail über Scaleway, Honeypot und Drossel, ohne
+  Speicherung, an- und abschaltbar (`KONTAKTFORMULAR`)
+- Kontakt-Handgriffe: `tel:`, Mail mit Betreff, WhatsApp mit Text, vCard
+  (`/api/kontakt.vcf`), Karten-Knöpfe, Kalenderdateien (`lib/kontakt/`)
+- Umami-Einbindung ohne Cookie-Banner (`components/Analytics.tsx`)
+- Tests: Vitest (`unit`, `ui`), Playwright mit Rauchtest, axe (WCAG 2.2 AA,
+  390 und 1440 px) und Platzhalter-Liste
+- CI: Prüfkette, E2E, Docker-Image mit Rauchtest nach GHCR, Coolify-Deploy
+- Scripts: Screenshots in mehreren Breiten, Bildvarianten ohne Metadaten
+  (`scripts/bilder.mjs`), Server-Grundeinrichtung
+- Doku-Vorlagen: `AGENTS.md`, `SETUP.md`, `TODO.md`, `.env.tpl`
+
+Design, Texte und Schrift sind Platzhalter, bis Luca eine Richtung gewählt
+hat und der Kunde Inhalte liefert.

@@ -1,0 +1,12 @@
+.next
+node_modules
+pnpm-lock.yaml
+public
+.git
+*.log
+playwright-report
+test-results
+# Konzept und Design-Entwürfe sind Archiv, nicht Quellcode: `prettier
+# --write docs` hat bei OZ die HTML-Entwürfe umformatiert.
+docs/konzept
+docs/design

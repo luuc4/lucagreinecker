@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install)",
+      "Bash(pnpm install --frozen-lockfile)",
+      "Bash(pnpm dev)",
+      "Bash(pnpm build)",
+      "Bash(pnpm start *)",
+      "Bash(pnpm format)",
+      "Bash(pnpm format:check)",
+      "Bash(pnpm lint)",
+      "Bash(pnpm lint:fix)",
+      "Bash(pnpm typecheck)",
+      "Bash(pnpm test)",
+      "Bash(pnpm test *)",
+      "Bash(pnpm test:e2e)",
+      "Bash(pnpm test:e2e *)",
+      "Bash(pnpm exec playwright *)",
+      "Bash(pnpm exec vitest *)",
+      "Bash(node scripts/screenshots.mjs)",
+      "Bash(node scripts/bilder.mjs *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(gh run list *)",
+      "Bash(gh run view *)"
+    ]
+  }
+}

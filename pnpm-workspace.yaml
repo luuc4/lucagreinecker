@@ -1,0 +1,14 @@
+packages: []
+# Nur diese Pakete dürfen Install-Skripte ausführen (pnpm 10+ blockt den
+# Rest). Neue Einträge nur, wenn pnpm sie beim Install als „ignored build
+# scripts" meldet und das Paket sie wirklich braucht (mit Datenbank und
+# Migrationen kommt esbuild dazu, mit Bild-Uploads sharp).
+allowBuilds:
+  "@parcel/watcher": true
+  "@tailwindcss/oxide": true
+  sharp: true
+  unrs-resolver: true
+# pnpm 11 nimmt keine Versionen, die jünger als die Frische-Sperre sind
+# (Schutz vor kompromittierten Releases). Statt Ausnahmen einzutragen, die
+# Range senken und auf die nächste Version warten.
+minimumReleaseAgeStrict: true

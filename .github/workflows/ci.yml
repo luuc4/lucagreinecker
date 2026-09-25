@@ -1,0 +1,174 @@
+name: ci
+
+# Drei Jobs (leitfaden/06, „CI"): check (Format, Lint, Typen, Tests, Build),
+# e2e (Playwright gegen den Prod-Build, inklusive axe und Platzhalter),
+# image (Docker-Image bauen, Rauchtest, Push nach GHCR, Coolify anstoßen).
+# Gebaut wird hier, nicht auf dem Server. Mit Datenbank kommt in allen drei
+# Jobs ein Postgres-Service-Container dazu (Vorlage:
+# ozcalisthenics/.github/workflows/ci.yml, dort auch das Sperrfenster für
+# Deploys zu Zeiten, in denen der Kunde die Seite live nutzt).
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+  # Manuell (gh workflow run ci.yml --ref main): Image neu bauen und
+  # deployen, ohne Commit – z. B. nach geänderten Repository-Variablen
+  # (SITE_URL_MAIN beim Domainumzug, Umami).
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+        env:
+          SITE_URL: https://example.test
+
+  e2e:
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      SITE_URL: http://localhost:3100
+      # Kontaktformular: Mails im Speicher, Playwright liest sie über
+      # /api/test/mails (den Endpunkt gibt es nur mit diesem Transport).
+      MAIL_TRANSPORT: memory
+      MAIL_ADMIN: anfragen@example.test
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Playwright-Version lesen
+        id: playwright
+        run: echo "version=$(pnpm exec playwright --version | cut -d' ' -f2)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+
+      - run: pnpm exec playwright install --with-deps chromium
+
+      - run: pnpm build
+      - run: pnpm test:e2e --project=chromium
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 7
+
+  image:
+    needs: [check, e2e]
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE: ghcr.io/${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE }}
+          # Tag = Branch (main/staging, beweglich, das zieht Coolify) plus
+          # sha-<kurz> (unbeweglich, für Rollback per Tag-Wechsel in Coolify).
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=sha-,format=short
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # SITE_URL und Umami werden ins Image gebacken; die Werte stehen in
+          # den Repository-Variablen (SETUP.md). Umami nur für main.
+          build-args: |
+            SITE_URL=${{ github.ref_name == 'main' && vars.SITE_URL_MAIN || vars.SITE_URL_STAGING }}
+            NEXT_PUBLIC_UMAMI_HOST=${{ github.ref_name == 'main' && vars.NEXT_PUBLIC_UMAMI_HOST || '' }}
+            NEXT_PUBLIC_UMAMI_WEBSITE_ID=${{ github.ref_name == 'main' && vars.NEXT_PUBLIC_UMAMI_WEBSITE_ID || '' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: "Rauchtest: Health und sauberes Ende bei SIGTERM"
+        run: |
+          set -eu
+          docker run -d --name rauch -p 3000:3000 \
+            -e SITE_URL=http://localhost:3000 \
+            "$IMAGE:${{ github.ref_name }}"
+          for i in $(seq 1 60); do
+            if [ "$(curl -s http://localhost:3000/api/health || true)" = "ok" ]; then break; fi
+            sleep 1
+          done
+          if [ "$(curl -s http://localhost:3000/api/health || true)" != "ok" ]; then
+            echo "::error::Container wird nicht gesund"; docker logs rauch; exit 1
+          fi
+          # docker stop schickt SIGTERM und wartet 10 s, dann SIGKILL (Exit
+          # 137). Next räumt bei SIGTERM selbst auf und endet mit 143; wer
+          # NEXT_MANUAL_SIG_HANDLE setzt (Jobs, OZ), muss SIGTERM selbst
+          # behandeln. Sonst endet jedes Rolling Update in Coolify hart.
+          docker stop -t 10 rauch
+          code=$(docker inspect -f '{{.State.ExitCode}}' rauch)
+          docker logs rauch
+          if [ "$code" = "137" ]; then
+            echo "::error::Container reagiert nicht auf SIGTERM (SIGKILL nach 10 s)"; exit 1
+          fi
+
+      - run: docker push --all-tags "$IMAGE"
+
+      - name: Coolify deployen
+        if: (github.ref_name == 'main' && vars.COOLIFY_APP_UUID_MAIN != '') || (github.ref_name == 'staging' && vars.COOLIFY_APP_UUID_STAGING != '')
+        env:
+          COOLIFY_URL: ${{ vars.COOLIFY_URL }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+          APP_UUID: ${{ github.ref_name == 'main' && vars.COOLIFY_APP_UUID_MAIN || vars.COOLIFY_APP_UUID_STAGING }}
+        # Coolify 4.3: POST (GET antwortet 405 „post required"). Kurze
+        # Zeitlimits: ist der Port zu (Firewall), hing curl sonst über zwei
+        # Minuten (USTA, 24.09.2026).
+        run: |
+          curl -fsS --connect-timeout 15 -m 60 -X POST -H "Authorization: Bearer $COOLIFY_TOKEN" \
+            "$COOLIFY_URL/api/v1/deploy?uuid=$APP_UUID&force=true"

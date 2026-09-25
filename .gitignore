@@ -1,0 +1,40 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+/playwright-report/
+/test-results/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+.claude/scheduled_tasks.lock
+
+# debug
+npm-debug.log*
+.pnpm-debug.log*
+
+# env files: nur die Vorlage liegt im Repo
+.env*
+!.env.tpl
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# playwright-mcp screenshots
+.playwright-mcp/
+
+# worktrees paralleler agenten-sitzungen
+.claude/worktrees/
+
+# persönliche Claude-Code-Einstellungen (die geteilten liegen in .claude/settings.json)
+.claude/settings.local.json

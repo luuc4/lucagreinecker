@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* PLATZHALTER-DESIGN. Neutral, damit der Starter baut und barrierefrei
+   ist – kein Vorschlag. Vor dem ersten echten Design zwei Richtungen
+   zeigen, Luca wählt (leitfaden/01, Phase 4), dann diese Tokens ersetzen
+   und die Regeln in AGENTS.md unter „Design" festhalten.
+
+   `--color-*: initial` löscht die Standardpalette: es gibt nur die Farben
+   unten. Folge: `bg-white` & Co. erzeugen keine Regel (Prettier sortiert
+   unbekannte Klassen nach vorn – daran erkennt man es). Kontraste stehen
+   als Kommentar dabei und müssen beim Ersetzen neu gemessen werden:
+   Text ≥ 4,5:1, Rahmen von Bedienelementen ≥ 3:1. */
+@theme {
+  --color-*: initial;
+  --color-grund: #fafaf9;
+  --color-flaeche: #f1f0ee;
+  /* 16,7:1 auf grund */
+  --color-fg: #1c1917;
+  /* 7,3:1 auf grund, 6,7:1 auf flaeche */
+  --color-fg-leise: #57534e;
+  /* Deko-Linie, trägt keine Bedeutung */
+  --color-linie: #e7e5e4;
+  /* Rahmen von Feldern und Umriss-Knöpfen: 4,6:1 auf grund */
+  --color-rahmen: #78716c;
+  /* 6,4:1 auf grund; weiß darauf 6,7:1 */
+  --color-akzent: #1d4ed8;
+  --color-akzent-hover: #1e3a8a;
+  --color-auf-akzent: #ffffff;
+  /* 6,2:1 auf grund */
+  --color-fehler: #b91c1c;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Skala fluid von Handy bis 1440 px. */
+  --text-display: clamp(2.75rem, 7vw, 5.5rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.03em;
+  --text-h2: clamp(2rem, 4vw, 3.25rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: clamp(1.375rem, 2vw, 1.625rem);
+  --text-h3--line-height: 1.2;
+
+  --radius-sm: 8px;
+
+  --spacing-kopf: 4.5rem;
+  /* Der eine Abstand zwischen zwei Blöcken einer Seite. Jeder Block trägt
+     ihn unten (pb-abschnitt), keiner oben, keine negativen Ränder – so
+     gibt es keine doppelten Abstände (Regel aus OZ, 17.09.2026). */
+  --spacing-abschnitt: clamp(4rem, 8vw, 7rem);
+
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Eigene Grundregeln in @layer base: ungelayert stünden sie über allen
+   Utilities und würden z. B. jedes text-* an einem Eingabefeld schlucken. */
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-padding-top: var(--spacing-kopf);
+    -webkit-text-size-adjust: 100%;
+    /* Klassische Scrollbalken (Windows, iPad mit Maus) schieben beim
+       Auftauchen die Seite sonst seitlich. */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--color-grund);
+    color: var(--color-fg);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* iOS zoomt bei Eingabefeldern unter 16 px hinein. */
+  input,
+  select,
+  textarea,
+  button {
+    font-size: max(16px, 1em);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-akzent);
+    outline-offset: 2px;
+  }
+
+  /* SeitenFokus setzt nach einem Seitenwechsel den Fokus auf die h1
+     (tabindex -1). Mobile Browser zeichnen dafür den Fokusring bis zum
+     nächsten Tipp (Befund OZ, 19.09.2026). Der Fokus bleibt für
+     Screenreader, nur der Ring entfällt. */
+  main h1[tabindex="-1"]:focus-visible {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: var(--color-akzent);
+    color: var(--color-auf-akzent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Der eine Inhaltsrahmen: max. 1440 px, Rand 20/32/56 px, mit Rücksicht
+   auf die Aussparungen am Handy quer (viewportFit: cover). */
+@utility inhalt {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 90rem;
+  padding-inline: max(1.25rem, env(safe-area-inset-left))
+    max(1.25rem, env(safe-area-inset-right));
+  @variant md {
+    padding-inline: max(2rem, env(safe-area-inset-left))
+      max(2rem, env(safe-area-inset-right));
+  }
+  @variant lg {
+    padding-inline: max(3.5rem, env(safe-area-inset-left))
+      max(3.5rem, env(safe-area-inset-right));
+  }
+}
+
+/* Gleich breite Ziffern für Preise, Zeiten, Tabellen. */
+@utility zahlen {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Druck: hell, ohne Kopf und Knöpfe (die tragen print:hidden). */
+@media print {
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+}
