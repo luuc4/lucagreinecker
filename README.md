@@ -30,8 +30,8 @@ pnpm test:e2e --project=chromium
   außer der echten Domain (`lib/site.ts`), Sitemap, OG-Bild, JSON-LD
 - Kopf mit Menü am Handy, Fuß mit Spalten, Sprunglink, Fokus auf die h1
   nach Seitenwechsel, Fehler- und 404-Seiten
-- Kontaktformular mit Mail über Scaleway, Honeypot und Drossel, ohne
-  Speicherung, an- und abschaltbar (`KONTAKTFORMULAR`)
+- Kontaktformular als Push über ntfy (statt Mail), Honeypot und Drossel,
+  ohne Speicherung, an- und abschaltbar (`KONTAKTFORMULAR`)
 - Kontakt-Handgriffe: `tel:`, Mail mit Betreff, WhatsApp mit Text, vCard
   (`/api/kontakt.vcf`), Karten-Knöpfe, Kalenderdateien (`lib/kontakt/`)
 - Umami-Einbindung ohne Cookie-Banner (`components/Analytics.tsx`)

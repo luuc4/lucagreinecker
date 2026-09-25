@@ -95,10 +95,13 @@ die App.
 
 ## Env-Vars
 
-Kontaktformular: soll an ntfy gehen (`NTFY_URL`, `NTFY_TOKEN`, Runtime,
-Coolify; AGENTS.md, Entscheidungen 25.09.2026), ist aber noch der
-Mail-Stand des Starters. Bis zum Umbau lehnt das Formular in Produktion
-ehrlich ab.
+Kontaktformular → ntfy (seit 26.09.2026, `lib/anfrage/ntfy.ts`): Runtime
+in Coolify `ANFRAGE_TRANSPORT=ntfy`, `NTFY_URL` (Topic-Adresse, z. B.
+`https://ntfy.punktetafel.at/lucagreinecker-anfragen`) und `NTFY_TOKEN`
+(Token mit Schreibrecht auf das Topic). Beides in secrets.env eintragen,
+dann `DEPLOYEN=1 bash scripts/infra.sh` (setzt die drei Variablen und
+deployt). Ohne sie lehnt das Formular in Produktion ehrlich ab und das
+Log warnt beim Start. Die Seite verschickt keine Mails.
 
 `.env.tpl` ist die vollständige Liste. Build-Zeit über
 Repository-Variablen (`SITE_URL_MAIN`, `SITE_URL_STAGING`,

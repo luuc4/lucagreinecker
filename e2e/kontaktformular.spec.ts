@@ -6,25 +6,26 @@ import {
 } from "@playwright/test";
 import { KONTAKTFORMULAR, PLATZHALTER } from "../lib/inhalte/statisch";
 
-// Kontaktformular gegen den Prod-Build mit MAIL_TRANSPORT=memory: die Mail
-// steht danach unter /api/test/mails. Jeder Test nimmt eine eigene Adresse,
-// weil die Tests parallel gegen denselben Mailspeicher laufen.
+// Kontaktformular gegen den Prod-Build mit ANFRAGE_TRANSPORT=memory: die
+// Push-Nachricht steht danach unter /api/test/anfragen. Jeder Test nimmt
+// eine eigene Adresse, weil die Tests parallel gegen denselben Speicher
+// laufen.
 test.skip(!KONTAKTFORMULAR, "Kontaktformular ist ausgeschaltet");
 
-type Mail = { an: string; betreff: string; text: string; replyTo?: string };
+type Anfrage = { titel: string; text: string; antwortAn: string };
 
 function adresse(zweck: string): string {
   return `${zweck}-${Date.now()}-${Math.round(Math.random() * 1e6)}@example.test`;
 }
 
-async function mailsAn(
+async function anfragenVon(
   request: APIRequestContext,
-  replyTo: string,
-): Promise<Mail[]> {
-  const antwort = await request.get("/api/test/mails");
+  antwortAn: string,
+): Promise<Anfrage[]> {
+  const antwort = await request.get("/api/test/anfragen");
   expect(antwort.status()).toBe(200);
-  return ((await antwort.json()) as Mail[]).filter(
-    (m) => m.replyTo === replyTo,
+  return ((await antwort.json()) as Anfrage[]).filter(
+    (a) => a.antwortAn === antwortAn,
   );
 }
 
@@ -36,10 +37,10 @@ async function ausfuellen(page: Page, email: string) {
     .fill("+43 660 123 45 67");
   await page
     .getByLabel("Nachricht", { exact: true })
-    .fill("Ich hätte gern einen Termin in der nächsten Woche.");
+    .fill("Ich hätte gern eine Website für meinen Betrieb.");
 }
 
-test("anfrage kommt als mail beim betreiber an", async ({ page, request }) => {
+test("anfrage kommt als push-nachricht an", async ({ page, request }) => {
   const email = adresse("anfrage");
   await page.goto("/kontakt");
   await ausfuellen(page, email);
@@ -52,13 +53,16 @@ test("anfrage kommt als mail beim betreiber an", async ({ page, request }) => {
   await expect(bestaetigung).toBeFocused();
   await expect(page.getByText(email)).toBeVisible();
 
-  await expect.poll(async () => (await mailsAn(request, email)).length).toBe(1);
-  const [mail] = await mailsAn(request, email);
-  expect(mail!.an).toBe("anfragen@example.test");
-  expect(mail!.betreff).toContain("Anna Test");
-  expect(mail!.text).toContain("Telefon: +43 660 123 45 67");
-  expect(mail!.text).toContain("Termin in der nächsten Woche");
-  expect(mail!.text).not.toContain(PLATZHALTER);
+  await expect
+    .poll(async () => (await anfragenVon(request, email)).length)
+    .toBe(1);
+  const [anfrage] = await anfragenVon(request, email);
+  // ntfy-Header bleiben ASCII: der Titel ist fest, Name und Text im Body.
+  expect(anfrage!.titel).toMatch(/^[\x20-\x7e]+$/);
+  expect(anfrage!.text).toContain("Name: Anna Test");
+  expect(anfrage!.text).toContain("Telefon: +43 660 123 45 67");
+  expect(anfrage!.text).toContain("Website für meinen Betrieb");
+  expect(anfrage!.text).not.toContain(PLATZHALTER);
 });
 
 test("fehler stehen am feld, eingaben bleiben, fokus im ersten feld", async ({
@@ -103,7 +107,7 @@ test("honeypot: sieht aus wie gesendet, schickt aber nichts", async ({
   await expect(
     page.getByRole("heading", { name: "Nachricht gesendet" }),
   ).toBeVisible();
-  expect(await mailsAn(request, email)).toHaveLength(0);
+  expect(await anfragenVon(request, email)).toHaveLength(0);
 });
 
 test.describe("ohne javascript", () => {
@@ -117,6 +121,6 @@ test.describe("ohne javascript", () => {
     await expect(
       page.getByRole("heading", { name: "Nachricht gesendet" }),
     ).toBeVisible();
-    expect(await mailsAn(request, email)).toHaveLength(1);
+    expect(await anfragenVon(request, email)).toHaveLength(1);
   });
 });

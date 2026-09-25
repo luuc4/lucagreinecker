@@ -1,24 +1,24 @@
 import { env } from "@/lib/env";
-import { mailsImSpeicher, mailspeicherLeeren } from "@/lib/mail/senden";
+import { anfragenImSpeicher, anfragespeicherLeeren } from "@/lib/anfrage/ntfy";
 
-// Nur bei MAIL_TRANSPORT=memory (E2E-Tests): liefert die im Prozess
-// gesammelten Mails. Mit jedem anderen Transport gibt es die Adresse
+// Nur bei ANFRAGE_TRANSPORT=memory (E2E-Tests): liefert die im Prozess
+// gesammelten Anfragen. Mit jedem anderen Transport gibt es die Adresse
 // nicht (404) – in Produktion also nie.
 export const dynamic = "force-dynamic";
 
 export function GET(): Response {
-  if (env().MAIL_TRANSPORT !== "memory") {
+  if (env().ANFRAGE_TRANSPORT !== "memory") {
     return new Response(null, { status: 404 });
   }
-  return Response.json(mailsImSpeicher(), {
+  return Response.json(anfragenImSpeicher(), {
     headers: { "cache-control": "no-store" },
   });
 }
 
 export function DELETE(): Response {
-  if (env().MAIL_TRANSPORT !== "memory") {
+  if (env().ANFRAGE_TRANSPORT !== "memory") {
     return new Response(null, { status: 404 });
   }
-  mailspeicherLeeren();
+  anfragespeicherLeeren();
   return new Response(null, { status: 204 });
 }

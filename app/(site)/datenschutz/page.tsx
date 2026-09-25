@@ -38,7 +38,7 @@ export default function Datenschutz() {
           },
           {
             titel: "Kontaktformular",
-            inhalt: `${PLATZHALTER} Angaben gehen per E-Mail (Scaleway, Paris) an das Postfach des Betreibers, keine Speicherung auf der Website`,
+            inhalt: `${PLATZHALTER} Angaben gehen als Push-Nachricht über Lucas eigene ntfy-Instanz (Server bei Hetzner) an sein Handy, keine Speicherung auf der Website`,
           },
           {
             titel: "Rechte",

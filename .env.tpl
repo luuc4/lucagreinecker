@@ -14,25 +14,15 @@ SITE_URL=http://localhost:3000
 #NEXT_PUBLIC_UMAMI_HOST=https://analytics.punktetafel.at
 #NEXT_PUBLIC_UMAMI_WEBSITE_ID=
 
-# R    Kontaktformular → ntfy (Entscheidung 25.09.2026, noch nicht gebaut;
-#      Muster punktetafel/app/api/feedback/route.ts): URL inkl. Topic und
-#      Token der ntfy-Instanz auf Lucas Server. Wenn das steht, fallen die
-#      MAIL_*-Zeilen unten weg.
-#NTFY_URL=
+# R    Kontaktformular → ntfy (lib/anfrage/ntfy.ts; Entscheidung 25.09.2026):
+#      konsole = Anfrage im Terminal (lokal; in Produktion lehnt das Formular
+#      dann ab), memory = Tests (/api/test/anfragen), ntfy = Push an Lucas
+#      ntfy-Instanz. NTFY_URL ist die Topic-Adresse, NTFY_TOKEN ein Token mit
+#      Schreibrecht auf das Topic (secrets.env, scripts/infra.sh setzt beides
+#      in Coolify). Keine Mails: diese Seite verschickt keine.
+ANFRAGE_TRANSPORT=konsole
+#NTFY_URL=https://ntfy.punktetafel.at/lucagreinecker-anfragen
 #NTFY_TOKEN=
-
-# R    Mail für das Kontaktformular (Starter-Stand, lib/env.ts, leitfaden/04):
-#      konsole = Mail im Terminal (lokal; in Produktion lehnt das Formular
-#      dann ab), memory = Tests, scaleway = Transactional Email (braucht Key,
-#      Projekt und MAIL_FROM auf der verifizierten Domain mail.<domain>).
-#      MAIL_ADMIN bekommt die Anfragen (Postfach des Kunden). Die Allowlist
-#      ist auf staging. Pflicht (Adressen, @domain oder bewusst *), in Prod leer.
-MAIL_TRANSPORT=konsole
-MAIL_ADMIN=anfragen@example.test
-#MAIL_FROM=kontakt@mail.lucagreinecker.at
-#SCALEWAY_TEM_KEY=
-#SCALEWAY_PROJECT_ID=
-#MAIL_EMPFAENGER_ALLOWLIST=
 # R    1 erst, wenn Cloudflare davor steht (Client-IP aus cf-connecting-ip)
 #TRUST_CF_IP=0
 
@@ -45,8 +35,3 @@ MAIL_ADMIN=anfragen@example.test
 #BETTER_AUTH_SECRET=
 #ADMIN_EMAILS=
 #PASSKEY_RP_ID=
-# R    Zahlung (Stripe Hosted Checkout)
-#ZAHLUNG_ANBIETER=stripe
-#STRIPE_SECRET_KEY=
-#STRIPE_WEBHOOK_SECRET=
-#STRIPE_LIVEMODE=false

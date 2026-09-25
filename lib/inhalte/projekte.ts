@@ -33,8 +33,8 @@ export const PROJEKTE: readonly Projekt[] = [
   {
     slug: "oz-calisthenics",
     name: "OZ Calisthenics",
-    art: "Kursbuchung und Website für einen Calisthenics-Coach in Bludenz und Rankweil",
-    kurz: "Kursbuchung für einen Calisthenics-Coach, Bludenz",
+    art: "Kursbuchung und Website für einen Calisthenics‑Coach in Bludenz und Rankweil",
+    kurz: "Kursbuchung für einen Calisthenics‑Coach, Bludenz",
     kunde: "Olcay Zengin, Calisthenics-Coach, Bludenz und Rankweil",
     zeitraum: "seit September 2026",
     seiten:
@@ -53,8 +53,8 @@ export const PROJEKTE: readonly Projekt[] = [
   {
     slug: "usta-streetfood",
     name: "USTA Streetfood",
-    art: "Website mit Mini-CMS für einen Foodtruck in Nenzing",
-    kurz: "Website mit Mini-CMS für einen Foodtruck, Nenzing",
+    art: "Website mit Mini‑CMS für einen Foodtruck in Nenzing",
+    kurz: "Website mit Mini‑CMS für einen Foodtruck, Nenzing",
     kunde: "Akin Akgün, USTA Streetfood, Foodtruck in Nenzing",
     zeitraum: "September 2026",
     seiten:
@@ -73,8 +73,8 @@ export const PROJEKTE: readonly Projekt[] = [
   {
     slug: "punktetafel",
     name: "Punktetafel",
-    art: "Eigene Web-App: Punkte zählen für Kartenspiele am Tisch",
-    kurz: "Eigene Web-App: Punkte zählen am Spieltisch",
+    art: "Eigene Web‑App: Punkte zählen für Kartenspiele am Tisch",
+    kurz: "Eigene Web‑App: Punkte zählen am Spieltisch",
     kunde: "Eigenes Projekt",
     zeitraum: "Juli bis September 2026",
     seiten:
@@ -91,8 +91,8 @@ export const PROJEKTE: readonly Projekt[] = [
   {
     slug: "jonathan-walch",
     name: "Jonathan Walch",
-    art: "Portfolio für einen InterMedia-Studenten der FH Vorarlberg",
-    kurz: "Portfolio für einen InterMedia-Studenten, FH Vorarlberg",
+    art: "Portfolio für einen InterMedia‑Studenten der FH Vorarlberg",
+    kurz: "Portfolio für einen InterMedia‑Studenten, FH Vorarlberg",
     kunde: "Jonathan Walch, InterMedia-Student an der FH Vorarlberg",
     zeitraum: "Januar 2026",
     seiten: "Start, Projekte, Impressum, Lebenslauf als PDF",

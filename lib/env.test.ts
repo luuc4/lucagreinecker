@@ -1,54 +1,40 @@
-import { afterEach, expect, it, vi } from "vitest";
+import { expect, it } from "vitest";
 import { envAus } from "./env";
-
-afterEach(() => {
-  vi.unstubAllEnvs();
-});
 
 it("läuft ohne jede Variable mit Vorgaben", () => {
   const e = envAus({});
-  expect(e.MAIL_TRANSPORT).toBe("konsole");
-  expect(e.MAIL_EMPFAENGER_ALLOWLIST).toEqual([]);
+  expect(e.ANFRAGE_TRANSPORT).toBe("konsole");
+  expect(e.NTFY_URL).toBeUndefined();
   expect(e.TRUST_CF_IP).toBe(false);
 });
 
 it("behandelt leere Werte wie nicht gesetzt", () => {
-  const e = envAus({ MAIL_ADMIN: "", SCALEWAY_REGION: "" });
-  expect(e.MAIL_ADMIN).toBeUndefined();
-  expect(e.SCALEWAY_REGION).toBe("fr-par");
+  const e = envAus({ NTFY_URL: "", NTFY_TOKEN: "" });
+  expect(e.NTFY_URL).toBeUndefined();
+  expect(e.NTFY_TOKEN).toBeUndefined();
 });
 
-it("verlangt für Scaleway Key, Projekt und Absender", () => {
-  expect(() => envAus({ MAIL_TRANSPORT: "scaleway" })).toThrow(
-    /SCALEWAY_TEM_KEY.*\n.*SCALEWAY_PROJECT_ID.*\n.*MAIL_FROM/,
+it("verlangt für ntfy Adresse und Token", () => {
+  expect(() => envAus({ ANFRAGE_TRANSPORT: "ntfy" })).toThrow(
+    /NTFY_URL.*\n.*NTFY_TOKEN/,
   );
+  expect(() =>
+    envAus({
+      ANFRAGE_TRANSPORT: "ntfy",
+      NTFY_URL: "kein-url",
+      NTFY_TOKEN: "t",
+    }),
+  ).toThrow(/NTFY_URL/);
   expect(
     envAus({
-      MAIL_TRANSPORT: "scaleway",
-      SCALEWAY_TEM_KEY: "k",
-      SCALEWAY_PROJECT_ID: "p",
-      MAIL_FROM: "kontakt@mail.example.test",
-    }).MAIL_TRANSPORT,
-  ).toBe("scaleway");
+      ANFRAGE_TRANSPORT: "ntfy",
+      NTFY_URL: "https://ntfy.example.test/anfragen",
+      NTFY_TOKEN: "tk_test",
+    }).ANFRAGE_TRANSPORT,
+  ).toBe("ntfy");
 });
 
-it("verlangt auf staging. eine Empfänger-Allowlist", () => {
-  vi.stubEnv("SITE_URL", "https://staging.example.test");
-  const basis = {
-    MAIL_TRANSPORT: "scaleway",
-    SCALEWAY_TEM_KEY: "k",
-    SCALEWAY_PROJECT_ID: "p",
-    MAIL_FROM: "kontakt@mail.example.test",
-  };
-  expect(() => envAus(basis)).toThrow(/MAIL_EMPFAENGER_ALLOWLIST/);
-  expect(
-    envAus({ ...basis, MAIL_EMPFAENGER_ALLOWLIST: "@example.test, *" })
-      .MAIL_EMPFAENGER_ALLOWLIST,
-  ).toEqual(["@example.test", "*"]);
-});
-
-it("lehnt unbekannte Transporte und kaputte Adressen ab", () => {
-  expect(() => envAus({ MAIL_TRANSPORT: "smtp" })).toThrow();
-  expect(() => envAus({ MAIL_ADMIN: "keine-adresse" })).toThrow(/MAIL_ADMIN/);
-  expect(() => envAus({ MAIL_EMPFAENGER_ALLOWLIST: "foo" })).toThrow();
+it("liest TRUST_CF_IP als Ja/Nein", () => {
+  expect(envAus({ TRUST_CF_IP: "1" }).TRUST_CF_IP).toBe(true);
+  expect(envAus({ TRUST_CF_IP: "false" }).TRUST_CF_IP).toBe(false);
 });

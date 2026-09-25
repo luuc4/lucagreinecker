@@ -138,8 +138,8 @@ export function KontaktFormular({ empfaenger }: { empfaenger: string }) {
         />
       </div>
       <p className="text-sm text-fg-leise">
-        Die Nachricht geht per E-Mail an {empfaenger} und wird auf der Website
-        nicht gespeichert.{" "}
+        Die Nachricht geht direkt an {empfaenger} und wird auf der Website nicht
+        gespeichert.{" "}
         <Link href="/datenschutz" className={inlineLinkKlassen}>
           Datenschutz
         </Link>

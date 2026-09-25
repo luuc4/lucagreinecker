@@ -107,11 +107,13 @@ app/sitemap.ts        öffentliche Routen – neue Seiten hier eintragen (E2E li
 components/           KontaktFormular, formular/Feld (Feld, Textbereich), Knopf/KnopfLink,
                       Textlink, Icon, Kopf, MobilMenue, Fuss,
                       Abschnitt (SeitenKopf, Abschnitt, Spalten, Spalte, Fakten), KartenKnoepfe,
-                      Rechtstext, SeitenFokus, Analytics, JsonLd
-lib/inhalte/statisch.ts  alle Texte und Fakten, Navigation, PLATZHALTER, KONTAKTFORMULAR (an/aus)
+                      Rechtstext, SeitenFokus, Analytics, JsonLd, ProjektBild (<picture> aus
+                      public/bilder)
+lib/inhalte/statisch.ts  Texte und Fakten (SEITE, KONTAKT, PAKET, UEBER_MICH), Navigation,
+                      PLATZHALTER, KONTAKTFORMULAR (an/aus)
+lib/inhalte/projekte.ts  die vier Projekte: Fakten, Adressen, Lucas Sätze (null = Platzhalter)
 lib/anfrage/          Kontaktformular: schema (Zod, Honeypot), drossel (im Prozess), vorlage
-                      (Mail an den Betreiber), actions (Server Action)
-lib/mail/             senden (Transporte konsole/memory/scaleway), allowlist
+                      (Push-Text), ntfy (Transporte konsole/memory/ntfy), actions (Server Action)
 lib/env.ts            Zod-Schema aller Laufzeit-Variablen; lib/betrieb/start.ts prüft beim Start
 lib/kontakt/          vCard, Kalenderdatei (Serien, Einzeltermine), Links (tel, mail,
                       WhatsApp, Google Maps, Apple Karten) – rein und getestet

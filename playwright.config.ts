@@ -39,12 +39,11 @@ export default defineConfig({
         timeout: 120_000,
         stdout: "pipe",
         stderr: "pipe",
-        // Mails landen im Speicher und sind über /api/test/mails lesbar.
-        // Werte aus der Umgebung (CI) haben Vorrang.
+        // Anfragen landen im Speicher und sind über /api/test/anfragen
+        // lesbar. Werte aus der Umgebung (CI) haben Vorrang.
         env: {
           SITE_URL: BASE_URL,
-          MAIL_TRANSPORT: process.env.MAIL_TRANSPORT ?? "memory",
-          MAIL_ADMIN: process.env.MAIL_ADMIN ?? "anfragen@example.test",
+          ANFRAGE_TRANSPORT: process.env.ANFRAGE_TRANSPORT ?? "memory",
         },
       },
 });

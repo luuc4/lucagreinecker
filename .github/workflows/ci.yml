@@ -51,10 +51,9 @@ jobs:
     timeout-minutes: 20
     env:
       SITE_URL: http://localhost:3100
-      # Kontaktformular: Mails im Speicher, Playwright liest sie über
-      # /api/test/mails (den Endpunkt gibt es nur mit diesem Transport).
-      MAIL_TRANSPORT: memory
-      MAIL_ADMIN: anfragen@example.test
+      # Kontaktformular: Anfragen im Speicher, Playwright liest sie über
+      # /api/test/anfragen (den Endpunkt gibt es nur mit diesem Transport).
+      ANFRAGE_TRANSPORT: memory
     steps:
       - uses: actions/checkout@v6
 

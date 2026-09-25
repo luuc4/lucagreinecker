@@ -47,9 +47,9 @@ export const KONTAKT: Kontakt = {
   ],
 };
 
-// Kontaktformular auf /kontakt (leitfaden/12, Baustein A). Aus, wenn der
-// Kunde keins will – dann bleiben Telefon, Mail und WhatsApp. An braucht es
-// in Produktion Scaleway (MAIL_TRANSPORT=scaleway) und MAIL_ADMIN.
+// Kontaktformular auf /kontakt (leitfaden/12, Baustein A), Zustellung als
+// Push über ntfy (lib/anfrage/ntfy.ts). An braucht es in Produktion
+// ANFRAGE_TRANSPORT=ntfy, NTFY_URL und NTFY_TOKEN (SETUP.md).
 export const KONTAKTFORMULAR = true;
 
 // Vorgetippte Nachrichten für WhatsApp und Mail-Betreff, in der Stimme

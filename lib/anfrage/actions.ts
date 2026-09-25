@@ -2,20 +2,19 @@
 
 import { headers } from "next/headers";
 import { env } from "@/lib/env";
-import { KONTAKTFORMULAR, SEITE } from "@/lib/inhalte/statisch";
-import { ohneAdressen } from "@/lib/mail/allowlist";
-import { mailSenden } from "@/lib/mail/senden";
+import { KONTAKTFORMULAR } from "@/lib/inhalte/statisch";
 import { siteHost } from "@/lib/site";
 import { clientIp, GESAMT, JE_IP, neueDrossel } from "./drossel";
+import { anfrageZustellen, ohneAdressen } from "./ntfy";
 import { Anfrage, FELDER, type Feldname } from "./schema";
-import { anfrageMail } from "./vorlage";
+import { anfrageNachricht } from "./vorlage";
 
-// Kontaktformular: Zod → Honeypot → Drossel → Mail direkt an den Betreiber
-// (MAIL_ADMIN), Reply-To = Absender. Nicht gespeichert: Freitext mit
-// Personendaten soll nicht in einer Datenbank liegen. Ein gefülltes
-// Honeypot-Feld bekommt dieselbe Antwort wie ein Erfolg, nur ohne Mail.
-// Die Eingaben gehen bei Fehlern zurück, weil React 19 das Formular nach
-// der Action zurücksetzt – sonst wäre der Text weg.
+// Kontaktformular: Zod → Honeypot → Drossel → Push an Luca über ntfy
+// (lib/anfrage/ntfy.ts). Nicht gespeichert: Freitext mit Personendaten
+// soll nicht in einer Datenbank liegen. Ein gefülltes Honeypot-Feld bekommt
+// dieselbe Antwort wie ein Erfolg, nur ohne Zustellung. Die Eingaben gehen
+// bei Fehlern zurück, weil React 19 das Formular nach der Action
+// zurücksetzt – sonst wäre der Text weg.
 
 export type AnfrageZustand = {
   ok?: boolean;
@@ -68,22 +67,12 @@ export async function anfrageSenden(
     return { fehler: "drossel", werte };
   }
 
-  // Lokal ohne .env.local geht die Anfrage an eine Beispieladresse ins
-  // Terminal; in Produktion ohne MAIL_ADMIN ist das Formular nicht
-  // eingerichtet (instrumentation.ts warnt beim Start).
-  const an =
-    e.MAIL_ADMIN ??
-    (e.NODE_ENV === "production" ? null : "anfragen@example.test");
-  if (!an) {
-    console.error("[anfrage] MAIL_ADMIN fehlt – Anfrage nicht zugestellt");
-    return { fehler: "senden", werte };
-  }
   try {
-    const { betreff, text } = anfrageMail(daten, SEITE.name, siteHost());
-    await mailSenden({ an, betreff, text, replyTo: daten.email });
+    const { titel, text } = anfrageNachricht(daten, siteHost());
+    await anfrageZustellen({ titel, text, antwortAn: daten.email });
   } catch (fehler) {
     console.error(
-      "[anfrage] senden fehlgeschlagen:",
+      "[anfrage] zustellen fehlgeschlagen:",
       ohneAdressen(fehler instanceof Error ? fehler.message : String(fehler)),
     );
     return { fehler: "senden", werte };

@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { PLATZHALTER } from "@/lib/inhalte/statisch";
-import { empfaengerErlaubt, ohneAdressen } from "@/lib/mail/allowlist";
 import { clientIp, neueDrossel } from "./drossel";
+import { ohneAdressen } from "./ntfy";
 import { Anfrage } from "./schema";
-import { anfrageMail } from "./vorlage";
+import { anfrageNachricht } from "./vorlage";
 
 const gueltig = {
   name: "Anna Muster",
   email: "Anna@Example.test ",
   telefon: "+43 660 123 45 67",
-  nachricht: "Ich hätte gern einen Termin nächste Woche.",
+  nachricht: "Ich hätte gern eine Website für meinen Betrieb.",
   website: "",
 };
 
@@ -65,37 +65,27 @@ describe("drossel", () => {
   });
 });
 
-describe("mail an den betreiber", () => {
-  it("nennt alle Angaben, ohne Platzhalter", () => {
-    const { betreff, text } = anfrageMail(
+describe("push-nachricht an luca", () => {
+  it("nennt alle Angaben, ohne Platzhalter, mit ASCII-Titel", () => {
+    const { titel, text } = anfrageNachricht(
       Anfrage.parse(gueltig),
-      "Tischlerei Muster",
-      "tischlerei-muster.at",
+      "lucagreinecker.at",
     );
-    expect(betreff).toBe("Anfrage an Tischlerei Muster: Anna Muster");
+    expect(titel).toMatch(/^[\x20-\x7e]+$/);
+    expect(text).toContain("Name: Anna Muster");
     expect(text).toContain("E-Mail: anna@example.test");
     expect(text).toContain("Telefon: +43 660 123 45 67");
-    expect(text).toContain("Ich hätte gern einen Termin");
+    expect(text).toContain("Website für meinen Betrieb");
+    expect(text).toContain("lucagreinecker.at");
     expect(text).not.toContain(PLATZHALTER);
   });
 
   it("lässt die Telefonzeile weg, wenn keine Nummer da ist", () => {
-    const { text } = anfrageMail(
+    const { text } = anfrageNachricht(
       Anfrage.parse({ ...gueltig, telefon: "" }),
-      "X",
       "x.at",
     );
     expect(text).not.toContain("Telefon:");
-  });
-});
-
-describe("allowlist", () => {
-  it("erlaubt alles bei leerer Liste oder *, sonst nur Adressen und Domains", () => {
-    expect(empfaengerErlaubt("a@b.at", [])).toBe(true);
-    expect(empfaengerErlaubt("a@b.at", ["*"])).toBe(true);
-    expect(empfaengerErlaubt("A@B.at", ["a@b.at"])).toBe(true);
-    expect(empfaengerErlaubt("x@b.at", ["@b.at"])).toBe(true);
-    expect(empfaengerErlaubt("x@c.at", ["@b.at", "a@b.at"])).toBe(false);
   });
 
   it("entfernt Adressen aus Fehlermeldungen", () => {

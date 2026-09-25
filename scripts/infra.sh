@@ -91,7 +91,8 @@ fi
 api PATCH "/applications/$APPU" "{\"domains\":\"$DOMAINS\",\"health_check_host\":\"127.0.0.1\",\"health_check_enabled\":true,\"health_check_path\":\"/api/health\",\"health_check_port\":\"3000\"}" > /dev/null
 # Runtime-Env. SITE_URL und Umami sind Build-Zeit (Repository-Variablen,
 # ci.yml); SITE_URL steht zusätzlich hier, weil lib/site.ts sie auch zur
-# Laufzeit liest. ntfy nur, wenn gesetzt.
+# Laufzeit liest. ntfy nur, wenn beides gesetzt ist – dann schaltet
+# ANFRAGE_TRANSPORT=ntfy das Kontaktformular scharf (lib/env.ts).
 ENV_JSON=$(python3 - "$APP_DOMAIN" "${NTFY_URL:-}" "${NTFY_TOKEN:-}" <<'PY'
 import json, sys
 domain, ntfy_url, ntfy_token = sys.argv[1:4]
@@ -99,6 +100,7 @@ werte = {
     "SITE_URL": domain,
     "NTFY_URL": ntfy_url,
     "NTFY_TOKEN": ntfy_token,
+    "ANFRAGE_TRANSPORT": "ntfy" if ntfy_url and ntfy_token else "",
 }
 print(json.dumps({"data": [
     {"key": k, "value": v, "is_build_time": False, "is_preview": False, "is_literal": True}
