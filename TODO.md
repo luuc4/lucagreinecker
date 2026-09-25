@@ -11,20 +11,20 @@ Etappe 0 erledigt: Starter im bestehenden Repo, alte Seite auf Branch
 `https://neu.lucagreinecker.at` zeigt die Platzhalterseite (health ok,
 robots sperrt, noindex, CSP und HSTS da). Offen: Umami, ntfy, Renovate.
 
-Etappe 1, Teil 1 und 2 erledigt (25.09.2026): zwei Richtungen, Lucas
-Wahl (Design von A, Aufbau von B, dazu der Inhalt „Rundum-sorglos-Paket"),
-daraus drei Versionen in `docs/design/richtungen/` (Leinwand
-`index.html`, Artifact `https://claude.ai/artifact/25576desS8jAzH66a8AtPe`),
-echte Screenshots der vier Projekte in `public/bilder/`. Offen: welche
-Version.
+Etappe 1 abgeschlossen (25.09.2026): zwei Richtungen, Lucas Wahl (Design
+von A, Aufbau von B, dazu der Inhalt „Rundum-sorglos-Paket"), drei
+Versionen, Wahl Version 1 „Reihe" mit dem Kickoff-Wortlaut; Tokens,
+Schrift und Bausteine im Code (AGENTS.md „Design"). Entwürfe in
+`docs/design/richtungen/` (Artifact
+`https://claude.ai/artifact/25576desS8jAzH66a8AtPe`), echte Screenshots der
+vier Projekte in `public/bilder/`. `neu.` zeigt den neuen Stand erst nach
+Lucas Docker-Neustart („Luca – Server").
 
-**Nächste Sitzung zuerst:** Lucas Wahl der Version (1 „Reihe", 2 „Kante",
-3 „Gelbes Band" oder Mischung) und seine Antworten zum Paket und zum Satz
-oben entgegennehmen. Dann Skill `neues-webprojekt`, Phase 4, Schritt 4:
-Regeln in AGENTS.md („Design", mit Datum und gemessenen Kontrasten),
-Tokens in `app/globals.css` (aus `docs/design/richtungen/ab.css`), Schrift
-`@fontsource-variable/ibm-plex-sans` in `app/fonts.ts`, Bausteine (Kopf,
-Fuß, Knöpfe). Nichts weiter gestalten, bevor die Wahl da ist.
+**Nächste Sitzung zuerst:** Etappe 2 nach der Liste unten, Vorlage für
+jeden Block sind `docs/design/richtungen/ab-start.html?v=1` und
+`ab-projekt.html?v=1` (Klassen in `ab.css`). Reihenfolge: Projektdaten
+(`lib/inhalte/projekte.ts`) → Startseite → Projektseiten → Über mich →
+Kontakt an ntfy → SEO. Nach jedem Block Screenshots in 390/768/1440.
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -63,8 +63,10 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] Luca wählt: Design und Schrift von A, Aufbau von B (25.09.2026)
 - [x] Drei Versionen der Kombination: 1 „Reihe", 2 „Kante", 3 „Gelbes
       Band" (`ab.css`, `ab-start.html?v=`, `ab-projekt.html`)
-- [ ] Luca wählt die Version (auch Mischung möglich); Regeln in AGENTS.md
-      („Design"), Tokens, Schrift, Bausteine
+- [x] Luca wählt Version 1 „Reihe", Satz oben im Kickoff-Wortlaut
+      (25.09.2026)
+- [x] Regeln in AGENTS.md („Design"), Tokens, IBM Plex Sans, Kopf, Fuß,
+      Knöpfe, Links, Felder, Fakten-Tabelle, OG-Bild, Icon
 - [x] Echte Screenshots der Projekte in 390 und 1440 px
       (`scripts/projekt-screenshots.mjs` gegen die Live-Adressen, Varianten
       über `scripts/bilder.mjs` in `public/bilder/`); OZ und USTA nach ihrem
@@ -72,11 +74,20 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ### Etappe 2 – Seiten und Inhalte (mit Fable)
 
-- [ ] Tokens, Schrift, Kopf, Fuß
-- [ ] Startseite mit den vier Projekten im Mittelpunkt
-- [ ] Eine Seite je Projekt (`/projekte/<slug>`): Fakten als Listen
-      (Funktionen, Stack, Zeitraum, gemessene Werte), Screenshots, Link,
-      Lucas Sätze oder `[TEXT LUCA]`
+- [ ] `lib/inhalte/projekte.ts`: die vier Projekte als Daten (Slug, Name,
+      Art-Zeile, Kunde, Zeitraum, Seiten, Funktionen, Stack, Betrieb,
+      Adresse, Bilder), Fakten wie in den Entwürfen; OZ und USTA mit
+      Übergangsadresse, bis ihre Domains umgezogen sind
+- [ ] Startseite nach `ab-start.html?v=1`: Satz (steht), die vier Handys
+      als Reihe mit Wischleiste am Handy (`<picture>` aus
+      `public/bilder`, `rounded-bild`), „Rundum-sorglos-Paket" als
+      `Fakten` (Punkte von Luca bestätigen lassen), Anfrage-Block mit „Mail
+      schreiben" und „Kontakt speichern"
+- [ ] `NAVIGATION`: Projekte (`/#projekte`), Paket (`/#paket`), Über mich;
+      Kontakt bleibt nur der Knopf (E2E `seiten.spec.ts` anpassen)
+- [ ] Eine Seite je Projekt (`/projekte/<slug>`) nach `ab-projekt.html?v=1`:
+      Handy links, `Fakten` rechts mit Knopf „‹domain› öffnen", Desktop-Bild
+      darunter, „Weitere Projekte"; Lucas Sätze oder `[TEXT LUCA]`; Sitemap
 - [ ] Über mich: Werdegang kurz und nebensächlich
 - [ ] Kontakt: Formular an ntfy statt Mail (Muster
       `punktetafel/app/api/feedback/route.ts`, Drossel und Honeypot aus dem
@@ -168,6 +179,6 @@ Kundenserver.
 ## Erledigt
 
 - 25.09.2026: Coolify auf Lucas Server von 4.0.0 auf 4.3.23 (Luca); danach punktetafel, `neu.` und Umami (`analytics.punktetafel.at`) geprüft.
-- 25.09.2026: Etappe 1, Teil 1 – zwei Design-Richtungen und echte Projekt-Screenshots; Wahl offen.
+- 25.09.2026: Etappe 1 – zwei Richtungen, Lucas Wahl (A-Design, B-Aufbau), drei Versionen, Version 1 „Reihe" umgesetzt (Tokens, Schrift, Bausteine); echte Projekt-Screenshots.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

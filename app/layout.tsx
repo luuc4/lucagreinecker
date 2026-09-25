@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { SEITE } from "@/lib/inhalte/statisch";
 import { istOeffentlicheDomain, siteUrl } from "@/lib/site";
-import { inter } from "./fonts";
+import { plex } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   // Farbe der Browserleiste am Handy = Hintergrund (globals.css, grund).
-  themeColor: "#fafaf9",
+  themeColor: "#f5f5f2",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 // eine eigene Routengruppe mit eigenem Layout (ohne Analytics).
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="de-AT" className={inter.variable}>
+    <html lang="de-AT" className={plex.variable}>
       <body className="min-h-dvh bg-grund font-sans text-fg antialiased">
         {children}
       </body>

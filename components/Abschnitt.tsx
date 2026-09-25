@@ -3,22 +3,31 @@ import type { ReactNode } from "react";
 
 // Seitenaufbau mit einem Rhythmus (leitfaden/05): jeder Block trägt den
 // Abstand `pb-abschnitt` unten, keiner oben, keine negativen Ränder.
+// Titel stehen in Gewicht 500 (Design „Reihe"), nie fett.
 
-// Kopf einer Unterseite: h1 und optional ein Vorspann. Der Vorspann ist der
-// erste echte Satz der Seite oder entfällt – nie ein Hinweis („Ein
-// Formular folgt"), nie ein Halbsatz, der allein hängt (Befund OZ,
-// 17.09.2026).
+// Kopf einer Unterseite: Titel und Art-Zeile mittig (Aufbau der Richtung
+// B), optional darunter der Vorspann – der erste echte Satz der Seite oder
+// nichts; nie ein Hinweis („Ein Formular folgt"), nie ein Halbsatz, der
+// allein hängt (Befund OZ, 17.09.2026).
 export function SeitenKopf({
   titel,
+  art,
   vorspann,
 }: {
   titel: string;
+  // Eine Zeile unter dem Titel, leise: was die Seite ist.
+  art?: ReactNode;
   vorspann?: ReactNode;
 }) {
   return (
-    <header className="inhalt grid gap-6 pt-12 pb-12 md:pt-20 lg:grid-cols-[1fr_minmax(0,28rem)] lg:items-end">
-      <h1 className="text-display font-bold">{titel}</h1>
-      {vorspann ? <p className="text-lg text-fg-leise">{vorspann}</p> : null}
+    <header className="inhalt flex flex-col items-center gap-3 pt-10 pb-8 text-center md:pt-16 md:pb-12">
+      <h1 className="text-display font-medium">{titel}</h1>
+      {art ? (
+        <p className="max-w-[40ch] text-lg text-fg-leise md:text-xl">{art}</p>
+      ) : null}
+      {vorspann ? (
+        <p className="mt-3 max-w-[48ch] text-lg md:text-xl">{vorspann}</p>
+      ) : null}
     </header>
   );
 }
@@ -37,14 +46,14 @@ export function Abschnitt({
 }) {
   return (
     <section className={clsx("inhalt pb-abschnitt", className)}>
-      {titel ? <h2 className="mb-8 text-h2 font-bold">{titel}</h2> : null}
+      {titel ? <h2 className="mb-8 text-h2 font-medium">{titel}</h2> : null}
       {children}
     </section>
   );
 }
 
-// Spalten mit Linie oben statt Kästen (Muster aus OZ): 1 Spalte am Handy,
-// 2 ab md, bis 3 ab lg.
+// Spalten mit Tinte-Linie oben statt Kästen (Muster aus OZ): 1 Spalte am
+// Handy, 2 ab md, bis 3 ab lg.
 export function Spalten({
   anzahl = 3,
   children,
@@ -75,13 +84,37 @@ export function Spalte({
 }) {
   return (
     <div
-      className={clsx(
-        "flex flex-col gap-3 border-t border-rahmen pt-5",
-        className,
-      )}
+      className={clsx("flex flex-col gap-3 border-t border-fg pt-4", className)}
     >
-      <h3 className="text-h3 font-semibold">{titel}</h3>
+      <h3 className="text-h3 font-medium">{titel}</h3>
       {children}
     </div>
+  );
+}
+
+// Fakten als Tabelle mit Linien (Design „Reihe"): Begriff links, Wert
+// rechts, Tinte-Linie oben, leise Linien zwischen den Zeilen. Am Handy
+// bleibt es zweispaltig mit schmaler Begriffsspalte.
+export type Fakt = { begriff: string; wert: ReactNode };
+
+export function Fakten({
+  zeilen,
+  className,
+}: {
+  zeilen: Fakt[];
+  className?: string;
+}) {
+  return (
+    <dl className={clsx("border-t border-fg", className)}>
+      {zeilen.map((zeile) => (
+        <div
+          key={zeile.begriff}
+          className="grid grid-cols-[7rem_minmax(0,1fr)] gap-3 border-b border-linie py-3 lg:grid-cols-[9rem_minmax(0,1fr)]"
+        >
+          <dt className="text-fg-leise">{zeile.begriff}</dt>
+          <dd className="zahlen">{zeile.wert}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }

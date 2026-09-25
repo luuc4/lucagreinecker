@@ -10,7 +10,7 @@ import type {
 // Fehler zusätzlich mit aria-invalid. 52 px hoch wie der mittlere Knopf.
 // Schriftgröße ≥ 16 px kommt aus globals.css (iOS zoomt sonst hinein).
 export const eingabeKlassen =
-  "w-full rounded-sm border border-rahmen bg-grund px-4 text-fg transition-colors duration-150 hover:border-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-akzent aria-invalid:border-fehler";
+  "w-full rounded-sm border border-rahmen bg-grund px-4 text-fg transition-colors duration-150 hover:border-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg aria-invalid:border-fehler";
 
 type Gemeinsam = {
   id: string;
@@ -28,7 +28,7 @@ function Rahmen({
 }: Gemeinsam & { children: ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="font-semibold">
+      <label htmlFor={id} className="font-medium">
         {label}
       </label>
       {children}

@@ -52,11 +52,11 @@ export function KontaktFormular({ empfaenger }: { empfaenger: string }) {
 
   if (zustand.ok) {
     return (
-      <div className="flex flex-col gap-3 border-t border-rahmen pt-6">
+      <div className="flex flex-col gap-3 border-t border-fg pt-6">
         <h3
           ref={bestaetigung}
           tabIndex={-1}
-          className="text-h3 font-semibold focus:outline-none"
+          className="text-h3 font-medium focus:outline-none"
         >
           Nachricht gesendet
         </h3>

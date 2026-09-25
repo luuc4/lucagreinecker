@@ -31,7 +31,7 @@ export function MobilMenue({ eintraege }: { eintraege: NavEintrag[] }) {
         aria-expanded={offen}
         aria-controls={listeId}
         onClick={() => setOffen((o) => !o)}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm border border-rahmen px-4 font-medium text-fg transition-colors duration-150 hover:border-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-akzent"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm border border-rahmen px-4 font-medium text-fg transition-colors duration-150 hover:border-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg"
       >
         {offen ? "Schließen" : "Menü"}
       </button>
@@ -39,7 +39,7 @@ export function MobilMenue({ eintraege }: { eintraege: NavEintrag[] }) {
       <div
         id={listeId}
         hidden={!offen}
-        className="absolute inset-x-0 top-full inhalt border-b border-linie bg-grund pb-6"
+        className="absolute inset-x-0 top-full inhalt border-b border-fg bg-grund pb-6"
       >
         <ul className="flex flex-col py-2" onClick={() => setOffen(false)}>
           {eintraege.map((eintrag) => (
@@ -49,7 +49,7 @@ export function MobilMenue({ eintraege }: { eintraege: NavEintrag[] }) {
             >
               <NavLink
                 href={eintrag.href}
-                className="flex min-h-14 items-center text-2xl font-semibold hover:text-akzent focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-akzent"
+                className="flex min-h-14 items-center text-2xl font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-fg"
               >
                 {eintrag.label}
               </NavLink>

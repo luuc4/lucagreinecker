@@ -38,7 +38,7 @@ export default function KontaktSeite() {
         <Abschnitt>
           <div className="grid gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
             <section aria-labelledby="nachricht">
-              <h2 id="nachricht" className="mb-6 text-h2 font-bold">
+              <h2 id="nachricht" className="mb-6 text-h2 font-medium">
                 Nachricht schreiben
               </h2>
               <KontaktFormular empfaenger={KONTAKT.firma} />

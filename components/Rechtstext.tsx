@@ -15,13 +15,13 @@ export function Rechtstext({
 }) {
   return (
     <div className="inhalt pb-abschnitt">
-      <dl className="border-t border-linie">
+      <dl className="border-t border-fg">
         {zeilen.map((zeile) => (
           <div
             key={zeile.titel}
             className="grid gap-2 border-b border-linie py-6 md:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] md:gap-10"
           >
-            <dt className="font-semibold">{zeile.titel}</dt>
+            <dt className="font-medium">{zeile.titel}</dt>
             <dd className="max-w-prose text-fg-leise">{zeile.inhalt}</dd>
           </div>
         ))}

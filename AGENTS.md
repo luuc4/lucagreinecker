@@ -47,7 +47,13 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   1 „Reihe" (Satz mittig, Handys gerundet, Paket als Tabelle), 2 „Kante"
   (alles links, Handys eckig mit Fakten darunter, Paket als Spalten),
   3 „Gelbes Band" (Kopf, Satz und Handys auf der einen gelben Vollfläche).
-  **Lucas Wahl der Version ist offen.**
+- 25.09.2026 (Etappe 1, Teil 3 – Umsetzung, Etappe 1 abgeschlossen): Luca
+  wählte Version 1 „Reihe" und bestätigte den Kickoff-Wortlaut als Satz
+  oben. Umgesetzt: Tokens und Skala (`app/globals.css`), IBM Plex Sans
+  (`app/fonts.ts`, Inter entfernt), Kopf, Fuß, Knöpfe, Links, Felder,
+  `SeitenKopf` mittig, `Fakten`-Tabelle, Rechtstext, OG-Bild und Icon im
+  neuen Design; Regeln unten unter „Design". Die Startseite zeigt vorerst
+  den Satz und den Knopf, die vier Handys und das Paket folgen in Etappe 2.
 
 ## Projekt
 
@@ -101,7 +107,7 @@ app/globals.css       Design-Tokens (@theme), Grundregeln, Utilities inhalt/zahl
 app/sitemap.ts        öffentliche Routen – neue Seiten hier eintragen (E2E liest sie)
 components/           KontaktFormular, formular/Feld (Feld, Textbereich), Knopf/KnopfLink,
                       Textlink, Icon, Kopf, MobilMenue, Fuss,
-                      Abschnitt (SeitenKopf, Abschnitt, Spalten, Spalte), KartenKnoepfe,
+                      Abschnitt (SeitenKopf, Abschnitt, Spalten, Spalte, Fakten), KartenKnoepfe,
                       Rechtstext, SeitenFokus, Analytics, JsonLd
 lib/inhalte/statisch.ts  alle Texte und Fakten, Navigation, PLATZHALTER, KONTAKTFORMULAR (an/aus)
 lib/anfrage/          Kontaktformular: schema (Zod, Honeypot), drossel (im Prozess), vorlage
@@ -169,12 +175,69 @@ Verbindlich, in dieser Reihenfolge (leitfaden/06):
 
 ## Design
 
-Noch Platzhalter-Design (neutral, hell). Zwei Richtungen liegen seit dem
-25.09.2026 in `docs/design/richtungen/` (Leinwand `index.html`; Tokens,
-Schrift und Kontraste stehen als Kommentar in jedem Entwurf). ‹Nach der
-Wahl der Richtung (leitfaden/01, Phase 4) hier festhalten: Richtung und
-Datum, Farben mit Kontrastwerten, Schrift, Skala, Bildbehandlung, was
-verboten ist.›
+**„Reihe", gewählt von Luca am 25.09.2026.** Runde 1: Typografie und
+Farben der Richtung A „Schautafel" mit dem Aufbau der Richtung B „Vier
+Handys"; Runde 2: Version 1 von drei („ist am coolsten"), der Satz oben im
+Kickoff-Wortlaut. Entwürfe in `docs/design/richtungen/` (Leinwand
+`index.html`, Artifact `https://claude.ai/artifact/25576desS8jAzH66a8AtPe`);
+`ab.css`, `ab-start.html?v=1` und `ab-projekt.html?v=1` sind die Vorlage
+für den Code.
+
+- **Farben** (`app/globals.css`, Kontraste gemessen 25.09.2026): Papier
+  `#f5f5f2` (grund), Tinte `#000000` (19,3:1), leise `#585856` (6,6:1),
+  Fläche `#eeede9` (leise darauf 6,1:1), Zeilenlinie `#d6d6d2` (nur Deko),
+  Rahmen `#7a7a76` (4,0:1), Gelb `#ffe600` (akzent; Tinte darauf 16,6:1,
+  Hover `#f0d600`), Fehler `#b91c1c` (5,5:1). Gelb ist der Marker: nur als
+  Fläche für die eine Hauptaktion je Seite (Knopf „Kontakt"), für den
+  Hover auf Links und die Textauswahl.
+- **Schrift:** IBM Plex Sans variable (`app/fonts.ts`, `--font-plex`), eine
+  Schrift für alles. Titel in Gewicht 500 (`font-medium`), Knöpfe 600,
+  Text 400 in 17 px / 1,55. Das OG-Bild nimmt die statische WOFF in 500.
+- **Skala:** `text-display` clamp(2.5rem, 7.2vw, 6.5rem) / 0,98 / −0,03em
+  (der Satz oben, Seitentitel), `text-h2` clamp(1.75rem, 3.4vw, 3rem) /
+  1,05, `text-h3` clamp(1.25rem, 1.8vw, 1.5rem) / 1,2. Radius 6 px für
+  Knöpfe und Felder (`rounded-sm`), 16 px für Handy-Bilder (`rounded-bild`).
+  Ziffern in Fakten tabellarisch (`zahlen`).
+- **Linien statt Kästen:** Block-Linien in Tinte (`border-fg`: Kopf unten,
+  Fuß oben, Fakten und Rechtstexte oben, `Spalte` oben), Zeilenlinien leise
+  (`border-linie`). Keine Karten, keine Schatten, keine Farbverläufe.
+- **Startseite** (Etappe 2): Kopf; der Satz mittig im Display-Schnitt
+  (`SEITE.satz`), darunter ein Satz über Luca und der gelbe Knopf; die vier
+  Handy-Screens in einer Reihe (am Handy Wischleiste mit Scroll-Snap, 76 %
+  breit), je mit Name und einer Zeile; „Rundum-sorglos-Paket" (links Titel
+  und Lucas Satz, rechts die Punkte als `Fakten`); die Anfrage mittig
+  (Satz, zwei, drei Sätze über ihn, „Mail schreiben" gelb, „Kontakt
+  speichern" als Textlink); Fuß.
+- **Projektseite:** `SeitenKopf` mittig (Titel, Art-Zeile, Lucas Satz als
+  Vorspann), dann das Handy-Bild links (max. 420 px, `rounded-bild`,
+  Tinte-Linie) und rechts die `Fakten` (Kunde, Zeitraum, Seiten,
+  Funktionen, Stack, Betrieb) mit dem gelben Knopf „‹domain› öffnen";
+  darunter das Desktop-Bild in voller Breite mit Tinte-Linie; dann
+  „Weitere Projekte" als Zeile mit den drei anderen Namen. Am Handy alles
+  untereinander, das Handy-Bild 320 px mittig.
+- **Bilder:** echte Screenshots (Absatz unten), flach mit 1-px-Linie in
+  Tinte; Handy-Bilder 16 px gerundet, Desktop-Bilder eckig. Keine
+  Geräterahmen, keine Neigung, kein Anschnitt (ein halber Knopf am Rand
+  sieht wie ein Fehler aus, Befund Runde 1).
+- **Knöpfe** (`Knopf`, `KnopfLink`): `voll` Gelb mit Tinte (Hauptaktion),
+  `umriss` mit Rahmen (Nebenaktion), `text` Tinte unterstrichen; Größen sm
+  44 / md 52 / lg 60 nur über `groesse`. Links (`Textlink`,
+  `inlineLinkKlassen`, `zeilenLinkKlassen`) Tinte mit Unterstrich, der
+  Hover legt Gelb dahinter. Fokusring 2 px Tinte, außen.
+- **Kopf:** Name links, ab lg die Navigation, rechts der gelbe Knopf
+  „Kontakt", Tinte-Linie darunter; am Handy Knopf und „Menü". `NAVIGATION`
+  führt die anderen Seiten (Etappe 2: Projekte, Paket, Über mich); Kontakt
+  steht dann nur als Knopf, nicht doppelt im Menü.
+- **Fuß:** Tinte-Linie, drei Spalten (Name und Ort, Seiten, Kontakt mit
+  Mail, „Kontakt speichern", Profile), darunter Impressum und Datenschutz
+  an einer leisen Linie.
+- **Bewegung:** nichts beim Laden, Hover nur Farbwechsel,
+  `prefers-reduced-motion` gilt.
+- **Verboten:** eine zweite Akzentfarbe, Gelb als Textfarbe, Weiß auf
+  Gelb, Karten und Schatten, Farbverläufe, Geräterahmen, Großbuchstaben-
+  Labels, Kursive als Akzent, Mono für Daten, Icons ohne Wort, Marken-Logos
+  als Icons, eingebettete Karten, Videos oder Feeds, Sätze, die nicht von
+  Luca sind.
 
 Fest, unabhängig von der Richtung (Entscheidung 25.09.2026): Die
 Projektbilder sind **echte Screenshots der Live-Seiten** (erster Bildschirm

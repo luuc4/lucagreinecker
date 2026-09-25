@@ -11,8 +11,13 @@ export const PLATZHALTER = "[TEXT LUCA]";
 
 export const SEITE = {
   name: "Luca Greinecker",
-  // Ein Satz für Meta-Description und OG-Bild (≤ 160 Zeichen): was, für
-  // wen, wo.
+  // Der Satz oben auf der Startseite und im OG-Bild: Lucas Wortlaut aus dem
+  // Kickoff, von ihm am 25.09.2026 bestätigt („kickoff wortlaut ist cool").
+  satz: "Ich baue Websites und Web‑Apps für Leute und Betriebe in Vorarlberg.",
+  // Wo er sitzt (Fuß). Ob eine Adresse auf die Seite kommt, entscheidet
+  // Luca (TODO.md, Zuarbeit); der Ort ist keine Lücke.
+  ort: "Bludenz, Vorarlberg",
+  // Ein Satz für die Meta-Description (≤ 160 Zeichen): was, für wen, wo.
   beschreibung: `${PLATZHALTER} Ein Satz: was Luca baut, für wen, wo.`,
 } as const;
 

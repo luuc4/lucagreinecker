@@ -2,26 +2,26 @@ import Link from "next/link";
 import {
   KONTAKT,
   NAVIGATION,
-  PLATZHALTER,
   RECHTLICHES,
   SEITE,
 } from "@/lib/inhalte/statisch";
 import { mailLink, telLink } from "@/lib/kontakt/links";
-import { Icon } from "./Icon";
 import { zeilenLinkKlassen } from "./Textlink";
 
-// Fuß mit Spalten und kleinem Titel je Spalte, keine lose Linkwolke
-// (leitfaden/05, „Aufbau einer Seite"): Marke, Seiten, Kontakt,
-// Rechtliches. Am Handy untereinander, ab md zwei, ab lg vier Spalten.
+// Fuß (Design „Reihe"): Tinte-Linie oben, drei Spalten mit kleinem Titel
+// (Marke, Seiten, Kontakt), darunter eine leise Zeile mit Impressum und
+// Datenschutz – keine lose Linkwolke (leitfaden/05). Am Handy stehen die
+// Spalten untereinander. Telefon steht nur, wenn Luca eines nennt
+// (TODO.md, Zuarbeit); eine fehlende Nummer ist keine Lücke.
 export function Fuss() {
-  const titel = "text-sm font-semibold text-fg";
-  const liste = "mt-3 flex flex-col gap-2 text-fg-leise";
+  const titel = "text-sm font-semibold";
+  const liste = "mt-2 flex flex-col gap-1.5 text-fg-leise";
   return (
-    <footer className="border-t border-linie bg-flaeche print:hidden">
-      <div className="inhalt grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-fg print:hidden">
+      <div className="inhalt grid gap-7 py-10 text-[0.9375rem] md:grid-cols-[2fr_1fr_1fr]">
         <div>
-          <p className="text-lg font-bold tracking-tight">{SEITE.name}</p>
-          <p className="mt-3 max-w-xs text-fg-leise">{SEITE.beschreibung}</p>
+          <p className={titel}>{SEITE.name}</p>
+          <p className="mt-2 text-fg-leise">{SEITE.ort}</p>
         </div>
 
         <nav aria-label="Seiten">
@@ -45,43 +45,57 @@ export function Fuss() {
         <div>
           <h2 className={titel}>Kontakt</h2>
           <ul className={liste}>
-            <li className="flex items-center gap-2">
-              <Icon name="telefon" />
-              {KONTAKT.telefon ? (
+            {KONTAKT.email ? (
+              <li>
+                <a href={mailLink(KONTAKT.email)} className={zeilenLinkKlassen}>
+                  {KONTAKT.email}
+                </a>
+              </li>
+            ) : null}
+            {KONTAKT.telefon ? (
+              <li>
                 <a
                   href={telLink(KONTAKT.telefon)}
                   className={zeilenLinkKlassen}
                 >
                   {KONTAKT.telefon}
                 </a>
-              ) : (
-                <span>{PLATZHALTER} Telefon</span>
-              )}
+              </li>
+            ) : null}
+            <li>
+              <a href="/api/kontakt.vcf" className={zeilenLinkKlassen}>
+                Kontakt speichern
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Icon name="mail" />
-              {KONTAKT.email ? (
-                <a href={mailLink(KONTAKT.email)} className={zeilenLinkKlassen}>
-                  {KONTAKT.email}
+            {KONTAKT.profile.map((profil) => (
+              <li key={profil.url}>
+                <a
+                  href={profil.url}
+                  className={zeilenLinkKlassen}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {profil.name}
+                  <span className="sr-only"> (öffnet in neuem Tab)</span>
                 </a>
-              ) : (
-                <span>{PLATZHALTER} E-Mail</span>
-              )}
-            </li>
-          </ul>
-        </div>
-
-        <nav aria-label="Rechtliches">
-          <h2 className={titel}>Rechtliches</h2>
-          <ul className={liste}>
-            {RECHTLICHES.map((eintrag) => (
-              <li key={eintrag.href}>
-                <Link href={eintrag.href} className={zeilenLinkKlassen}>
-                  {eintrag.label}
-                </Link>
               </li>
             ))}
           </ul>
+        </div>
+
+        <nav
+          aria-label="Rechtliches"
+          className="flex flex-wrap gap-x-6 gap-y-2 border-t border-linie pt-4 text-fg-leise md:col-span-3"
+        >
+          {RECHTLICHES.map((eintrag) => (
+            <Link
+              key={eintrag.href}
+              href={eintrag.href}
+              className={zeilenLinkKlassen}
+            >
+              {eintrag.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </footer>

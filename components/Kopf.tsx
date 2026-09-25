@@ -4,20 +4,19 @@ import { KnopfLink } from "./Knopf";
 import { MobilMenue } from "./MobilMenue";
 import { NavLink } from "./NavLink";
 
-// Kopfzeile: Name bzw. Logo links, ab lg die Navigation, rechts die eine
-// Hauptaktion. Am Handy ein kompakter Hauptknopf (44 px, gleich hoch wie
-// der Menü-Knopf) und das Menü; kein zusätzlicher Sticky-Streifen unten
-// (leitfaden/05). Logo als <img> mit width/height, sobald es als SVG da ist.
-// Ein langer Name bricht am Handy um, statt die Knöpfe aus dem Bild zu
-// schieben: bei 360 px lief der Kopf mit „Tischlerei Müller & Söhne"
-// sonst 90 px über (Probe 23.09.2026). Die Knöpfe schrumpfen nie.
+// Kopfzeile (Design „Reihe"): Name links, ab lg die Navigation, rechts die
+// eine Hauptaktion in Gelb; darunter die Tinte-Linie, die jede Seite
+// gliedert. Am Handy ein kompakter Hauptknopf (44 px, gleich hoch wie der
+// Menü-Knopf) und das Menü; kein zusätzlicher Sticky-Streifen unten
+// (leitfaden/05). Ein langer Name bricht am Handy um, statt die Knöpfe aus
+// dem Bild zu schieben (Probe 23.09.2026). Die Knöpfe schrumpfen nie.
 export function Kopf() {
   return (
-    <header className="sticky top-0 z-40 border-b border-linie bg-grund/95 backdrop-blur-md print:hidden">
-      <div className="relative inhalt flex h-kopf items-center justify-between gap-3 sm:gap-6">
+    <header className="sticky top-0 z-40 border-b border-fg bg-grund/95 backdrop-blur-md print:hidden">
+      <div className="relative inhalt flex h-16 items-center justify-between gap-3 sm:gap-6 lg:h-kopf">
         <Link
           href="/"
-          className="flex min-h-11 min-w-0 items-center rounded-sm text-base leading-tight font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-akzent sm:text-lg"
+          className="flex min-h-11 min-w-0 items-center rounded-sm text-base leading-tight font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fg sm:text-lg"
         >
           {SEITE.name}
         </Link>
@@ -28,7 +27,7 @@ export function Kopf() {
               <li key={eintrag.href}>
                 <NavLink
                   href={eintrag.href}
-                  className="inline-flex min-h-11 items-center rounded-sm px-3.5 font-medium whitespace-nowrap transition-colors duration-150 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-akzent"
+                  className="inline-flex min-h-11 items-center rounded-sm px-3.5 font-medium whitespace-nowrap underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg"
                 >
                   {eintrag.label}
                 </NavLink>
@@ -38,9 +37,9 @@ export function Kopf() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
-          {/* Die eine Hauptaktion der Seite; Ziel und Wort je Projekt. */}
+          {/* Die eine Hauptaktion der Seite. */}
           <KnopfLink href="/kontakt" groesse="sm">
-            Anfragen
+            Kontakt
           </KnopfLink>
           <MobilMenue eintraege={NAVIGATION} />
         </div>

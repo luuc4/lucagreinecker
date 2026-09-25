@@ -1,19 +1,18 @@
 import localFont from "next/font/local";
 
-// PLATZHALTER-SCHRIFT bis zur Design-Richtung. Selbst gehostet aus
-// @fontsource-variable (Latin-Subset, variable Gewichtsachse): CSP
-// `font-src 'self'`, keine Anfrage an Google, der Build braucht kein Netz.
-// Eine andere Schrift: `pnpm add -D @fontsource-variable/<name>`, Pfad
-// unten ändern, die Datei im Paketordner unter files/ nachsehen (Achsen im
-// Namen: wght, wdth, opsz, standard).
-export const inter = localFont({
+// IBM Plex Sans, die eine Schrift der Seite (Design „Reihe", 25.09.2026):
+// variable Gewichtsachse 100–700, Latin-Subset, selbst gehostet aus
+// @fontsource-variable/ibm-plex-sans. CSP `font-src 'self'`, keine Anfrage
+// an Google, der Build braucht kein Netz. Das OG-Bild nutzt die statische
+// WOFF aus @fontsource/ibm-plex-sans (Satori liest kein woff2).
+export const plex = localFont({
   src: [
     {
-      path: "../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      path: "../node_modules/@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2",
       style: "normal",
     },
   ],
-  weight: "100 900",
-  variable: "--font-inter",
+  weight: "100 700",
+  variable: "--font-plex",
   display: "swap",
 });

@@ -80,9 +80,10 @@ test("menü am handy öffnet, führt zur seite und setzt den fokus", async ({
   await page.goto("/");
   await page.getByRole("button", { name: "Menü" }).click();
   // Die Navigation ab lg ist am Handy ausgeblendet und zählt für
-  // getByRole nicht; übrig bleibt der Eintrag im Menü.
+  // getByRole nicht; der Kopf trägt aber auch den Knopf „Kontakt", also
+  // gezielt der Eintrag in der Liste des Menüs.
   await page
-    .locator("header")
+    .locator("header ul")
     .getByRole("link", { name: "Kontakt", exact: true })
     .click();
   await expect(page).toHaveURL(/\/kontakt$/);

@@ -1,29 +1,33 @@
 import { JsonLd } from "@/components/JsonLd";
 import { KnopfLink } from "@/components/Knopf";
-import { KONTAKT, SEITE } from "@/lib/inhalte/statisch";
+import { KONTAKT, PLATZHALTER, SEITE } from "@/lib/inhalte/statisch";
 import { siteUrl } from "@/lib/site";
 
-// PLATZHALTER-STARTSEITE: Name, ein Satz, die eine Hauptaktion. Der echte
-// Aufbau entsteht mit der gewählten Design-Richtung (leitfaden/01,
-// Phase 4) aus den Inhalten des Kunden.
+// Startseite, erster Block (Design „Reihe"): Lucas Satz mittig im
+// Display-Schnitt, darunter der Satz über ihn (noch offen) und die eine
+// Hauptaktion. Die vier Handy-Screens, das Rundum-sorglos-Paket und die
+// Anfrage folgen in Etappe 2 (TODO.md).
 export default function Startseite() {
   return (
     <>
-      <section className="inhalt flex min-h-[70dvh] flex-col justify-center gap-8 py-16 pb-abschnitt">
-        <h1 className="max-w-4xl text-display font-bold">{SEITE.name}</h1>
-        <p className="max-w-2xl text-xl text-fg-leise">{SEITE.beschreibung}</p>
+      <section className="inhalt flex flex-col items-center gap-7 pt-12 pb-abschnitt text-center md:pt-20">
+        <h1 className="max-w-[16ch] text-display font-medium">{SEITE.satz}</h1>
+        <p className="max-w-[48ch] text-lg md:text-xl">
+          <span className="platz">{PLATZHALTER}</span> Ein Satz: wer du bist,
+          wo, wie du arbeitest.
+        </p>
         <p>
           <KnopfLink href="/kontakt" groesse="lg">
-            Kontakt aufnehmen
+            Kontakt
           </KnopfLink>
         </p>
       </section>
       <JsonLd
         daten={{
           "@context": "https://schema.org",
-          // Je nach Kunde: LocalBusiness (mit Adresse und Öffnungszeiten),
-          // Organization, SportsActivityLocation, Restaurant …
-          "@type": "Organization",
+          // Lucas eigene Seite: eine Person, keine Organisation (SEO-Punkt
+          // in Etappe 2: Beruf, Ort, sameAs).
+          "@type": "Person",
           name: KONTAKT.firma,
           url: siteUrl(),
           ...(KONTAKT.telefon ? { telephone: KONTAKT.telefon } : {}),

@@ -12,7 +12,7 @@ export default function Fehler({
 }) {
   return (
     <main className="mx-auto flex min-h-dvh max-w-2xl flex-col justify-center gap-4 px-6 py-16">
-      <h1 className="text-h2 font-bold">Da ist etwas schiefgegangen</h1>
+      <h1 className="text-h2 font-medium">Da ist etwas schiefgegangen</h1>
       <p className="text-fg-leise">
         Bitte noch einmal versuchen. Bleibt der Fehler, hilft eine kurze
         Nachricht.
