@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Richtung AB – Projektseite</title>
+<script>
+document.documentElement.dataset.v = new URLSearchParams(location.search).get("v") || "1";
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300..700&display=swap">
+<link rel="stylesheet" href="ab.css">
+</head>
+<body>
+<div class="band">
+<header class="inhalt kopf">
+  <a class="marke" href="ab-start.html">Luca Greinecker</a>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a href="ab-start.html#projekte">Projekte</a>
+    <a href="ab-start.html#paket">Paket</a>
+    <a href="#">Über mich</a>
+    <a class="knopf" href="#">Kontakt</a>
+  </nav>
+  <div class="kopf-handy">
+    <a class="knopf" href="#">Kontakt</a>
+    <button class="knopf knopf-umriss" type="button">Menü</button>
+  </div>
+</header>
+
+<div class="inhalt">
+  <div class="seitenkopf">
+    <a class="zurueck" href="ab-start.html#projekte">Projekte</a>
+    <h1>OZ Calisthenics</h1>
+    <p class="art">Kursbuchung und Website für einen Calisthenics‑Coach in Bludenz und Rankweil</p>
+  </div>
+
+  <div class="projekt">
+    <img class="handy" src="../../../public/bilder/projekt-oz-calisthenics-handy-780.webp" width="780" height="1688" alt="Startseite von OZ Calisthenics am Handy">
+    <div>
+      <p class="vorspann"><span class="platz">[TEXT LUCA]</span> Was Olcay wollte, was schwierig war, worauf du stolz bist.</p>
+      <dl class="fakten">
+        <div><dt>Kunde</dt><dd>Olcay Zengin, Calisthenics‑Coach, Bludenz und Rankweil</dd></div>
+        <div><dt>Zeitraum</dt><dd>seit September 2026</dd></div>
+        <div><dt>Seiten</dt><dd>Start, Kurse, Preise, Über mich, FAQ, Kontakt, Buchen, Konto, Admin</dd></div>
+        <div><dt>Funktionen</dt><dd>Kurse buchen und bezahlen (Stripe Checkout), Konto mit Passkeys, Belege, Erinnerungen und Tageslisten per Mail, Storno und Widerruf; Admin für Termine, Kurse, Buchungen und Kunden</dd></div>
+        <div><dt>Stack</dt><dd>Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth, Stripe, pg‑boss, Scaleway Mail, Umami</dd></div>
+        <div><dt>Betrieb</dt><dd>Docker‑Image aus GitHub Actions, Coolify auf einem Hetzner‑Server, Staging vor jeder Änderung an Buchung und Zahlung</dd></div>
+      </dl>
+      <a class="knopf" href="https://oz-calisthenics.at">oz-calisthenics.at öffnen</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<main class="inhalt">
+  <div class="desktop">
+    <img src="../../../public/bilder/projekt-oz-calisthenics-desktop-1800.webp" width="1800" height="1125" alt="Startseite von OZ Calisthenics am Desktop">
+  </div>
+
+  <div class="weitere">
+    <span>Weitere Projekte</span>
+    <a href="#">USTA Streetfood</a>
+    <a href="#">Punktetafel</a>
+    <a href="#">Jonathan Walch</a>
+  </div>
+</main>
+
+<footer class="inhalt fuss">
+  <div>
+    <h2>Luca Greinecker</h2>
+    <p>Bludenz, Vorarlberg</p>
+  </div>
+  <div>
+    <h2>Seiten</h2>
+    <ul>
+      <li><a href="ab-start.html#projekte">Projekte</a></li>
+      <li><a href="ab-start.html#paket">Paket</a></li>
+      <li><a href="#">Über mich</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </div>
+  <div>
+    <h2>Kontakt</h2>
+    <ul>
+      <li><a href="mailto:greineckerluca@hotmail.com">greineckerluca@hotmail.com</a></li>
+      <li><a href="#">Kontakt speichern</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-greinecker/">LinkedIn</a></li>
+    </ul>
+  </div>
+  <div class="fuss-zeile">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+</body>
+</html>

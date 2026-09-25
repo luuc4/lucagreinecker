@@ -33,11 +33,21 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   mit Desktop- und Handy-Bild) und B „Vier Handys" (Kobaltblau, Newsreader,
   die vier Handy-Screens als Hero, keine Akzentfarbe). Echte Screenshots der
   vier Projekte per `scripts/projekt-screenshots.mjs` in `public/bilder/`.
-  **Luca hat noch nicht gewählt**; die Design-Fragen (Fragebogen D) stehen
-  auf der Leinwand. Bis zur Wahl bleibt das Platzhalter-Design im Code.
-  CI grün, aber der Coolify-Deploy dieses Stands ist fehlgeschlagen
-  (IPv6-Gateway, TODO.md „Luca – Server"); `neu.` läuft weiter mit dem
-  Image von Etappe 0, sichtbar ist kein Unterschied.
+  Die Design-Fragen (Fragebogen D) standen auf der Leinwand; Lucas Wahl
+  kam am selben Tag (Teil 2). Bis zur Wahl der Version bleibt das
+  Platzhalter-Design im Code. CI grün, aber der Coolify-Deploy dieses
+  Stands ist fehlgeschlagen (IPv6-Gateway, TODO.md „Luca – Server");
+  `neu.` läuft weiter mit dem Image von Etappe 0, sichtbar ist kein
+  Unterschied.
+- 25.09.2026 (Etappe 1, Teil 2 – Kombination): Luca wählte Design und
+  Schrift von A mit dem Aufbau von B und gab den Inhalt
+  „Rundum-sorglos-Paket" dazu (Entscheidungen). Daraus drei Versionen in
+  `docs/design/richtungen/` (`ab.css`, `ab-start.html?v=1|2|3`,
+  `ab-projekt.html`, oben auf der Leinwand; A und B dort als Archiv):
+  1 „Reihe" (Satz mittig, Handys gerundet, Paket als Tabelle), 2 „Kante"
+  (alles links, Handys eckig mit Fakten darunter, Paket als Spalten),
+  3 „Gelbes Band" (Kopf, Satz und Handys auf der einen gelben Vollfläche).
+  **Lucas Wahl der Version ist offen.**
 
 ## Projekt
 
@@ -223,3 +233,17 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   Luca und die Projekte kommt von Luca (Stichworte, sein Wortlaut); Lücken
   als `[TEXT LUCA]`. Die Texte der alten Seite werden nicht übernommen,
   weil sie mehrmals mit KI überarbeitet wurden.
+- **25.09.2026 – Design: Typografie und Farbe von A, Aufbau von B** (Luca,
+  nach den zwei Richtungen). Hell, IBM Plex Sans, Schwarz auf Papier,
+  Linien statt Kästen, Gelb `#ffe600` nur als Signal. Startseite: sein
+  Satz, die vier Handy-Screens als Hero, Rundum-sorglos-Paket, Anfrage;
+  Projektseite: Handy links, Fakten rechts, Desktop-Bild darunter. Welche
+  der drei Versionen (Reihe, Kante, Gelbes Band) gebaut wird, entscheidet
+  Luca; danach stehen die Regeln unter „Design".
+- **25.09.2026 – Inhalt „Rundum-sorglos-Paket"** (Luca: „volles rundum
+  sorglos paket … server setup / erstellung, umami reichweitenmessung immer
+  dabei usw."). Die Startseite bekommt einen Block, was bei ihm dabei ist:
+  Website, Server-Setup und Betrieb (Domain, DNS, Zertifikate, Mails),
+  Umami immer, Updates und Backups, Rechtstexte vorbereitet. Die Punkte
+  jenseits seiner Stichworte stammen aus dem Leitfaden und werden von ihm
+  bestätigt; Sätze dazu nur von ihm (`[TEXT LUCA]`).

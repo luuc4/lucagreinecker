@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Richtung AB – Start</title>
+<script>
+// Version aus der Adresse (?v=1|2|3), vor dem Rendern, damit nichts springt.
+document.documentElement.dataset.v = new URLSearchParams(location.search).get("v") || "1";
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300..700&display=swap">
+<link rel="stylesheet" href="ab.css">
+</head>
+<body>
+<!-- Das Band ist nur in Version 3 gelb; sonst unsichtbar. -->
+<div class="band">
+<header class="inhalt kopf">
+  <a class="marke" href="#">Luca Greinecker</a>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a href="#projekte">Projekte</a>
+    <a href="#paket">Paket</a>
+    <a href="#">Über mich</a>
+    <a class="knopf" href="#kontakt">Kontakt</a>
+  </nav>
+  <div class="kopf-handy">
+    <a class="knopf" href="#kontakt">Kontakt</a>
+    <button class="knopf knopf-umriss" type="button">Menü</button>
+  </div>
+</header>
+
+<div class="inhalt">
+  <section class="hero">
+    <h1>Ich baue Websites und Web‑Apps für Leute und Betriebe in Vorarlberg.</h1>
+    <p><span class="platz">[TEXT LUCA]</span> Ein Satz: wer du bist, wo, wie du arbeitest.</p>
+  </section>
+
+  <section class="handys" id="projekte" aria-label="Projekte">
+    <figure>
+      <img src="../../../public/bilder/projekt-oz-calisthenics-handy-780.webp" width="780" height="1688" alt="Startseite von OZ Calisthenics am Handy">
+      <figcaption>
+        <a href="ab-projekt.html">OZ Calisthenics</a>
+        <p>Kursbuchung für einen Calisthenics‑Coach, Bludenz</p>
+        <dl class="fakten"><div><dt>Zeitraum</dt><dd>seit September 2026</dd></div><div><dt>Stack</dt><dd>Next.js 16, PostgreSQL, Stripe</dd></div></dl>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../../../public/bilder/projekt-usta-streetfood-handy-780.webp" width="780" height="1688" alt="Startseite von USTA Streetfood am Handy">
+      <figcaption>
+        <a href="#">USTA Streetfood</a>
+        <p>Website mit Mini‑CMS für einen Foodtruck, Nenzing</p>
+        <dl class="fakten"><div><dt>Zeitraum</dt><dd>September 2026</dd></div><div><dt>Stack</dt><dd>Next.js 16, PostgreSQL</dd></div></dl>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../../../public/bilder/projekt-punktetafel-handy-780.webp" width="780" height="1688" alt="Startseite der Punktetafel am Handy">
+      <figcaption>
+        <a href="#">Punktetafel</a>
+        <p>Eigene Web‑App: Punkte zählen am Spieltisch</p>
+        <dl class="fakten"><div><dt>Zeitraum</dt><dd>Juli bis September 2026</dd></div><div><dt>Stack</dt><dd>Next.js 16, PWA</dd></div></dl>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../../../public/bilder/projekt-jonathan-walch-handy-780.webp" width="780" height="1688" alt="Startseite von jonathanwalch.at am Handy">
+      <figcaption>
+        <a href="#">Jonathan Walch</a>
+        <p>Portfolio für einen InterMedia‑Studenten, FH Vorarlberg</p>
+        <dl class="fakten"><div><dt>Zeitraum</dt><dd>Januar 2026</dd></div><div><dt>Stack</dt><dd>HTML, CSS, JavaScript</dd></div></dl>
+      </figcaption>
+    </figure>
+  </section>
+</div>
+</div>
+
+<main class="inhalt">
+  <section class="paket" id="paket">
+    <div>
+      <h2>Rundum‑sorglos‑Paket</h2>
+      <p class="satz"><span class="platz">[TEXT LUCA]</span> Ein, zwei Sätze in deinen Worten: was das Paket ist und was der Kunde davon hat.</p>
+    </div>
+    <dl>
+      <div><dt>Website</dt><dd>Design und Umsetzung, Texte und Bilder eingebaut</dd></div>
+      <div><dt>Server</dt><dd>Eigener Server, Setup und Einrichtung, Domain, DNS, Zertifikate, Mail‑Versand</dd></div>
+      <div><dt>Reichweite</dt><dd>Umami‑Reichweitenmessung, immer dabei, ohne Cookie‑Banner</dd></div>
+      <div><dt>Betrieb</dt><dd>Updates, Backups, Überwachung</dd></div>
+      <div><dt>Recht</dt><dd>Impressum und Datenschutz vorbereitet</dd></div>
+      <div><dt><span class="platz">[TEXT LUCA]</span></dt><dd>Weitere Punkte deines Pakets („usw.")</dd></div>
+    </dl>
+  </section>
+
+  <section class="mitte" id="kontakt">
+    <h2><span class="platz">[TEXT LUCA]</span> Ein Satz, der zur Anfrage führt.</h2>
+    <p><span class="platz">[TEXT LUCA]</span> Zwei, drei Sätze über dich: Bludenz, der Job bei Ball, warum du Websites baust.</p>
+    <div class="aktionen">
+      <a class="knopf" href="mailto:greineckerluca@hotmail.com?subject=Anfrage%20Website">Mail schreiben</a>
+      <a class="textlink" href="#">Kontakt speichern</a>
+    </div>
+  </section>
+</main>
+
+<footer class="inhalt fuss">
+  <div>
+    <h2>Luca Greinecker</h2>
+    <p>Bludenz, Vorarlberg</p>
+  </div>
+  <div>
+    <h2>Seiten</h2>
+    <ul>
+      <li><a href="#projekte">Projekte</a></li>
+      <li><a href="#paket">Paket</a></li>
+      <li><a href="#">Über mich</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+  <div>
+    <h2>Kontakt</h2>
+    <ul>
+      <li><a href="mailto:greineckerluca@hotmail.com">greineckerluca@hotmail.com</a></li>
+      <li><a href="#">Kontakt speichern</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-greinecker/">LinkedIn</a></li>
+    </ul>
+  </div>
+  <div class="fuss-zeile">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+</body>
+</html>

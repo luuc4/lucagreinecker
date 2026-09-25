@@ -11,19 +11,20 @@ Etappe 0 erledigt: Starter im bestehenden Repo, alte Seite auf Branch
 `https://neu.lucagreinecker.at` zeigt die Platzhalterseite (health ok,
 robots sperrt, noindex, CSP und HSTS da). Offen: Umami, ntfy, Renovate.
 
-Etappe 1, Teil 1 erledigt (25.09.2026): zwei Richtungen in
-`docs/design/richtungen/` (Leinwand `index.html`, Artifact
-`https://claude.ai/artifact/25576desS8jAzH66a8AtPe`), echte Screenshots der
-vier Projekte in `public/bilder/`. Offen: Lucas Wahl.
+Etappe 1, Teil 1 und 2 erledigt (25.09.2026): zwei Richtungen, Lucas
+Wahl (Design von A, Aufbau von B, dazu der Inhalt „Rundum-sorglos-Paket"),
+daraus drei Versionen in `docs/design/richtungen/` (Leinwand
+`index.html`, Artifact `https://claude.ai/artifact/25576desS8jAzH66a8AtPe`),
+echte Screenshots der vier Projekte in `public/bilder/`. Offen: welche
+Version.
 
-**Nächste Sitzung zuerst:** Lucas Wahl (A, B oder Mischung) und seine
-Antworten auf die vier Fragen der Leinwand entgegennehmen. Dann Skill
-`neues-webprojekt`, Phase 4, Schritt 4: Wahl und Regeln in AGENTS.md
-(„Design", mit Datum und gemessenen Kontrasten), Tokens in
-`app/globals.css`, Schrift aus Fontsource in `app/fonts.ts`
-(`@fontsource-variable/ibm-plex-sans` bzw. `@fontsource-variable/newsreader`),
-Bausteine (Kopf, Fuß, Knöpfe). Nichts weiter gestalten, bevor die Wahl da
-ist.
+**Nächste Sitzung zuerst:** Lucas Wahl der Version (1 „Reihe", 2 „Kante",
+3 „Gelbes Band" oder Mischung) und seine Antworten zum Paket und zum Satz
+oben entgegennehmen. Dann Skill `neues-webprojekt`, Phase 4, Schritt 4:
+Regeln in AGENTS.md („Design", mit Datum und gemessenen Kontrasten),
+Tokens in `app/globals.css` (aus `docs/design/richtungen/ab.css`), Schrift
+`@fontsource-variable/ibm-plex-sans` in `app/fonts.ts`, Bausteine (Kopf,
+Fuß, Knöpfe). Nichts weiter gestalten, bevor die Wahl da ist.
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -59,7 +60,10 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       als „Was du entscheidest" auf der Leinwand; Antworten offen
 - [x] Zwei Richtungen als Entwurf (Start und Projektseite OZ, Handy und
       Desktop): A „Schautafel", B „Vier Handys"
-- [ ] Luca wählt (auch Mischung möglich); Wahl und Regeln in AGENTS.md
+- [x] Luca wählt: Design und Schrift von A, Aufbau von B (25.09.2026)
+- [x] Drei Versionen der Kombination: 1 „Reihe", 2 „Kante", 3 „Gelbes
+      Band" (`ab.css`, `ab-start.html?v=`, `ab-projekt.html`)
+- [ ] Luca wählt die Version (auch Mischung möglich); Regeln in AGENTS.md
       („Design"), Tokens, Schrift, Bausteine
 - [x] Echte Screenshots der Projekte in 390 und 1440 px
       (`scripts/projekt-screenshots.mjs` gegen die Live-Adressen, Varianten
@@ -114,6 +118,9 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ### Luca – Inhalte
 
+- [ ] Rundum-sorglos-Paket: die sechs Punkte auf der Leinwand bestätigen
+      oder ändern (Website, Server, Reichweite, Betrieb, Recht, „usw."),
+      dazu ein, zwei Sätze in deinen Worten
 - [ ] Stichworte je Projekt: wer, was wollte der Kunde, was war schwierig,
       worauf du stolz bist
 - [ ] Ein Satz für die Beschreibung der Seite, ein paar Sätze über dich

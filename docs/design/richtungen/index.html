@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Richtungen lucagreinecker.at</title>
 <style>
-/* Leinwand mit zwei Design-Richtungen für lucagreinecker.at, Entwurf vom
-   25.09.2026 (Etappe 1). Die Leinwand selbst ist Chrome, kein Entwurf:
-   Systemschrift, neutrale Farben, hell und dunkel. Jede Richtung zeigt die
-   Startseite und die Projektseite von OZ Calisthenics, links der Desktop
-   (1440 px, verkleinert), rechts das Handy (390 px, echte Größe, scrollt
-   in sich und bleibt beim Scrollen sichtbar). Die Entwürfe liegen als
-   eigene Dateien daneben (a-start.html …) und lassen sich einzeln öffnen. */
+/* Leinwand mit den Design-Richtungen für lucagreinecker.at (Etappe 1).
+   Erste Runde 25.09.2026: A „Schautafel" und B „Vier Handys". Lucas Wahl:
+   Design und Schrift von A, Aufbau von B. Zweite Runde am selben Tag: drei
+   Versionen dieser Kombination (ab-start.html?v=1|2|3, ab-projekt.html,
+   ab.css). A und B bleiben unten als Archiv.
+   Die Leinwand selbst ist Chrome, kein Entwurf: Systemschrift, neutrale
+   Farben, hell und dunkel. Links der Desktop (1440 px, verkleinert),
+   rechts das Handy (390 px, echte Größe, scrollt in sich und bleibt beim
+   Scrollen sichtbar). */
 :root {
   --bg: #f4f4f1;
   --fg: #161616;
@@ -70,127 +72,245 @@ h1, h2, h3, p, ul, ol { margin: 0; }
 .spalte-handy { display: grid; gap: 8px; }
 @media (min-width: 1000px) { .spalte-handy { position: sticky; top: 16px; } }
 .zeile { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--leise); }
+
+details.archiv { border-top: 1px solid var(--linie); margin-top: 48px; padding-top: 20px; }
+details.archiv > summary { cursor: pointer; font-weight: 600; font-size: 18px; }
+details.archiv > summary small { display: block; font-weight: 400; font-size: 14px; color: var(--leise); margin-top: 2px; }
 </style>
 </head>
 <body>
 <div class="shell">
-  <h1>Zwei Richtungen für lucagreinecker.at</h1>
-  <p class="vorspann">Entwurf vom 25.09.2026. Beide Richtungen zeigen die Startseite und die Projektseite von OZ Calisthenics, links am Desktop (1440 px, verkleinert), rechts am Handy (390 px, echte Größe, scrollt in sich). Die Bilder sind echte Screenshots der vier Live-Seiten, die Fakten kommen aus den Repos. Jeder Satz über dich und die Projekte ist als <code>[TEXT LUCA]</code> markiert; der Satz oben ist dein Wortlaut aus dem Kickoff.</p>
+  <h1>Richtungen für lucagreinecker.at</h1>
+  <p class="vorspann">Zweite Runde, 25.09.2026. Deine Wahl aus der ersten Runde: Design und Schrift von A „Schautafel", Aufbau von B „Vier Handys". Hier drei Versionen davon, jede mit Startseite und Projektseite OZ Calisthenics, links am Desktop (1440 px, verkleinert), rechts am Handy (390 px, echte Größe, scrollt in sich). Neu dabei: der Block „Rundum‑sorglos‑Paket" aus deinen Stichworten. A und B stehen unten als Archiv.</p>
 
   <div class="kasten">
-    <strong>Gleich in beiden</strong>
+    <strong>Gleich in allen drei</strong>
     <ul>
-      <li>Kopf mit Name, drei Seiten (Projekte, Über mich, Kontakt), Kontakt als Hauptaktion; Fuß in drei Spalten mit Impressum und Datenschutz.</li>
-      <li>Die vier Projekte im Mittelpunkt, jedes mit den echten Bildern am Desktop und am Handy und einer Faktenliste (Zeitraum, Funktionen, Stack).</li>
-      <li>Mail-Link, „Kontakt speichern" als vCard; kein Kontaktformular auf der Startseite (das steht auf /kontakt).</li>
-      <li>Kein Foto von dir nötig. Mit Foto: bei A auf „Über mich", bei B unter dem Satz oben.</li>
-      <li>44-px-Ziele, sichtbarer Fokus, keine Fremddienste, Schriften selbst gehostet (hier im Entwurf noch von Google).</li>
+      <li>Von A: Papier #f5f5f2, Schwarz, Gelb #ffe600 nur für die Hauptaktion, schwarze Linien statt Kästen, IBM Plex Sans (Titel Gewicht 500), Kopf mit Linie, Fuß in drei Spalten.</li>
+      <li>Von B: dein Satz oben, dann die vier Handy‑Screens als Hero (am Handy eine Wischleiste), dann du und die Anfrage. Projektseite: Handy links, Fakten rechts, Desktop‑Bild darunter, weitere Projekte als Zeile.</li>
+      <li>Neu: „Rundum‑sorglos‑Paket" zwischen den Handys und der Anfrage. Punkte aus deinen Stichworten (Server‑Setup, Umami immer dabei) und aus dem Leitfaden (Domain, DNS, Mails, Backups, Rechtstexte); die Sätze dazu kommen von dir.</li>
+      <li>Bilder sind echte Screenshots der Live‑Seiten; jeder Satz über dich und die Projekte ist als <code>[TEXT LUCA]</code> markiert.</li>
     </ul>
   </div>
 
   <div class="kasten">
     <strong>Was du entscheidest</strong>
     <ol>
-      <li>A oder B – oder eine Mischung (zum Beispiel Aufbau von A in den Farben von B).</li>
-      <li>Hell oder dunkel: A ist hell, B ist blau. Ein Theme, nicht beides.</li>
-      <li>Der Satz oben: bleibt der Wortlaut aus dem Kickoff, oder schreibst du ihn neu?</li>
-      <li>Wenn du magst: zwei, drei Seiten, die dir gefallen, und eine, die dir nicht gefällt, je mit einem Wort warum.</li>
+      <li>Version 1, 2 oder 3, oder eine Mischung (zum Beispiel Version 3 mit den Fakten unter den Handys aus Version 2).</li>
+      <li>Rundum‑sorglos‑Paket: Stimmen die sechs Punkte? Was fehlt, was fliegt raus, wie nennst du sie?</li>
+      <li>Der Satz oben: bleibt dein Kickoff‑Wortlaut, oder schreibst du ihn neu?</li>
+      <li>Wenn du magst: was dir an den drei Versionen nicht gefällt, je ein Wort.</li>
     </ol>
   </div>
 
   <ul class="springe">
-    <li><a href="#a">Richtung A „Schautafel"</a></li>
-    <li><a href="#b">Richtung B „Vier Handys"</a></li>
+    <li><a href="#v1">Version 1 „Reihe"</a></li>
+    <li><a href="#v2">Version 2 „Kante"</a></li>
+    <li><a href="#v3">Version 3 „Gelbes Band"</a></li>
+    <li><a href="#archiv">Archiv: A und B</a></li>
   </ul>
 
-  <section class="dir" id="a">
+  <section class="dir" id="v1">
     <div class="dir-head">
-      <h2><small>Richtung A</small>„Schautafel"</h2>
+      <h2><small>Version 1</small>„Reihe"</h2>
       <ul>
-        <li><b>Stimmung:</b> hell und sachlich wie eine Tafel am Shopfloor: Papier, schwarze Linien, ein gelber Marker.</li>
-        <li><b>Schrift:</b> IBM Plex Sans, eine Schrift für alles; Titel in Gewicht 500, Ziffern tabellarisch.</li>
-        <li><b>Farbe:</b> Papier #f5f5f2, Schwarz, Gelb #ffe600 nur für die Hauptaktion. Kontraste 19:1, leise 6,6:1, Rahmen 3,5:1.</li>
-        <li><b>Bild:</b> Desktop- und Handy-Bild flach nebeneinander, oben bündig, mit schwarzer Linie – „Handy und Desktop gleich wichtig" als Bild.</li>
-        <li><b>Aufbau:</b> dein Satz, dann die Projekte als Zeilen: Name und Fakten links, Bilder rechts. Projektseite mit Faktentabelle.</li>
-        <li><b>Passt, wenn</b> alle vier Projekte sofort mit Fakten sichtbar sein sollen.</li>
+        <li><b>Idee:</b> die direkte Verbindung. Satz mittig wie in B, darunter die vier Handys in einer Reihe, leicht gerundet mit schwarzer Linie.</li>
+        <li><b>Paket:</b> links Titel und dein Satz, rechts die Punkte als Tabelle mit Linien, wie die Fakten auf der Projektseite.</li>
+        <li><b>Projektseite:</b> Titel mittig, Handy links, Fakten rechts, Desktop‑Bild darunter.</li>
+        <li><b>Passt, wenn</b> die Seite ruhig und symmetrisch wirken soll.</li>
       </ul>
     </div>
-
     <div class="seite">
-      <h3>Startseite <span><a href="a-start.html">Entwurf einzeln öffnen</a></span></h3>
+      <h3>Startseite <span><a href="ab-start.html?v=1">Entwurf einzeln öffnen</a></span></h3>
       <div class="frames">
         <div>
           <div class="zeile"><span>Desktop, 1440 px</span></div>
-          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="3367" src="a-start.html" title="Richtung A, Startseite am Desktop" loading="lazy"></iframe></div>
+          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2669" src="ab-start.html?v=1" title="Version 1, Startseite am Desktop" loading="lazy"></iframe></div>
         </div>
         <div class="spalte-handy">
           <div class="zeile"><span>Handy, 390 px</span></div>
-          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="4403" src="a-start.html" title="Richtung A, Startseite am Handy" loading="lazy"></iframe></div>
+          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2652" src="ab-start.html?v=1" title="Version 1, Startseite am Handy" loading="lazy"></iframe></div>
         </div>
       </div>
     </div>
-
     <div class="seite">
-      <h3>Projektseite OZ Calisthenics <span><a href="a-projekt.html">Entwurf einzeln öffnen</a></span></h3>
+      <h3>Projektseite OZ Calisthenics <span><a href="ab-projekt.html?v=1">Entwurf einzeln öffnen</a></span></h3>
       <div class="frames">
         <div>
           <div class="zeile"><span>Desktop, 1440 px</span></div>
-          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2106" src="a-projekt.html" title="Richtung A, Projektseite am Desktop" loading="lazy"></iframe></div>
+          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2836" src="ab-projekt.html?v=1" title="Version 1, Projektseite am Desktop" loading="lazy"></iframe></div>
         </div>
         <div class="spalte-handy">
           <div class="zeile"><span>Handy, 390 px</span></div>
-          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2375" src="a-projekt.html" title="Richtung A, Projektseite am Handy" loading="lazy"></iframe></div>
+          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2998" src="ab-projekt.html?v=1" title="Version 1, Projektseite am Handy" loading="lazy"></iframe></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="dir" id="b">
+  <section class="dir" id="v2">
     <div class="dir-head">
-      <h2><small>Richtung B</small>„Vier Handys"</h2>
+      <h2><small>Version 2</small>„Kante"</h2>
       <ul>
-        <li><b>Stimmung:</b> ein Plakat in Kobaltblau, ruhig, mittig gesetzt.</li>
-        <li><b>Schrift:</b> Newsreader (Serif) für alles, im Titel mit großer optischer Größe.</li>
-        <li><b>Farbe:</b> Blau #1b3fa6, Papierweiß #f4f1ea, keine Akzentfarbe: die Farbe kommt aus den vier Screens. Kontraste 8,3:1, leise 5,8:1.</li>
-        <li><b>Bild:</b> die vier Handy-Screens sind der Hero, in einer Reihe (am Handy eine Wischleiste), abgerundet wie ein Gerät ohne Rahmen. Das Desktop-Bild erst auf der Projektseite.</li>
-        <li><b>Aufbau:</b> dein Satz mittig, die vier Handys, dann du und die Anfrage. Projektseite: Handy links, Fakten rechts, Desktop-Bild darunter.</li>
-        <li><b>Passt, wenn</b> die Startseite kurz bleiben und ein Bild reichen soll.</li>
+        <li><b>Idee:</b> die Schautafel‑Logik von A auf den Aufbau von B: alles an der linken Kante, Handys eckig, unter jedem Handy Zeitraum und Stack.</li>
+        <li><b>Paket:</b> die Punkte als drei Spalten mit einer Linie oben, dichter und sachlicher.</li>
+        <li><b>Projektseite:</b> Titel links, sonst wie Version 1.</li>
+        <li><b>Passt, wenn</b> die Seite mehr Fakten auf einen Blick zeigen und weniger nach Plakat aussehen soll.</li>
       </ul>
     </div>
-
     <div class="seite">
-      <h3>Startseite <span><a href="b-start.html">Entwurf einzeln öffnen</a></span></h3>
+      <h3>Startseite <span><a href="ab-start.html?v=2">Entwurf einzeln öffnen</a></span></h3>
       <div class="frames">
         <div>
           <div class="zeile"><span>Desktop, 1440 px</span></div>
-          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2172" src="b-start.html" title="Richtung B, Startseite am Desktop" loading="lazy"></iframe></div>
+          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2756" src="ab-start.html?v=2" title="Version 2, Startseite am Desktop" loading="lazy"></iframe></div>
         </div>
         <div class="spalte-handy">
           <div class="zeile"><span>Handy, 390 px</span></div>
-          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2014" src="b-start.html" title="Richtung B, Startseite am Handy" loading="lazy"></iframe></div>
+          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2820" src="ab-start.html?v=2" title="Version 2, Startseite am Handy" loading="lazy"></iframe></div>
         </div>
       </div>
     </div>
-
     <div class="seite">
-      <h3>Projektseite OZ Calisthenics <span><a href="b-projekt.html">Entwurf einzeln öffnen</a></span></h3>
+      <h3>Projektseite OZ Calisthenics <span><a href="ab-projekt.html?v=2">Entwurf einzeln öffnen</a></span></h3>
       <div class="frames">
         <div>
           <div class="zeile"><span>Desktop, 1440 px</span></div>
-          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2912" src="b-projekt.html" title="Richtung B, Projektseite am Desktop" loading="lazy"></iframe></div>
+          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2836" src="ab-projekt.html?v=2" title="Version 2, Projektseite am Desktop" loading="lazy"></iframe></div>
         </div>
         <div class="spalte-handy">
           <div class="zeile"><span>Handy, 390 px</span></div>
-          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="3137" src="b-projekt.html" title="Richtung B, Projektseite am Handy" loading="lazy"></iframe></div>
+          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2998" src="ab-projekt.html?v=2" title="Version 2, Projektseite am Handy" loading="lazy"></iframe></div>
         </div>
       </div>
     </div>
   </section>
+
+  <section class="dir" id="v3">
+    <div class="dir-head">
+      <h2><small>Version 3</small>„Gelbes Band"</h2>
+      <ul>
+        <li><b>Idee:</b> der gelbe Marker wird zur einen Vollfläche je Seite: Kopf, Satz und die vier Handys stehen auf Gelb, der Rest auf Papier. Knöpfe auf Gelb sind schwarz.</li>
+        <li><b>Paket und Anfrage:</b> wie Version 1, auf Papier unter dem Band.</li>
+        <li><b>Projektseite:</b> Titel, Handy und Fakten auf dem Band, das Desktop‑Bild darunter auf Papier.</li>
+        <li><b>Passt, wenn</b> die Seite auffallen und ein klares Zeichen haben soll. Am mutigsten von den dreien.</li>
+      </ul>
+    </div>
+    <div class="seite">
+      <h3>Startseite <span><a href="ab-start.html?v=3">Entwurf einzeln öffnen</a></span></h3>
+      <div class="frames">
+        <div>
+          <div class="zeile"><span>Desktop, 1440 px</span></div>
+          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2668" src="ab-start.html?v=3" title="Version 3, Startseite am Desktop" loading="lazy"></iframe></div>
+        </div>
+        <div class="spalte-handy">
+          <div class="zeile"><span>Handy, 390 px</span></div>
+          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2651" src="ab-start.html?v=3" title="Version 3, Startseite am Handy" loading="lazy"></iframe></div>
+        </div>
+      </div>
+    </div>
+    <div class="seite">
+      <h3>Projektseite OZ Calisthenics <span><a href="ab-projekt.html?v=3">Entwurf einzeln öffnen</a></span></h3>
+      <div class="frames">
+        <div>
+          <div class="zeile"><span>Desktop, 1440 px</span></div>
+          <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2948" src="ab-projekt.html?v=3" title="Version 3, Projektseite am Desktop" loading="lazy"></iframe></div>
+        </div>
+        <div class="spalte-handy">
+          <div class="zeile"><span>Handy, 390 px</span></div>
+          <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="3062" src="ab-projekt.html?v=3" title="Version 3, Projektseite am Handy" loading="lazy"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <details class="archiv" id="archiv">
+    <summary>Archiv: erste Runde, Richtung A „Schautafel" und B „Vier Handys"<small>Entwurf vom 25.09.2026 vormittags. Luca hat Design und Schrift von A mit dem Aufbau von B gewählt.</small></summary>
+
+    <section class="dir" id="a">
+      <div class="dir-head">
+        <h2><small>Richtung A</small>„Schautafel"</h2>
+        <ul>
+          <li><b>Stimmung:</b> hell und sachlich wie eine Tafel am Shopfloor: Papier, schwarze Linien, ein gelber Marker.</li>
+          <li><b>Schrift:</b> IBM Plex Sans, eine Schrift für alles; Titel in Gewicht 500, Ziffern tabellarisch.</li>
+          <li><b>Farbe:</b> Papier #f5f5f2, Schwarz, Gelb #ffe600 nur für die Hauptaktion. Kontraste 19:1, leise 6,6:1, Rahmen 3,5:1.</li>
+          <li><b>Bild:</b> Desktop- und Handy-Bild flach nebeneinander, oben bündig, mit schwarzer Linie.</li>
+          <li><b>Aufbau:</b> dein Satz, dann die Projekte als Zeilen: Name und Fakten links, Bilder rechts. Projektseite mit Faktentabelle.</li>
+        </ul>
+      </div>
+      <div class="seite">
+        <h3>Startseite <span><a href="a-start.html">Entwurf einzeln öffnen</a></span></h3>
+        <div class="frames">
+          <div>
+            <div class="zeile"><span>Desktop, 1440 px</span></div>
+            <div class="rahmen"><iframe class="frame" data-w="1440" data-h="3367" src="a-start.html" title="Richtung A, Startseite am Desktop" loading="lazy"></iframe></div>
+          </div>
+          <div class="spalte-handy">
+            <div class="zeile"><span>Handy, 390 px</span></div>
+            <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="4403" src="a-start.html" title="Richtung A, Startseite am Handy" loading="lazy"></iframe></div>
+          </div>
+        </div>
+      </div>
+      <div class="seite">
+        <h3>Projektseite OZ Calisthenics <span><a href="a-projekt.html">Entwurf einzeln öffnen</a></span></h3>
+        <div class="frames">
+          <div>
+            <div class="zeile"><span>Desktop, 1440 px</span></div>
+            <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2106" src="a-projekt.html" title="Richtung A, Projektseite am Desktop" loading="lazy"></iframe></div>
+          </div>
+          <div class="spalte-handy">
+            <div class="zeile"><span>Handy, 390 px</span></div>
+            <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2375" src="a-projekt.html" title="Richtung A, Projektseite am Handy" loading="lazy"></iframe></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dir" id="b">
+      <div class="dir-head">
+        <h2><small>Richtung B</small>„Vier Handys"</h2>
+        <ul>
+          <li><b>Stimmung:</b> ein Plakat in Kobaltblau, ruhig, mittig gesetzt.</li>
+          <li><b>Schrift:</b> Newsreader (Serif) für alles, im Titel mit großer optischer Größe.</li>
+          <li><b>Farbe:</b> Blau #1b3fa6, Papierweiß #f4f1ea, keine Akzentfarbe: die Farbe kommt aus den vier Screens. Kontraste 8,3:1, leise 5,8:1.</li>
+          <li><b>Bild:</b> die vier Handy-Screens sind der Hero, in einer Reihe (am Handy eine Wischleiste). Das Desktop-Bild erst auf der Projektseite.</li>
+          <li><b>Aufbau:</b> dein Satz mittig, die vier Handys, dann du und die Anfrage. Projektseite: Handy links, Fakten rechts, Desktop-Bild darunter.</li>
+        </ul>
+      </div>
+      <div class="seite">
+        <h3>Startseite <span><a href="b-start.html">Entwurf einzeln öffnen</a></span></h3>
+        <div class="frames">
+          <div>
+            <div class="zeile"><span>Desktop, 1440 px</span></div>
+            <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2172" src="b-start.html" title="Richtung B, Startseite am Desktop" loading="lazy"></iframe></div>
+          </div>
+          <div class="spalte-handy">
+            <div class="zeile"><span>Handy, 390 px</span></div>
+            <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="2014" src="b-start.html" title="Richtung B, Startseite am Handy" loading="lazy"></iframe></div>
+          </div>
+        </div>
+      </div>
+      <div class="seite">
+        <h3>Projektseite OZ Calisthenics <span><a href="b-projekt.html">Entwurf einzeln öffnen</a></span></h3>
+        <div class="frames">
+          <div>
+            <div class="zeile"><span>Desktop, 1440 px</span></div>
+            <div class="rahmen"><iframe class="frame" data-w="1440" data-h="2912" src="b-projekt.html" title="Richtung B, Projektseite am Desktop" loading="lazy"></iframe></div>
+          </div>
+          <div class="spalte-handy">
+            <div class="zeile"><span>Handy, 390 px</span></div>
+            <div class="rahmen handy"><iframe class="frame" data-w="390" data-h="844" data-hvoll="3137" src="b-projekt.html" title="Richtung B, Projektseite am Handy" loading="lazy"></iframe></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </details>
 </div>
 <script>
 // Verkleinert jeden Rahmen auf die Breite seiner Spalte (der Desktop-Rahmen
 // ist 1440 px breit). Auf schmalen Bildschirmen zeigt der Handy-Rahmen die
-// ganze Seite statt in sich zu scrollen.
+// ganze Seite statt in sich zu scrollen. Rahmen im zugeklappten Archiv
+// haben Breite 0 und werden beim Aufklappen neu gerechnet.
 (function () {
   function passe() {
     var schmal = window.innerWidth < 1000;
@@ -198,6 +318,7 @@ h1, h2, h3, p, ul, ol { margin: 0; }
       var w = Number(f.dataset.w);
       var h = schmal && f.dataset.hvoll ? Number(f.dataset.hvoll) : Number(f.dataset.h);
       var box = f.parentElement;
+      if (box.clientWidth === 0) return;
       var s = Math.min(1, box.clientWidth / w);
       f.style.width = w + "px";
       f.style.height = h + "px";
@@ -206,6 +327,7 @@ h1, h2, h3, p, ul, ol { margin: 0; }
     });
   }
   window.addEventListener("resize", passe);
+  document.querySelectorAll("details").forEach(function (d) { d.addEventListener("toggle", passe); });
   passe();
 })();
 </script>
