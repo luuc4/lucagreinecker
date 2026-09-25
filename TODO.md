@@ -40,7 +40,7 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] Fragebogen durchgegangen, Antworten in AGENTS.md und SETUP.md
 - [x] Starter im Repo `luuc4/lucagreinecker`, alte Seite auf `alt`, CI
 - [x] `neu.lucagreinecker.at` zeigt die Platzhalterseite (noindex)
-- [ ] Umami: Website in `analytics.laendle-isst.at`, ID in secrets.env,
+- [ ] Umami: Website in `analytics.punktetafel.at`, ID in secrets.env,
       Rebuild
 - [ ] Renovate-App für das Repo (wie bei OZ)
 
@@ -84,7 +84,10 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
 - [x] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
 - [x] `! DEPLOYEN=1 bash scripts/infra.sh`
-- [ ] ntfy: Topic für Anfragen, `NTFY_URL` und `NTFY_TOKEN` in secrets.env
+- [ ] ntfy: Topic für Anfragen auf `ntfy.punktetafel.at`, `NTFY_URL` und
+      `NTFY_TOKEN` in secrets.env
+- [ ] Uptime Kuma (`uptime.punktetafel.at`): Monitor auf
+      `https://neu.lucagreinecker.at/api/health`, Schlüsselwort `ok`
 - [ ] Server-Größe nachsehen (Hetzner-Console: RAM), in SETUP.md
 
 ### Luca – Inhalte
@@ -103,8 +106,6 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 ## Offene Entscheidungen
 
 - Repo nach dem Umzug privat? (AGENTS.md, Entscheidungen)
-- Coolify auf diesem Server meldet per API `4.0.0`, OZ läuft auf 4.3.21:
-  prüfen und ggf. updaten (betrifft auch punktetafel)
 - Coolify-Dashboard auf Port 8000 ist von außen offen: Instanz-Domain mit
   HTTPS und Port 8000 in der Hetzner-Firewall schließen (betrifft auch
   punktetafel)
@@ -119,8 +120,8 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ## Ideen (nicht eingeplant)
 
-- Zentrale Überwachung aller Kundenseiten (Uptime Kuma, Beszel-Hub) auf
-  diesem Server, wie leitfaden/11 sie vorschlägt
+- Zentrale Überwachung (leitfaden/11): Uptime Kuma läuft schon auf diesem
+  Server; OZ und USTA dort eintragen, Beszel-Hub dazu
 
 ## Bewusst nicht (ohne neuen Grund nicht wieder einbauen)
 
@@ -132,5 +133,7 @@ gleichzeitig, `src/`-Ordner, GlitchTip und Uptime Kuma auf dem
 Kundenserver.
 
 ## Erledigt
+
+- 25.09.2026: Coolify auf Lucas Server von 4.0.0 auf 4.3.23 (Luca); danach punktetafel, `neu.` und Umami (`analytics.punktetafel.at`) geprüft.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

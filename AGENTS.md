@@ -176,8 +176,10 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   Seite aus. Deshalb gilt doppelt: keine Secrets, keine UUIDs mit Token,
   keine Kundendaten im Repo. Nach dem Umzug entscheidet Luca über privat.
 - **25.09.2026 – Umami und ntfy mitbenutzen.** Umami: bestehende Instanz
-  `analytics.laendle-isst.at`, eigene Website-ID (keine zweite Instanz auf
-  demselben Server). Kontaktformular schickt an ntfy wie das
+  `analytics.punktetafel.at` (nicht `analytics.laendle-isst.at`, wie
+  ländle-isst `SETUP.md` noch sagt – der Eintrag zeigt ins Leere), eigene
+  Website-ID (keine zweite Instanz auf demselben Server). ntfy:
+  `ntfy.punktetafel.at`. Kontaktformular schickt an ntfy wie das
   punktetafel-Feedback (`punktetafel/app/api/feedback/route.ts`) statt per
   Mail: kein Versanddienst, keine DNS-Einträge für `mail.`, Luca bekommt die
   Anfrage als Push.

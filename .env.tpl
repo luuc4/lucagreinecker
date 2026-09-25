@@ -11,7 +11,7 @@ SITE_URL=http://localhost:3000
 
 # B    Umami, bestehende Instanz auf Lucas Server (AGENTS.md, Entscheidungen);
 #      ins Bundle gebacken (nur main). Ohne beide Werte lädt die Seite kein Script.
-#NEXT_PUBLIC_UMAMI_HOST=https://analytics.laendle-isst.at
+#NEXT_PUBLIC_UMAMI_HOST=https://analytics.punktetafel.at
 #NEXT_PUBLIC_UMAMI_WEBSITE_ID=
 
 # R    Kontaktformular → ntfy (Entscheidung 25.09.2026, noch nicht gebaut;
