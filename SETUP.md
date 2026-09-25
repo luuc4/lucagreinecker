@@ -114,6 +114,19 @@ Redeploy, danach zurück auf `main`. Sperrzeiten: keine. Gleichzeitige
 Builds auf dem Server gibt es nicht mehr (Build in der CI); punktetafel
 baut laut ländle-isst `SETUP.md` evtl. noch per Nixpacks auf dem Server.
 
+**Deploy prüfen:** Die CI meldet Erfolg, sobald Coolify den Deploy
+angenommen hat (`queued`), nicht wenn er durch ist. `bash scripts/deploy.sh`
+stößt einen Deploy an (Image-Tag `main`, ohne neuen Build) und wartet auf
+`finished` oder `failed`; `bash scripts/deploy.sh status` zeigt nur das
+letzte Deployment mit den letzten Logzeilen. Beides liest
+`~/.config/lucagreinecker/secrets.env`.
+
+Seit dem Coolify-Update auf 4.3.23 (25.09.2026) scheitert der Deploy auf
+diesem Server an `ParseAddr("fde4:…::1/64")` (Docker 27.5.1 meldet das
+IPv6-Gateway des `coolify`-Netzes mit Präfix). Abhilfe: Docker auf dem
+Server neu starten (TODO.md, „Luca – Server"); hilft das nicht, IPv6 im
+Coolify-Netz abschalten oder Docker aktualisieren.
+
 ## Backups
 
 Die Seite hält keine Daten (Inhalte im Repo, Anfragen gehen an ntfy). Die

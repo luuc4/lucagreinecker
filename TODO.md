@@ -96,6 +96,16 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
 - [x] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
 - [x] `! DEPLOYEN=1 bash scripts/infra.sh`
+- [ ] **Deploy repariert (seit 25.09.2026 scheitert jeder Deploy):** Nach
+      dem Coolify-Update auf 4.3.23 meldet Docker 27.5.1 das IPv6-Gateway
+      des `coolify`-Netzes als `fde4:…::1/64`, `docker compose up` bricht
+      mit `ParseAddr … want colon (at "/64")` ab (Coolify-Issue 8649,
+      Docker-Fehler moby 49520). Docker neu starten (kurze Unterbrechung
+      für punktetafel, Umami, ntfy, Uptime Kuma):
+      `! ssh root@178.104.239.44 "docker network inspect coolify -f '{{range .IPAM.Config}}{{.Gateway}} {{end}}'; systemctl restart docker; sleep 25; docker ps --format '{{.Names}} {{.Status}}'"`,
+      dann `! bash scripts/deploy.sh` (stößt den Deploy an und wartet auf
+      das Ergebnis). Bleibt es beim Fehler: IPv6 im Coolify-Netz abschalten
+      oder Docker aktualisieren (SETUP.md, „Deploy").
 - [ ] ntfy: Topic für Anfragen auf `ntfy.punktetafel.at`, `NTFY_URL` und
       `NTFY_TOKEN` in secrets.env
 - [ ] Uptime Kuma (`uptime.punktetafel.at`): Monitor auf
@@ -128,7 +138,11 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ## Bugs und Kleinigkeiten
 
-- (keine)
+- CI meldet Erfolg, obwohl der Coolify-Deploy scheitert: der Schritt
+  „Coolify deployen" stellt nur in die Warteschlange (`queued`). Der
+  Schritt soll das Deployment (`/api/v1/deployments/<uuid>`) bis `finished`
+  oder `failed` abfragen und bei `failed` den Job rot machen; danach in die
+  Vorlage (`starter/.github/workflows/ci.yml`).
 
 ## Ideen (nicht eingeplant)
 

@@ -35,6 +35,9 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   vier Projekte per `scripts/projekt-screenshots.mjs` in `public/bilder/`.
   **Luca hat noch nicht gewählt**; die Design-Fragen (Fragebogen D) stehen
   auf der Leinwand. Bis zur Wahl bleibt das Platzhalter-Design im Code.
+  CI grün, aber der Coolify-Deploy dieses Stands ist fehlgeschlagen
+  (IPv6-Gateway, TODO.md „Luca – Server"); `neu.` läuft weiter mit dem
+  Image von Etappe 0, sichtbar ist kein Unterschied.
 
 ## Projekt
 
