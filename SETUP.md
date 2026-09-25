@@ -124,8 +124,10 @@ Checkliste in leitfaden/08, „Domainumzug". Projektspezifisch:
   `/datenschutz.html` → `/datenschutz`, `/index.html` → `/`. Anker der
   alten Startseite (`#projekte`, `#kontakt`, `#ueber-mich`) laufen ohne
   Redirect auf `/`.
-- Reihenfolge: `APP_DOMAIN='https://lucagreinecker.at'` (plus `www`) in
-  secrets.env, `bash scripts/infra.sh`, `gh workflow run ci.yml --ref main`,
+- Reihenfolge: `APP_DOMAIN='https://lucagreinecker.at'` und
+  `APP_ALIASE='https://www.lucagreinecker.at'` in secrets.env,
+  `bash scripts/infra.sh`, in Coolify die App auf „Redirect to non-www"
+  stellen, `gh workflow run ci.yml --ref main`,
   dann DNS bei cloudpit (Apex und `www` → `178.104.239.44`, die vier
   GitHub-Pages-A-Records entfernen – vorher `dig` sichern), danach Pages im
   Repo ausschalten und die `CNAME`-Datei auf `alt` belassen.

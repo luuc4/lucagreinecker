@@ -12,7 +12,8 @@
 # ~/.config/lucagreinecker/secrets.env (chmod 600) mit COOLIFY_URL,
 # COOLIFY_TOKEN (Root-Token aus dem Dashboard, nur für dieses Script),
 # COOLIFY_DEPLOY_TOKEN (nur „deploy", geht als Secret an GitHub),
-# APP_DOMAIN; optional NTFY_URL, NTFY_TOKEN (Kontaktformular),
+# APP_DOMAIN; optional APP_ALIASE (weitere Domains mit Komma, beim Umzug
+# https://www.lucagreinecker.at), NTFY_URL, NTFY_TOKEN (Kontaktformular),
 # UMAMI_HOST, UMAMI_WEBSITE_ID. gh mit Konto luuc4, python3.
 # Schreibt UUIDs nach secrets.env, nie ins Repo (das Repo ist öffentlich).
 # Gibt nie ein Secret aus.
@@ -57,7 +58,10 @@ api() { # METHODE PFAD [JSON]
 }
 
 echo "== 1/4 Coolify erreichbar?"
-if [ -z "$(api GET /version || true)" ]; then
+# -f: bei falschem Token antwortet Coolify mit 401 und JSON – das darf nicht
+# als „erreichbar" durchgehen.
+if ! curl -fsS --connect-timeout 15 -m 30 -o /dev/null -H "Authorization: Bearer $COOLIFY_TOKEN" \
+  "$COOLIFY_URL/api/v1/version"; then
   echo "Coolify-API antwortet nicht ($COOLIFY_URL). API unter Settings → Advanced eingeschaltet? Token gültig?" >&2
   exit 1
 fi
@@ -74,16 +78,17 @@ fi
 merken COOLIFY_PROJECT_UUID "$PROJ"
 echo "projekt $PROJ"
 
-echo "== 3/4 App $APP ($IMAGE:main → $APP_DOMAIN)"
+DOMAINS="$APP_DOMAIN${APP_ALIASE:+,$APP_ALIASE}"
+echo "== 3/4 App $APP ($IMAGE:main → $DOMAINS)"
 APPU=$(api GET /applications | feld "next((x['uuid'] for x in d if x['name']=='$APP'), None)")
 if [ -z "$APPU" ]; then
-  APPU=$(api POST /applications/dockerimage "{\"project_uuid\":\"$PROJ\",\"server_uuid\":\"$SERVER_UUID\",\"environment_name\":\"production\",\"name\":\"$APP\",\"description\":\"Next.js-App, Image aus GHCR (main)\",\"docker_registry_image_name\":\"$IMAGE\",\"docker_registry_image_tag\":\"main\",\"ports_exposes\":\"3000\",\"domains\":\"$APP_DOMAIN\",\"health_check_enabled\":true,\"health_check_host\":\"127.0.0.1\",\"health_check_path\":\"/api/health\",\"health_check_port\":\"3000\",\"health_check_interval\":10,\"health_check_timeout\":3,\"health_check_retries\":5,\"health_check_start_period\":60,\"instant_deploy\":false}" | feld "d['uuid']")
+  APPU=$(api POST /applications/dockerimage "{\"project_uuid\":\"$PROJ\",\"server_uuid\":\"$SERVER_UUID\",\"environment_name\":\"production\",\"name\":\"$APP\",\"description\":\"Next.js-App, Image aus GHCR (main)\",\"docker_registry_image_name\":\"$IMAGE\",\"docker_registry_image_tag\":\"main\",\"ports_exposes\":\"3000\",\"domains\":\"$DOMAINS\",\"health_check_enabled\":true,\"health_check_host\":\"127.0.0.1\",\"health_check_path\":\"/api/health\",\"health_check_port\":\"3000\",\"health_check_interval\":10,\"health_check_timeout\":3,\"health_check_retries\":5,\"health_check_start_period\":60,\"instant_deploy\":false}" | feld "d['uuid']")
 fi
 [ -n "$APPU" ] || { echo "App konnte nicht angelegt werden" >&2; exit 1; }
 # Domain und Healthcheck nachziehen (Domainumzug = APP_DOMAIN ändern und
 # Script erneut laufen lassen). Health-Host 127.0.0.1, nicht localhost
 # (Alpine löst localhost zu ::1 auf, Next lauscht nur auf IPv4).
-api PATCH "/applications/$APPU" "{\"domains\":\"$APP_DOMAIN\",\"health_check_host\":\"127.0.0.1\",\"health_check_enabled\":true,\"health_check_path\":\"/api/health\",\"health_check_port\":\"3000\"}" > /dev/null
+api PATCH "/applications/$APPU" "{\"domains\":\"$DOMAINS\",\"health_check_host\":\"127.0.0.1\",\"health_check_enabled\":true,\"health_check_path\":\"/api/health\",\"health_check_port\":\"3000\"}" > /dev/null
 # Runtime-Env. SITE_URL und Umami sind Build-Zeit (Repository-Variablen,
 # ci.yml); SITE_URL steht zusätzlich hier, weil lib/site.ts sie auch zur
 # Laufzeit liest. ntfy nur, wenn gesetzt.
