@@ -65,10 +65,10 @@ die App.
    # COOLIFY_TOKEN='…'  COOLIFY_DEPLOY_TOKEN='…'
    # APP_DOMAIN='https://neu.lucagreinecker.at'
    ```
-4. **Image öffentlich:** nach dem ersten CI-Lauf auf GitHub → Packages →
-   `lucagreinecker` → Package settings → Change visibility → Public. Das
-   Repo ist öffentlich, das Image enthält nichts anderes; so braucht der
-   Server kein `docker login ghcr.io`.
+4. **Image:** ist öffentlich, weil das Repo öffentlich ist (anonymer Pull
+   am 25.09.2026 geprüft); der Server braucht kein `docker login ghcr.io`.
+   Wird das Repo privat, dort `docker login` mit einem PAT nur
+   `read:packages` nachholen.
 5. **App anlegen und deployen:** `DEPLOYEN=1 bash scripts/infra.sh`
    (Projekt, App vom Typ Docker Image, Domain, Healthcheck
    `/api/health` mit Host `127.0.0.1`, Runtime-Env, Repository-Variablen

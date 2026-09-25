@@ -85,7 +85,6 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [ ] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
 - [ ] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
       (SETUP.md, „Von null auf laufend", Schritt 2–3)
-- [ ] Nach dem ersten CI-Lauf: GHCR-Paket `lucagreinecker` auf Public
 - [ ] `! DEPLOYEN=1 bash scripts/infra.sh`
 - [ ] ntfy: Topic für Anfragen, `NTFY_URL` und `NTFY_TOKEN` in secrets.env
 - [ ] Server-Größe nachsehen (Hetzner-Console: RAM), in SETUP.md
