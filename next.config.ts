@@ -92,8 +92,17 @@ const nextConfig: NextConfig = {
         destination: "https://lucagreinecker.at/:path*",
         permanent: true,
       },
-      // Adressen der alten Seite des Kunden hier umleiten (308), z. B.:
-      // { source: "/kontakt.html", destination: "/kontakt", permanent: true },
+      // Adressen der alten statischen Seite (Branch alt: index.html,
+      // impressum.html, datenschutz.html). Die Anker der alten Startseite
+      // (#ueber-mich, #projekte, #kontakt) erreichen den Server nicht; die
+      // Startseite trägt weiter #projekte, Über mich und Kontakt sind Seiten.
+      { source: "/index.html", destination: "/", permanent: true },
+      { source: "/impressum.html", destination: "/impressum", permanent: true },
+      {
+        source: "/datenschutz.html",
+        destination: "/datenschutz",
+        permanent: true,
+      },
     ];
   },
 };

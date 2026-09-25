@@ -53,6 +53,16 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   `SeitenKopf` mittig, `Fakten`-Tabelle, Rechtstext, OG-Bild und Icon im
   neuen Design; Regeln unten unter „Design". Die Startseite zeigt vorerst
   den Satz und den Knopf, die vier Handys und das Paket folgen in Etappe 2.
+- 26.09.2026 (Etappe 2 – Seiten und Inhalte): Projektdaten in
+  `lib/inhalte/projekte.ts` (Fakten aus den Repos, Lucas Sätze `null`),
+  Startseite mit den vier Handy-Screens (`wischleiste`), dem
+  Rundum-sorglos-Paket und der Anfrage; `/projekte/<slug>` statisch;
+  `/ueber-mich` mit dem Werdegang als Fakten; Navigation Projekte, Paket,
+  Über mich (Kontakt nur als Knopf); Kontaktformular als Push über ntfy,
+  Mail-Stack entfernt; Redirects der alten Adressen (`/index.html`,
+  `/impressum.html`, `/datenschutz.html`); JSON-LD `Person`. Offen:
+  Lucas Sätze (alle Stellen `[TEXT LUCA]`), die Paket-Punkte bestätigen,
+  ntfy-Topic und Token in Coolify (SETUP.md), Etappe 3 (Recht, Umzug).
 
 ## Projekt
 
@@ -100,8 +110,9 @@ open docs/design/richtungen/index.html        # die zwei Design-Richtungen anseh
 ## Struktur
 
 ```
-app/                  Routen. (site) öffentlich mit Kopf, Fuß, Umami; api/ nur für
-                      Fremdaufrufer und Nicht-HTML (health, kontakt.vcf)
+app/                  Routen. (site) öffentlich mit Kopf, Fuß, Umami: Start, projekte/[slug],
+                      ueber-mich, kontakt, impressum, datenschutz; api/ nur für Fremdaufrufer
+                      und Nicht-HTML (health, kontakt.vcf, test/anfragen nur mit memory)
 app/globals.css       Design-Tokens (@theme), Grundregeln, Utilities inhalt/zahlen
 app/sitemap.ts        öffentliche Routen – neue Seiten hier eintragen (E2E liest sie)
 components/           KontaktFormular, formular/Feld (Feld, Textbereich), Knopf/KnopfLink,
@@ -311,3 +322,13 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   Umami immer, Updates und Backups, Rechtstexte vorbereitet. Die Punkte
   jenseits seiner Stichworte stammen aus dem Leitfaden und werden von ihm
   bestätigt; Sätze dazu nur von ihm (`[TEXT LUCA]`).
+- **26.09.2026 – Kontaktformular per ntfy, keine Mails.** Umgesetzt wie am
+  25.09. entschieden: `lib/anfrage/ntfy.ts` (Transporte konsole, memory,
+  ntfy; Titel nur ASCII, `X-Click` öffnet die Antwortmail), Env
+  `ANFRAGE_TRANSPORT`, `NTFY_URL`, `NTFY_TOKEN`. Der Mail-Stand des Starters
+  (`lib/mail`, Scaleway, `MAIL_*`) ist raus; kommt je ein Mail-Anlass, aus
+  der Vorlage zurückholen.
+- **26.09.2026 – Übergangsadressen der Projekte.** OZ und USTA verlinken bis
+  zu ihrem Domainumzug auf `neu.oz-calisthenics.at` bzw. die sslip.io-Adresse
+  (`url` in `projekte.ts`), angezeigt wird die echte Domain (`domain`).
+  Beim Go-live dieser Seite prüfen und umstellen (TODO.md, Etappe 3).

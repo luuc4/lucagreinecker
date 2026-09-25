@@ -20,11 +20,16 @@ Schrift und Bausteine im Code (AGENTS.md „Design"). Entwürfe in
 vier Projekte in `public/bilder/`. Der Deploy läuft seit Lucas
 Docker-Neustart wieder; `neu.` zeigt den jeweils letzten Push.
 
-**Nächste Sitzung zuerst:** Etappe 2 nach der Liste unten, Vorlage für
-jeden Block sind `docs/design/richtungen/ab-start.html?v=1` und
-`ab-projekt.html?v=1` (Klassen in `ab.css`). Reihenfolge: Projektdaten
-(`lib/inhalte/projekte.ts`) → Startseite → Projektseiten → Über mich →
-Kontakt an ntfy → SEO. Nach jedem Block Screenshots in 390/768/1440.
+Etappe 2 abgeschlossen (26.09.2026): Startseite mit den vier Handys und
+dem Paket, Projektseiten, Über mich, Kontaktformular per ntfy, Redirects,
+JSON-LD. `neu.lucagreinecker.at` zeigt den Stand. Alle Sätze sind noch
+`[TEXT LUCA]`.
+
+**Nächste Sitzung zuerst:** Lucas Texte einsetzen (Etappe 2, letzte
+Punkte) und ntfy scharf schalten; dann Etappe 3 (Impressum, Datenschutz,
+Platzhalter-Liste leer, Domainumzug nach SETUP.md). Vor dem Umzug die
+Übergangsadressen in `projekte.ts` prüfen (OZ, USTA) und Olcay, Akin und
+Jonathan fragen (Zuarbeit).
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -74,28 +79,24 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ### Etappe 2 – Seiten und Inhalte (mit Fable)
 
-- [ ] `lib/inhalte/projekte.ts`: die vier Projekte als Daten (Slug, Name,
-      Art-Zeile, Kunde, Zeitraum, Seiten, Funktionen, Stack, Betrieb,
-      Adresse, Bilder), Fakten wie in den Entwürfen; OZ und USTA mit
-      Übergangsadresse, bis ihre Domains umgezogen sind
-- [ ] Startseite nach `ab-start.html?v=1`: Satz (steht), die vier Handys
-      als Reihe mit Wischleiste am Handy (`<picture>` aus
-      `public/bilder`, `rounded-bild`), „Rundum-sorglos-Paket" als
-      `Fakten` (Punkte von Luca bestätigen lassen), Anfrage-Block mit „Mail
-      schreiben" und „Kontakt speichern"
-- [ ] `NAVIGATION`: Projekte (`/#projekte`), Paket (`/#paket`), Über mich;
-      Kontakt bleibt nur der Knopf (E2E `seiten.spec.ts` anpassen)
-- [ ] Eine Seite je Projekt (`/projekte/<slug>`) nach `ab-projekt.html?v=1`:
-      Handy links, `Fakten` rechts mit Knopf „‹domain› öffnen", Desktop-Bild
-      darunter, „Weitere Projekte"; Lucas Sätze oder `[TEXT LUCA]`; Sitemap
-- [ ] Über mich: Werdegang kurz und nebensächlich
-- [ ] Kontakt: Formular an ntfy statt Mail (Muster
-      `punktetafel/app/api/feedback/route.ts`, Drossel und Honeypot aus dem
-      Starter), vCard, Mail-Link; `lib/mail/` und die MAIL_*-Variablen
-      entfernen, wenn nichts anderes sie braucht
-- [ ] SEO: Beschreibungen, OG-Bild, JSON-LD (`Person`), Redirects der
-      alten Adressen (SETUP.md, Go-live)
-- [ ] Screenshots 390/768/1440 angesehen, axe grün, Lighthouse gemessen
+- [x] `lib/inhalte/projekte.ts`: die vier Projekte als Daten, Fakten wie in
+      den Entwürfen; OZ und USTA mit Übergangsadresse (26.09.2026)
+- [x] Startseite nach `ab-start.html?v=1`: Satz, die vier Handys als
+      Wischleiste, „Rundum-sorglos-Paket" als `Fakten`, Anfrage-Block
+- [x] `NAVIGATION`: Projekte, Paket, Über mich; Kontakt nur als Knopf
+- [x] Eine Seite je Projekt (`/projekte/<slug>`) nach `ab-projekt.html?v=1`
+- [x] Über mich: Werdegang als Fakten, Sätze offen
+- [x] Kontakt: Formular an ntfy statt Mail, `lib/mail/` und MAIL_* entfernt
+- [x] SEO: Beschreibungen, OG-Bild, JSON-LD `Person`, Redirects
+      `/index.html`, `/impressum.html`, `/datenschutz.html`
+- [x] Screenshots 360/390/768/1440 angesehen, axe grün
+- [ ] Lighthouse messen (Chrome DevTools auf `neu.`), Werte hier eintragen
+- [ ] Lucas Texte einsetzen, sobald da (Zuarbeit unten): `SEITE.beschreibung`,
+      Satz über ihn, `PAKET.satz` und -Punkte, `UEBER_MICH.saetze`, je Projekt
+      `satz`, die Anfrage-Sätze auf der Startseite (`app/(site)/page.tsx`)
+- [ ] ntfy scharf schalten: Topic und Token in secrets.env, dann
+      `! DEPLOYEN=1 bash scripts/infra.sh` (setzt `ANFRAGE_TRANSPORT=ntfy`),
+      Testanfrage über `/kontakt`, Push kommt an
 
 ### Etappe 3 – Recht und Umzug
 
@@ -116,8 +117,10 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       (Docker 27.5.1, Coolify-Issue 8649). `systemctl restart docker` auf
       dem Server, danach `bash scripts/deploy.sh` – Deployment um 17:47
       durch, seither deployt jeder Push wieder (SETUP.md, „Deploy").
-- [ ] ntfy: Topic für Anfragen auf `ntfy.punktetafel.at`, `NTFY_URL` und
-      `NTFY_TOKEN` in secrets.env
+- [ ] ntfy: Topic für Anfragen auf `ntfy.punktetafel.at` anlegen (z. B.
+      `lucagreinecker-anfragen`, Zugriff nur mit Token), Token mit
+      Schreibrecht erzeugen, `NTFY_URL` (Topic-Adresse) und `NTFY_TOKEN` in
+      secrets.env, dann `! DEPLOYEN=1 bash scripts/infra.sh`
 - [ ] Uptime Kuma (`uptime.punktetafel.at`): Monitor auf
       `https://neu.lucagreinecker.at/api/health`, Schlüsselwort `ok`
 - [ ] Server-Größe nachsehen (Hetzner-Console: RAM), in SETUP.md
@@ -176,5 +179,6 @@ Kundenserver.
 
 - 25.09.2026: Coolify auf Lucas Server von 4.0.0 auf 4.3.23 (Luca); danach punktetafel, `neu.` und Umami (`analytics.punktetafel.at`) geprüft.
 - 25.09.2026: Etappe 1 – zwei Richtungen, Lucas Wahl (A-Design, B-Aufbau), drei Versionen, Version 1 „Reihe" umgesetzt (Tokens, Schrift, Bausteine); echte Projekt-Screenshots.
+- 26.09.2026: Etappe 2 – Startseite, Projektseiten, Über mich, Kontakt per ntfy, Redirects, JSON-LD; Texte von Luca offen.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

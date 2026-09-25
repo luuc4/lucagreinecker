@@ -19,7 +19,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Kontakt",
-  description: `So erreichst du ${KONTAKT.firma}: Nachricht, Telefon, E-Mail, WhatsApp und Adresse.`,
+  description: `So erreichst du ${KONTAKT.firma} in Bludenz: Nachricht über das Formular, E-Mail oder Kontakt speichern.`,
 };
 
 // Kontakt mit den praktischen Handgriffen (leitfaden/05): Formular (wenn
