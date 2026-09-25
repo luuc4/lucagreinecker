@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Richtung A „Schautafel" – Projektseite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300..700&display=swap">
+<style>
+/* Richtung A „Schautafel", Projektseite (OZ Calisthenics), Entwurf
+   25.09.2026. Dieselben Tokens wie a-start.html. Aufbau: Titel, Vorspann
+   rechts (Lucas Satz oder nichts), die zwei echten Bilder, dann die Fakten
+   als Tabelle mit Linien, eine Aktion, nächstes Projekt. */
+:root {
+  --papier: #f5f5f2;
+  --tinte: #000000;
+  --leise: #585856;
+  --linie: #d6d6d2;
+  --rahmen: #7a7a76;
+  --gelb: #ffe600;
+  --gelb-hover: #f0d600;
+  --abschnitt: clamp(4rem, 8vw, 7rem);
+}
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--tinte);
+  font: 400 17px/1.55 "IBM Plex Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, p, dl, dd, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--tinte); outline-offset: 2px; }
+
+.inhalt { max-width: 1440px; margin-inline: auto; padding-inline: 20px; }
+@media (min-width: 768px) { .inhalt { padding-inline: 32px; } }
+@media (min-width: 1024px) { .inhalt { padding-inline: 56px; } }
+
+.kopf {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  height: 64px; border-bottom: 1px solid var(--tinte);
+}
+.marke { font-weight: 600; text-decoration: none; letter-spacing: -0.01em; }
+.nav { display: none; gap: 28px; align-items: center; }
+.nav a { text-decoration: none; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.knopf {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding-inline: 18px; border: 0; border-radius: 6px;
+  background: var(--gelb); color: var(--tinte); font: inherit; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.knopf:hover { background: var(--gelb-hover); }
+.knopf-umriss { background: transparent; border: 1px solid var(--rahmen); font-weight: 500; }
+.knopf-umriss:hover { background: transparent; border-color: var(--tinte); }
+.kopf-handy { display: flex; gap: 8px; }
+@media (min-width: 1024px) {
+  .kopf { height: 72px; }
+  .nav { display: flex; }
+  .kopf-handy { display: none; }
+}
+
+.platz { color: var(--leise); text-decoration: underline dotted; text-underline-offset: 4px; }
+
+/* Seitenkopf: Titel links, Vorspann rechts unten */
+.seitenkopf { padding-block: clamp(2.5rem, 5vw, 4.5rem) 32px; display: grid; gap: 20px 40px; align-items: end; }
+.zurueck { font-size: 15px; color: var(--leise); text-decoration: none; }
+.zurueck:hover { text-decoration: underline; text-underline-offset: 4px; }
+.seitenkopf h1 {
+  margin-top: 12px; font-size: clamp(2.5rem, 6.5vw, 5.5rem); line-height: 0.98; font-weight: 500;
+  letter-spacing: -0.03em; text-wrap: balance;
+}
+.art { margin-top: 12px; color: var(--leise); font-size: clamp(1.0625rem, 1.4vw, 1.25rem); max-width: 40ch; }
+.vorspann { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); max-width: 44ch; }
+@media (min-width: 1024px) { .seitenkopf { grid-template-columns: 7fr 5fr; } }
+
+/* Ein Raster für Bilder, Aktion und Fakten. Am Handy: Desktop-Bild in
+   voller Breite, darunter das Handy-Bild neben der Aktion, dann die
+   Fakten. Am Desktop: beide Bilder oben bündig nebeneinander (78/22),
+   darunter die Fakten links und die Aktion rechts. Die Leerzeile im Raster
+   ist der eine Abstand zwischen den Blöcken. */
+.raster {
+  display: grid; gap: 12px; align-items: start; padding-bottom: var(--abschnitt);
+  grid-template-columns: 42fr 58fr;
+  grid-template-rows: auto auto calc(var(--abschnitt) - 24px) auto;
+  grid-template-areas: "desktop desktop" "handy aktion" ". ." "fakten fakten";
+}
+.raster img { border: 1px solid var(--tinte); }
+.raster .desktop { grid-area: desktop; }
+.raster .handy { grid-area: handy; }
+.raster .aktion { grid-area: aktion; }
+.raster .fakten { grid-area: fakten; }
+.fakten { border-top: 1px solid var(--tinte); }
+.fakten > div { display: grid; grid-template-columns: 7rem 1fr; gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--linie); }
+.fakten dt { color: var(--leise); }
+.fakten dd { font-variant-numeric: tabular-nums; }
+.aktion h2 { font-size: clamp(1.25rem, 2vw, 1.75rem); line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; }
+.aktion .knopf { margin-top: 20px; }
+@media (min-width: 1024px) {
+  .raster {
+    gap: 16px; grid-template-columns: 56fr 22fr 22fr;
+    grid-template-rows: auto calc(var(--abschnitt) - 32px) auto;
+    grid-template-areas: "desktop desktop handy" ". . ." "fakten fakten aktion";
+  }
+  .raster .aktion { padding-left: 24px; }
+  .fakten > div { grid-template-columns: 9rem 1fr; }
+}
+
+/* Nächstes Projekt: eine Zeile */
+.weiter { border-top: 1px solid var(--tinte); padding-block: 28px var(--abschnitt); display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 20px; }
+.weiter span { color: var(--leise); font-size: 15px; }
+.weiter a { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: -0.02em; text-decoration: none; }
+.weiter a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+
+.fuss { border-top: 1px solid var(--tinte); padding-block: 32px 40px; display: grid; gap: 28px; font-size: 15px; }
+.fuss h2 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.fuss li + li { margin-top: 4px; }
+.fuss a { text-decoration: none; }
+.fuss a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.fuss-zeile { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 24px; color: var(--leise); border-top: 1px solid var(--linie); padding-top: 16px; }
+@media (min-width: 768px) { .fuss { grid-template-columns: 2fr 1fr 1fr; } }
+</style>
+</head>
+<body>
+<header class="inhalt kopf">
+  <a class="marke" href="a-start.html">Luca Greinecker</a>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a href="a-start.html#projekte">Projekte</a>
+    <a href="#">Über mich</a>
+    <a class="knopf" href="#kontakt">Kontakt</a>
+  </nav>
+  <div class="kopf-handy">
+    <a class="knopf" href="#kontakt">Kontakt</a>
+    <button class="knopf knopf-umriss" type="button">Menü</button>
+  </div>
+</header>
+
+<main class="inhalt">
+  <div class="seitenkopf">
+    <div>
+      <a class="zurueck" href="a-start.html#projekte">Projekte</a>
+      <h1>OZ Calisthenics</h1>
+      <p class="art">Kursbuchung und Website für einen Calisthenics‑Coach in Bludenz und Rankweil</p>
+    </div>
+    <p class="vorspann"><span class="platz">[TEXT LUCA]</span> Der erste Satz der Seite: was Olcay wollte. Fehlt er, entfällt die Spalte.</p>
+  </div>
+
+  <div class="raster">
+    <img class="desktop" src="../../../public/bilder/projekt-oz-calisthenics-desktop-1200.webp" width="1200" height="750" alt="Startseite von OZ Calisthenics am Desktop">
+    <img class="handy" src="../../../public/bilder/projekt-oz-calisthenics-handy-390.webp" width="390" height="844" alt="Startseite von OZ Calisthenics am Handy">
+    <div class="aktion">
+      <h2><span class="platz">[TEXT LUCA]</span> Was schwierig war, worauf du stolz bist.</h2>
+      <a class="knopf" href="https://oz-calisthenics.at">oz-calisthenics.at öffnen</a>
+    </div>
+    <dl class="fakten">
+      <div><dt>Kunde</dt><dd>Olcay Zengin, Calisthenics‑Coach, Bludenz und Rankweil</dd></div>
+      <div><dt>Zeitraum</dt><dd>seit September 2026</dd></div>
+      <div><dt>Seiten</dt><dd>Start, Kurse, Preise, Über mich, FAQ, Kontakt, Buchen, Konto, Admin</dd></div>
+      <div><dt>Funktionen</dt><dd>Kurse buchen und bezahlen (Stripe Checkout), Konto mit Passkeys, Belege, Erinnerungen und Tageslisten per Mail, Storno und Widerruf; Admin für Termine, Kurse, Buchungen und Kunden</dd></div>
+      <div><dt>Stack</dt><dd>Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth, Stripe, pg‑boss, Scaleway Mail, Umami</dd></div>
+      <div><dt>Betrieb</dt><dd>Docker‑Image aus GitHub Actions, Coolify auf einem Hetzner‑Server, Staging vor jeder Änderung an Buchung und Zahlung</dd></div>
+    </dl>
+  </div>
+
+  <div class="weiter">
+    <span>Nächstes Projekt</span>
+    <a href="#">USTA Streetfood</a>
+  </div>
+</main>
+
+<footer class="inhalt fuss">
+  <div>
+    <h2>Luca Greinecker</h2>
+    <p>Bludenz, Vorarlberg</p>
+  </div>
+  <div>
+    <h2>Seiten</h2>
+    <ul>
+      <li><a href="a-start.html#projekte">Projekte</a></li>
+      <li><a href="#">Über mich</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </div>
+  <div>
+    <h2>Kontakt</h2>
+    <ul>
+      <li><a href="mailto:greineckerluca@hotmail.com">greineckerluca@hotmail.com</a></li>
+      <li><a href="#">Kontakt speichern</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-greinecker/">LinkedIn</a></li>
+    </ul>
+  </div>
+  <div class="fuss-zeile">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+</body>
+</html>

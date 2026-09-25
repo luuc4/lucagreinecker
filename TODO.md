@@ -11,10 +11,19 @@ Etappe 0 erledigt: Starter im bestehenden Repo, alte Seite auf Branch
 `https://neu.lucagreinecker.at` zeigt die Platzhalterseite (health ok,
 robots sperrt, noindex, CSP und HSTS da). Offen: Umami, ntfy, Renovate.
 
-**Nächste Sitzung zuerst (Luca will die Seite mit Fable bauen):** Skill
-`neues-webprojekt`, Phase 4 (Design) für Etappe 1. AGENTS.md
-(„Projekt", „Entscheidungen") und diesen Abschnitt lesen. Nichts gestalten,
-bevor Luca eine von zwei Richtungen gewählt hat.
+Etappe 1, Teil 1 erledigt (25.09.2026): zwei Richtungen in
+`docs/design/richtungen/` (Leinwand `index.html`, Artifact
+`https://claude.ai/artifact/25576desS8jAzH66a8AtPe`), echte Screenshots der
+vier Projekte in `public/bilder/`. Offen: Lucas Wahl.
+
+**Nächste Sitzung zuerst:** Lucas Wahl (A, B oder Mischung) und seine
+Antworten auf die vier Fragen der Leinwand entgegennehmen. Dann Skill
+`neues-webprojekt`, Phase 4, Schritt 4: Wahl und Regeln in AGENTS.md
+(„Design", mit Datum und gemessenen Kontrasten), Tokens in
+`app/globals.css`, Schrift aus Fontsource in `app/fonts.ts`
+(`@fontsource-variable/ibm-plex-sans` bzw. `@fontsource-variable/newsreader`),
+Bausteine (Kopf, Fuß, Knöpfe). Nichts weiter gestalten, bevor die Wahl da
+ist.
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -46,13 +55,16 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ### Etappe 1 – Design (mit Fable)
 
-- [ ] Offene Design-Fragen (leitfaden/fragebogen.md, Teil D): Stimmung,
-      Seiten, die Luca gefallen, das tragende Element der Startseite
-- [ ] Zwei Richtungen als Entwurf (Start und eine Projektseite, Handy und
-      Desktop), Luca wählt; Regeln in AGENTS.md
-- [ ] Echte Screenshots der Projekte in 390 und 1440 px
-      (`scripts/screenshots.mjs` gegen die Live-Adressen oder die lokalen
-      Repos) statt generierter Bilder wie auf der alten Seite
+- [x] Offene Design-Fragen (leitfaden/fragebogen.md, Teil D) gestellt,
+      als „Was du entscheidest" auf der Leinwand; Antworten offen
+- [x] Zwei Richtungen als Entwurf (Start und Projektseite OZ, Handy und
+      Desktop): A „Schautafel", B „Vier Handys"
+- [ ] Luca wählt (auch Mischung möglich); Wahl und Regeln in AGENTS.md
+      („Design"), Tokens, Schrift, Bausteine
+- [x] Echte Screenshots der Projekte in 390 und 1440 px
+      (`scripts/projekt-screenshots.mjs` gegen die Live-Adressen, Varianten
+      über `scripts/bilder.mjs` in `public/bilder/`); OZ und USTA nach ihrem
+      Domainumzug neu aufnehmen (Adressen im Script)
 
 ### Etappe 2 – Seiten und Inhalte (mit Fable)
 
@@ -135,5 +147,6 @@ Kundenserver.
 ## Erledigt
 
 - 25.09.2026: Coolify auf Lucas Server von 4.0.0 auf 4.3.23 (Luca); danach punktetafel, `neu.` und Umami (`analytics.punktetafel.at`) geprüft.
+- 25.09.2026: Etappe 1, Teil 1 – zwei Design-Richtungen und echte Projekt-Screenshots; Wahl offen.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

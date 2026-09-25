@@ -26,6 +26,15 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   („Projekt", „Entscheidungen"). Platzhalter-Design bis zur Wahl der
   Richtung. Läuft unter `https://neu.lucagreinecker.at` (Coolify auf Lucas
   Server, SETUP.md).
+- 25.09.2026 (Etappe 1, Teil 1 – Entwürfe): Zwei Design-Richtungen als
+  HTML in `docs/design/richtungen/` (Leinwand `index.html`, dieselbe als
+  Artifact `https://claude.ai/artifact/25576desS8jAzH66a8AtPe`): A
+  „Schautafel" (hell, IBM Plex Sans, Gelb als Marker, Projekte als Zeilen
+  mit Desktop- und Handy-Bild) und B „Vier Handys" (Kobaltblau, Newsreader,
+  die vier Handy-Screens als Hero, keine Akzentfarbe). Echte Screenshots der
+  vier Projekte per `scripts/projekt-screenshots.mjs` in `public/bilder/`.
+  **Luca hat noch nicht gewählt**; die Design-Fragen (Fragebogen D) stehen
+  auf der Leinwand. Bis zur Wahl bleibt das Platzhalter-Design im Code.
 
 ## Projekt
 
@@ -65,6 +74,9 @@ PLATZHALTER_STRENG=1 pnpm test:e2e e2e/platzhalter.spec.ts   # vor dem Go-live
 
 pnpm start -p 3100 &          # für Screenshots, dann:
 OUT=/tmp/shots node scripts/screenshots.mjs   # alle Seiten der Sitemap in 390/768/1440
+
+node scripts/projekt-screenshots.mjs [slug]   # Projektbilder neu aufnehmen (Live-Adressen im Script)
+open docs/design/richtungen/index.html        # die zwei Design-Richtungen ansehen
 ```
 
 ## Struktur
@@ -88,7 +100,11 @@ lib/kontakt/          vCard, Kalenderdatei (Serien, Einzeltermine), Links (tel, 
 lib/site.ts           SITE_URL, OEFFENTLICHE_HOSTS (nur die werden indexiert)
 e2e/                  seiten (Rauchtest, Überlauf), a11y (axe, 390/1440), platzhalter,
                       kontaktformular
-scripts/              screenshots.mjs, bilder.mjs (Varianten ohne Metadaten), server-einrichten.sh
+scripts/              screenshots.mjs, bilder.mjs (Varianten ohne Metadaten), server-einrichten.sh,
+                      projekt-screenshots.mjs (Startseiten der Projekte in 390 und 1440 px → public/bilder)
+public/bilder/        projekt-<slug>-handy-{390,780} und -desktop-{720,1200,1800} als AVIF/WebP/JPEG
+docs/design/richtungen/  Design-Richtungen A und B (index.html = Leinwand, a-*/b-* = Entwürfe), Archiv
+screenshots/          Originale und Durchsichts-Screenshots, nicht im Repo
 ```
 
 Alias `@/*` auf das Repo-Root. Kein `src/`.
@@ -140,9 +156,19 @@ Verbindlich, in dieser Reihenfolge (leitfaden/06):
 
 ## Design
 
-Noch Platzhalter-Design (neutral, hell). ‹Nach der Wahl der Richtung
-(leitfaden/01, Phase 4) hier festhalten: Richtung und Datum, Farben mit
-Kontrastwerten, Schrift, Skala, Bildbehandlung, was verboten ist.›
+Noch Platzhalter-Design (neutral, hell). Zwei Richtungen liegen seit dem
+25.09.2026 in `docs/design/richtungen/` (Leinwand `index.html`; Tokens,
+Schrift und Kontraste stehen als Kommentar in jedem Entwurf). ‹Nach der
+Wahl der Richtung (leitfaden/01, Phase 4) hier festhalten: Richtung und
+Datum, Farben mit Kontrastwerten, Schrift, Skala, Bildbehandlung, was
+verboten ist.›
+
+Fest, unabhängig von der Richtung (Entscheidung 25.09.2026): Die
+Projektbilder sind **echte Screenshots der Live-Seiten** (erster Bildschirm
+in 390 × 844 und 1440 × 900, doppelte Auflösung), aufgenommen mit
+`scripts/projekt-screenshots.mjs` und über `scripts/bilder.mjs` als
+AVIF/WebP/JPEG in `public/bilder/`. Keine gestalteten Vorschaubilder, keine
+Geräterahmen; ändert sich ein Projekt, wird das Bild neu aufgenommen.
 
 Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
 

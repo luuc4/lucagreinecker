@@ -38,3 +38,6 @@ next-env.d.ts
 
 # persönliche Claude-Code-Einstellungen (die geteilten liegen in .claude/settings.json)
 .claude/settings.local.json
+
+# Screenshots für die Durchsicht und die Originale der Projektbilder
+/screenshots/
