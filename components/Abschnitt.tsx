@@ -99,9 +99,13 @@ export type Fakt = { begriff: string; wert: ReactNode };
 
 export function Fakten({
   zeilen,
+  betont = "wert",
   className,
 }: {
-  zeilen: Fakt[];
+  zeilen: readonly Fakt[];
+  // Was in Tinte steht: der Wert (Projektfakten) oder der Begriff (Paket,
+  // dort ist der Begriff die Aussage und der Wert die Erklärung).
+  betont?: "wert" | "begriff";
   className?: string;
 }) {
   return (
@@ -111,8 +115,21 @@ export function Fakten({
           key={zeile.begriff}
           className="grid grid-cols-[7rem_minmax(0,1fr)] gap-3 border-b border-linie py-3 lg:grid-cols-[9rem_minmax(0,1fr)]"
         >
-          <dt className="text-fg-leise">{zeile.begriff}</dt>
-          <dd className="zahlen">{zeile.wert}</dd>
+          <dt
+            className={betont === "begriff" ? "font-medium" : "text-fg-leise"}
+          >
+            {zeile.begriff}
+          </dt>
+          {/* wrap-anywhere: ein langes Wort (Domain, Fachbegriff) bricht in
+              der schmalen Spalte, statt die Seite bei 360 px zu verbreitern. */}
+          <dd
+            className={clsx(
+              "wrap-anywhere zahlen",
+              betont === "begriff" && "text-fg-leise",
+            )}
+          >
+            {zeile.wert}
+          </dd>
         </div>
       ))}
     </dl>

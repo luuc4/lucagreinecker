@@ -58,12 +58,68 @@ export const ANFRAGE = {
   allgemein: "Hallo, ich habe eine Frage: ",
 } as const;
 
+// „Rundum-sorglos-Paket" (Lucas Stichworte, 25.09.2026: „server setup /
+// erstellung, umami reichweitenmessung immer dabei usw."). Die Punkte
+// jenseits seiner Stichworte stammen aus dem Leitfaden (Server, Domains,
+// Mails, Backups, Rechtstexte) und werden von ihm bestätigt (TODO.md,
+// Zuarbeit); Sätze dazu nur von ihm.
+export const PAKET = {
+  titel: "Rundum-sorglos-Paket",
+  satz: null as string | null,
+  punkte: [
+    {
+      begriff: "Website",
+      wert: "Design und Umsetzung, Texte und Bilder eingebaut",
+    },
+    {
+      begriff: "Server",
+      wert: "Eigener Server, Setup und Einrichtung, Domain, DNS, Zertifikate, Mail-Versand",
+    },
+    {
+      begriff: "Reichweite",
+      wert: "Umami-Reichweitenmessung, immer dabei, ohne Cookie-Banner",
+    },
+    { begriff: "Betrieb", wert: "Updates, Backups, Überwachung" },
+    { begriff: "Recht", wert: "Impressum und Datenschutz vorbereitet" },
+    { begriff: PLATZHALTER, wert: "Weitere Punkte des Pakets („usw.“)" },
+  ],
+} as const;
+
+// Über mich: Fakten aus der alten Startseite (Tag statisch-2026-09,
+// Abschnitt „Über mich"); die Sätze dazu schreibt Luca (`saetze`).
+export const UEBER_MICH = {
+  art: "Luca Greinecker, Bludenz",
+  saetze: [] as string[],
+  fakten: [
+    {
+      begriff: "Beruf",
+      wert: "Continuous Improvement / Lean Leader bei Ball Beverage Packaging in Ludesch",
+    },
+    {
+      begriff: "Ausbildung",
+      wert: "Informatik (BSc, Digital Innovation) an der FH Vorarlberg, berufsbegleitend, 2026; Lehre Elektrotechnik bei Ball",
+    },
+    {
+      begriff: "Werdegang",
+      wert: "Lehre Elektrotechnik bei Ball, Instandhaltung im Schichtbetrieb, Zivildienst beim Roten Kreuz, Trainee-Programm bei Ball, heute Lean Leader",
+    },
+    {
+      begriff: "Nebenbei",
+      wert: "Websites und Web-Apps für Leute und Betriebe in Vorarlberg",
+    },
+    { begriff: "Abseits", wert: "Wandern, Skifahren, Reisen" },
+  ],
+} as const;
+
 export type NavEintrag = { href: string; label: string };
 
-// Hauptnavigation (Kopf, Menü am Handy, Fuß). Neue Seiten hier eintragen
-// und in app/sitemap.ts.
+// Hauptnavigation (Kopf, Menü am Handy, Fuß). Kontakt steht nicht hier:
+// das ist der gelbe Knopf im Kopf (AGENTS.md „Design"), sonst stünde er
+// doppelt. Neue Seiten hier eintragen und in app/sitemap.ts.
 export const NAVIGATION: NavEintrag[] = [
-  { href: "/kontakt", label: "Kontakt" },
+  { href: "/#projekte", label: "Projekte" },
+  { href: "/#paket", label: "Paket" },
+  { href: "/ueber-mich", label: "Über mich" },
 ];
 
 export const RECHTLICHES: NavEintrag[] = [

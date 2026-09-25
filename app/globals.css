@@ -150,6 +150,46 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Die Reihe der vier Handys (Design „Reihe"): am Handy eine Wischleiste
+   mit Scroll-Snap, die bis an den Rand des Inhaltsrahmens läuft (ein Stück
+   des nächsten Handys bleibt sichtbar), ab lg vier Spalten ohne Scrollen.
+   Der Rand entspricht dem von `inhalt`, damit das erste Handy bündig mit
+   dem Text steht. */
+@utility wischleiste {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 76%;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-inline: calc(-1 * max(1.25rem, env(safe-area-inset-left)))
+    calc(-1 * max(1.25rem, env(safe-area-inset-right)));
+  padding-inline: max(1.25rem, env(safe-area-inset-left))
+    max(1.25rem, env(safe-area-inset-right));
+  scroll-padding-inline: max(1.25rem, env(safe-area-inset-left));
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @variant md {
+    grid-auto-columns: 42%;
+    margin-inline: calc(-1 * max(2rem, env(safe-area-inset-left)))
+      calc(-1 * max(2rem, env(safe-area-inset-right)));
+    padding-inline: max(2rem, env(safe-area-inset-left))
+      max(2rem, env(safe-area-inset-right));
+    scroll-padding-inline: max(2rem, env(safe-area-inset-left));
+  }
+  @variant lg {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-columns: auto;
+    gap: 1.5rem;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
 /* Offene Stelle im Text ([TEXT LUCA]): leise und gepunktet unterstrichen,
    damit sie beim Durchsehen auffällt, ohne wie ein Fehler zu wirken. */
 @utility platz {

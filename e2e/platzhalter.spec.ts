@@ -9,7 +9,12 @@ import { seitenAusSitemap } from "./hilfen";
 // Lauf ebenso wie ein Eintrag, der erledigt ist und hier noch steht. Mit
 // PLATZHALTER_STRENG=1 (vor dem Domainumzug) muss sie leer sein.
 const OFFEN: Record<string, string> = {
-  "/": "Beschreibung der Seite (SEITE.beschreibung)",
+  "/": "Satz über Luca, Paket-Satz und -Punkte, Anfrage-Sätze (statisch.ts)",
+  "/projekte/oz-calisthenics": "Lucas Satz zum Projekt (projekte.ts)",
+  "/projekte/usta-streetfood": "Lucas Satz zum Projekt (projekte.ts)",
+  "/projekte/punktetafel": "Lucas Satz zum Projekt (projekte.ts)",
+  "/projekte/jonathan-walch": "Lucas Satz zum Projekt (projekte.ts)",
+  "/ueber-mich": "Sätze über Luca (UEBER_MICH.saetze)",
   "/kontakt": "Telefon, E-Mail, Adresse",
   "/impressum": "alle Angaben (Kunde bestätigt, leitfaden/07)",
   "/datenschutz": "ganzer Text (Entwurf, dann Prüfung)",

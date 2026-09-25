@@ -39,6 +39,11 @@ export function Fuss() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/kontakt" className={zeilenLinkKlassen}>
+                Kontakt
+              </Link>
+            </li>
           </ul>
         </nav>
 
