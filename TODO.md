@@ -17,8 +17,8 @@ Versionen, Wahl Version 1 „Reihe" mit dem Kickoff-Wortlaut; Tokens,
 Schrift und Bausteine im Code (AGENTS.md „Design"). Entwürfe in
 `docs/design/richtungen/` (Artifact
 `https://claude.ai/artifact/25576desS8jAzH66a8AtPe`), echte Screenshots der
-vier Projekte in `public/bilder/`. `neu.` zeigt den neuen Stand erst nach
-Lucas Docker-Neustart („Luca – Server").
+vier Projekte in `public/bilder/`. Der Deploy läuft seit Lucas
+Docker-Neustart wieder; `neu.` zeigt den jeweils letzten Push.
 
 **Nächste Sitzung zuerst:** Etappe 2 nach der Liste unten, Vorlage für
 jeden Block sind `docs/design/richtungen/ab-start.html?v=1` und
@@ -111,16 +111,11 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
 - [x] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
 - [x] `! DEPLOYEN=1 bash scripts/infra.sh`
-- [ ] **Deploy repariert (seit 25.09.2026 scheitert jeder Deploy):** Nach
-      dem Coolify-Update auf 4.3.23 meldet Docker 27.5.1 das IPv6-Gateway
-      des `coolify`-Netzes als `fde4:…::1/64`, `docker compose up` bricht
-      mit `ParseAddr … want colon (at "/64")` ab (Coolify-Issue 8649,
-      Docker-Fehler moby 49520). Docker neu starten (kurze Unterbrechung
-      für punktetafel, Umami, ntfy, Uptime Kuma):
-      `! ssh root@178.104.239.44 "docker network inspect coolify -f '{{range .IPAM.Config}}{{.Gateway}} {{end}}'; systemctl restart docker; sleep 25; docker ps --format '{{.Names}} {{.Status}}'"`,
-      dann `! bash scripts/deploy.sh` (stößt den Deploy an und wartet auf
-      das Ergebnis). Bleibt es beim Fehler: IPv6 im Coolify-Netz abschalten
-      oder Docker aktualisieren (SETUP.md, „Deploy").
+- [x] Deploy repariert (25.09.2026, Luca): Nach dem Coolify-Update auf
+      4.3.23 scheiterte jeder Deploy an `ParseAddr("fde4:…::1/64")`
+      (Docker 27.5.1, Coolify-Issue 8649). `systemctl restart docker` auf
+      dem Server, danach `bash scripts/deploy.sh` – Deployment um 17:47
+      durch, seither deployt jeder Push wieder (SETUP.md, „Deploy").
 - [ ] ntfy: Topic für Anfragen auf `ntfy.punktetafel.at`, `NTFY_URL` und
       `NTFY_TOKEN` in secrets.env
 - [ ] Uptime Kuma (`uptime.punktetafel.at`): Monitor auf
@@ -156,6 +151,7 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ## Bugs und Kleinigkeiten
 
+- Coolify-Deploy-Log zeigt „Healthcheck logs: /bin/sh: curl: not found" (Alpine-Image ohne curl); der Status ist trotzdem „healthy" über den HEALTHCHECK im Dockerfile. Prüfen, ob Coolifys eigener Check damit überhaupt greift (Coolify → App → Healthcheck), sonst auf den Docker-Check stellen.
 - CI meldet Erfolg, obwohl der Coolify-Deploy scheitert: der Schritt
   „Coolify deployen" stellt nur in die Warteschlange (`queued`). Der
   Schritt soll das Deployment (`/api/v1/deployments/<uuid>`) bis `finished`

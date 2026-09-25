@@ -35,10 +35,9 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   vier Projekte per `scripts/projekt-screenshots.mjs` in `public/bilder/`.
   Die Design-Fragen (Fragebogen D) standen auf der Leinwand; Lucas Wahl
   kam am selben Tag (Teil 2). Bis zur Wahl der Version bleibt das
-  Platzhalter-Design im Code. CI grün, aber der Coolify-Deploy dieses
-  Stands ist fehlgeschlagen (IPv6-Gateway, TODO.md „Luca – Server");
-  `neu.` läuft weiter mit dem Image von Etappe 0, sichtbar ist kein
-  Unterschied.
+  Platzhalter-Design im Code. Der Coolify-Deploy scheiterte an diesem Tag
+  am IPv6-Gateway des Servers (SETUP.md „Deploy"); nach Lucas
+  Docker-Neustart um 17:47 lief er wieder durch.
 - 25.09.2026 (Etappe 1, Teil 2 – Kombination): Luca wählte Design und
   Schrift von A mit dem Aufbau von B und gab den Inhalt
   „Rundum-sorglos-Paket" dazu (Entscheidungen). Daraus drei Versionen in
