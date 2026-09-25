@@ -24,7 +24,8 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   und Tag `statisch-2026-09`; GitHub Pages liefert sie bis zum Umzug aus
   `alt` unter `lucagreinecker.at` aus. Kickoff-Antworten unten
   („Projekt", „Entscheidungen"). Platzhalter-Design bis zur Wahl der
-  Richtung.
+  Richtung. Läuft unter `https://neu.lucagreinecker.at` (Coolify auf Lucas
+  Server, SETUP.md).
 
 ## Projekt
 

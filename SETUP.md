@@ -10,9 +10,11 @@ dieser Datei.
 
 ## Stand
 
-25.09.2026: Repo und CI stehen, die Coolify-App ist noch nicht angelegt
-(TODO.md, Zuarbeit Luca). Die alte statische Seite läuft bis zum Umzug
-über GitHub Pages aus Branch `alt` unter `lucagreinecker.at`.
+25.09.2026: `https://neu.lucagreinecker.at` läuft (Coolify-App
+`lucagreinecker-web`, running:healthy, Let's Encrypt, noindex). Jeder Push
+auf `main` deployt dorthin. Die alte statische Seite läuft bis zum Umzug
+über GitHub Pages aus Branch `alt` unter `lucagreinecker.at`. Noch offen:
+Umami, ntfy (TODO.md).
 
 | Was        | Wert                                                                                                  |
 | ---------- | ----------------------------------------------------------------------------------------------------- |

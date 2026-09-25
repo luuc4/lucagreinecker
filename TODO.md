@@ -6,10 +6,10 @@ nur im Chat.
 
 ## Stand (25.09.2026)
 
-Etappe 0 im Repo erledigt: Starter im bestehenden Repo, alte Seite auf
-Branch `alt` (Pages baut von dort), Doku aus dem Kickoff, CI,
-`scripts/infra.sh`. Offen aus Etappe 0 ist nur Lucas Teil (Zuarbeit Luca:
-DNS, Coolify-Tokens, secrets.env, Image öffentlich, Script).
+Etappe 0 erledigt: Starter im bestehenden Repo, alte Seite auf Branch
+`alt` (Pages baut von dort), Doku aus dem Kickoff, CI, `scripts/infra.sh`;
+`https://neu.lucagreinecker.at` zeigt die Platzhalterseite (health ok,
+robots sperrt, noindex, CSP und HSTS da). Offen: Umami, ntfy, Renovate.
 
 **Nächste Sitzung zuerst (Luca will die Seite mit Fable bauen):** Skill
 `neues-webprojekt`, Phase 4 (Design) für Etappe 1. AGENTS.md
@@ -39,8 +39,7 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 - [x] Fragebogen durchgegangen, Antworten in AGENTS.md und SETUP.md
 - [x] Starter im Repo `luuc4/lucagreinecker`, alte Seite auf `alt`, CI
-- [ ] `neu.lucagreinecker.at` zeigt die Platzhalterseite (noindex) –
-      wartet auf Zuarbeit Luca
+- [x] `neu.lucagreinecker.at` zeigt die Platzhalterseite (noindex)
 - [ ] Umami: Website in `analytics.laendle-isst.at`, ID in secrets.env,
       Rebuild
 - [ ] Renovate-App für das Repo (wie bei OZ)
@@ -82,10 +81,9 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ### Luca – Server (Etappe 0)
 
-- [ ] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
-- [ ] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
-      (SETUP.md, „Von null auf laufend", Schritt 2–3)
-- [ ] `! DEPLOYEN=1 bash scripts/infra.sh`
+- [x] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
+- [x] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
+- [x] `! DEPLOYEN=1 bash scripts/infra.sh`
 - [ ] ntfy: Topic für Anfragen, `NTFY_URL` und `NTFY_TOKEN` in secrets.env
 - [ ] Server-Größe nachsehen (Hetzner-Console: RAM), in SETUP.md
 
@@ -105,6 +103,8 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 ## Offene Entscheidungen
 
 - Repo nach dem Umzug privat? (AGENTS.md, Entscheidungen)
+- Coolify auf diesem Server meldet per API `4.0.0`, OZ läuft auf 4.3.21:
+  prüfen und ggf. updaten (betrifft auch punktetafel)
 - Coolify-Dashboard auf Port 8000 ist von außen offen: Instanz-Domain mit
   HTTPS und Port 8000 in der Hetzner-Firewall schließen (betrifft auch
   punktetafel)
