@@ -394,7 +394,7 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
 - **26.09.2026 – Nur das erste Handy-Bild lädt sofort, die drei anderen
   lazy – gemessen, nicht geraten.** Chrome (DevTools „Issues") meldete die
   Bilder 2–4 der Startseite als lazy im sichtbaren Bereich; ein Versuch mit
-  allen vier `eager` (Commit 69c217e, live 10:40–10:50) machte die
+  allen vier `eager` (Commit 69c217e, live etwa 10:38–10:47) machte die
   Startseite am Handy langsamer: LCP 2,0 → 2,8 s, Leistung 99 → 96
   (Lighthouse, gedrosseltes 4G), weil die drei Bilder mit dem ersten um die
   Leitung konkurrieren;
