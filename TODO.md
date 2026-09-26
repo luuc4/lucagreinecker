@@ -58,8 +58,8 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] Fragebogen durchgegangen, Antworten in AGENTS.md und SETUP.md
 - [x] Starter im Repo `luuc4/lucagreinecker`, alte Seite auf `alt`, CI
 - [x] `neu.lucagreinecker.at` zeigt die Platzhalterseite (noindex)
-- [ ] Umami: Website in `analytics.punktetafel.at`, ID in secrets.env,
-      Rebuild
+- [x] Umami: Website in `analytics.punktetafel.at`, ID in secrets.env,
+      Rebuild (26.09.2026, Script auf `neu.` geladen, CSP passt)
 - [ ] Renovate-App für das Repo (wie bei OZ)
 
 ### Etappe 1 – Design (mit Fable)
