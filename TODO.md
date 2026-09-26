@@ -130,14 +130,17 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
   1. **WKO/Anwalt:** Angebot „Rundum-sorglos-Paket" ohne
      Gewerbeberechtigung – ist die Seite damit ein kommerzieller Dienst
      (§ 5 ECG), reicht das Impressum, braucht es ein Gewerbe?
-  2. **Server-Fakten:** Server-Protokolle – Docker-Log-Rotation
-     (`daemon.json`), Traefik-Access-Log an oder aus, journald; danach
-     „nach kurzer Zeit" im Absatz „Hosting und Server-Protokolle" durch die
-     Frist ersetzen (oder den Absatz kürzen, wenn Traefik gar kein
-     Access-Log schreibt). Ausgabe: `scripts/server-fakten.sh` (Zuarbeit).
-  3. **Server-Fakten:** ntfy `cache-duration` (Standard 12 h) und Version;
-     „hält sie kurz zum Zustellen vor" im Absatz „Kontaktformular" durch die
-     Frist ersetzen. Ausgabe: `scripts/server-fakten.sh`.
+  2. ~~Server-Protokolle~~ erledigt 26.09.2026 (`scripts/server-fakten.sh`,
+     Luca): Traefik schreibt kein Access-Log; Docker-Logs `json-file` mit
+     `max-size 10m`, `max-file 3`; die App loggt keine IP-Adressen. Absatz
+     „Hosting und Server-Protokolle" danach neu (kein Zugriffsprotokoll,
+     Betriebslogs ohne IP, höchstens 30 MB je Dienst).
+  3. ~~ntfy~~ erledigt 26.09.2026: ntfy 2.26.3, `NTFY_CACHE_DURATION=24h`
+     (nicht der Standard 12 h), `NTFY_UPSTREAM_BASE_URL=https://ntfy.sh` –
+     upstream nur Nachrichten-ID und SHA-256 der Topic-URL, Zustellung über
+     Firebase und APNs. Absatz „Kontaktformular" nennt jetzt 24 Stunden,
+     den Weg über ntfy.sh/Firebase/Apple ohne Inhalt und die Drossel (IP im
+     Arbeitsspeicher bis zum Neustart).
   4. **WKO/Anwalt:** Antwort per Hotmail. Der Absatz nennt seit dem
      26.09.2026 Microsoft Ireland Operations Ltd. als Vertragspartner, die
      Verarbeitung in den USA und die Zertifizierung nach dem EU‑US Data
@@ -254,7 +257,8 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       (`scripts/ntfy-uebernehmen.sh`, 26.09.2026); eigenes Topic bei Bedarf
       nach SETUP.md
 - [x] Uptime Kuma: braucht es nicht (Luca, 26.09.2026)
-- [x] Server-Größe: CPX22, 8 GB (laendle-isst SETUP.md), in SETUP.md
+- [x] Server-Größe: CPX22 mit 3,8 GB RAM gemessen (26.09.2026; die 8 GB aus
+      laendle-isst SETUP.md stimmten nicht), in SETUP.md
 
 ### Luca – Inhalte
 
@@ -273,9 +277,12 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 - [ ] Texte auf `https://neu.lucagreinecker.at` gegenlesen (Start, die vier
       Projektseiten, Über mich, Kontakt) und sagen, was nicht nach dir klingt
-- [ ] `! bash scripts/server-fakten.sh` – liest nur (Log-Rotation, Traefik,
-      ntfy, Umami, Speicher), die Ausgabe darf in den Chat; daraus werden
-      die Prüfstellen 2 und 3 und die Zeile ‹RAM› in SETUP.md
+- [x] `! bash scripts/server-fakten.sh` ausgeführt (26.09.2026); daraus
+      Prüfstellen 2 und 3 und die RAM-Zeile in SETUP.md. Die Spaltenabfrage
+      für Umami scheiterte an der psql-Syntax (korrigiert), und der Filter
+      ließ den Postgres-Benutzernamen von Umami und ein
+      Platzhalter-SMTP-Passwort durch (Filter geschärft, kein echtes
+      Geheimnis betroffen)
 - [x] Renovate-App für `lucagreinecker` freigegeben und im Mend-Portal auf
       „Interactive" gestellt, ebenso `ozcalisthenics` (26.09.2026).
       `usta-streetfood` bleibt still, bis dessen `renovate.json` passt
@@ -309,6 +316,13 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
   Schritt soll das Deployment (`/api/v1/deployments/<uuid>`) bis `finished`
   oder `failed` abfragen und bei `failed` den Job rot machen; danach in die
   Vorlage (`starter/.github/workflows/ci.yml`).
+
+- Server (Befund `scripts/server-fakten.sh`, 26.09.2026): das
+  System-Journal belegt 3,5 GB ohne Grenze (`journald.conf` Standard);
+  `SystemMaxUse=500M` setzen spart Platz (Platte 20 % belegt, eilt nicht).
+  ntfy hat Platzhalter-SMTP-Werte aus der Coolify-Vorlage
+  (`smtp.your-domain.de`); schadet nicht, solange niemand Mail-Weiterleitung
+  nutzt – betrifft die punktetafel-Instanz.
 
 ## Ideen (nicht eingeplant)
 

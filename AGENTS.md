@@ -92,6 +92,15 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   Repo korrigiert (Base `main`, kein Auto-Merge);
   die Renovate-App installiert Luca (TODO.md). Offen: Gegenlesen, Server-
   Fakten, WKO-Fragen (1, 4), Zustimmungen (6), Renovate-App, Domainumzug.
+- 26.09.2026 (Etappe 3, Teil 3 – Updates, Screenshots, Server-Fakten):
+  Updates vorgezogen (pnpm 12, TypeScript 6, Vitest 5, Actions, Runner
+  26.04; ESLint 10 und TS 7 zurückgehalten, Entscheidungen); Projekt-
+  Screenshots neu (USTA neue Startseite) mit 560/1440 px; aus Lucas Lauf
+  von `scripts/server-fakten.sh` die Prüfstellen 2 und 3 erledigt:
+  kein Zugriffsprotokoll, Betriebslogs ohne IP, ntfy 24 h mit Upstream
+  ntfy.sh (nur ID), Drossel-IP im Arbeitsspeicher – Datenschutz danach
+  angepasst. Offen für den Go-live: Gegenlesen, WKO (1, 4), Zustimmungen
+  (6), Lucas Entscheidung zu OZ/USTA-Links (TODO.md), dann der Umzug.
 
 ## Projekt
 

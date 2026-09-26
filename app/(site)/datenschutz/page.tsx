@@ -49,6 +49,12 @@ export default function Datenschutz() {
               "Diese Website setzt keine Cookies, lädt nichts von fremden Servern (keine Schriften, Scripts, Karten oder Videos von Dritten) und gibt keine Daten an Werbenetzwerke weiter. Was beim Aufruf, bei der Statistik und beim Kontaktformular passiert, steht hier.",
           },
           {
+            // Geprüft am 26.09.2026 am Server (scripts/server-fakten.sh):
+            // Traefik ohne accesslog-Parameter, also kein Zugriffsprotokoll;
+            // Docker-Logs json-file mit max-size 10m, max-file 3 je
+            // Container. Die App loggt keine IP-Adressen (console.* nur in
+            // lib/site.ts, lib/betrieb/start.ts, lib/anfrage/actions.ts mit
+            // ohneAdressen, instrumentation.ts mit Pfad ohne Query).
             titel: "Hosting und Server-Protokolle",
             inhalt: (
               <>
@@ -56,15 +62,17 @@ export default function Datenschutz() {
                   Die Website läuft auf einem Server, den ich selbst betreibe,
                   gemietet bei der Hetzner Online GmbH (Industriestraße 25,
                   91710 Gunzenhausen, Deutschland), Standort Nürnberg. Beim
-                  Aufruf einer Seite verarbeitet der Server die IP-Adresse,
-                  Datum und Uhrzeit, die aufgerufene Adresse, den übertragenen
-                  Umfang und die Kennung des Browsers.
+                  Aufruf einer Seite verarbeitet der Server die IP-Adresse
+                  deines Geräts, Datum und Uhrzeit, die aufgerufene Adresse und
+                  die Kennung des Browsers. Das ist technisch nötig, um dir die
+                  Seite zu schicken (Art. 6 Abs. 1 lit. f DSGVO).
                 </p>
                 <p>
-                  Diese Protokolle brauche ich, um die Seite auszuliefern,
-                  Fehler zu finden und Angriffe abzuwehren (Art. 6 Abs. 1 lit. f
-                  DSGVO). Ich werte sie nicht aus und gebe sie nicht weiter; sie
-                  werden nach kurzer Zeit gelöscht.
+                  Ein Zugriffsprotokoll mit diesen Daten schreibt der Server
+                  nicht. Die Website protokolliert nur Betriebsmeldungen und
+                  Fehler, ohne IP-Adresse; diese Protokolle werden nach Größe
+                  überschrieben (höchstens 30 MB je Dienst). Ich gebe sie nicht
+                  weiter.
                 </p>
               </>
             ),
@@ -102,6 +110,12 @@ export default function Datenschutz() {
             ),
           },
           {
+            // Geprüft am 26.09.2026 am Server (scripts/server-fakten.sh):
+            // ntfy 2.26.3, NTFY_CACHE_DURATION=24h, NTFY_UPSTREAM_BASE_URL=
+            // https://ntfy.sh – upstream geht nur ein Poll-Request mit
+            // Nachrichten-ID und SHA-256 der Topic-URL (docs.ntfy.sh/config,
+            // „iOS instant notifications“). Drossel: lib/anfrage/drossel.ts,
+            // IP als Schlüssel im Arbeitsspeicher, weg mit jedem Neustart.
             titel: "Kontaktformular",
             inhalt: (
               <>
@@ -112,7 +126,22 @@ export default function Datenschutz() {
                   mein Handy. Dafür nutze ich ntfy, einen
                   Benachrichtigungsdienst, der ebenfalls auf meinem eigenen
                   Server läuft. Die Website speichert die Anfrage nicht; ntfy
-                  hält sie kurz zum Zustellen vor.
+                  hält sie höchstens 24 Stunden vor, damit sie auch ankommt,
+                  wenn mein Handy gerade offline ist, und löscht sie dann.
+                </p>
+                <p>
+                  Damit die Nachricht sofort am Handy erscheint, meldet ntfy
+                  über den Dienst ntfy.sh, Google Firebase und Apples
+                  Push-Dienst nur, dass eine neue Nachricht wartet: mit einer
+                  zufälligen Kennung, ohne Inhalt und ohne deine Angaben. Die
+                  Nachricht selbst holt das Handy direkt von meinem Server.
+                </p>
+                <p>
+                  Um Massen-Anfragen zu bremsen, merkt sich die Website beim
+                  Absenden deine IP-Adresse im Arbeitsspeicher (höchstens fünf
+                  Anfragen je Stunde und Adresse). Sie wird nicht auf die
+                  Festplatte geschrieben und ist mit dem nächsten Neustart der
+                  Website weg (Art. 6 Abs. 1 lit. f DSGVO).
                 </p>
                 <p>
                   Ich verwende die Angaben nur, um dir zu antworten (Art. 6 Abs.

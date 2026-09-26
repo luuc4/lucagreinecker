@@ -24,7 +24,9 @@ SERVER="${SERVER:-root@178.104.239.44}"
 
 ssh -o BatchMode=yes -o ConnectTimeout=10 "$SERVER" 'bash -s' <<'REMOTE'
 set +e
-geheim='TOKEN|PASSWORD|SECRET|DATABASE_URL|HASH_SALT|APP_KEY|_KEY='
+# Alles, was nach Zugang aussieht, fliegt raus – auch Benutzernamen und
+# Platzhalter-Passwörter (Befund 26.09.2026: PASS und USER kamen durch).
+geheim='TOKEN|PASS|SECRET|DATABASE_URL|HASH_SALT|_KEY=|USER|AUTH_FILE'
 
 echo "## Server"
 hostname
@@ -75,7 +77,7 @@ suffix=${umami##*-}
 db=$(docker ps --format '{{.Names}}' | grep -m1 "postgresql-$suffix")
 echo "Datenbank-Container: $db (derselbe Server)"
 echo "Spalten der Tabelle session:"
-docker exec "$db" sh -c "psql -U \"\$POSTGRES_USER\" -d \"\$POSTGRES_DB\" -v t=session -Atc \"select string_agg(column_name, ', ' order by ordinal_position) from information_schema.columns where table_name = :'t'\"" 2>&1
+docker exec "$db" sh -c "psql -U \"\$POSTGRES_USER\" -d \"\$POSTGRES_DB\" -Atc \"select string_agg(column_name, ', ' order by ordinal_position) from information_schema.columns where table_name = 'session'\"" 2>&1
 echo "Spalten der Tabelle website_event:"
-docker exec "$db" sh -c "psql -U \"\$POSTGRES_USER\" -d \"\$POSTGRES_DB\" -v t=website_event -Atc \"select string_agg(column_name, ', ' order by ordinal_position) from information_schema.columns where table_name = :'t'\"" 2>&1
+docker exec "$db" sh -c "psql -U \"\$POSTGRES_USER\" -d \"\$POSTGRES_DB\" -Atc \"select string_agg(column_name, ', ' order by ordinal_position) from information_schema.columns where table_name = 'website_event'\"" 2>&1
 REMOTE
