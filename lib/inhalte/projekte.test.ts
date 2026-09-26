@@ -11,6 +11,14 @@ describe("PROJEKTE", () => {
     expect(new Set(slugs).size).toBe(slugs.length);
   });
 
+  it.each(PROJEKTE.filter((p) => p.url === null))(
+    "$slug hat ohne Knopf einen Stand-Hinweis",
+    ({ stand }) => {
+      expect(stand?.kurz).toBeTruthy();
+      expect(stand?.lang).toBeTruthy();
+    },
+  );
+
   it.each(PROJEKTE.filter((p) => p.url !== null))(
     "$slug verlinkt per https genau auf $domain",
     ({ url, domain }) => {

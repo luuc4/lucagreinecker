@@ -66,6 +66,9 @@ export default async function Projektseite({ params }: Props) {
               zeilen={[
                 { begriff: "Kunde", wert: projekt.kunde },
                 { begriff: "Zeitraum", wert: projekt.zeitraum },
+                ...(projekt.stand
+                  ? [{ begriff: "Stand", wert: projekt.stand.lang }]
+                  : []),
                 { begriff: "Seiten", wert: projekt.seiten },
                 { begriff: "Funktionen", wert: projekt.funktionen },
                 { begriff: "Stack", wert: projekt.stack },

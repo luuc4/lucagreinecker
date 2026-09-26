@@ -243,8 +243,10 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       Search Console (Domain-Property `lucagreinecker.at`, TXT-Eintrag bei
       cloudpit, dann Sitemap `https://lucagreinecker.at/sitemap.xml`
       einreichen); prüfen, ob der Test-Push angekommen ist
-- [ ] Nach dem OZ-Umzug: `url` in `projekte.ts` auf
-      `https://oz-calisthenics.at`, OZ neu aufnehmen
+- [ ] Nach dem OZ-Umzug (geplant Ende Oktober 2026): in `projekte.ts`
+      `url` auf `https://oz-calisthenics.at`, `stand` auf `null`, OZ wieder
+      an die gewünschte Stelle (seit 26.09.2026 an 3. Stelle nach der
+      Punktetafel, Luca), OZ neu aufnehmen
       (`node scripts/projekt-screenshots.mjs oz-calisthenics`)
 - [ ] Repo privat? Pages ist aus, damit fällt der Grund für „öffentlich"
       weg (Offene Entscheidungen). Vorher klären: das Image in GHCR ist

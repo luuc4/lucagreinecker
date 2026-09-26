@@ -430,6 +430,13 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   WKO-Antwort online; Prüfstellen 1 (Gewerbe) und 4 (Hotmail) bleiben in
   TODO.md offen, Luca liest die Texte noch gegen. Ablauf in SETUP.md
   („Go-live") mit `scripts/golive.sh`.
+- **26.09.2026 – OZ als „in Arbeit" an 3. Stelle** (Luca: „schreiben wir
+  dazu, dass das noch in arbeit ist, release ende oktober, bis dahin ist
+  alte version online … an 3. stelle nach punktetafel"). `stand` in
+  `projekte.ts`: kurz als eigene Zeile unter der Karte auf der Startseite
+  (Tinte statt leise, damit er sich abhebt), lang als Zeile „Stand" in den
+  Fakten der Projektseite. Reihenfolge USTA, Punktetafel, OZ, Jonathan.
+  Test: ein Projekt ohne Knopf braucht einen Stand-Hinweis.
 - **26.09.2026 – Nur das erste Handy-Bild lädt sofort, die drei anderen
   lazy – gemessen, nicht geraten.** Chrome (DevTools „Issues") meldete die
   Bilder 2–4 der Startseite als lazy im sichtbaren Bereich; ein Versuch mit

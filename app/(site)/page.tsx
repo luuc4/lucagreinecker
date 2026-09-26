@@ -54,6 +54,11 @@ export default function Startseite() {
                   <p className="mt-1 text-[0.9375rem] leading-snug text-fg-leise">
                     {projekt.kurz}
                   </p>
+                  {projekt.stand && (
+                    <p className="mt-1 text-[0.9375rem] leading-snug">
+                      {projekt.stand.kurz}
+                    </p>
+                  )}
                 </figcaption>
               </figure>
             </li>
