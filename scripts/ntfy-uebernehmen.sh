@@ -41,7 +41,7 @@ import json, sys
 apps = json.load(sys.stdin)
 print(next((a["uuid"] for a in apps if "punktetafel" in (a.get("name") or "").lower()), ""))
 ')
-[ -n "$PT" ] || { echo "Keine App mit „punktetafel" im Namen in Coolify gefunden." >&2; exit 1; }
+[ -n "$PT" ] || { echo "Keine App mit punktetafel im Namen in Coolify gefunden." >&2; exit 1; }
 
 # Beide Werte in einem Rutsch nach secrets.env, ohne sie anzuzeigen.
 api "/applications/$PT/envs" | TOPIC="$TOPIC" python3 -c '
