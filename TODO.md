@@ -249,6 +249,13 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ## Bugs und Kleinigkeiten
 
+- `bash scripts/deploy.sh status` ohne UUID zeigt das Deployment aus dem
+  Merker (das letzte, das das Script selbst angestoßen hat, am 26.09.2026
+  eines vom Vortag), nicht das jüngste der App – CI-Deploys sieht man so
+  nicht. Der Deploy wurde heute stattdessen über die Live-Seite geprüft
+  (neuer Text, Bild-Attribute, Chunk-Hashes). Besser: das jüngste
+  Deployment der App per API holen (Coolify listet Deployments je
+  Application-UUID) und den Merker nur als Fallback nehmen.
 - Coolify-Deploy-Log zeigt „Healthcheck logs: /bin/sh: curl: not found" (Alpine-Image ohne curl); der Status ist trotzdem „healthy" über den HEALTHCHECK im Dockerfile. Prüfen, ob Coolifys eigener Check damit überhaupt greift (Coolify → App → Healthcheck), sonst auf den Docker-Check stellen.
 - CI meldet Erfolg, obwohl der Coolify-Deploy scheitert: der Schritt
   „Coolify deployen" stellt nur in die Warteschlange (`queued`). Der
