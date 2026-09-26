@@ -12,7 +12,7 @@ import {
   NACHRICHT_MAX,
   NAME_MAX,
   TELEFON_MAX,
-} from "@/lib/anfrage/schema";
+} from "@/lib/anfrage/felder";
 
 // Kontaktformular (leitfaden/12, Baustein A). Client-Komponente nur für
 // Feldfehler und Fokus; ohne JavaScript schickt das Formular trotzdem ab

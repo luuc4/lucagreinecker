@@ -74,6 +74,23 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   (`PLATZHALTER_STRENG=1` grün). Umami zählt, ntfy stellt zu. Offen: das
   Gegenlesen, die Prüfstellen, Zustimmung der drei Kunden, Renovate, der
   Domainumzug.
+- 26.09.2026 (Etappe 3, Teil 2 – Prüfstellen und Messung): Prüfstelle 5
+  (Umami) gegen den Quellcode von Umami 3.0.3 geprüft und der Absatz in der
+  Datenschutzerklärung danach präzisiert (keine IP-Spalte, Hash mit
+  Monats-Salt, Land/Region/Stadt aus der IP am Server, Do Not Track);
+  Prüfstelle 4 (Microsoft) mit Vertragspartner und Data Privacy Framework
+  konkretisiert, bleibt zur Prüfung. Prüfstellen 2 (Protokolle) und 3
+  (ntfy) brauchen Fakten vom Server: `scripts/server-fakten.sh` liest sie
+  nur; Claude darf im Auto-Modus nicht auf den Server lesen, Luca führt es
+  aus. Lighthouse auf `neu.` gemessen (TODO.md, Etappe 3): Leistung 97–100,
+  Barrierefreiheit 100, Best Practices 96–100, SEO 66–69 nur wegen noindex.
+  Zwei Befunde daraus behoben: Zod war über die Feldkonstanten im
+  Client-Bundle (86 KB je Seite, CSP-Verletzung durch Zods `Function("")`)
+  → `lib/anfrage/felder.ts` ohne Zod; die drei weiteren Hero-Bilder der
+  Startseite luden lazy im sichtbaren Bereich → `laden="sichtbar"`.
+  `renovate.json` für dieses Repo korrigiert (Base `main`, kein Auto-Merge);
+  die Renovate-App installiert Luca (TODO.md). Offen: Gegenlesen, Server-
+  Fakten, WKO-Fragen (1, 4), Zustimmungen (6), Renovate-App, Domainumzug.
 
 ## Projekt
 
@@ -116,6 +133,7 @@ OUT=/tmp/shots node scripts/screenshots.mjs   # alle Seiten der Sitemap in 390/7
 
 node scripts/projekt-screenshots.mjs [slug]   # Projektbilder neu aufnehmen (Live-Adressen im Script)
 open docs/design/richtungen/index.html        # die zwei Design-Richtungen ansehen
+bash scripts/server-fakten.sh                 # Server nur lesen (Logs, ntfy, Umami, Speicher) – Luca, nicht Claude
 ```
 
 ## Struktur
@@ -134,8 +152,9 @@ components/           KontaktFormular, formular/Feld (Feld, Textbereich), Knopf/
 lib/inhalte/statisch.ts  Texte und Fakten (SEITE, KONTAKT, PAKET, UEBER_MICH), Navigation,
                       PLATZHALTER, KONTAKTFORMULAR (an/aus)
 lib/inhalte/projekte.ts  die vier Projekte: Fakten, Adressen, Lucas Sätze (null = Platzhalter)
-lib/anfrage/          Kontaktformular: schema (Zod, Honeypot), drossel (im Prozess), vorlage
-                      (Push-Text), ntfy (Transporte konsole/memory/ntfy), actions (Server Action)
+lib/anfrage/          Kontaktformular: felder (Namen, Längen – ohne Zod, für den Client), schema
+                      (Zod, Honeypot – nur Server), drossel (im Prozess), vorlage (Push-Text),
+                      ntfy (Transporte konsole/memory/ntfy), actions (Server Action)
 lib/env.ts            Zod-Schema aller Laufzeit-Variablen; lib/betrieb/start.ts prüft beim Start
 lib/kontakt/          vCard, Kalenderdatei (Serien, Einzeltermine), Links (tel, mail,
                       WhatsApp, Google Maps, Apple Karten) – rein und getestet
@@ -143,7 +162,8 @@ lib/site.ts           SITE_URL, OEFFENTLICHE_HOSTS (nur die werden indexiert)
 e2e/                  seiten (Rauchtest, Überlauf), a11y (axe, 390/1440), platzhalter,
                       kontaktformular
 scripts/              screenshots.mjs, bilder.mjs (Varianten ohne Metadaten), server-einrichten.sh,
-                      projekt-screenshots.mjs (Startseiten der Projekte in 390 und 1440 px → public/bilder)
+                      projekt-screenshots.mjs (Startseiten der Projekte in 390 und 1440 px → public/bilder),
+                      server-fakten.sh (nur lesen: Log-Rotation, ntfy, Umami, Speicher – Luca führt aus)
 public/bilder/        projekt-<slug>-handy-{390,780} und -desktop-{720,1200,1800} als AVIF/WebP/JPEG
 docs/design/richtungen/  Design-Richtungen A und B (index.html = Leinwand, a-*/b-* = Entwürfe), Archiv
 screenshots/          Originale und Durchsichts-Screenshots, nicht im Repo
@@ -354,3 +374,25 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   Impressum nennt „derzeit keine Gewerbeberechtigung"; ob das Paket-Angebot
   damit vereinbar ist, ist Prüfstelle 1 (TODO.md). Uptime Kuma braucht
   Luca nicht.
+- **26.09.2026 – Zod nur am Server.** Das Formular (Client) las Feldnamen
+  und Längen aus `lib/anfrage/schema.ts` und zog damit Zod in den
+  Client-Bundle: 86 KB auf jeder Seite (auf der Startseite zu 100 %
+  ungenutzt) und eine CSP-Verletzung, weil Zod 4 beim Laden per
+  `Function("")` prüft, ob es JIT darf – die CSP hat in Produktion kein
+  `'unsafe-eval'`, und das soll so bleiben. Deshalb `lib/anfrage/felder.ts`
+  ohne Zod für den Client; `schema.ts` importiert und re-exportiert die
+  Werte, damit Server und Tests eine Quelle behalten. Regel: kein Import
+  aus `schema.ts` in `"use client"`-Dateien. Gleicher Befund in der
+  Vorlage, dort zurückgetragen.
+- **26.09.2026 – Renovate gegen `main`, ohne Auto-Merge.** Die Vorlage
+  arbeitet gegen `staging` mit Auto-Merge dort; diese Seite hat kein
+  Staging, jeder Merge auf `main` deployt. Deshalb `renovate.json` ohne
+  `baseBranches`, wöchentliche Sammel-PR (Minor und Patch), Luca merged von
+  Hand. Die Regel für `better-auth` und `stripe` ist raus, beides ist hier
+  nicht drin.
+- **26.09.2026 – Bilder im ersten Blick laden sofort.** `ProjektBild`
+  bekommt `laden`: `zuerst` (eager, `fetchpriority=high`) für das größte
+  Bild im ersten Blick, `sichtbar` (eager) für die anderen Bilder im ersten
+  Blick, `bedarf` (lazy) darunter. Chrome meldete die drei weiteren
+  Handy-Bilder der Startseite als lazy im sichtbaren Bereich; lazy im
+  Viewport verzögert nur. Lighthouse-Nachmessung nach dem Deploy in TODO.md.

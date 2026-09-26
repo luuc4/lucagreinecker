@@ -1,18 +1,21 @@
 import { z } from "zod";
+import {
+  EMAIL_MAX,
+  NACHRICHT_MAX,
+  NACHRICHT_MIN,
+  NAME_MAX,
+  TELEFON_MAX,
+} from "./felder";
 
 // Kontaktformular (leitfaden/04, „Kontaktformular"): Name, E-Mail, Telefon
 // (freiwillig), Nachricht und ein Honeypot-Feld, das Menschen nicht sehen.
 // Die Anfrage wird nur gemailt, nie gespeichert. Die Meldungen sind neutral
 // formuliert (weder Du noch Sie), damit sie in jedes Projekt passen.
+//
+// Nur am Server importieren (actions.ts, Tests): Feldnamen und Längen für
+// den Client stehen in felder.ts, damit Zod nicht ins Bundle kommt.
 
-export const NAME_MAX = 100;
-export const EMAIL_MAX = 254;
-export const TELEFON_MAX = 40;
-export const NACHRICHT_MIN = 10;
-export const NACHRICHT_MAX = 3000;
-
-export const FELDER = ["name", "email", "telefon", "nachricht"] as const;
-export type Feldname = (typeof FELDER)[number];
+export * from "./felder";
 
 export const Anfrage = z.object({
   name: z

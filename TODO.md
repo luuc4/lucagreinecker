@@ -30,12 +30,23 @@ den Fakten geschrieben, Luca liest gegen), Impressum und Datenschutz als
 Entwurf, Platzhalter-Liste leer, Umami und ntfy laufen. `neu.` zeigt die
 komplette Seite.
 
-**Nächste Sitzung zuerst:** Lucas Rückmeldung zu den Texten einarbeiten;
-dann die sechs Prüfstellen (Etappe 3) klären, Renovate, Zustimmung von
-Olcay, Akin und Jonathan; der Domainumzug nach SETUP.md „Go-live" erst
-danach und nach dem OZ-Umzug (frühestens nach dem 03.10.2026):
-Übergangsadressen in `projekte.ts` umstellen, Screenshots neu aufnehmen,
-`SITE_URL_MAIN` auf `https://lucagreinecker.at`, DNS, Search Console.
+Etappe 3, Teil 2 erledigt (26.09.2026): Prüfstelle 5 (Umami) am Quellcode
+von 3.0.3 geprüft und der Absatz präzisiert, Prüfstelle 4 (Microsoft)
+konkretisiert; Lighthouse gemessen (Werte in Etappe 3) und zwei Befunde
+behoben (Zod aus dem Client-Bundle samt CSP-Verletzung, Hero-Bilder nicht
+mehr lazy); `renovate.json` auf dieses Repo umgestellt;
+`scripts/server-fakten.sh` für die Prüfstellen 2 und 3 liegt bereit.
+
+**Nächste Sitzung zuerst:** Lucas Zuarbeit einarbeiten (unten, „Luca –
+Etappe 3"): Rückmeldung zu den Texten, Ausgabe von
+`scripts/server-fakten.sh` in die Absätze „Server-Protokolle" und
+„Kontaktformular" der Datenschutzerklärung, WKO-Antworten zu 1 und 4,
+Zustimmungen; Lighthouse auf `neu.` nachmessen (Kontakt Best Practices,
+LCP). Der Domainumzug nach SETUP.md „Go-live" erst danach und nach dem
+OZ-Umzug (frühestens nach dem 03.10.2026): Übergangsadressen in
+`projekte.ts` umstellen, Screenshots neu aufnehmen (dabei die Varianten 560
+und 1440 px ergänzen, Etappe 3), `SITE_URL_MAIN` auf
+`https://lucagreinecker.at`, DNS, Search Console.
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -63,7 +74,8 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] `neu.lucagreinecker.at` zeigt die Platzhalterseite (noindex)
 - [x] Umami: Website in `analytics.punktetafel.at`, ID in secrets.env,
       Rebuild (26.09.2026, Script auf `neu.` geladen, CSP passt)
-- [ ] Renovate-App für das Repo (wie bei OZ)
+- [x] Renovate: Konfiguration für dieses Repo (26.09.2026); die App
+      installiert Luca (Etappe 3)
 
 ### Etappe 1 – Design (mit Fable)
 
@@ -96,10 +108,9 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] SEO: Beschreibungen, OG-Bild, JSON-LD `Person`, Redirects
       `/index.html`, `/impressum.html`, `/datenschutz.html`
 - [x] Screenshots 360/390/768/1440 angesehen, axe grün
-- [ ] Lighthouse messen (Chrome DevTools auf `neu.`), Werte hier eintragen
-- [ ] Lucas Texte einsetzen, sobald da (Zuarbeit unten): `SEITE.beschreibung`,
-      Satz über ihn, `PAKET.satz` und -Punkte, `UEBER_MICH.saetze`, je Projekt
-      `satz`, die Anfrage-Sätze auf der Startseite (`app/(site)/page.tsx`)
+- [x] Lighthouse gemessen (26.09.2026, Werte in Etappe 3)
+- [x] Texte an allen Stellen (26.09.2026, von Claude aus den Fakten; das
+      Gegenlesen steht in Etappe 3)
 - [x] ntfy scharf (26.09.2026): Zugang vom punktetafel-Feedback übernommen,
       `ANFRAGE_TRANSPORT=ntfy` in Coolify, Testanfrage über `/kontakt` mit
       Bestätigung, Push am Handy angekommen (Luca)
@@ -114,17 +125,57 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [ ] Luca liest alle Texte gegen und ändert, was nicht nach ihm klingt
       (`lib/inhalte/statisch.ts`: START, PAKET, UEBER_MICH;
       `lib/inhalte/projekte.ts`: `satz`)
-- [ ] Prüfstellen für WKO-Rechtsservice oder Anwalt (nicht auf der Seite): 1. Angebot „Rundum-sorglos-Paket" ohne Gewerbeberechtigung – ist die
-      Seite damit ein kommerzieller Dienst (§ 5 ECG), reicht das
-      Impressum, braucht es ein Gewerbe? 2. Server-Protokolle: Frist am Server nachsehen (Traefik-Access-Log,
-      Docker-Logs) und „nach kurzer Zeit" durch die Frist ersetzen 3. ntfy: `cache-duration` der Instanz nachsehen und „hält sie kurz
-      zum Zustellen vor" konkretisieren 4. Antwort per Hotmail (Microsoft, USA): Drittlandübermittlung so
-      ausreichend genannt? 5. Umami: „ohne die IP-Adresse zu speichern" gegen die laufende
-      Version prüfen (Salt-Hash), Standort der Datenbank (gleicher Server) 6. Impressum „mit Zustimmung der jeweiligen Betreiber": stimmt erst,
-      wenn Olcay, Akin und Jonathan zugesagt haben (Zuarbeit)
-- [ ] Renovate-App für das Repo installieren (Etappe 0, offen; GitHub →
-      Apps → Renovate → Repo freigeben, `renovate.json` liegt bereit)
-- [ ] Lighthouse messen (Chrome DevTools auf `neu.`), Werte hier eintragen
+- [ ] Prüfstellen der Rechtstexte (Stand 26.09.2026; nicht auf der Seite):
+  1. **WKO/Anwalt:** Angebot „Rundum-sorglos-Paket" ohne
+     Gewerbeberechtigung – ist die Seite damit ein kommerzieller Dienst
+     (§ 5 ECG), reicht das Impressum, braucht es ein Gewerbe?
+  2. **Server-Fakten:** Server-Protokolle – Docker-Log-Rotation
+     (`daemon.json`), Traefik-Access-Log an oder aus, journald; danach
+     „nach kurzer Zeit" im Absatz „Hosting und Server-Protokolle" durch die
+     Frist ersetzen (oder den Absatz kürzen, wenn Traefik gar kein
+     Access-Log schreibt). Ausgabe: `scripts/server-fakten.sh` (Zuarbeit).
+  3. **Server-Fakten:** ntfy `cache-duration` (Standard 12 h) und Version;
+     „hält sie kurz zum Zustellen vor" im Absatz „Kontaktformular" durch die
+     Frist ersetzen. Ausgabe: `scripts/server-fakten.sh`.
+  4. **WKO/Anwalt:** Antwort per Hotmail. Der Absatz nennt seit dem
+     26.09.2026 Microsoft Ireland Operations Ltd. als Vertragspartner, die
+     Verarbeitung in den USA und die Zertifizierung nach dem EU‑US Data
+     Privacy Framework – reicht das als Hinweis auf die Drittland-
+     übermittlung (Art. 13 Abs. 1 lit. f DSGVO)?
+  5. ~~Umami~~ erledigt 26.09.2026: gegen den Quellcode von Umami 3.0.3
+     geprüft (Version laut `docker ps`): Tabelle `session` hat keine
+     IP-Spalte (browser, os, device, screen, language, country, region,
+     city, distinct_id, created_at); Sitzungs-ID = UUID v5 aus Website, IP,
+     Browserkennung und einem Salt, der monatlich wechselt
+     (`src/app/api/send/route.ts`); Land/Region/Stadt aus der
+     MaxMind-Datenbank im Image, kein Fremdaufruf; `data-do-not-track` wird
+     vom Tracker ausgewertet (`src/tracker/index.js`, im Live-Script
+     enthalten); Datenbank-Container auf demselben Server. Absatz danach
+     neu geschrieben. `scripts/server-fakten.sh` zeigt die Spalten der
+     laufenden Datenbank zur Bestätigung.
+  6. **Zustimmung:** Impressum „mit Zustimmung der jeweiligen Betreiber"
+     stimmt erst, wenn Olcay, Akin und Jonathan zugesagt haben (Zuarbeit).
+- [ ] Renovate-App installieren (Luca, Zuarbeit unten); `renovate.json`
+      passt seit dem 26.09.2026 zu diesem Repo (Base `main`, kein
+      Auto-Merge, AGENTS.md Entscheidungen)
+- [x] Lighthouse gemessen (26.09.2026, Lighthouse 12 headless gegen `neu.`,
+      alle neun Seiten, Handy und Desktop). Leistung 97–100 (Handy: Start
+      99, OZ 97, Rest 100; Desktop überall 100), Barrierefreiheit 100,
+      Best Practices 100 (Kontakt 96), SEO 66–69. SEO unter 100 nur wegen
+      `is-crawlable` (noindex und robots auf `neu.`), fällt mit dem Go-live
+      weg. Kontakt 96: CSP-Verletzung durch Zods `Function("")` im
+      Client-Bundle – behoben (`lib/anfrage/felder.ts`). LCP Handy: Start
+      2,0 s, OZ 2,6 s (das Handy-Bild), übrige 1,1–1,9 s; Desktop 0,3–0,8 s;
+      CLS überall 0. Übrige Hinweise: `uses-responsive-images` (Handy-Bild
+      780 px bei rund 550 px Bedarf, Desktop-Bild 1800 px bei 1350 px
+      Bedarf, je 30–60 KB AVIF) und der Next-Polyfill-Chunk (86 KB,
+      `noModule`, moderne Browser laden ihn nicht aus).
+- [ ] Lighthouse nach dem Deploy vom 26.09.2026 nachmessen: Kontakt Best
+      Practices 100, LCP der Startseite am Handy; Werte oben ergänzen
+- [ ] Bei der Neuaufnahme der Screenshots (nach den Domainumzügen) die
+      Varianten 560 px (Handy) und 1440 px (Desktop) in `scripts/bilder.mjs`
+      und `ProjektBild` (`VARIANTEN`) ergänzen – Lighthouse-Befund
+      `uses-responsive-images`, siehe oben
 - [ ] Domainumzug nach SETUP.md („Go-live"), Search Console – erst nach
       Prüfung der Rechtstexte, Zustimmungen und OZ-Umzug (Übergangsadressen
       in `projekte.ts` umstellen, Screenshots neu aufnehmen)
@@ -159,6 +210,21 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [ ] Olcay, Akin und Jonathan fragen, ob ihre Seite mit Screenshots und
       Namen auf deiner Seite stehen darf (OZ neu und USTA sind noch nicht
       unter der echten Domain live)
+
+### Luca – Etappe 3 (Stand 26.09.2026)
+
+- [ ] Texte auf `https://neu.lucagreinecker.at` gegenlesen (Start, die vier
+      Projektseiten, Über mich, Kontakt) und sagen, was nicht nach dir klingt
+- [ ] `! bash scripts/server-fakten.sh` – liest nur (Log-Rotation, Traefik,
+      ntfy, Umami, Speicher), die Ausgabe darf in den Chat; daraus werden
+      die Prüfstellen 2 und 3 und die Zeile ‹RAM› in SETUP.md
+- [ ] Renovate-App: `https://github.com/apps/renovate` → Configure → Konto
+      `luuc4` → „Only select repositories" → `lucagreinecker`; bei Mend die
+      Auswahl „Renovate Only" (wie bei OZ am 17.09.2026, leitfaden/04). Danach
+      legt Renovate ein Issue „Dependency Dashboard" an; erste Sammel-PR am
+      Montag früh, du merged von Hand
+- [ ] WKO-Rechtsservice (oder Anwalt) zu den Prüfstellen 1 und 4 fragen
+      (Etappe 3); Antworten in TODO.md, Texte danach anpassen
 
 ## Offene Entscheidungen
 
@@ -209,5 +275,6 @@ Kundenserver.
 - 25.09.2026: Etappe 1 – zwei Richtungen, Lucas Wahl (A-Design, B-Aufbau), drei Versionen, Version 1 „Reihe" umgesetzt (Tokens, Schrift, Bausteine); echte Projekt-Screenshots.
 - 26.09.2026: Etappe 2 – Startseite, Projektseiten, Über mich, Kontakt per ntfy, Redirects, JSON-LD; Texte von Luca offen.
 - 26.09.2026: Etappe 3, Teil 1 – Texte, Impressum, Datenschutz, Platzhalter leer; Umami und ntfy scharf. Offen: Gegenlesen, Prüfstellen, Zustimmungen, Umzug.
+- 26.09.2026: Etappe 3, Teil 2 – Prüfstelle 5 am Umami-Quellcode erledigt, 4 konkretisiert, Lighthouse gemessen, Zod aus dem Client-Bundle (CSP), Hero-Bilder eager, renovate.json für dieses Repo, `scripts/server-fakten.sh`. Offen: Zuarbeit Luca (Gegenlesen, Server-Fakten, Renovate-App, WKO, Zustimmungen), Umzug.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

@@ -70,9 +70,36 @@ export default function Datenschutz() {
             ),
           },
           {
+            // Geprüft am 26.09.2026 gegen den Quellcode von Umami 3.0.3 (der
+            // Version auf dem Server): Tabelle `session` hat keine IP-Spalte;
+            // die Sitzungs-ID ist ein Hash aus Website, IP, Browserkennung und
+            // einem monatlich wechselnden Salt (src/app/api/send/route.ts);
+            // Land, Region und Stadt kommen aus der MaxMind-Datenbank im
+            // Umami-Image, also ohne Fremdaufruf; `data-do-not-track` wird
+            // vom Tracker ausgewertet (src/tracker/index.js).
             titel: "Statistik (Umami)",
-            inhalt:
-              "Ich messe die Reichweite mit Umami, das auf meinem eigenen Server läuft. Umami zählt Seitenaufrufe, woher Besucher kommen, Gerätetyp und Browser sowie das Land, ohne Cookies und ohne die IP-Adresse zu speichern. Ein Wiedererkennen einzelner Personen ist damit nicht möglich; die Daten verlassen meinen Server nicht. Sendet dein Browser „Do Not Track“, wird nichts gezählt. Rechtsgrundlage ist mein Interesse zu wissen, welche Seiten gelesen werden (Art. 6 Abs. 1 lit. f DSGVO).",
+            inhalt: (
+              <>
+                <p>
+                  Ich messe die Reichweite mit Umami, das samt Datenbank auf
+                  meinem eigenen Server läuft. Umami speichert je Aufruf die
+                  Seite, die verweisende Seite, Browser, Betriebssystem,
+                  Gerätetyp, Bildschirmgröße und Sprache sowie Land, Region und
+                  Stadt, die es auf dem Server aus der IP-Adresse ableitet. Die
+                  IP-Adresse selbst wird nicht gespeichert: Aus ihr, der
+                  Browserkennung und einem Wert, der sich jeden Monat ändert,
+                  bildet Umami eine Prüfsumme, mit der Aufrufe innerhalb eines
+                  Monats einer Sitzung zugeordnet werden. Danach ist keine
+                  Zuordnung mehr möglich.
+                </p>
+                <p>
+                  Umami setzt keine Cookies, die Daten verlassen meinen Server
+                  nicht. Sendet dein Browser „Do Not Track“, wird nichts
+                  gezählt. Rechtsgrundlage ist mein Interesse zu wissen, welche
+                  Seiten gelesen werden (Art. 6 Abs. 1 lit. f DSGVO).
+                </p>
+              </>
+            ),
           },
           {
             titel: "Kontaktformular",
@@ -90,10 +117,12 @@ export default function Datenschutz() {
                 <p>
                   Ich verwende die Angaben nur, um dir zu antworten (Art. 6 Abs.
                   1 lit. b DSGVO). Antworte ich per E-Mail, läuft der
-                  Schriftverkehr über mein Postfach bei Microsoft (Outlook.com).
-                  Ist deine Anfrage erledigt, lösche ich sie. Statt des
-                  Formulars kannst du mir jederzeit direkt eine E-Mail
-                  schreiben.
+                  Schriftverkehr über mein Postfach bei Microsoft (Outlook.com;
+                  Vertragspartner Microsoft Ireland Operations Ltd., Dublin).
+                  Microsoft kann Daten dabei auch in den USA verarbeiten und ist
+                  nach dem EU‑US Data Privacy Framework zertifiziert. Ist deine
+                  Anfrage erledigt, lösche ich sie. Statt des Formulars kannst
+                  du mir jederzeit direkt eine E-Mail schreiben.
                 </p>
               </>
             ),

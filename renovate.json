@@ -1,20 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "baseBranches": ["staging"],
   "timezone": "Europe/Vienna",
   "schedule": ["before 6am on monday"],
   "lockFileMaintenance": { "enabled": true },
   "packageRules": [
     {
-      "description": "Minor und Patch wöchentlich gebündelt, Auto-Merge nur auf staging nach grüner CI. Prod bekommt Updates mit dem nächsten bewussten Merge staging → main.",
+      "description": "Minor und Patch wöchentlich gebündelt in einem PR, den Luca merged. Kein Auto-Merge: diese Seite hat kein Staging, jeder Merge auf main deployt sofort (26.09.2026).",
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "wöchentliche Updates",
-      "automerge": true
-    },
-    {
-      "description": "Diese Pakete merged Luca von Hand (Sicherheit, Geld, Login).",
-      "matchPackageNames": ["next", "better-auth", "stripe"],
       "automerge": false
     }
   ]

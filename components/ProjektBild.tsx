@@ -16,14 +16,18 @@ export function ProjektBild({
   ansicht,
   sizes,
   className,
-  zuerst = false,
+  laden = "bedarf",
 }: {
   projekt: Pick<Projekt, "slug" | "name">;
   ansicht: keyof typeof VARIANTEN;
   sizes: string;
   className?: string;
-  // Das erste Bild im Blick lädt sofort (LCP), alle anderen erst bei Bedarf.
-  zuerst?: boolean;
+  // `zuerst`: das größte Bild im ersten Blick (LCP) lädt sofort mit hoher
+  // Priorität. `sichtbar`: die anderen Bilder im ersten Blick laden sofort,
+  // aber ohne Vorrang (Chrome meldet lazy geladene Bilder im sichtbaren
+  // Bereich als Befund, 26.09.2026). `bedarf`: alles unterhalb lädt beim
+  // Scrollen.
+  laden?: "zuerst" | "sichtbar" | "bedarf";
 }) {
   const { breiten, seite } = VARIANTEN[ansicht];
   const basis = `/bilder/projekt-${projekt.slug}-${ansicht}`;
@@ -39,8 +43,8 @@ export function ProjektBild({
         width={groesste}
         height={Math.round(groesste * seite)}
         alt={`Startseite von ${projekt.name} am ${ansicht === "handy" ? "Handy" : "Desktop"}`}
-        loading={zuerst ? "eager" : "lazy"}
-        fetchPriority={zuerst ? "high" : undefined}
+        loading={laden === "bedarf" ? "lazy" : "eager"}
+        fetchPriority={laden === "zuerst" ? "high" : undefined}
         decoding="async"
         className={clsx("h-auto w-full border border-fg", className)}
       />

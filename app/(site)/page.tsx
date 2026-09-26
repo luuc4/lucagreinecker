@@ -41,7 +41,7 @@ export default function Startseite() {
                     ansicht="handy"
                     sizes="(min-width: 1024px) 22vw, (min-width: 768px) 42vw, 76vw"
                     className="rounded-bild"
-                    zuerst={i === 0}
+                    laden={i === 0 ? "zuerst" : "sichtbar"}
                   />
                 </Link>
                 <figcaption className="pt-3.5">
