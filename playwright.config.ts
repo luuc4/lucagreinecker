@@ -33,7 +33,10 @@ export default defineConfig({
   webServer: process.env.E2E_BASE_URL
     ? undefined
     : {
-        command: `pnpm start -p ${PORT}`,
+        // Next direkt, nicht über `pnpm start`: pnpm 12 legt das Skript in
+        // eine eigene Prozessgruppe, Playwright bekommt den Server danach
+        // nicht beendet und der Lauf hängt im Teardown (26.09.2026).
+        command: `./node_modules/.bin/next start -p ${PORT}`,
         url: `${BASE_URL}/api/health`,
         reuseExistingServer: !isCI,
         timeout: 120_000,

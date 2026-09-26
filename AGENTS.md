@@ -108,10 +108,11 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
 
 ## Stack
 
-Next.js 16 (App Router, `output: "standalone"`), React 19, TypeScript
+Next.js 16 (App Router, `output: "standalone"`), React 19, TypeScript 6
 strict mit `noUncheckedIndexedAccess`, Tailwind 4 CSS-first (`@theme` in
-`app/globals.css`), pnpm 11, Node 24, Vitest (`unit`, `ui`), Playwright
-mit axe, ESLint 9, Prettier. Build in GitHub Actions → GHCR, Coolify zieht
+`app/globals.css`), pnpm 12, Node 24, Vitest 5 (`unit`, `ui`), Playwright
+mit axe, ESLint 9, Prettier (Stand 26.09.2026; ESLint 10 und TypeScript 7
+bewusst nicht, Entscheidungen). Build in GitHub Actions → GHCR, Coolify zieht
 das Image. Umami für Statistik (Pflicht). Zusatzdienste aus Coolify nur
 mit Anwendungsfall (leitfaden/11): keine eigenen; die Seite nutzt Umami
 und ntfy, die auf Lucas Server schon laufen. Bausteine nach Bedarf (Datenbank, Mail,
@@ -391,6 +392,19 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   `baseBranches`, wöchentliche Sammel-PR (Minor und Patch), Luca merged von
   Hand. Die Regel für `better-auth` und `stripe` ist raus, beides ist hier
   nicht drin.
+- **26.09.2026 – Updates vorgezogen, zwei Majors zurückgehalten.** Nach
+  einer Probe in einer Wegwerf-Kopie (TODO.md, Etappe 3): Sammel-Updates
+  (u. a. `next` 16.3.6), TypeScript 6, Vitest 5, pnpm 12, GitHub Actions
+  auf die Node-24-Versionen, Runner `ubuntu-26.04`. Nicht: ESLint 10
+  (bricht `eslint-config-next` 16.3) und TypeScript 7 (bricht
+  `typescript-eslint`); `renovate.json` hält beide mit `allowedVersions`
+  zurück, bis die Peer-Angaben sie nennen. Dazu in `renovate.json`:
+  `minimumReleaseAge` 3 Tage (pnpm verweigert seit 11 Versionen unter
+  einem Tag, `minimumReleaseAgeStrict`; eine frischere Renovate-PR fiele
+  in der CI durch) und Majors nur nach Freigabe im Dashboard. Mit pnpm 12
+  startet Playwright den Server direkt (`./node_modules/.bin/next start`),
+  sonst hängt der Teardown; das Dockerfile liest die pnpm-Version aus
+  `packageManager`, statt sie doppelt zu führen.
 - **26.09.2026 – Nur das erste Handy-Bild lädt sofort, die drei anderen
   lazy – gemessen, nicht geraten.** Chrome (DevTools „Issues") meldete die
   Bilder 2–4 der Startseite als lazy im sichtbaren Bereich; ein Versuch mit

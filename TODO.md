@@ -165,8 +165,12 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       (u. a. `next` 16.3.6) und je eine PR pro Major-Update (ESLint 10,
       TypeScript 7, Vitest 5, pnpm 12, GitHub Actions, Ubuntu-Runner 26.04),
       dazu Lock-File-Pflege (Liste „Awaiting Schedule" im Dashboard)
-- [ ] Renovate-PRs vom 28.09.2026 durchgehen. Probe am 26.09.2026 in einer
-      Wegwerf-Kopie (git worktree), jedes Major einzeln und kombiniert:
+- [x] Updates vorgezogen (26.09.2026, statt der Renovate-PRs vom 28.09.):
+      Sammel-Updates, TypeScript 6, Vitest 5, pnpm 12 mit direktem
+      `next start` in Playwright, GitHub Actions, Runner `ubuntu-26.04`;
+      ESLint 10 und TypeScript 7 per `renovate.json` zurückgehalten (AGENTS.md,
+      Entscheidungen). Grundlage war die Probe in einer Wegwerf-Kopie (git
+      worktree), jedes Major einzeln und kombiniert:
 
       | Update                           | Ergebnis                                                                                                                                                                                                                                              |
       | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -180,10 +184,11 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       | GitHub Actions (checkout 7, setup-node 7, cache 6, upload-artifact 7, docker/* neu) | laut Release-Notes vor allem Node-24-Laufzeit; unsere Inputs sind nicht betroffen; die CI der Renovate-PR zeigt es                                                                                             |
       | Ubuntu-Runner 26.04              | nicht lokal prüfbar; die CI der PR entscheidet (Playwright-Abhängigkeiten)                                                                                                                                                                             |
 
-      Vorschlag: Sammelgruppe, TypeScript 6, Vitest 5 jetzt; pnpm 12 nur
-      zusammen mit dem geänderten `webServer`-Befehl; ESLint 10 und
-      TypeScript 7 in `renovate.json` zurückhalten, bis `eslint-config-next`
-      und `typescript-eslint` sie unterstützen
+- [ ] ESLint 10 und TypeScript 7 freigeben, sobald `eslint-config-next`
+      bzw. `typescript-eslint` sie in den Peer-Angaben nennen
+      (`npm view eslint-config-next peerDependencies dependencies`, `npm view
+typescript-eslint peerDependencies`); dann `allowedVersions` in
+      `renovate.json` entfernen und die Probe wiederholen
 
 - [x] Lighthouse gemessen (26.09.2026, Lighthouse 12 headless gegen `neu.`,
       alle neun Seiten, Handy und Desktop). Leistung 97–100 (Handy: Start

@@ -3,8 +3,12 @@
 # `next build`. Mit Datenbank kommt ein gebündeltes migrate.js dazu, das
 # im Entrypoint vor dem Server läuft (Vorlage: ozcalisthenics/Dockerfile).
 FROM node:24-alpine AS base
-RUN npm i -g pnpm@11.27.0
 WORKDIR /app
+# pnpm in genau der Version aus `packageManager` (package.json) – eine
+# Quelle; ein fester Wert hier lief beim Update auf pnpm 12 auseinander,
+# weil Renovate nur package.json hebt (26.09.2026).
+COPY package.json ./
+RUN npm i -g "$(node -p "require('./package.json').packageManager")"
 
 FROM base AS deps
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./

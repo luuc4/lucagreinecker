@@ -3,6 +3,7 @@
   "extends": ["config:recommended"],
   "timezone": "Europe/Vienna",
   "schedule": ["before 6am on monday"],
+  "minimumReleaseAge": "3 days",
   "lockFileMaintenance": { "enabled": true },
   "packageRules": [
     {
@@ -10,6 +11,21 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "wöchentliche Updates",
       "automerge": false
+    },
+    {
+      "description": "Major-Updates erst nach einer Probe in einer Wegwerf-Kopie (leitfaden/04, „Renovate“): Renovate legt sie nur als Häkchen im Dependency Dashboard an, die PR kommt nach der Freigabe (26.09.2026).",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "ESLint 10 bricht eslint-config-next 16.3 (eslint-plugin-react ruft context.getFilename). Freigeben, wenn eslint-config-next ESLint 10 in den Peer-Angaben nennt (Probe 26.09.2026).",
+      "matchPackageNames": ["eslint"],
+      "allowedVersions": "<10"
+    },
+    {
+      "description": "TypeScript 7 bricht typescript-eslint (erlaubt < 6.1). Freigeben, wenn typescript-eslint TS 7 in den Peer-Angaben nennt (Probe 26.09.2026).",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
     }
   ]
 }
