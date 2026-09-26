@@ -22,7 +22,9 @@ export function Rechtstext({
             className="grid gap-2 border-b border-linie py-6 md:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] md:gap-10"
           >
             <dt className="font-medium">{zeile.titel}</dt>
-            <dd className="max-w-prose text-fg-leise">{zeile.inhalt}</dd>
+            <dd className="flex max-w-prose flex-col gap-3 text-fg-leise">
+              {zeile.inhalt}
+            </dd>
           </div>
         ))}
       </dl>

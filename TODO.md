@@ -25,14 +25,17 @@ dem Paket, Projektseiten, Über mich, Kontaktformular per ntfy, Redirects,
 JSON-LD. `neu.lucagreinecker.at` zeigt den Stand. Alle Sätze sind noch
 `[TEXT LUCA]`.
 
-**Nächste Sitzung zuerst:** Etappe 3. Reihenfolge: Datenschutz- und
-Impressum-Entwurf (leitfaden/07; Fakten zu Luca aus der Zuarbeit, jede
-Prüfstelle markiert), Umami-Website-ID (Etappe 0, offen), Lucas Texte
-einsetzen, sobald da (alle `[TEXT LUCA]`), Renovate, Uptime Kuma; der
-Domainumzug nach SETUP.md „Go-live" erst, wenn `PLATZHALTER_STRENG=1`
-grün ist, die Rechtstexte geprüft sind und Olcay, Akin und Jonathan
-zugestimmt haben. Vor dem Umzug die Übergangsadressen in `projekte.ts`
-prüfen (OZ frühestens nach dem 03.10.2026, USTA-Domain im Umzug).
+Etappe 3, Teil 1 erledigt (26.09.2026): alle Texte stehen (von Claude aus
+den Fakten geschrieben, Luca liest gegen), Impressum und Datenschutz als
+Entwurf, Platzhalter-Liste leer, Umami und ntfy laufen. `neu.` zeigt die
+komplette Seite.
+
+**Nächste Sitzung zuerst:** Lucas Rückmeldung zu den Texten einarbeiten;
+dann die sechs Prüfstellen (Etappe 3) klären, Renovate, Zustimmung von
+Olcay, Akin und Jonathan; der Domainumzug nach SETUP.md „Go-live" erst
+danach und nach dem OZ-Umzug (frühestens nach dem 03.10.2026):
+Übergangsadressen in `projekte.ts` umstellen, Screenshots neu aufnehmen,
+`SITE_URL_MAIN` auf `https://lucagreinecker.at`, DNS, Search Console.
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -103,10 +106,28 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ### Etappe 3 – Recht und Umzug
 
-- [ ] Impressum und Datenschutz (Server bei Hetzner, Umami, ntfy,
-      Formular), Prüfstellen markiert
-- [ ] Platzhalter-Liste leer
-- [ ] Domainumzug nach SETUP.md („Go-live"), Search Console
+- [x] Texte für alle Stellen (26.09.2026, von Claude aus den Fakten, Luca
+      liest gegen): Satz über Luca, Paket, Anfrage, Über mich, je Projekt
+- [x] Impressum und Datenschutz als Entwurf (Hetzner Nürnberg,
+      Server-Protokolle, Umami, ntfy, Hotmail, vCard, Links, Rechte, DSB)
+- [x] Platzhalter-Liste leer (`PLATZHALTER_STRENG=1` grün)
+- [ ] Luca liest alle Texte gegen und ändert, was nicht nach ihm klingt
+      (`lib/inhalte/statisch.ts`: START, PAKET, UEBER_MICH;
+      `lib/inhalte/projekte.ts`: `satz`)
+- [ ] Prüfstellen für WKO-Rechtsservice oder Anwalt (nicht auf der Seite): 1. Angebot „Rundum-sorglos-Paket" ohne Gewerbeberechtigung – ist die
+      Seite damit ein kommerzieller Dienst (§ 5 ECG), reicht das
+      Impressum, braucht es ein Gewerbe? 2. Server-Protokolle: Frist am Server nachsehen (Traefik-Access-Log,
+      Docker-Logs) und „nach kurzer Zeit" durch die Frist ersetzen 3. ntfy: `cache-duration` der Instanz nachsehen und „hält sie kurz
+      zum Zustellen vor" konkretisieren 4. Antwort per Hotmail (Microsoft, USA): Drittlandübermittlung so
+      ausreichend genannt? 5. Umami: „ohne die IP-Adresse zu speichern" gegen die laufende
+      Version prüfen (Salt-Hash), Standort der Datenbank (gleicher Server) 6. Impressum „mit Zustimmung der jeweiligen Betreiber": stimmt erst,
+      wenn Olcay, Akin und Jonathan zugesagt haben (Zuarbeit)
+- [ ] Renovate-App für das Repo installieren (Etappe 0, offen; GitHub →
+      Apps → Renovate → Repo freigeben, `renovate.json` liegt bereit)
+- [ ] Lighthouse messen (Chrome DevTools auf `neu.`), Werte hier eintragen
+- [ ] Domainumzug nach SETUP.md („Go-live"), Search Console – erst nach
+      Prüfung der Rechtstexte, Zustimmungen und OZ-Umzug (Übergangsadressen
+      in `projekte.ts` umstellen, Screenshots neu aufnehmen)
 
 ## Zuarbeit
 
@@ -123,22 +144,18 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [x] ntfy: Zugang vom punktetafel-Feedback übernommen
       (`scripts/ntfy-uebernehmen.sh`, 26.09.2026); eigenes Topic bei Bedarf
       nach SETUP.md
-- [ ] Uptime Kuma (`uptime.punktetafel.at`): Monitor auf
-      `https://neu.lucagreinecker.at/api/health`, Schlüsselwort `ok`
-- [ ] Server-Größe nachsehen (Hetzner-Console: RAM), in SETUP.md
+- [x] Uptime Kuma: braucht es nicht (Luca, 26.09.2026)
+- [x] Server-Größe: CPX22, 8 GB (laendle-isst SETUP.md), in SETUP.md
 
 ### Luca – Inhalte
 
-- [ ] Rundum-sorglos-Paket: die sechs Punkte auf der Leinwand bestätigen
-      oder ändern (Website, Server, Reichweite, Betrieb, Recht, „usw."),
-      dazu ein, zwei Sätze in deinen Worten
-- [ ] Stichworte je Projekt: wer, was wollte der Kunde, was war schwierig,
-      worauf du stolz bist
-- [ ] Ein Satz für die Beschreibung der Seite, ein paar Sätze über dich
-- [ ] Foto von dir (ja/nein) – bestimmt, ob die Startseite typografisch wird
-- [ ] Telefon oder WhatsApp auf der Seite (ja/nein)
-- [ ] Impressum: Gewerbe für Webprojekte ja/nein, Adresse wie bisher
-      (Haldenweg, Bludenz)?
+- [x] Texte: Luca hat Claude am 26.09.2026 gebeten, sie aus den Fakten zu
+      schreiben; Gegenlesen steht in Etappe 3
+- [ ] Foto von dir (ja/nein) – die Seite kommt ohne aus; mit Foto käme es
+      auf „Über mich"
+- [x] Telefon oder WhatsApp auf der Seite: nein (26.09.2026)
+- [x] Impressum: kein Gewerbe derzeit, Anschrift wie bisher (Haldenweg
+      56b/1, 6700 Bludenz), nur im Impressum (26.09.2026)
 - [ ] Olcay, Akin und Jonathan fragen, ob ihre Seite mit Screenshots und
       Namen auf deiner Seite stehen darf (OZ neu und USTA sind noch nicht
       unter der echten Domain live)
@@ -191,5 +208,6 @@ Kundenserver.
 - 25.09.2026: Coolify auf Lucas Server von 4.0.0 auf 4.3.23 (Luca); danach punktetafel, `neu.` und Umami (`analytics.punktetafel.at`) geprüft.
 - 25.09.2026: Etappe 1 – zwei Richtungen, Lucas Wahl (A-Design, B-Aufbau), drei Versionen, Version 1 „Reihe" umgesetzt (Tokens, Schrift, Bausteine); echte Projekt-Screenshots.
 - 26.09.2026: Etappe 2 – Startseite, Projektseiten, Über mich, Kontakt per ntfy, Redirects, JSON-LD; Texte von Luca offen.
+- 26.09.2026: Etappe 3, Teil 1 – Texte, Impressum, Datenschutz, Platzhalter leer; Umami und ntfy scharf. Offen: Gegenlesen, Prüfstellen, Zustimmungen, Umzug.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

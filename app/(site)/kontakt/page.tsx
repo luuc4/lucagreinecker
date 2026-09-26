@@ -4,12 +4,7 @@ import { Icon } from "@/components/Icon";
 import { KartenKnoepfe } from "@/components/KartenKnoepfe";
 import { KontaktFormular } from "@/components/KontaktFormular";
 import { Textlink } from "@/components/Textlink";
-import {
-  ANFRAGE,
-  KONTAKT,
-  KONTAKTFORMULAR,
-  PLATZHALTER,
-} from "@/lib/inhalte/statisch";
+import { ANFRAGE, KONTAKT, KONTAKTFORMULAR } from "@/lib/inhalte/statisch";
 import {
   adresseText,
   mailLink,
@@ -27,8 +22,9 @@ export const metadata: Metadata = {
 // vorgetipptem Text, Kontakt speichern (vCard), Route in Google Maps oder
 // Apple Karten. Mit Formular: am Desktop links das Formular als
 // Hauptaktion, rechts die direkten Wege; am Handy untereinander. Ohne
-// Formular: die drei Blöcke als Spalten. Fehlt eine Angabe, steht der
-// Platzhalter da, bis der Kunde sie liefert.
+// Formular: die Blöcke als Spalten. Telefon, WhatsApp und Adresse
+// erscheinen nur, wenn sie in KONTAKT stehen (Luca will keine auf der
+// Seite, 26.09.2026).
 export default function KontaktSeite() {
   const bloecke = <KontaktBloecke />;
   return (
@@ -59,28 +55,24 @@ function KontaktBloecke() {
   const { telefon, email, whatsapp, adresse } = KONTAKT;
   return (
     <>
-      <Spalte titel="Anrufen oder schreiben">
+      <Spalte titel={telefon ? "Anrufen oder schreiben" : "Direkt schreiben"}>
         <ul className="flex flex-col">
-          <li>
-            {telefon ? (
+          {telefon ? (
+            <li>
               <Textlink href={telLink(telefon)}>
                 <Icon name="telefon" />
                 {telefon}
               </Textlink>
-            ) : (
-              <span className="text-fg-leise">{PLATZHALTER} Telefon</span>
-            )}
-          </li>
-          <li>
-            {email ? (
+            </li>
+          ) : null}
+          {email ? (
+            <li>
               <Textlink href={mailLink(email, "Anfrage")}>
                 <Icon name="mail" />
                 {email}
               </Textlink>
-            ) : (
-              <span className="text-fg-leise">{PLATZHALTER} E-Mail</span>
-            )}
-          </li>
+            </li>
+          ) : null}
           {whatsapp ? (
             <li>
               <Textlink href={whatsappLink(whatsapp, ANFRAGE.allgemein)}>
@@ -104,18 +96,14 @@ function KontaktBloecke() {
         </p>
       </Spalte>
 
-      <Spalte titel="Adresse">
-        {adresse ? (
-          <>
-            <address className="text-fg-leise not-italic">
-              {adresseText(adresse)}
-            </address>
-            <KartenKnoepfe adresse={adresse} className="mt-2" />
-          </>
-        ) : (
-          <p className="text-fg-leise">{PLATZHALTER} Adresse</p>
-        )}
-      </Spalte>
+      {adresse ? (
+        <Spalte titel="Adresse">
+          <address className="text-fg-leise not-italic">
+            {adresseText(adresse)}
+          </address>
+          <KartenKnoepfe adresse={adresse} className="mt-2" />
+        </Spalte>
+      ) : null}
     </>
   );
 }

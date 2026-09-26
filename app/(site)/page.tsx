@@ -5,23 +5,20 @@ import { KnopfLink } from "@/components/Knopf";
 import { ProjektBild } from "@/components/ProjektBild";
 import { textlinkKlassen } from "@/components/Textlink";
 import { PROJEKTE } from "@/lib/inhalte/projekte";
-import { KONTAKT, PAKET, PLATZHALTER, SEITE } from "@/lib/inhalte/statisch";
+import { KONTAKT, PAKET, SEITE, START } from "@/lib/inhalte/statisch";
 import { siteUrl } from "@/lib/site";
 
 // Startseite (Design „Reihe", Vorlage docs/design/richtungen/ab-start.html?v=1):
 // Lucas Satz mittig, die vier Handy-Screens als Reihe (am Handy eine
 // Wischleiste), das Rundum-sorglos-Paket als Tabelle, dann die Anfrage.
-// Jeder Block trägt pb-abschnitt unten (leitfaden/05). Die Sätze über Luca
-// und das Paket kommen von ihm (PLATZHALTER, bis er sie liefert).
+// Jeder Block trägt pb-abschnitt unten (leitfaden/05). Texte in statisch.ts
+// (START, PAKET).
 export default function Startseite() {
   return (
     <>
       <section className="inhalt flex flex-col items-center gap-7 pt-12 pb-abschnitt text-center md:pt-20">
         <h1 className="max-w-[16ch] text-display font-medium">{SEITE.satz}</h1>
-        <p className="max-w-[48ch] text-lg md:text-xl">
-          <span className="platz">{PLATZHALTER}</span> Ein Satz: wer du bist,
-          wo, wie du arbeitest.
-        </p>
+        <p className="max-w-[48ch] text-lg md:text-xl">{START.ueberLuca}</p>
         <p>
           <KnopfLink href="/kontakt" groesse="lg">
             Kontakt
@@ -70,15 +67,7 @@ export default function Startseite() {
             <h2 id="paket-titel" className="max-w-[14ch] text-h2 font-medium">
               {PAKET.titel}
             </h2>
-            <p className="mt-3 max-w-[40ch]">
-              {PAKET.satz ?? (
-                <>
-                  <span className="platz">{PLATZHALTER}</span> Ein, zwei Sätze
-                  in deinen Worten: was das Paket ist und was der Kunde davon
-                  hat.
-                </>
-              )}
-            </p>
+            <p className="mt-3 max-w-[40ch]">{PAKET.satz}</p>
           </div>
           <Fakten zeilen={PAKET.punkte} betont="begriff" />
         </div>
@@ -87,13 +76,9 @@ export default function Startseite() {
       <section id="anfrage" aria-labelledby="anfrage-titel" className="inhalt">
         <div className="mx-auto max-w-[62ch] pb-abschnitt text-center">
           <h2 id="anfrage-titel" className="text-h2 font-medium">
-            <span className="platz">{PLATZHALTER}</span> Ein Satz, der zur
-            Anfrage führt.
+            {START.anfrage.titel}
           </h2>
-          <p className="mt-4">
-            <span className="platz">{PLATZHALTER}</span> Zwei, drei Sätze über
-            dich: Bludenz, der Job bei Ball, warum du Websites baust.
-          </p>
+          <p className="mt-4">{START.anfrage.text}</p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             <KnopfLink href="/kontakt">Nachricht schreiben</KnopfLink>
             <a href="/api/kontakt.vcf" className={textlinkKlassen}>

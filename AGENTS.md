@@ -65,6 +65,15 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   Etappe 3 (Recht, Umzug). ntfy ist seit dem 26.09.2026 scharf: Zugang und
   Topic vom punktetafel-Feedback übernommen (`scripts/ntfy-uebernehmen.sh`),
   Testanfrage über das Live-Formular mit Bestätigung.
+- 26.09.2026 (Etappe 3, Teil 1 – Texte und Recht): Alle Texte stehen
+  (`START`, `PAKET`, `UEBER_MICH` in statisch.ts, `satz` je Projekt), auf
+  Lucas Wunsch von Claude aus den Fakten geschrieben, Luca liest gegen.
+  Impressum (Anschrift Haldenweg 56b/1, Bludenz; kein Gewerbe) und
+  Datenschutz (Hetzner Nürnberg, Protokolle, Umami, ntfy, Hotmail, vCard)
+  als Entwurf mit sechs Prüfstellen in TODO.md; Platzhalter-Liste leer
+  (`PLATZHALTER_STRENG=1` grün). Umami zählt, ntfy stellt zu. Offen: das
+  Gegenlesen, die Prüfstellen, Zustimmung der drei Kunden, Renovate, der
+  Domainumzug.
 
 ## Projekt
 
@@ -334,3 +343,14 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   zu ihrem Domainumzug auf `neu.oz-calisthenics.at` bzw. die sslip.io-Adresse
   (`url` in `projekte.ts`), angezeigt wird die echte Domain (`domain`).
   Beim Go-live dieser Seite prüfen und umstellen (TODO.md, Etappe 3).
+- **26.09.2026 – Texte von Claude, Fakten von Luca.** Luca wollte keine
+  Platzhalter mehr („denk dir paar menschliche passende saubere texte
+  aus"). Die Sätze sind aus belegten Fakten gebaut (Repos, alte Seite,
+  Kickoff), kurz, Du-Form, ohne Floskeln; Luca liest gegen und ändert.
+  Erfundene Motive oder Zahlen bleiben tabu (leitfaden/05, „Texte").
+- **26.09.2026 – Kein Telefon, keine Anschrift auf der Seite, kein
+  Gewerbe.** Kontaktwege sind Formular, Mail, vCard, LinkedIn; die
+  Anschrift steht nur im Impressum (`IMPRESSUM` in statisch.ts). Das
+  Impressum nennt „derzeit keine Gewerbeberechtigung"; ob das Paket-Angebot
+  damit vereinbar ist, ist Prüfstelle 1 (TODO.md). Uptime Kuma braucht
+  Luca nicht.

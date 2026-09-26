@@ -1,7 +1,7 @@
 // Die vier Projekte der Seite (AGENTS.md, Entscheidungen 25.09.2026). Nur
-// Fakten aus den Repos (AGENTS.md „Stand", Stack-Tabellen, Routen); jeder
-// Satz über ein Projekt kommt von Luca (`satz`), bis dahin `null` und damit
-// als PLATZHALTER sichtbar. Reihenfolge = Reihenfolge auf der Startseite.
+// Fakten aus den Repos (AGENTS.md „Stand", Stack-Tabellen, Routen). Die
+// Sätze (`satz`) hat Claude am 26.09.2026 auf Lucas Wunsch aus den Fakten
+// geschrieben; Luca liest gegen. `null` würde als PLATZHALTER erscheinen. Reihenfolge = Reihenfolge auf der Startseite.
 //
 // Bilder: public/bilder/projekt-<slug>-{handy,desktop}-<breite>.{avif,webp,jpg}
 // aus scripts/projekt-screenshots.mjs (echte Screenshots der Live-Seiten;
@@ -48,7 +48,7 @@ export const PROJEKTE: readonly Projekt[] = [
     domain: "oz-calisthenics.at",
     // Übergangsadresse bis zum Umzug von OZ (TODO.md, Faktenquellen).
     url: "https://neu.oz-calisthenics.at",
-    satz: null,
+    satz: "Olcay wollte, dass seine Leute Kursplätze direkt online buchen und bezahlen können. Daraus ist eine komplette Kursverwaltung geworden: Termine, Buchungen, Zahlung über Stripe, Belege und Erinnerungen, alles in einem Admin, das Olcay am Handy bedient.",
   },
   {
     slug: "usta-streetfood",
@@ -68,7 +68,7 @@ export const PROJEKTE: readonly Projekt[] = [
     domain: "ustastreetfood.com",
     // Übergangsadresse, bis die Domain zu IONOS umgezogen ist.
     url: "http://usta.31-70-151-189.sslip.io",
-    satz: null,
+    satz: "Akin wollte seinen Foodtruck selbst pflegen: Ausverkauft melden, Öffnungszeiten ändern, die Speisekarte anpassen, Fotos hochladen. Das macht er jetzt am Handy im Admin, ohne jemanden fragen zu müssen.",
   },
   {
     slug: "punktetafel",
@@ -86,7 +86,7 @@ export const PROJEKTE: readonly Projekt[] = [
       "Coolify auf einem Hetzner-Server, Cloudflare davor, Umami, Feedback per ntfy",
     domain: "punktetafel.at",
     url: "https://punktetafel.at",
-    satz: null,
+    satz: "Mein eigenes Projekt: Punkte zählen bei Kartenspielen am Tisch, ohne Zettel und ohne Konto. 33 Spiele von Wizard bis Jassen, läuft offline als App am Handy, die Daten bleiben am Gerät.",
   },
   {
     slug: "jonathan-walch",
@@ -102,7 +102,7 @@ export const PROJEKTE: readonly Projekt[] = [
     betrieb: "GitHub Pages mit eigener Domain",
     domain: "jonathanwalch.at",
     url: "https://jonathanwalch.at",
-    satz: null,
+    satz: "Jonathan studiert InterMedia an der FH Vorarlberg und wollte seine Design-Projekte zeigen: vier Arbeiten mit Galerien und der Lebenslauf als PDF, als schlanke Seite ohne Framework.",
   },
 ];
 
