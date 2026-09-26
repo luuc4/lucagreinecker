@@ -100,8 +100,26 @@ in Coolify `ANFRAGE_TRANSPORT=ntfy`, `NTFY_URL` (Topic-Adresse, z. B.
 `https://ntfy.punktetafel.at/lucagreinecker-anfragen`) und `NTFY_TOKEN`
 (Token mit Schreibrecht auf das Topic). Beides in secrets.env eintragen,
 dann `DEPLOYEN=1 bash scripts/infra.sh` (setzt die drei Variablen und
-deployt). Ohne sie lehnt das Formular in Produktion ehrlich ab und das
-Log warnt beim Start. Die Seite verschickt keine Mails.
+deployt; ohne die beiden Werte setzt das Script nur `SITE_URL`). Ohne sie
+lehnt das Formular in Produktion ehrlich ab und das Log warnt beim Start.
+Die Seite verschickt keine Mails.
+
+Topic und Token auf Lucas ntfy-Instanz anlegen (einmalig, am Server; die
+Instanz läuft mit Anmeldung, wie das punktetafel-Feedback):
+
+```bash
+ssh root@178.104.239.44
+docker ps --format '{{.Names}}' | grep -i ntfy      # Name des ntfy-Containers
+docker exec -it <ntfy-container> ntfy user list      # vorhandene Benutzer
+docker exec -it <ntfy-container> ntfy access <benutzer> lucagreinecker-anfragen write-only
+docker exec -it <ntfy-container> ntfy token add --label lucagreinecker <benutzer>   # gibt tk_… aus
+```
+
+Dann in secrets.env: `NTFY_URL='https://ntfy.punktetafel.at/lucagreinecker-anfragen'`
+und `NTFY_TOKEN='tk_…'`, Script laufen lassen, Testanfrage über
+`/kontakt`. Am Handy das Topic in der ntfy-App mit demselben Benutzer
+abonnieren (Lesen braucht die Anmeldung; `write-only` gilt nur für den
+Token).
 
 `.env.tpl` ist die vollständige Liste. Build-Zeit über
 Repository-Variablen (`SITE_URL_MAIN`, `SITE_URL_STAGING`,
