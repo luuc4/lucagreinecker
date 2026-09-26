@@ -13,8 +13,8 @@ dieser Datei.
 25.09.2026: `https://neu.lucagreinecker.at` läuft (Coolify-App
 `lucagreinecker-web`, running:healthy, Let's Encrypt, noindex). Jeder Push
 auf `main` deployt dorthin. Die alte statische Seite läuft bis zum Umzug
-über GitHub Pages aus Branch `alt` unter `lucagreinecker.at`. Noch offen:
-Umami (TODO.md); ntfy läuft seit dem 26.09.2026.
+über GitHub Pages aus Branch `alt` unter `lucagreinecker.at`. Umami und ntfy laufen seit dem
+26.09.2026.
 
 | Was        | Wert                                                                                                    |
 | ---------- | ------------------------------------------------------------------------------------------------------- |
@@ -27,7 +27,7 @@ Umami (TODO.md); ntfy läuft seit dem 26.09.2026.
 | DNS        | Apex → GitHub Pages (4 × `185.199.10x.153`) bis zum Umzug; `neu` → `178.104.239.44` ‹anlegen›           |
 | Postfächer | keine (kein MX am Apex, Stand 25.09.2026); Kontakt über `greineckerluca@hotmail.com`                    |
 | Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                            |
-| Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website-ID ‹…›                                   |
+| Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website „lucagreinecker.at“, ID in secrets.env   |
 | ntfy       | bestehende Instanz `https://ntfy.punktetafel.at`, dasselbe Topic und Token wie das punktetafel-Feedback |
 
 Coolify-Projekte auf dem Server: „My first project" (punktetafel, Umami
