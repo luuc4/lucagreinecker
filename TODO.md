@@ -38,16 +38,12 @@ eager geladenen Hero-Bildern nach der Nachmessung zurückgenommen;
 `renovate.json` auf dieses Repo umgestellt;
 `scripts/server-fakten.sh` für die Prüfstellen 2 und 3 liegt bereit.
 
-**Nächste Sitzung zuerst:** Lucas Zuarbeit einarbeiten (unten, „Luca –
-Etappe 3"): Rückmeldung zu den Texten, Ausgabe von
-`scripts/server-fakten.sh` in die Absätze „Server-Protokolle" und
-„Kontaktformular" der Datenschutzerklärung, WKO-Antworten zu 1 und 4,
-Zustimmungen; Lighthouse auf `neu.` nachmessen (Kontakt Best Practices,
-LCP). Der Domainumzug nach SETUP.md „Go-live" erst danach und nach dem
-OZ-Umzug (frühestens nach dem 03.10.2026): Übergangsadressen in
-`projekte.ts` umstellen, Screenshots neu aufnehmen (dabei die Varianten 560
-und 1440 px ergänzen, Etappe 3), `SITE_URL_MAIN` auf
-`https://lucagreinecker.at`, DNS, Search Console.
+**Seit 26.09.2026, 21:48 live unter `https://lucagreinecker.at`.**
+**Nächste Sitzung zuerst:** GitHub Pages im Repo ausschalten, falls noch
+an; Lucas Nacharbeiten (Etappe 3, „Nach dem Go-live": `neu` im DNS löschen,
+Search Console); Lucas Rückmeldung zu den Texten und die WKO-Antworten zu
+den Prüfstellen 1 und 4 einarbeiten; nach dem OZ-Umzug den Knopf für OZ
+setzen und OZ neu aufnehmen.
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -226,14 +222,6 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       Lighthouse-Befund `uses-responsive-images`, siehe oben. Nach den
       Domainumzügen von OZ und USTA noch einmal aufnehmen (Adressen im
       Script)
-- [ ] Domainumzug nach SETUP.md („Go-live"), Search Console – erst nach
-      Prüfung der Rechtstexte, Zustimmungen und OZ-Umzug (Übergangsadressen
-      in `projekte.ts` umstellen, Screenshots neu aufnehmen)
-
-## Zuarbeit
-
-### Luca – Server (Etappe 0)
-
 - [x] **Entscheidung (Luca, 26.09.2026): jetzt live, ohne `neu.`.** USTA
       ist umgezogen und verlinkt auf `https://ustastreetfood.com`; OZ bleibt
       mit Bildern und Text drin, aber ohne „öffnen"-Knopf (`url: null`),
@@ -241,12 +229,32 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       `lib/inhalte/projekte.test.ts`: ein Knopf zeigt nur per https auf
       genau die genannte Domain. Das Impressum sagt nicht mehr „mit
       Zustimmung der jeweiligen Betreiber" (Prüfstelle 6)
+- [x] Beim Umzug nur die vier A-Records am Apex ändern (→ `178.104.239.44`);
+      `www` ist ein CNAME auf den Apex und zieht mit. Keine MX- und
+      TXT-Einträge vorhanden (dig 26.09.2026)
+- [x] **Go-live am 26.09.2026, 21:48** (`scripts/golive.sh`): Luca stellte
+      bei cloudpit den Apex auf `178.104.239.44`, Let's Encrypt für Apex und
+      `www`, alle Prüfungen grün (Health, robots erlaubt, Sitemap mit
+      Domain, kein noindex, Umami, www → 308, `/impressum.html` → 308).
+      Testanfrage über `/kontakt` gesendet („Nachricht gesendet"). Lighthouse
+      auf der Live-Seite: Start Handy 99/100/100/100 (LCP 2,0 s), Desktop
+      100/100/100/100
+- [ ] Nach dem Go-live (Luca): DNS-Eintrag `neu` bei cloudpit löschen;
+      Search Console (Domain-Property `lucagreinecker.at`, TXT-Eintrag bei
+      cloudpit, dann Sitemap `https://lucagreinecker.at/sitemap.xml`
+      einreichen); prüfen, ob der Test-Push angekommen ist
 - [ ] Nach dem OZ-Umzug: `url` in `projekte.ts` auf
       `https://oz-calisthenics.at`, OZ neu aufnehmen
       (`node scripts/projekt-screenshots.mjs oz-calisthenics`)
-- [ ] Beim Umzug nur die vier A-Records am Apex ändern (→ `178.104.239.44`);
-      `www` ist ein CNAME auf den Apex und zieht mit. Keine MX- und
-      TXT-Einträge vorhanden (dig 26.09.2026)
+- [ ] Repo privat? Pages ist aus, damit fällt der Grund für „öffentlich"
+      weg (Offene Entscheidungen). Vorher klären: das Image in GHCR ist
+      öffentlich, weil das Repo es ist; privat braucht der Server
+      `docker login ghcr.io` (SETUP.md, Schritt 4)
+
+## Zuarbeit
+
+### Luca – Server (Etappe 0)
+
 - [x] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
 - [x] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
 - [x] `! DEPLOYEN=1 bash scripts/infra.sh`
@@ -272,8 +280,8 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 - [x] Impressum: kein Gewerbe derzeit, Anschrift wie bisher (Haldenweg
       56b/1, 6700 Bludenz), nur im Impressum (26.09.2026)
 - [ ] Olcay, Akin und Jonathan fragen, ob ihre Seite mit Screenshots und
-      Namen auf deiner Seite stehen darf (OZ neu und USTA sind noch nicht
-      unter der echten Domain live)
+      Namen auf deiner Seite stehen darf (die Seite ist seit 26.09.2026
+      live; das Impressum behauptet die Zustimmung nicht mehr)
 
 ### Luca – Etappe 3 (Stand 26.09.2026)
 
@@ -356,5 +364,7 @@ Kundenserver.
 - 26.09.2026: Etappe 2 – Startseite, Projektseiten, Über mich, Kontakt per ntfy, Redirects, JSON-LD; Texte von Luca offen.
 - 26.09.2026: Etappe 3, Teil 1 – Texte, Impressum, Datenschutz, Platzhalter leer; Umami und ntfy scharf. Offen: Gegenlesen, Prüfstellen, Zustimmungen, Umzug.
 - 26.09.2026: Etappe 3, Teil 2 – Prüfstelle 5 am Umami-Quellcode erledigt, 4 konkretisiert, Lighthouse gemessen und nachgemessen, Zod aus dem Client-Bundle (CSP), renovate.json für dieses Repo, `scripts/server-fakten.sh`. Offen: Zuarbeit Luca (Gegenlesen, Server-Fakten, Renovate-App, WKO, Zustimmungen), Umzug.
+
+- 26.09.2026: Etappe 3, Teil 3 – Updates vorgezogen (pnpm 12, TS 6, Vitest 5), Screenshots neu, Prüfstellen 2 und 3 aus den Server-Fakten; **Go-live auf lucagreinecker.at um 21:48** (golive.sh), OZ ohne Knopf, USTA auf seiner Domain.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

@@ -101,19 +101,26 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   ntfy.sh (nur ID), Drossel-IP im Arbeitsspeicher – Datenschutz danach
   angepasst. Offen für den Go-live: Gegenlesen, WKO (1, 4), Zustimmungen
   (6), Lucas Entscheidung zu OZ/USTA-Links (TODO.md), dann der Umzug.
+- 26.09.2026, 21:48 – **Go-live auf `https://lucagreinecker.at`** (Luca:
+  „lucagreinecker.at will ich haben", ohne `neu.`). Ablauf mit
+  `scripts/golive.sh` (SETUP.md „Go-live"), Zertifikate für Apex und
+  `www`, alle Prüfungen grün, Testanfrage gesendet, Lighthouse Start Handy
+  99/100/100/100, Desktop 100 überall. OZ ohne „öffnen"-Knopf bis zu
+  seinem Umzug, USTA auf `ustastreetfood.com`. Offen: Prüfstellen 1 und 4
+  (WKO), Gegenlesen, Zustimmungen, `neu` im DNS löschen, Search Console.
 
 ## Projekt
 
-| Was         | Wert                                                              |
-| ----------- | ----------------------------------------------------------------- |
-| Kunde       | Luca selbst (Privatperson; Gewerbe für Webprojekte: ‹klären›)     |
-| Domain      | `lucagreinecker.at`, Prod bis zum Go-live `neu.lucagreinecker.at` |
-| Projekttyp  | einfach (leitfaden/12): Portfolio, Inhalte im Code                |
-| Seiten      | Start, je Projekt eine Seite, Über mich, Kontakt, Impressum, DSE  |
-| Funktionen  | Kontaktformular → ntfy (Push an Luca), vCard, Mail-Link           |
-| Sprache     | Du, locker und regional wie Luca selbst schreibt                  |
-| Platzhalter | `[TEXT LUCA]` (`lib/inhalte/statisch.ts`, `PLATZHALTER`)          |
-| Sperrzeiten | keine                                                             |
+| Was         | Wert                                                             |
+| ----------- | ---------------------------------------------------------------- |
+| Kunde       | Luca selbst (Privatperson; Gewerbe für Webprojekte: ‹klären›)    |
+| Domain      | `lucagreinecker.at` (live seit 26.09.2026)                       |
+| Projekttyp  | einfach (leitfaden/12): Portfolio, Inhalte im Code               |
+| Seiten      | Start, je Projekt eine Seite, Über mich, Kontakt, Impressum, DSE |
+| Funktionen  | Kontaktformular → ntfy (Push an Luca), vCard, Mail-Link          |
+| Sprache     | Du, locker und regional wie Luca selbst schreibt                 |
+| Platzhalter | `[TEXT LUCA]` (`lib/inhalte/statisch.ts`, `PLATZHALTER`)         |
+| Sperrzeiten | keine                                                            |
 
 ## Stack
 
@@ -202,9 +209,10 @@ Alias `@/*` auf das Repo-Root. Kein `src/`.
 - **Commits:** imperativ, kleingeschrieben, Präfix mit Doppelpunkt, Warum
   im Betreff: `site:`, `ui:`, `build:`, `docs:`, `infra:`. Vor jedem Push die
   Prüfkette oben.
-- **Deploy:** direkt auf `main` pushen, jeder Push deployt. Bis zum
-  Umzug landet das nur auf `neu.lucagreinecker.at` (noindex). Kein
-  Staging: keine Zahlung, keine gespeicherten Kundendaten.
+- **Deploy:** direkt auf `main` pushen, jeder Push deployt auf die
+  Live-Seite `lucagreinecker.at` (seit 26.09.2026). Kein Staging: keine
+  Zahlung, keine gespeicherten Kundendaten; deshalb vor jedem Push die
+  volle Prüfkette samt E2E.
   Nach dem Deploy `curl` auf `/api/health`, `/robots.txt`, `/sitemap.xml`.
 
 ## Abschluss einer Etappe – was „fertig" heißt

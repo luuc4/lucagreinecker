@@ -10,11 +10,13 @@ dieser Datei.
 
 ## Stand
 
-25.09.2026: `https://neu.lucagreinecker.at` läuft (Coolify-App
-`lucagreinecker-web`, running:healthy, Let's Encrypt, noindex). Jeder Push
-auf `main` deployt dorthin. Die alte statische Seite läuft bis zum Umzug
-über GitHub Pages aus Branch `alt` unter `lucagreinecker.at`. Umami und ntfy laufen seit dem
-26.09.2026.
+**Live seit 26.09.2026, 21:48** unter `https://lucagreinecker.at`
+(Coolify-App `lucagreinecker-web`, Let's Encrypt für Apex und `www`,
+indexierbar). `www` leitet per 308 auf den Apex. `neu.` gibt es nicht mehr
+(Luca); der DNS-Eintrag `neu` kann weg. Jeder Push auf `main` deployt
+direkt auf die Live-Seite. Die alte statische Seite liegt auf Branch `alt`
+(Tag `statisch-2026-09`); GitHub Pages wird abgeschaltet. Umami und ntfy
+laufen seit dem 26.09.2026.
 
 | Was        | Wert                                                                                                                                                       |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,7 +26,7 @@ auf `main` deployt dorthin. Die alte statische Seite läuft bis zum Umzug
 | Repo       | `github.com/luuc4/lucagreinecker` (öffentlich, AGENTS.md), `main` → Prod                                                                                   |
 | Image      | `ghcr.io/luuc4/lucagreinecker:{main,sha-<kurz>}`, gebaut von GitHub Actions                                                                                |
 | Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), Nameserver cloudpit (`cns1.cloudpit.de` u. a.)                                                             |
-| DNS        | Apex → GitHub Pages (4 × `185.199.10x.153`) bis zum Umzug; `neu` → `178.104.239.44` ‹anlegen›                                                              |
+| DNS        | Apex A → `178.104.239.44` (seit 26.09.2026, TTL 600), `www` CNAME → Apex; `neu` A → `178.104.239.44` (löschen, zeigt ins Leere)                            |
 | Postfächer | keine (kein MX am Apex, Stand 25.09.2026); Kontakt über `greineckerluca@hotmail.com`                                                                       |
 | Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                                                                               |
 | Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website „lucagreinecker.at“, ID in secrets.env                                                      |
