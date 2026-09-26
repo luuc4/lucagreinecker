@@ -165,10 +165,26 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       (u. a. `next` 16.3.6) und je eine PR pro Major-Update (ESLint 10,
       TypeScript 7, Vitest 5, pnpm 12, GitHub Actions, Ubuntu-Runner 26.04),
       dazu Lock-File-Pflege (Liste „Awaiting Schedule" im Dashboard)
-- [ ] Renovate-PRs vom 28.09.2026 durchgehen: zuerst die Sammel-PR (CI
-      grün → mergen, deployt sofort), dann die Majors einzeln mit
-      Prüfkette und E2E; TypeScript 7 und ESLint 10 können Code-Änderungen
-      brauchen
+- [ ] Renovate-PRs vom 28.09.2026 durchgehen. Probe am 26.09.2026 in einer
+      Wegwerf-Kopie (git worktree), jedes Major einzeln und kombiniert:
+
+      | Update                           | Ergebnis                                                                                                                                                                                                                                              |
+      | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+      | Sammelgruppe (next 16.3.6 u. a.) | alles grün, auch Prettier 3.9.9 ohne Formatänderung                                                                                                                                                                                                   |
+      | ESLint 10 (10.11.0)              | **nicht nehmen.** Lint stürzt ab: `eslint-plugin-react` 7.37.5 (aus `eslint-config-next` 16.3.6) ruft `context.getFilename()`, das ESLint 10 entfernt hat. Mit fester React-Version in den Settings läuft es, aber react, import und jsx-a11y erlauben laut Peer-Angaben nur ESLint ≤ 9 |
+      | TypeScript 7 (7.0.2)             | **nicht nehmen.** Typecheck und Build grün, Lint bricht ab: „typescript-eslint does not support TS 7.0" (8.70.1 erlaubt TypeScript < 6.1); TS 7 hat keine klassische JS-API mehr                                                                    |
+      | TypeScript 6 (6.0.3)             | alles grün – der sinnvolle Schritt statt 7                                                                                                                                                                                                            |
+      | Vitest 5 (5.0.2)                 | alle 25 Tests grün, keine Änderung nötig                                                                                                                                                                                                              |
+      | pnpm 12 (12.6.0)                 | Install, Lint, Tests, Build grün, aber **E2E hängt**: Playwright startet den Server mit `pnpm start`, pnpm 12 legt Next in eine eigene Prozessgruppe, das Beenden erreicht ihn nicht → „Timed out waiting … for the teardown". Mit `./node_modules/.bin/next start` im `webServer` von `playwright.config.ts` 3 s statt Hänger |
+      | Kombination Sammel + TS 6 + Vitest 5 + pnpm 12, ESLint 9 | Prüfkette grün, keine Peer-Konflikte, 14 E2E grün – bis auf den pnpm-12-Hänger                                                                                                                                                            |
+      | GitHub Actions (checkout 7, setup-node 7, cache 6, upload-artifact 7, docker/* neu) | laut Release-Notes vor allem Node-24-Laufzeit; unsere Inputs sind nicht betroffen; die CI der Renovate-PR zeigt es                                                                                             |
+      | Ubuntu-Runner 26.04              | nicht lokal prüfbar; die CI der PR entscheidet (Playwright-Abhängigkeiten)                                                                                                                                                                             |
+
+      Vorschlag: Sammelgruppe, TypeScript 6, Vitest 5 jetzt; pnpm 12 nur
+      zusammen mit dem geänderten `webServer`-Befehl; ESLint 10 und
+      TypeScript 7 in `renovate.json` zurückhalten, bis `eslint-config-next`
+      und `typescript-eslint` sie unterstützen
+
 - [x] Lighthouse gemessen (26.09.2026, Lighthouse 12 headless gegen `neu.`,
       alle neun Seiten, Handy und Desktop). Leistung 97–100 (Handy: Start
       99, OZ 97, Rest 100; Desktop überall 100), Barrierefreiheit 100,
