@@ -228,6 +228,20 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 ### Luca – Server (Etappe 0)
 
+- [ ] **Entscheidung Luca: auf den OZ-Umzug warten oder nicht** (Befund
+      26.09.2026). Der OZ-Go-live wartet auf Stripe-Live-Verifizierung
+      (Wochen), Prüfauftrag und Finanzamt/SVS, frühestens nach der
+      Challenge am 03.10.2026; `oz-calisthenics.at` zeigt bis dahin die alte
+      Seite (Google Analytics, SuperSaaS). `ustastreetfood.com` antwortet
+      noch gar nicht (Domain im Umzug zu IONOS). Möglichkeiten: (a) warten,
+      bis beide umgezogen sind; (b) jetzt umziehen, OZ und USTA ohne
+      „öffnen"-Knopf, bis ihre Domain die neue Seite zeigt (Empfehlung);
+      (c) mit Übergangsadressen live – nicht gut: `neu.oz-calisthenics.at`
+      ist noch nicht öffentlich gedacht, USTA wäre eine rohe
+      `http://…sslip.io`-Adresse
+- [ ] Beim Umzug nur die vier A-Records am Apex ändern (→ `178.104.239.44`);
+      `www` ist ein CNAME auf den Apex und zieht mit. Keine MX- und
+      TXT-Einträge vorhanden (dig 26.09.2026)
 - [x] DNS bei cloudpit: A `neu.lucagreinecker.at` → `178.104.239.44`
 - [x] Coolify: API an, zwei Tokens, `~/.config/lucagreinecker/secrets.env`
 - [x] `! DEPLOYEN=1 bash scripts/infra.sh`
