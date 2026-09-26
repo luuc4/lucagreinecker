@@ -7,8 +7,8 @@ import type { Projekt } from "@/lib/inhalte/projekte";
 // Kein next/image: die Varianten liegen vorab da, width/height verhindern
 // Layoutsprünge. `sizes` beschreibt, wie breit das Bild im Layout steht.
 const VARIANTEN = {
-  handy: { breiten: [390, 780], seite: 844 / 390 },
-  desktop: { breiten: [720, 1200, 1800], seite: 900 / 1440 },
+  handy: { breiten: [390, 560, 780], seite: 844 / 390 },
+  desktop: { breiten: [720, 1200, 1440, 1800], seite: 900 / 1440 },
 } as const;
 
 export function ProjektBild({

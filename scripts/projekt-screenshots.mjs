@@ -25,12 +25,18 @@ const PROJEKTE = [
   { slug: "jonathan-walch", url: "https://jonathanwalch.at/" },
 ];
 
-// Breiten der Varianten je Ansicht: das Handybild steht höchstens 390 px
-// breit auf der Seite (×2 für hohe Pixeldichte), das Desktopbild bis etwa
-// 900 px (×2).
+// Breiten der Varianten je Ansicht, passend zu `VARIANTEN` in
+// components/ProjektBild.tsx: das Handybild steht höchstens 420 px breit auf
+// der Seite, am Handy meist rund 280 px (560 = ×2, Lighthouse-Befund
+// 26.09.2026: 780 px war dort zu groß), das Desktopbild bis 1328 px.
 const ANSICHTEN = [
-  { name: "handy", width: 390, height: 844, breiten: "390,780" },
-  { name: "desktop", width: 1440, height: 900, breiten: "720,1200,1800" },
+  { name: "handy", width: 390, height: 844, breiten: "390,560,780" },
+  {
+    name: "desktop",
+    width: 1440,
+    height: 900,
+    breiten: "720,1200,1440,1800",
+  },
 ];
 
 const nurSlug = process.argv[2];

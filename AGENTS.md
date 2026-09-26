@@ -166,7 +166,7 @@ e2e/                  seiten (Rauchtest, Überlauf), a11y (axe, 390/1440), platz
 scripts/              screenshots.mjs, bilder.mjs (Varianten ohne Metadaten), server-einrichten.sh,
                       projekt-screenshots.mjs (Startseiten der Projekte in 390 und 1440 px → public/bilder),
                       server-fakten.sh (nur lesen: Log-Rotation, ntfy, Umami, Speicher – Luca führt aus)
-public/bilder/        projekt-<slug>-handy-{390,780} und -desktop-{720,1200,1800} als AVIF/WebP/JPEG
+public/bilder/        projekt-<slug>-handy-{390,560,780} und -desktop-{720,1200,1440,1800} als AVIF/WebP/JPEG
 docs/design/richtungen/  Design-Richtungen A und B (index.html = Leinwand, a-*/b-* = Entwürfe), Archiv
 screenshots/          Originale und Durchsichts-Screenshots, nicht im Repo
 ```

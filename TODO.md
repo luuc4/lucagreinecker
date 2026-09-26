@@ -213,10 +213,13 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       schlechten Ende. Das LCP-Bild ist das erste Handy-Bild (780 px, 43–71
       KB AVIF); die 560-px-Variante bei der Neuaufnahme (unten) ist der
       nächste Hebel
-- [ ] Bei der Neuaufnahme der Screenshots (nach den Domainumzügen) die
-      Varianten 560 px (Handy) und 1440 px (Desktop) in `scripts/bilder.mjs`
-      und `ProjektBild` (`VARIANTEN`) ergänzen – Lighthouse-Befund
-      `uses-responsive-images`, siehe oben
+- [x] Screenshots neu aufgenommen (26.09.2026, Luca: USTA hat eine neue
+      Startseite): alle vier Projekte, nur USTA hat sich sichtbar geändert.
+      Dabei die Varianten 560 px (Handy) und 1440 px (Desktop) ergänzt
+      (`scripts/projekt-screenshots.mjs`, `ProjektBild` `VARIANTEN`) –
+      Lighthouse-Befund `uses-responsive-images`, siehe oben. Nach den
+      Domainumzügen von OZ und USTA noch einmal aufnehmen (Adressen im
+      Script)
 - [ ] Domainumzug nach SETUP.md („Go-live"), Search Console – erst nach
       Prüfung der Rechtstexte, Zustimmungen und OZ-Umzug (Übergangsadressen
       in `projekte.ts` umstellen, Screenshots neu aufnehmen)
