@@ -394,10 +394,15 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
 - **26.09.2026 – Nur das erste Handy-Bild lädt sofort, die drei anderen
   lazy – gemessen, nicht geraten.** Chrome (DevTools „Issues") meldete die
   Bilder 2–4 der Startseite als lazy im sichtbaren Bereich; ein Versuch mit
-  allen vier `eager` (Deploy 10:48) machte die Startseite am Handy
-  langsamer: LCP 2,0 → 2,8 s, Leistung 99 → 96 (Lighthouse, gedrosseltes
-  4G), weil die drei Bilder mit dem ersten um die Leitung konkurrieren;
+  allen vier `eager` (Commit 69c217e, live 10:40–10:50) machte die
+  Startseite am Handy langsamer: LCP 2,0 → 2,8 s, Leistung 99 → 96
+  (Lighthouse, gedrosseltes 4G), weil die drei Bilder mit dem ersten um die
+  Leitung konkurrieren;
   am Desktop änderte sich nichts (100). Deshalb zurück zu `zuerst` nur für
   das LCP-Bild (`fetchpriority=high`), Rest `loading="lazy"`; Chrome lädt
-  lazy Bilder im Viewport ohnehin direkt nach dem Layout. Der
-  DevTools-Hinweis ist kein Grund, Lighthouse-Zahlen sind einer.
+  lazy Bilder im Viewport ohnehin direkt nach dem Layout. Nach dem Rückbau
+  am Handy 97 und 99 (LCP 2,64 und 2,17 s): das Rauschen im gedrosselten
+  Lab liegt bei rund 0,5 s, die eager-Variante lag trotzdem am schlechten
+  Ende, und der Mechanismus (Bandbreite teilen) spricht gegen sie. Der
+  DevTools-Hinweis ist kein Grund, Lighthouse-Zahlen mit Wiederholung sind
+  einer.

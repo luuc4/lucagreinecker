@@ -175,8 +175,13 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       Practices 100 (Handy und Desktop, keine CSP-Meldung mehr), OZ am Handy
       99 mit LCP 2,05 s (vorher 2,6 s). Der Versuch, die Handy-Bilder 2–4 der
       Startseite eager zu laden, kostete am Handy LCP 2,0 → 2,8 s und
-      Leistung 99 → 96 → zurückgenommen (AGENTS.md, Entscheidungen); nach
-      dem Rückbau die Startseite am Handy erneut messen und hier ergänzen
+      Leistung 99 → 96 → zurückgenommen (AGENTS.md, Entscheidungen). Nach
+      dem Rückbau (Deploy 10:55) Startseite am Handy in zwei Läufen 97 und
+      99 mit LCP 2,64 s und 2,17 s, Desktop 100 mit 0,79 s: das Lab-Rauschen
+      am gedrosselten Handy liegt bei rund 0,5 s, die eager-Variante lag am
+      schlechten Ende. Das LCP-Bild ist das erste Handy-Bild (780 px, 43–71
+      KB AVIF); die 560-px-Variante bei der Neuaufnahme (unten) ist der
+      nächste Hebel
 - [ ] Bei der Neuaufnahme der Screenshots (nach den Domainumzügen) die
       Varianten 560 px (Handy) und 1440 px (Desktop) in `scripts/bilder.mjs`
       und `ProjektBild` (`VARIANTEN`) ergänzen – Lighthouse-Befund
