@@ -156,15 +156,19 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
      laufenden Datenbank zur Bestätigung.
   6. **Zustimmung:** Impressum „mit Zustimmung der jeweiligen Betreiber"
      stimmt erst, wenn Olcay, Akin und Jonathan zugesagt haben (Zuarbeit).
-- [ ] Renovate: App für das Repo freigegeben (Luca, 26.09.2026, 11:03);
-      `renovate.json` passt seit demselben Tag (Base `main`, kein
-      Auto-Merge, AGENTS.md Entscheidungen). Aber: 17 Minuten danach kein
-      Issue „Dependency Dashboard", keine PR, kein `renovate/*`-Branch – und
-      bei OZ seit dem 17.09.2026 ebenfalls nichts. Bestätigt im Mend-Portal
-      (Luca, 26.09.2026, 11:36): „Dependency Updates (Renovate): Silent",
-      ein Job lief um 11:02 durch, Silent mode auch in den Einstellungen an
-      (leitfaden/04, „Renovate"). Erledigt, wenn das Dashboard-Issue im
-      Repo steht (Zuarbeit unten)
+- [x] Renovate läuft (26.09.2026, 11:39: Issue #7 „Dependency Dashboard").
+      App von Luca freigegeben, danach stand das Repo im Mend-Portal auf
+      „Silent" (kein Dashboard, keine PR); Luca stellte es auf „Interactive"
+      (leitfaden/04, „Renovate"). `renovate.json`: Base `main`, kein
+      Auto-Merge, `renovate-config-validator --strict` grün. Am Montag,
+      28.09.2026, vor 6 Uhr kommen die Sammel-PR „wöchentliche Updates"
+      (u. a. `next` 16.3.6) und je eine PR pro Major-Update (ESLint 10,
+      TypeScript 7, Vitest 5, pnpm 12, GitHub Actions, Ubuntu-Runner 26.04),
+      dazu Lock-File-Pflege (Liste „Awaiting Schedule" im Dashboard)
+- [ ] Renovate-PRs vom 28.09.2026 durchgehen: zuerst die Sammel-PR (CI
+      grün → mergen, deployt sofort), dann die Majors einzeln mit
+      Prüfkette und E2E; TypeScript 7 und ESLint 10 können Code-Änderungen
+      brauchen
 - [x] Lighthouse gemessen (26.09.2026, Lighthouse 12 headless gegen `neu.`,
       alle neun Seiten, Handy und Desktop). Leistung 97–100 (Handy: Start
       99, OZ 97, Rest 100; Desktop überall 100), Barrierefreiheit 100,
@@ -234,18 +238,10 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [ ] `! bash scripts/server-fakten.sh` – liest nur (Log-Rotation, Traefik,
       ntfy, Umami, Speicher), die Ausgabe darf in den Chat; daraus werden
       die Prüfstellen 2 und 3 und die Zeile ‹RAM› in SETUP.md
-- [x] Renovate-App für `lucagreinecker` freigegeben (26.09.2026)
-- [ ] Silent mode aus, je Repo statt fürs ganze Konto: im Mend-Portal die
-      Seite des Repos → „Settings" → „Dependencies" → „Silent mode" aus,
-      „Automated PRs" an; danach „Actions" → Renovate-Lauf anstoßen. Für
-      `lucagreinecker` und `ozcalisthenics`. `usta-streetfood` vorerst
-      still lassen: dessen `renovate.json` arbeitet gegen `staging`, das Repo
-      hat aber nur `main` (Stand 26.09.2026). Wer es doch fürs ganze Konto
-      umstellt: vorher „Require config file" an und „Create onboarding
-      PRs" aus, sonst arbeitet Renovate in allen 19 Repos von `luuc4`, auch
-      in denen ohne Konfiguration. Danach legt Renovate das Issue
-      „Dependency Dashboard" an; die erste Sammel-PR kommt am Montag früh,
-      du merged von Hand
+- [x] Renovate-App für `lucagreinecker` freigegeben und im Mend-Portal auf
+      „Interactive" gestellt, ebenso `ozcalisthenics` (26.09.2026).
+      `usta-streetfood` bleibt still, bis dessen `renovate.json` passt
+      (arbeitet gegen `staging`, das Repo hat nur `main`)
 - [ ] WKO-Rechtsservice (oder Anwalt) zu den Prüfstellen 1 und 4 fragen
       (Etappe 3); Antworten in TODO.md, Texte danach anpassen
 
