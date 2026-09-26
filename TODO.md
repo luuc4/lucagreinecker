@@ -156,9 +156,13 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
      laufenden Datenbank zur Bestätigung.
   6. **Zustimmung:** Impressum „mit Zustimmung der jeweiligen Betreiber"
      stimmt erst, wenn Olcay, Akin und Jonathan zugesagt haben (Zuarbeit).
-- [ ] Renovate-App installieren (Luca, Zuarbeit unten); `renovate.json`
-      passt seit dem 26.09.2026 zu diesem Repo (Base `main`, kein
-      Auto-Merge, AGENTS.md Entscheidungen)
+- [ ] Renovate: App für das Repo freigegeben (Luca, 26.09.2026, 11:03);
+      `renovate.json` passt seit demselben Tag (Base `main`, kein
+      Auto-Merge, AGENTS.md Entscheidungen). Aber: 17 Minuten danach kein
+      Issue „Dependency Dashboard", keine PR, kein `renovate/*`-Branch – und
+      bei OZ seit dem 17.09.2026 ebenfalls nichts. Vermutlich stiller Modus
+      der Mend-App (leitfaden/04, „Renovate"). Erledigt, wenn das
+      Dashboard-Issue im Repo steht (Zuarbeit unten)
 - [x] Lighthouse gemessen (26.09.2026, Lighthouse 12 headless gegen `neu.`,
       alle neun Seiten, Handy und Desktop). Leistung 97–100 (Handy: Start
       99, OZ 97, Rest 100; Desktop überall 100), Barrierefreiheit 100,
@@ -228,11 +232,14 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [ ] `! bash scripts/server-fakten.sh` – liest nur (Log-Rotation, Traefik,
       ntfy, Umami, Speicher), die Ausgabe darf in den Chat; daraus werden
       die Prüfstellen 2 und 3 und die Zeile ‹RAM› in SETUP.md
-- [ ] Renovate-App: `https://github.com/apps/renovate` → Configure → Konto
-      `luuc4` → „Only select repositories" → `lucagreinecker`; bei Mend die
-      Auswahl „Renovate Only" (wie bei OZ am 17.09.2026, leitfaden/04). Danach
-      legt Renovate ein Issue „Dependency Dashboard" an; erste Sammel-PR am
-      Montag früh, du merged von Hand
+- [x] Renovate-App für `lucagreinecker` freigegeben (26.09.2026)
+- [ ] Renovate-Modus prüfen, für `lucagreinecker` und `ozcalisthenics`:
+      `https://developer.mend.io` → GitHub → `luuc4` → Repo öffnen. Steht
+      im Job-Log `dryRun` oder in den Settings „Silent", auf „Interactive"
+      stellen (geht je Repo oder für das ganze Konto). Wurde die App mit
+      „All repositories" installiert, ist „Silent" der Standard. Danach legt
+      Renovate in jedem Repo das Issue „Dependency Dashboard" an; die erste
+      Sammel-PR kommt am Montag früh, du merged von Hand
 - [ ] WKO-Rechtsservice (oder Anwalt) zu den Prüfstellen 1 und 4 fragen
       (Etappe 3); Antworten in TODO.md, Texte danach anpassen
 
