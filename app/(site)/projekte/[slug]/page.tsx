@@ -58,7 +58,7 @@ export default async function Projektseite({ params }: Props) {
               ansicht="handy"
               sizes="(min-width: 1024px) 420px, 320px"
               className="rounded-bild"
-              laden="zuerst"
+              zuerst
             />
           </div>
           <div>

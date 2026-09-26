@@ -32,9 +32,10 @@ komplette Seite.
 
 Etappe 3, Teil 2 erledigt (26.09.2026): Prüfstelle 5 (Umami) am Quellcode
 von 3.0.3 geprüft und der Absatz präzisiert, Prüfstelle 4 (Microsoft)
-konkretisiert; Lighthouse gemessen (Werte in Etappe 3) und zwei Befunde
-behoben (Zod aus dem Client-Bundle samt CSP-Verletzung, Hero-Bilder nicht
-mehr lazy); `renovate.json` auf dieses Repo umgestellt;
+konkretisiert; Lighthouse gemessen (Werte in Etappe 3) und den Befund
+behoben (Zod aus dem Client-Bundle samt CSP-Verletzung); ein Versuch mit
+eager geladenen Hero-Bildern nach der Nachmessung zurückgenommen;
+`renovate.json` auf dieses Repo umgestellt;
 `scripts/server-fakten.sh` für die Prüfstellen 2 und 3 liegt bereit.
 
 **Nächste Sitzung zuerst:** Lucas Zuarbeit einarbeiten (unten, „Luca –
@@ -170,8 +171,12 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       780 px bei rund 550 px Bedarf, Desktop-Bild 1800 px bei 1350 px
       Bedarf, je 30–60 KB AVIF) und der Next-Polyfill-Chunk (86 KB,
       `noModule`, moderne Browser laden ihn nicht aus).
-- [ ] Lighthouse nach dem Deploy vom 26.09.2026 nachmessen: Kontakt Best
-      Practices 100, LCP der Startseite am Handy; Werte oben ergänzen
+- [x] Lighthouse nach dem Deploy vom 26.09.2026 nachgemessen: Kontakt Best
+      Practices 100 (Handy und Desktop, keine CSP-Meldung mehr), OZ am Handy
+      99 mit LCP 2,05 s (vorher 2,6 s). Der Versuch, die Handy-Bilder 2–4 der
+      Startseite eager zu laden, kostete am Handy LCP 2,0 → 2,8 s und
+      Leistung 99 → 96 → zurückgenommen (AGENTS.md, Entscheidungen); nach
+      dem Rückbau die Startseite am Handy erneut messen und hier ergänzen
 - [ ] Bei der Neuaufnahme der Screenshots (nach den Domainumzügen) die
       Varianten 560 px (Handy) und 1440 px (Desktop) in `scripts/bilder.mjs`
       und `ProjektBild` (`VARIANTEN`) ergänzen – Lighthouse-Befund
@@ -275,6 +280,6 @@ Kundenserver.
 - 25.09.2026: Etappe 1 – zwei Richtungen, Lucas Wahl (A-Design, B-Aufbau), drei Versionen, Version 1 „Reihe" umgesetzt (Tokens, Schrift, Bausteine); echte Projekt-Screenshots.
 - 26.09.2026: Etappe 2 – Startseite, Projektseiten, Über mich, Kontakt per ntfy, Redirects, JSON-LD; Texte von Luca offen.
 - 26.09.2026: Etappe 3, Teil 1 – Texte, Impressum, Datenschutz, Platzhalter leer; Umami und ntfy scharf. Offen: Gegenlesen, Prüfstellen, Zustimmungen, Umzug.
-- 26.09.2026: Etappe 3, Teil 2 – Prüfstelle 5 am Umami-Quellcode erledigt, 4 konkretisiert, Lighthouse gemessen, Zod aus dem Client-Bundle (CSP), Hero-Bilder eager, renovate.json für dieses Repo, `scripts/server-fakten.sh`. Offen: Zuarbeit Luca (Gegenlesen, Server-Fakten, Renovate-App, WKO, Zustimmungen), Umzug.
+- 26.09.2026: Etappe 3, Teil 2 – Prüfstelle 5 am Umami-Quellcode erledigt, 4 konkretisiert, Lighthouse gemessen und nachgemessen, Zod aus dem Client-Bundle (CSP), renovate.json für dieses Repo, `scripts/server-fakten.sh`. Offen: Zuarbeit Luca (Gegenlesen, Server-Fakten, Renovate-App, WKO, Zustimmungen), Umzug.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

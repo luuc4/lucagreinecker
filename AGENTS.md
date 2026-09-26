@@ -84,11 +84,12 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   nur; Claude darf im Auto-Modus nicht auf den Server lesen, Luca führt es
   aus. Lighthouse auf `neu.` gemessen (TODO.md, Etappe 3): Leistung 97–100,
   Barrierefreiheit 100, Best Practices 96–100, SEO 66–69 nur wegen noindex.
-  Zwei Befunde daraus behoben: Zod war über die Feldkonstanten im
-  Client-Bundle (86 KB je Seite, CSP-Verletzung durch Zods `Function("")`)
-  → `lib/anfrage/felder.ts` ohne Zod; die drei weiteren Hero-Bilder der
-  Startseite luden lazy im sichtbaren Bereich → `laden="sichtbar"`.
-  `renovate.json` für dieses Repo korrigiert (Base `main`, kein Auto-Merge);
+  Befund behoben: Zod war über die Feldkonstanten im Client-Bundle (86 KB
+  je Seite, CSP-Verletzung durch Zods `Function("")`) →
+  `lib/anfrage/felder.ts` ohne Zod, Kontakt danach Best Practices 100.
+  Versuch, die Handy-Bilder 2–4 der Startseite eager zu laden, nach der
+  Nachmessung zurückgenommen (Entscheidungen). `renovate.json` für dieses
+  Repo korrigiert (Base `main`, kein Auto-Merge);
   die Renovate-App installiert Luca (TODO.md). Offen: Gegenlesen, Server-
   Fakten, WKO-Fragen (1, 4), Zustimmungen (6), Renovate-App, Domainumzug.
 
@@ -390,9 +391,13 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   `baseBranches`, wöchentliche Sammel-PR (Minor und Patch), Luca merged von
   Hand. Die Regel für `better-auth` und `stripe` ist raus, beides ist hier
   nicht drin.
-- **26.09.2026 – Bilder im ersten Blick laden sofort.** `ProjektBild`
-  bekommt `laden`: `zuerst` (eager, `fetchpriority=high`) für das größte
-  Bild im ersten Blick, `sichtbar` (eager) für die anderen Bilder im ersten
-  Blick, `bedarf` (lazy) darunter. Chrome meldete die drei weiteren
-  Handy-Bilder der Startseite als lazy im sichtbaren Bereich; lazy im
-  Viewport verzögert nur. Lighthouse-Nachmessung nach dem Deploy in TODO.md.
+- **26.09.2026 – Nur das erste Handy-Bild lädt sofort, die drei anderen
+  lazy – gemessen, nicht geraten.** Chrome (DevTools „Issues") meldete die
+  Bilder 2–4 der Startseite als lazy im sichtbaren Bereich; ein Versuch mit
+  allen vier `eager` (Deploy 10:48) machte die Startseite am Handy
+  langsamer: LCP 2,0 → 2,8 s, Leistung 99 → 96 (Lighthouse, gedrosseltes
+  4G), weil die drei Bilder mit dem ersten um die Leitung konkurrieren;
+  am Desktop änderte sich nichts (100). Deshalb zurück zu `zuerst` nur für
+  das LCP-Bild (`fetchpriority=high`), Rest `loading="lazy"`; Chrome lädt
+  lazy Bilder im Viewport ohnehin direkt nach dem Layout. Der
+  DevTools-Hinweis ist kein Grund, Lighthouse-Zahlen sind einer.
