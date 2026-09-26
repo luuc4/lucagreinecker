@@ -25,11 +25,14 @@ dem Paket, Projektseiten, Über mich, Kontaktformular per ntfy, Redirects,
 JSON-LD. `neu.lucagreinecker.at` zeigt den Stand. Alle Sätze sind noch
 `[TEXT LUCA]`.
 
-**Nächste Sitzung zuerst:** Lucas Texte einsetzen (Etappe 2, letzte
-Punkte) und ntfy scharf schalten; dann Etappe 3 (Impressum, Datenschutz,
-Platzhalter-Liste leer, Domainumzug nach SETUP.md). Vor dem Umzug die
-Übergangsadressen in `projekte.ts` prüfen (OZ, USTA) und Olcay, Akin und
-Jonathan fragen (Zuarbeit).
+**Nächste Sitzung zuerst:** Etappe 3. Reihenfolge: Datenschutz- und
+Impressum-Entwurf (leitfaden/07; Fakten zu Luca aus der Zuarbeit, jede
+Prüfstelle markiert), Umami-Website-ID (Etappe 0, offen), Lucas Texte
+einsetzen, sobald da (alle `[TEXT LUCA]`), Renovate, Uptime Kuma; der
+Domainumzug nach SETUP.md „Go-live" erst, wenn `PLATZHALTER_STRENG=1`
+grün ist, die Rechtstexte geprüft sind und Olcay, Akin und Jonathan
+zugestimmt haben. Vor dem Umzug die Übergangsadressen in `projekte.ts`
+prüfen (OZ frühestens nach dem 03.10.2026, USTA-Domain im Umzug).
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -96,7 +99,7 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       `satz`, die Anfrage-Sätze auf der Startseite (`app/(site)/page.tsx`)
 - [x] ntfy scharf (26.09.2026): Zugang vom punktetafel-Feedback übernommen,
       `ANFRAGE_TRANSPORT=ntfy` in Coolify, Testanfrage über `/kontakt` mit
-      Bestätigung; Luca prüft den Push am Handy
+      Bestätigung, Push am Handy angekommen (Luca)
 
 ### Etappe 3 – Recht und Umzug
 
