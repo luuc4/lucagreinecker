@@ -62,7 +62,9 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   Mail-Stack entfernt; Redirects der alten Adressen (`/index.html`,
   `/impressum.html`, `/datenschutz.html`); JSON-LD `Person`. Offen:
   Lucas Sätze (alle Stellen `[TEXT LUCA]`), die Paket-Punkte bestätigen,
-  ntfy-Topic und Token in Coolify (SETUP.md), Etappe 3 (Recht, Umzug).
+  Etappe 3 (Recht, Umzug). ntfy ist seit dem 26.09.2026 scharf: Zugang und
+  Topic vom punktetafel-Feedback übernommen (`scripts/ntfy-uebernehmen.sh`),
+  Testanfrage über das Live-Formular mit Bestätigung.
 
 ## Projekt
 

@@ -94,9 +94,9 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 - [ ] Lucas Texte einsetzen, sobald da (Zuarbeit unten): `SEITE.beschreibung`,
       Satz über ihn, `PAKET.satz` und -Punkte, `UEBER_MICH.saetze`, je Projekt
       `satz`, die Anfrage-Sätze auf der Startseite (`app/(site)/page.tsx`)
-- [ ] ntfy scharf schalten: Topic und Token in secrets.env, dann
-      `! DEPLOYEN=1 bash scripts/infra.sh` (setzt `ANFRAGE_TRANSPORT=ntfy`),
-      Testanfrage über `/kontakt`, Push kommt an
+- [x] ntfy scharf (26.09.2026): Zugang vom punktetafel-Feedback übernommen,
+      `ANFRAGE_TRANSPORT=ntfy` in Coolify, Testanfrage über `/kontakt` mit
+      Bestätigung; Luca prüft den Push am Handy
 
 ### Etappe 3 – Recht und Umzug
 
@@ -117,9 +117,9 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       (Docker 27.5.1, Coolify-Issue 8649). `systemctl restart docker` auf
       dem Server, danach `bash scripts/deploy.sh` – Deployment um 17:47
       durch, seither deployt jeder Push wieder (SETUP.md, „Deploy").
-- [ ] ntfy: `! bash scripts/ntfy-uebernehmen.sh` (übernimmt Topic und Token
-      vom punktetafel-Feedback aus Coolify in secrets.env, kein SSH), dann
-      `! DEPLOYEN=1 bash scripts/infra.sh`; eigenes Topic siehe SETUP.md
+- [x] ntfy: Zugang vom punktetafel-Feedback übernommen
+      (`scripts/ntfy-uebernehmen.sh`, 26.09.2026); eigenes Topic bei Bedarf
+      nach SETUP.md
 - [ ] Uptime Kuma (`uptime.punktetafel.at`): Monitor auf
       `https://neu.lucagreinecker.at/api/health`, Schlüsselwort `ok`
 - [ ] Server-Größe nachsehen (Hetzner-Console: RAM), in SETUP.md

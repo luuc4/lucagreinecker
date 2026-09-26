@@ -14,21 +14,21 @@ dieser Datei.
 `lucagreinecker-web`, running:healthy, Let's Encrypt, noindex). Jeder Push
 auf `main` deployt dorthin. Die alte statische Seite läuft bis zum Umzug
 über GitHub Pages aus Branch `alt` unter `lucagreinecker.at`. Noch offen:
-Umami, ntfy (TODO.md).
+Umami (TODO.md); ntfy läuft seit dem 26.09.2026.
 
-| Was        | Wert                                                                                                  |
-| ---------- | ----------------------------------------------------------------------------------------------------- |
-| Konten     | alle auf Luca (eigene Seite)                                                                          |
-| Server     | Lucas eigener Server (punktetafel, ländle isst geparkt): Hetzner Cloud CPX22, `178.104.239.44`, ‹RAM› |
-| Coolify    | 4.3.23 (seit 25.09.2026, vorher 4.0.0), `http://178.104.239.44:8000` (von außen erreichbar, TODO.md)  |
-| Repo       | `github.com/luuc4/lucagreinecker` (öffentlich, AGENTS.md), `main` → Prod                              |
-| Image      | `ghcr.io/luuc4/lucagreinecker:{main,sha-<kurz>}`, gebaut von GitHub Actions                           |
-| Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), Nameserver cloudpit (`cns1.cloudpit.de` u. a.)        |
-| DNS        | Apex → GitHub Pages (4 × `185.199.10x.153`) bis zum Umzug; `neu` → `178.104.239.44` ‹anlegen›         |
-| Postfächer | keine (kein MX am Apex, Stand 25.09.2026); Kontakt über `greineckerluca@hotmail.com`                  |
-| Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                          |
-| Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website-ID ‹…›                                 |
-| ntfy       | bestehende Instanz `https://ntfy.punktetafel.at` (wie punktetafel-Feedback), Topic ‹…›                |
+| Was        | Wert                                                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------- |
+| Konten     | alle auf Luca (eigene Seite)                                                                            |
+| Server     | Lucas eigener Server (punktetafel, ländle isst geparkt): Hetzner Cloud CPX22, `178.104.239.44`, ‹RAM›   |
+| Coolify    | 4.3.23 (seit 25.09.2026, vorher 4.0.0), `http://178.104.239.44:8000` (von außen erreichbar, TODO.md)    |
+| Repo       | `github.com/luuc4/lucagreinecker` (öffentlich, AGENTS.md), `main` → Prod                                |
+| Image      | `ghcr.io/luuc4/lucagreinecker:{main,sha-<kurz>}`, gebaut von GitHub Actions                             |
+| Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), Nameserver cloudpit (`cns1.cloudpit.de` u. a.)          |
+| DNS        | Apex → GitHub Pages (4 × `185.199.10x.153`) bis zum Umzug; `neu` → `178.104.239.44` ‹anlegen›           |
+| Postfächer | keine (kein MX am Apex, Stand 25.09.2026); Kontakt über `greineckerluca@hotmail.com`                    |
+| Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                            |
+| Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website-ID ‹…›                                   |
+| ntfy       | bestehende Instanz `https://ntfy.punktetafel.at`, dasselbe Topic und Token wie das punktetafel-Feedback |
 
 Coolify-Projekte auf dem Server: „My first project" (punktetafel, Umami
 `analytics.punktetafel.at`, ntfy `ntfy.punktetafel.at`, Uptime Kuma
