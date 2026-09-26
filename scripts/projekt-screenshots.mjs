@@ -20,7 +20,7 @@ import { chromium } from "@playwright/test";
 // danach hier die echte Domain eintragen und neu aufnehmen.
 const PROJEKTE = [
   { slug: "oz-calisthenics", url: "https://neu.oz-calisthenics.at/" },
-  { slug: "usta-streetfood", url: "http://usta.31-70-151-189.sslip.io/" },
+  { slug: "usta-streetfood", url: "https://ustastreetfood.com/" },
   { slug: "punktetafel", url: "https://punktetafel.at/" },
   { slug: "jonathan-walch", url: "https://jonathanwalch.at/" },
 ];

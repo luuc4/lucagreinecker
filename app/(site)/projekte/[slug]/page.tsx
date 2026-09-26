@@ -72,9 +72,13 @@ export default async function Projektseite({ params }: Props) {
                 { begriff: "Betrieb", wert: projekt.betrieb },
               ]}
             />
-            <p className="mt-6">
-              <KnopfLink href={projekt.url}>{projekt.domain} öffnen</KnopfLink>
-            </p>
+            {projekt.url && (
+              <p className="mt-6">
+                <KnopfLink href={projekt.url}>
+                  {projekt.domain} öffnen
+                </KnopfLink>
+              </p>
+            )}
           </div>
         </div>
       </section>

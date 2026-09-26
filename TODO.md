@@ -157,8 +157,11 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
      enthalten); Datenbank-Container auf demselben Server. Absatz danach
      neu geschrieben. `scripts/server-fakten.sh` zeigt die Spalten der
      laufenden Datenbank zur Bestätigung.
-  6. **Zustimmung:** Impressum „mit Zustimmung der jeweiligen Betreiber"
-     stimmt erst, wenn Olcay, Akin und Jonathan zugesagt haben (Zuarbeit).
+  6. **Zustimmung:** Das Impressum behauptete „mit Zustimmung der
+     jeweiligen Betreiber"; für den Go-live am 26.09.2026 auf „zeigen
+     Websites, die ich für die jeweiligen Betreiber gebaut habe"
+     geändert, weil die Zusagen noch fehlen. Olcay, Akin und Jonathan
+     trotzdem fragen (Zuarbeit); danach kann der Satz wieder rein.
 - [x] Renovate läuft (26.09.2026, 11:39: Issue #7 „Dependency Dashboard").
       App von Luca freigegeben, danach stand das Repo im Mend-Portal auf
       „Silent" (kein Dashboard, keine PR); Luca stellte es auf „Interactive"
@@ -231,17 +234,16 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 ### Luca – Server (Etappe 0)
 
-- [ ] **Entscheidung Luca: auf den OZ-Umzug warten oder nicht** (Befund
-      26.09.2026). Der OZ-Go-live wartet auf Stripe-Live-Verifizierung
-      (Wochen), Prüfauftrag und Finanzamt/SVS, frühestens nach der
-      Challenge am 03.10.2026; `oz-calisthenics.at` zeigt bis dahin die alte
-      Seite (Google Analytics, SuperSaaS). `ustastreetfood.com` antwortet
-      noch gar nicht (Domain im Umzug zu IONOS). Möglichkeiten: (a) warten,
-      bis beide umgezogen sind; (b) jetzt umziehen, OZ und USTA ohne
-      „öffnen"-Knopf, bis ihre Domain die neue Seite zeigt (Empfehlung);
-      (c) mit Übergangsadressen live – nicht gut: `neu.oz-calisthenics.at`
-      ist noch nicht öffentlich gedacht, USTA wäre eine rohe
-      `http://…sslip.io`-Adresse
+- [x] **Entscheidung (Luca, 26.09.2026): jetzt live, ohne `neu.`.** USTA
+      ist umgezogen und verlinkt auf `https://ustastreetfood.com`; OZ bleibt
+      mit Bildern und Text drin, aber ohne „öffnen"-Knopf (`url: null`),
+      bis `oz-calisthenics.at` die neue Seite zeigt. Test
+      `lib/inhalte/projekte.test.ts`: ein Knopf zeigt nur per https auf
+      genau die genannte Domain. Das Impressum sagt nicht mehr „mit
+      Zustimmung der jeweiligen Betreiber" (Prüfstelle 6)
+- [ ] Nach dem OZ-Umzug: `url` in `projekte.ts` auf
+      `https://oz-calisthenics.at`, OZ neu aufnehmen
+      (`node scripts/projekt-screenshots.mjs oz-calisthenics`)
 - [ ] Beim Umzug nur die vier A-Records am Apex ändern (→ `178.104.239.44`);
       `www` ist ein CNAME auf den Apex und zieht mit. Keine MX- und
       TXT-Einträge vorhanden (dig 26.09.2026)

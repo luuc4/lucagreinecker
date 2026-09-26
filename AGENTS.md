@@ -414,6 +414,14 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   startet Playwright den Server direkt (`./node_modules/.bin/next start`),
   sonst hängt der Teardown; das Dockerfile liest die pnpm-Version aus
   `packageManager`, statt sie doppelt zu führen.
+- **26.09.2026 – Go-live jetzt, direkt auf `lucagreinecker.at` (Luca).**
+  Nicht auf den OZ-Umzug warten (der wartet auf Stripe-Live und
+  Rechtsprüfung, Wochen): OZ ohne „öffnen"-Knopf, USTA auf die umgezogene
+  Domain. `neu.` fällt weg (Luca: „ohne neu, lucagreinecker.at will ich
+  haben"), keine Weiterleitung von `neu.`. Die Rechtstexte gehen ohne
+  WKO-Antwort online; Prüfstellen 1 (Gewerbe) und 4 (Hotmail) bleiben in
+  TODO.md offen, Luca liest die Texte noch gegen. Ablauf in SETUP.md
+  („Go-live") mit `scripts/golive.sh`.
 - **26.09.2026 – Nur das erste Handy-Bild lädt sofort, die drei anderen
   lazy – gemessen, nicht geraten.** Chrome (DevTools „Issues") meldete die
   Bilder 2–4 der Startseite als lazy im sichtbaren Bereich; ein Versuch mit

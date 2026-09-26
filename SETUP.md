@@ -174,13 +174,27 @@ Checkliste in leitfaden/08, „Domainumzug". Projektspezifisch:
   `/datenschutz.html` → `/datenschutz`, `/index.html` → `/`. Anker der
   alten Startseite (`#projekte`, `#kontakt`, `#ueber-mich`) laufen ohne
   Redirect auf `/`.
-- Reihenfolge: `APP_DOMAIN='https://lucagreinecker.at'` und
-  `APP_ALIASE='https://www.lucagreinecker.at'` in secrets.env,
-  `bash scripts/infra.sh`, in Coolify die App auf „Redirect to non-www"
-  stellen, `gh workflow run ci.yml --ref main`,
-  dann DNS bei cloudpit (Apex und `www` → `178.104.239.44`, die vier
-  GitHub-Pages-A-Records entfernen – vorher `dig` sichern), danach Pages im
-  Repo ausschalten und die `CNAME`-Datei auf `alt` belassen.
+- Ablauf (Luca 26.09.2026: direkt auf `lucagreinecker.at`, ohne `neu.`),
+  per `scripts/golive.sh`:
+  1. `! bash scripts/golive.sh vorbereiten` – sichert secrets.env nach
+     `secrets.env.vor-golive`, setzt `APP_DOMAIN='https://lucagreinecker.at'`
+     und `APP_ALIASE='https://www.lucagreinecker.at'`, `infra.sh` stellt
+     Coolify-Domains, Runtime-`SITE_URL` und `SITE_URL_MAIN` um und stößt
+     den Neubau an; wartet auf CI und Deploy. `neu.` fällt damit weg; die
+     Domain zeigt bis Schritt 2 noch die Pages-Seite.
+  2. DNS bei cloudpit: die vier A-Records für `@` (185.199.108–111.153)
+     löschen, einen A-Record `@` → `178.104.239.44` anlegen. `www` ist ein
+     CNAME auf den Apex und zieht mit. Keine AAAA-, MX-, TXT- oder
+     CAA-Einträge vorhanden (dig 26.09.2026), TTL 600 s.
+  3. `bash scripts/golive.sh pruefen` – wartet, bis `cns1.cloudpit.de` den
+     Server nennt, stößt einen Deploy an (dann holt Traefik die
+     Zertifikate), prüft Health mit gültigem Zertifikat, robots, Sitemap,
+     noindex, Umami, www → 308, `/impressum.html` → 308 – gegen die
+     Server-IP, unabhängig vom DNS-Cache am Mac.
+  4. Danach: DNS-Eintrag `neu` löschen; GitHub Pages im Repo ausschalten,
+     sobald die alten Einträge überall abgelaufen sind (am Tag danach),
+     `CNAME` auf `alt` belassen; Search Console mit Sitemap; Testanfrage
+     über `/kontakt`.
 
 ## Fallstricke (projektspezifisch)
 

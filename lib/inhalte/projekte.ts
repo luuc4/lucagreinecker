@@ -20,11 +20,12 @@ export type Projekt = {
   funktionen: string;
   stack: string;
   betrieb: string;
-  // Anzeige der Adresse („oz-calisthenics.at") und das Ziel des Knopfs;
-  // die beiden weichen ab, solange ein Projekt auf einer Übergangsadresse
-  // läuft.
+  // Anzeige der Adresse („oz-calisthenics.at") und das Ziel des Knopfs
+  // „<domain> öffnen". `null`: kein Knopf, solange die Domain noch nicht die
+  // Seite zeigt, die hier beschrieben ist (OZ bis zum Umzug, Luca
+  // 26.09.2026) – lieber kein Link als einer auf eine Übergangsadresse.
   domain: string;
-  url: string;
+  url: string | null;
   // Lucas Satz zum Projekt (was der Kunde wollte, was schwierig war).
   satz: string | null;
 };
@@ -46,8 +47,10 @@ export const PROJEKTE: readonly Projekt[] = [
     betrieb:
       "Docker-Image aus GitHub Actions, Coolify auf einem Hetzner-Server, Staging vor jeder Änderung an Buchung und Zahlung",
     domain: "oz-calisthenics.at",
-    // Übergangsadresse bis zum Umzug von OZ (TODO.md, Faktenquellen).
-    url: "https://neu.oz-calisthenics.at",
+    // Kein Knopf bis zum Umzug von OZ: oz-calisthenics.at zeigt noch die
+    // alte Seite, neu.oz-calisthenics.at ist nicht öffentlich gedacht.
+    // Nach dem Umzug "https://oz-calisthenics.at" (TODO.md).
+    url: null,
     satz: "Olcay wollte, dass seine Leute Kursplätze direkt online buchen und bezahlen können. Daraus ist eine komplette Kursverwaltung geworden: Termine, Buchungen, Zahlung über Stripe, Belege und Erinnerungen, alles in einem Admin, das Olcay am Handy bedient.",
   },
   {
@@ -66,8 +69,8 @@ export const PROJEKTE: readonly Projekt[] = [
     betrieb:
       "Docker-Image aus GitHub Actions, Coolify auf einem IONOS-VPS, PostgreSQL",
     domain: "ustastreetfood.com",
-    // Übergangsadresse, bis die Domain zu IONOS umgezogen ist.
-    url: "http://usta.31-70-151-189.sslip.io",
+    // Seit 26.09.2026 live unter der Domain (USTA-Go-live).
+    url: "https://ustastreetfood.com",
     satz: "Akin wollte seinen Foodtruck selbst pflegen: Ausverkauft melden, Öffnungszeiten ändern, die Speisekarte anpassen, Fotos hochladen. Das macht er jetzt am Handy im Admin, ohne jemanden fragen zu müssen.",
   },
   {

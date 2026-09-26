@@ -51,8 +51,11 @@ export default function Impressum() {
           },
           {
             titel: "Projekte anderer",
+            // Bis 26.09.2026 stand hier „mit Zustimmung der jeweiligen
+            // Betreiber" – das stimmt erst, wenn alle drei zugesagt haben
+            // (TODO.md, Prüfstelle 6). Für den Go-live ohne diese Aussage.
             inhalt:
-              "Die Bildschirmfotos und Namen der Kundenprojekte (OZ Calisthenics, USTA Streetfood, Jonathan Walch) stehen hier mit Zustimmung der jeweiligen Betreiber. Für die Inhalte dieser Websites sind sie selbst verantwortlich.",
+              "Die Bildschirmfotos und Namen der Kundenprojekte (OZ Calisthenics, USTA Streetfood, Jonathan Walch) zeigen Websites, die ich für die jeweiligen Betreiber gebaut habe. Für die Inhalte dieser Websites sind sie selbst verantwortlich.",
           },
           {
             titel: "Links",
