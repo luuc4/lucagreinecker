@@ -117,10 +117,9 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
       (Docker 27.5.1, Coolify-Issue 8649). `systemctl restart docker` auf
       dem Server, danach `bash scripts/deploy.sh` – Deployment um 17:47
       durch, seither deployt jeder Push wieder (SETUP.md, „Deploy").
-- [ ] ntfy: Topic für Anfragen auf `ntfy.punktetafel.at` anlegen (z. B.
-      `lucagreinecker-anfragen`, Zugriff nur mit Token), Token mit
-      Schreibrecht erzeugen, `NTFY_URL` (Topic-Adresse) und `NTFY_TOKEN` in
-      secrets.env, dann `! DEPLOYEN=1 bash scripts/infra.sh`
+- [ ] ntfy: `! bash scripts/ntfy-uebernehmen.sh` (übernimmt Topic und Token
+      vom punktetafel-Feedback aus Coolify in secrets.env, kein SSH), dann
+      `! DEPLOYEN=1 bash scripts/infra.sh`; eigenes Topic siehe SETUP.md
 - [ ] Uptime Kuma (`uptime.punktetafel.at`): Monitor auf
       `https://neu.lucagreinecker.at/api/health`, Schlüsselwort `ok`
 - [ ] Server-Größe nachsehen (Hetzner-Console: RAM), in SETUP.md
@@ -163,6 +162,15 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
 
 ## Ideen (nicht eingeplant)
 
+- **Dunkelmodus nach Systemeinstellung** (Luca, 26.09.2026: „benutzerfreundlich,
+  je nach Systemeinstellung voreingestellt"). Passt zum Design „Reihe" nur
+  mit eigenem Entwurf: Grund Tinte statt Papier, Text Papier, Gelb bleibt
+  als einziges Signal (auf Dunkel rund 14:1), Linien heller, die dunklen
+  Projektbilder brauchen dann eine helle Linie zur Abgrenzung. Kein
+  Schalter, `prefers-color-scheme` entscheidet; Kontraste neu messen,
+  Screenshots in beiden Modi. Die Vorlage sagt „ein Theme, nicht beides"
+  (leitfaden/05) – hier bewusst als Ausnahme, weil es Lucas eigene Seite
+  ist. Frühestens nach dem Go-live, als eigene kleine Etappe.
 - Zentrale Überwachung (leitfaden/11): Uptime Kuma läuft schon auf diesem
   Server; OZ und USTA dort eintragen, Beszel-Hub dazu
 

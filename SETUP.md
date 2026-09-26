@@ -104,7 +104,14 @@ deployt; ohne die beiden Werte setzt das Script nur `SITE_URL`). Ohne sie
 lehnt das Formular in Produktion ehrlich ab und das Log warnt beim Start.
 Die Seite verschickt keine Mails.
 
-Topic und Token auf Lucas ntfy-Instanz anlegen (einmalig, am Server; die
+Einfachster Weg: den Zugang vom punktetafel-Feedback übernehmen, das auf
+derselben ntfy-Instanz läuft – `bash scripts/ntfy-uebernehmen.sh` liest
+`NTFY_FEEDBACK_URL` und `NTFY_TOKEN` der punktetafel-App aus Coolify und
+trägt sie als `NTFY_URL`/`NTFY_TOKEN` in secrets.env ein (gleiches Topic,
+die Nachrichten unterscheiden sich am Titel; mit Argument ein eigenes
+Topic, das braucht Admin-Rechte des Token-Benutzers). Kein SSH nötig.
+
+Alternative, eigenes Topic mit eigenem Token (einmalig, am Server; die
 Instanz läuft mit Anmeldung, wie das punktetafel-Feedback):
 
 ```bash
