@@ -4,13 +4,14 @@ import { JsonLd } from "@/components/JsonLd";
 import { KnopfLink } from "@/components/Knopf";
 import { ProjektBild } from "@/components/ProjektBild";
 import { textlinkKlassen } from "@/components/Textlink";
+import { Wischleiste } from "@/components/Wischleiste";
 import { PROJEKTE } from "@/lib/inhalte/projekte";
 import { KONTAKT, PAKET, SEITE, START } from "@/lib/inhalte/statisch";
 import { siteUrl } from "@/lib/site";
 
 // Startseite (Design „Reihe", Vorlage docs/design/richtungen/ab-start.html?v=1):
 // Lucas Satz mittig, die vier Handy-Screens als Reihe (am Handy eine
-// Wischleiste), das Rundum-sorglos-Paket als Tabelle, dann die Anfrage.
+// Wischleiste mit Hinweis), das Rundum-sorglos-Paket als Tabelle, dann die Anfrage.
 // Jeder Block trägt pb-abschnitt unten (leitfaden/05). Texte in statisch.ts
 // (START, PAKET).
 export default function Startseite() {
@@ -27,7 +28,7 @@ export default function Startseite() {
       </section>
 
       <section id="projekte" aria-label="Projekte" className="inhalt">
-        <ul className="wischleiste pb-abschnitt">
+        <Wischleiste>
           {PROJEKTE.map((projekt, i) => (
             <li key={projekt.slug} className="snap-center">
               <figure>
@@ -63,7 +64,7 @@ export default function Startseite() {
               </figure>
             </li>
           ))}
-        </ul>
+        </Wischleiste>
       </section>
 
       <section id="paket" aria-labelledby="paket-titel" className="inhalt">

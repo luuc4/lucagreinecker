@@ -15,7 +15,8 @@ export type IconName =
   | "instagram"
   | "kalender"
   | "kontakt"
-  | "pfeil";
+  | "pfeil"
+  | "weiter";
 
 const FORMEN: Record<IconName, ReactNode> = {
   pin: (
@@ -64,6 +65,12 @@ const FORMEN: Record<IconName, ReactNode> = {
     <>
       <path d="M7 7h10v10" />
       <path d="M7 17 17 7" />
+    </>
+  ),
+  weiter: (
+    <>
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
     </>
   ),
 };

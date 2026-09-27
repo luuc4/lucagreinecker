@@ -166,7 +166,7 @@ components/           KontaktFormular, formular/Feld (Feld, Textbereich), Knopf/
                       Textlink, Icon, Kopf, MobilMenue, Fuss,
                       Abschnitt (SeitenKopf, Abschnitt, Spalten, Spalte, Fakten), KartenKnoepfe,
                       Rechtstext, SeitenFokus, Analytics, JsonLd, ProjektBild (<picture> aus
-                      public/bilder)
+                      public/bilder), Wischleiste (Handy-Reihe mit Wisch-Hinweis)
 lib/inhalte/statisch.ts  Texte und Fakten (SEITE, KONTAKT, PAKET, UEBER_MICH), Navigation,
                       PLATZHALTER, KONTAKTFORMULAR (an/aus)
 lib/inhalte/projekte.ts  die vier Projekte: Fakten, Adressen, Lucas Sätze (null = Platzhalter)
@@ -266,7 +266,8 @@ für den Code.
 - **Startseite** (Etappe 2): Kopf; der Satz mittig im Display-Schnitt
   (`SEITE.satz`), darunter ein Satz über Luca und der gelbe Knopf; die vier
   Handy-Screens in einer Reihe (am Handy Wischleiste mit Scroll-Snap, 76 %
-  breit), je mit Name und einer Zeile; „Rundum-sorglos-Paket" (links Titel
+  breit, darunter bis lg ein Strich je Projekt und „Wischen" mit Pfeil),
+  je mit Name und einer Zeile; „Rundum-sorglos-Paket" (links Titel
   und Lucas Satz, rechts die Punkte als `Fakten`); die Anfrage mittig
   (Satz, zwei, drei Sätze über ihn, „Mail schreiben" gelb, „Kontakt
   speichern" als Textlink); Fuß.
@@ -437,6 +438,16 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   (Tinte statt leise, damit er sich abhebt), lang als Zeile „Stand" in den
   Fakten der Projektseite. Reihenfolge USTA, Punktetafel, OZ, Jonathan.
   Test: ein Projekt ohne Knopf braucht einen Stand-Hinweis.
+- **27.09.2026 – Wisch-Hinweis unter der Handy-Reihe** (Luca: am Handy
+  „checkt" man nicht, dass man zu den anderen Projekten wischen muss; das
+  angeschnittene nächste Handy reichte nicht). Unter lg zeigen vier kurze
+  Striche, welche Projekte im Blick sind (Tinte, sonst `linie`; mehr als
+  60 % sichtbar, per IntersectionObserver), rechts „Wischen" mit Pfeil, der
+  am Ende der Reihe zurück zeigt (`components/Wischleiste.tsx`). Statisch
+  statt Animation, weil beim Laden nichts sich bewegt (Design, „Bewegung");
+  Striche statt Punkte, weil die Seite mit Linien arbeitet. Deko mit
+  `aria-hidden`: Tastatur und Screenreader erreichen die Projekte über die
+  Liste.
 - **26.09.2026 – Nur das erste Handy-Bild lädt sofort, die drei anderen
   lazy – gemessen, nicht geraten.** Chrome (DevTools „Issues") meldete die
   Bilder 2–4 der Startseite als lazy im sichtbaren Bereich; ein Versuch mit
