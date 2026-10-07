@@ -40,22 +40,25 @@ export const PROJEKTE: readonly Projekt[] = [
   {
     slug: "oz-calisthenics",
     name: "OZ Calisthenics",
-    art: "Kursbuchung und Website für einen Calisthenics‑Coach in Bludenz und Rankweil",
+    art: "Kursbuchung, Trainingspläne und Website für einen Calisthenics‑Coach in Bludenz und Rankweil",
     kurz: "Kursbuchung für einen Calisthenics‑Coach, Bludenz",
     kunde: "Olcay Zengin, Calisthenics-Coach, Bludenz und Rankweil",
-    zeitraum: "seit September 2026",
+    // Fakten nachgezogen am 07.10.2026 aus ~/projects/ozcalisthenics
+    // (AGENTS.md „Stand" bis zur Barzahlung vom 04.10.2026, Routen,
+    // package.json); Prod kann seit dem 04.10.2026 alles, was Staging kann.
+    zeitraum: "seit September 2026, online seit Oktober 2026",
     seiten:
-      "Start, Kurse, Preise, Über mich, FAQ, Kontakt, Buchen, Konto, Admin",
+      "Start, Kurse, Preise, Über mich, FAQ, Events, News, Zusammenarbeit, Kontakt, Buchen, Kaufen; Konto mit Buchungen, Guthaben und Trainingsplan; Admin",
     funktionen:
-      "Kurse buchen und bezahlen (Stripe Checkout), Konto mit Passkeys, Belege, Erinnerungen und Tageslisten per Mail, Storno und Widerruf; Admin für Termine, Kurse, Buchungen und Kunden",
+      "Kurse buchen und bezahlen (Stripe oder bar vor Ort), 5er- und 10er-Blöcke online kaufen, Einzeltraining mit persönlichem Angebot, Konto mit Passkeys, Trainingsplan mit Timer, Sätzen und Wochenziel, Belege als PDF, Erinnerungen und Tageslisten per Mail, Storno und Widerruf; Admin für Termine, Kurse, Buchungen, Kunden, Pläne, News, Events und FAQ",
     stack:
-      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth, Stripe, pg-boss, Scaleway Mail, Umami",
+      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth (Code und Passkeys), Stripe, pg-boss, pdfkit, sharp, Scaleway Mail, Umami",
     betrieb:
-      "Docker-Image aus GitHub Actions, Coolify auf einem Hetzner-Server, Staging vor jeder Änderung an Buchung und Zahlung",
+      "Docker-Image aus GitHub Actions, Coolify auf einem Hetzner-Server, Staging-Umgebung, kein Deploy während der Kurszeiten",
     domain: "oz-calisthenics.at",
     // Seit 04.10.2026 live unter der Domain (OZ-Umzug).
     url: "https://oz-calisthenics.at",
-    satz: "Olcay wollte, dass seine Leute Kursplätze direkt online buchen und bezahlen können. Daraus ist eine komplette Kursverwaltung geworden: Termine, Buchungen, Zahlung über Stripe, Belege und Erinnerungen, alles in einem Admin, das Olcay am Handy bedient.",
+    satz: "Olcay wollte, dass seine Leute Kursplätze direkt online buchen und bezahlen können. Daraus ist eine komplette Kursverwaltung geworden: Termine, Buchungen, Zahlung über Stripe oder bar, Blöcke, Belege und Erinnerungen, dazu Trainingspläne fürs Training zuhause, alles in einem Admin, das Olcay am Handy bedient.",
     stand: null,
   },
   {

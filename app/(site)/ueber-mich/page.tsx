@@ -8,7 +8,7 @@ import { mailLink } from "@/lib/kontakt/links";
 export const metadata: Metadata = {
   title: "Über mich",
   description:
-    "Luca Greinecker aus Bludenz: Lean Leader bei Ball in Ludesch, Informatiker (BSc), baut nebenbei Websites und Web‑Apps für Vorarlberg.",
+    "Luca Greinecker aus Bludenz: Datenanalyse bei Ball, Informatiker (BSc), baut nebenbei Websites und Web‑Apps für Vorarlberg.",
 };
 
 // Über mich, kurz und nebensächlich (AGENTS.md „Projekt"): links Lucas

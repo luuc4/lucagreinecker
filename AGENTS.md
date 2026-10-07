@@ -1,8 +1,9 @@
 # Luca Greinecker
 
 Lucas eigene Website. Luca Greinecker aus Bludenz baut Websites und
-Web-Apps für Leute und Betriebe in Vorarlberg; hauptberuflich ist er
-Lean Leader bei Ball in Ludesch. Die Seite zeigt vor allem seine
+Web-Apps für Leute und Betriebe in Vorarlberg; hauptberuflich ist er seit
+Oktober 2026 Specialist, Data Analytics and Insights bei Ball (vorher Lean
+Leader in Ludesch). Die Seite zeigt vor allem seine
 Webprojekte (Kundenseiten und eigene Apps) und soll zu Anfragen führen;
 der Werdegang kommt nur nebenbei unter „Über mich" vor. Besucher: Leute
 und kleine Betriebe aus der Region, die eine Website brauchen, dazu wer
@@ -111,6 +112,10 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
 - 07.10.2026: OZ ist seit dem 04.10.2026 unter `oz-calisthenics.at` live –
   Knopf gesetzt, „In Arbeit" weg, Screenshots neu, OZ an erster Stelle
   (Entscheidungen). Selseven kommt erst nach seinem Go-live dazu (TODO.md).
+  Danach: Lucas neuer Beruf (Entscheidungen) auf Start, „Über mich", in
+  der Meta-Description und im JSON-LD; die OZ-Fakten (Art, Zeitraum,
+  Seiten, Funktionen, Stack, Betrieb, Satz) auf den Stand des OZ-Repos vom
+  04.10.2026 (Blöcke, Einzeltraining, Trainingsplan, bar vor Ort, Mini-CMS).
 
 ## Projekt
 
@@ -441,6 +446,15 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   (Tinte statt leise, damit er sich abhebt), lang als Zeile „Stand" in den
   Fakten der Projektseite. Reihenfolge USTA, Punktetafel, OZ, Jonathan.
   Test: ein Projekt ohne Knopf braucht einen Stand-Hinweis.
+- **07.10.2026 – Neuer Beruf: Data Analytics statt Lean Leader** (Luca:
+  „ich bin nicht mehr lean leader", mit Ausschnitt aus LinkedIn). Seit
+  Oktober 2026 Specialist, Data Analytics and Insights bei Ball, eine
+  globale Rolle (Werkzeuge für Datenanalyse, Kennzahlen und
+  Automatisierung in den Werken); November 2025 bis Oktober 2026
+  Continuous Improvement / Lean Leader in Ludesch. Der Titel steht englisch
+  wie bei Ball, in den Sätzen auf Deutsch umschrieben. Im JSON-LD
+  `worksFor` Ball Corporation ohne Werk und Ort, weil LinkedIn für die neue
+  Rolle nur „Hybrid" nennt.
 - **07.10.2026 – OZ zuerst, Selseven erst nach dem Go-live** (Luca: „oz
   calisthenics ist neu online … neue reihenfolge dann: ozcalisthenics ->
   punktetafel -> usta streetfood -> jonathanwalch -> selseven"). OZ

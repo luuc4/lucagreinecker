@@ -100,23 +100,17 @@ export default function Startseite() {
           "@type": "Person",
           name: KONTAKT.firma,
           url: siteUrl(),
-          jobTitle: "Continuous Improvement / Lean Leader",
-          worksFor: {
-            "@type": "Organization",
-            name: "Ball Beverage Packaging",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Ludesch",
-              addressCountry: "AT",
-            },
-          },
+          // Seit Oktober 2026 (UEBER_MICH): eine globale Rolle, deshalb
+          // ohne Werk und Ort.
+          jobTitle: "Specialist, Data Analytics and Insights",
+          worksFor: { "@type": "Organization", name: "Ball Corporation" },
           address: {
             "@type": "PostalAddress",
             addressLocality: "Bludenz",
             addressRegion: "Vorarlberg",
             addressCountry: "AT",
           },
-          knowsAbout: ["Webentwicklung", "Lean Management"],
+          knowsAbout: ["Webentwicklung", "Datenanalyse", "Lean Management"],
           ...(KONTAKT.email ? { email: KONTAKT.email } : {}),
           ...(KONTAKT.profile.length > 0
             ? { sameAs: KONTAKT.profile.map((p) => p.url) }

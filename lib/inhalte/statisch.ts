@@ -26,7 +26,7 @@ export const SEITE = {
 // Startseite: der Satz unter dem großen Satz und der Block vor dem Fuß.
 export const START = {
   ueberLuca:
-    "Ich bin Luca aus Bludenz. Hauptberuflich bin ich Lean Leader bei Ball in Ludesch, Websites baue ich nebenbei, von der ersten Skizze bis zum laufenden Server.",
+    "Ich bin Luca aus Bludenz. Hauptberuflich mache ich bei Ball Datenanalyse für die Produktion, Websites baue ich nebenbei, von der ersten Skizze bis zum laufenden Server.",
   anfrage: {
     titel: "Schreib mir, was du brauchst.",
     text: "Kurz reicht: wer du bist, was die Seite können soll und bis wann. Ich melde mich mit einer ehrlichen Einschätzung, was geht und was es kostet.",
@@ -114,18 +114,21 @@ export const PAKET = {
 } as const;
 
 // Über mich: Fakten aus der alten Startseite (Tag statisch-2026-09,
-// Abschnitt „Über mich“), die Sätze dazu aus denselben Fakten.
+// Abschnitt „Über mich“), die Sätze dazu aus denselben Fakten. Beruf seit
+// Oktober 2026 nach Lucas LinkedIn-Profil (07.10.2026): Specialist, Data
+// Analytics and Insights, eine globale Rolle bei Ball; vorher Continuous
+// Improvement / Lean Leader in Ludesch (November 2025 bis Oktober 2026).
 export const UEBER_MICH = {
   art: "Luca Greinecker, Bludenz",
   saetze: [
-    "Ich bin Luca Greinecker aus Bludenz. Gelernt habe ich Elektrotechniker bei Ball in Ludesch, danach Instandhaltung im Schichtbetrieb, Zivildienst beim Roten Kreuz und zurück zu Ball ins Trainee-Programm. Heute bin ich dort Continuous Improvement / Lean Leader, also zuständig dafür, dass Abläufe in der Produktion besser werden.",
+    "Ich bin Luca Greinecker aus Bludenz. Gelernt habe ich Elektrotechniker bei Ball in Ludesch, danach Instandhaltung im Schichtbetrieb, Zivildienst beim Roten Kreuz und zurück zu Ball ins Trainee-Programm. Ab November 2025 war ich dort Continuous Improvement / Lean Leader im Werk Ludesch. Seit Oktober 2026 bin ich Specialist, Data Analytics and Insights, eine globale Rolle: Ich baue Werkzeuge für Datenanalyse, Kennzahlen und Automatisierung in den Werken von Ball.",
     "Nebenbei habe ich Informatik an der FH Vorarlberg studiert, Schwerpunkt Digital Innovation, seit 2026 mit Bachelor. Aus Job und Studium kommt die Mischung, die ich für Websites brauche: zuerst verstehen, was jemand im Alltag wirklich braucht, dann sauber bauen.",
     "Websites baue ich nebenbei für Leute und Betriebe aus der Region. Die Punktetafel ist mein eigenes Projekt: Punkte zählen bei Kartenspielen am Tisch, ohne Zettel.",
   ],
   fakten: [
     {
       begriff: "Beruf",
-      wert: "Continuous Improvement / Lean Leader bei Ball Beverage Packaging in Ludesch",
+      wert: "Specialist, Data Analytics and Insights bei Ball, seit Oktober 2026",
     },
     {
       begriff: "Ausbildung",
@@ -133,7 +136,7 @@ export const UEBER_MICH = {
     },
     {
       begriff: "Werdegang",
-      wert: "Lehre Elektrotechnik bei Ball, Instandhaltung im Schichtbetrieb, Zivildienst beim Roten Kreuz, Trainee-Programm bei Ball, heute Lean Leader",
+      wert: "Lehre Elektrotechnik bei Ball, Instandhaltung im Schichtbetrieb, Zivildienst beim Roten Kreuz, Trainee-Programm bei Ball, Continuous Improvement / Lean Leader in Ludesch, seit Oktober 2026 Data Analytics",
     },
     {
       begriff: "Nebenbei",
