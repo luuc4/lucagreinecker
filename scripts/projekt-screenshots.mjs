@@ -15,11 +15,11 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync } from "node:fs";
 import { chromium } from "@playwright/test";
 
-// Adressen, unter denen die Projekte gerade erreichbar sind. OZ und USTA
-// laufen bis zu ihrem Umzug auf Übergangsadressen (TODO.md, Faktenquellen);
-// danach hier die echte Domain eintragen und neu aufnehmen.
+// Adressen, unter denen die Projekte live sind (alle seit dem OZ-Umzug am
+// 04.10.2026 unter ihrer echten Domain). Ein neues Projekt kommt erst dazu,
+// wenn seine Domain die fertige Seite zeigt (Selseven: TODO.md).
 const PROJEKTE = [
-  { slug: "oz-calisthenics", url: "https://neu.oz-calisthenics.at/" },
+  { slug: "oz-calisthenics", url: "https://oz-calisthenics.at/" },
   { slug: "usta-streetfood", url: "https://ustastreetfood.com/" },
   { slug: "punktetafel", url: "https://punktetafel.at/" },
   { slug: "jonathan-walch", url: "https://jonathanwalch.at/" },

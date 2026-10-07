@@ -42,8 +42,8 @@ eager geladenen Hero-Bildern nach der Nachmessung zurückgenommen;
 **Nächste Sitzung zuerst:** GitHub Pages im Repo ausschalten, falls noch
 an; Lucas Nacharbeiten (Etappe 3, „Nach dem Go-live": `neu` im DNS löschen,
 Search Console); Lucas Rückmeldung zu den Texten und die WKO-Antworten zu
-den Prüfstellen 1 und 4 einarbeiten; nach dem OZ-Umzug den Knopf für OZ
-setzen und OZ neu aufnehmen.
+den Prüfstellen 1 und 4 einarbeiten; Selseven aufnehmen, sobald es live
+ist (Etappe 3, „Nach dem Go-live").
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -51,13 +51,14 @@ Analytics, SuperSaaS, Formspree) geht vom Netz; was die alte
 lucagreinecker-Seite und `docs/alt/projekt-notizen.md` dazu sagen, gilt
 nicht mehr.
 
-| Projekt         | Quelle                                                                        | Live                                                                                                              |
-| --------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| OZ Calisthenics | `~/projects/ozcalisthenics` (AGENTS.md „Stand", `docs/konzept/`)              | `https://neu.oz-calisthenics.at`, nach dem OZ-Umzug (frühestens nach dem 03.10.2026) `https://oz-calisthenics.at` |
-| USTA Streetfood | `~/projects/usta-streetfood` (AGENTS.md „Stand")                              | Übergangsadresse, Domain `ustastreetfood.com` im Umzug                                                            |
-| punktetafel     | `~/projects/punktetafel` (AGENTS.md)                                          | `https://punktetafel.at`                                                                                          |
-| Jonathan Walch  | `docs/alt/projekt-notizen.md`                                                 | `https://jonathanwalch.at`                                                                                        |
-| Werdegang       | alte Startseite (Tag `statisch-2026-09`, `index.html`, Abschnitt „Über mich") | –                                                                                                                 |
+| Projekt         | Quelle                                                                        | Live                                                                                                    |
+| --------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| OZ Calisthenics | `~/projects/ozcalisthenics` (AGENTS.md „Stand", `docs/konzept/`)              | `https://oz-calisthenics.at` (seit 04.10.2026)                                                          |
+| USTA Streetfood | `~/projects/usta-streetfood` (AGENTS.md „Stand")                              | `https://ustastreetfood.com` (seit 26.09.2026)                                                          |
+| punktetafel     | `~/projects/punktetafel` (AGENTS.md)                                          | `https://punktetafel.at`                                                                                |
+| Jonathan Walch  | `docs/alt/projekt-notizen.md`                                                 | `https://jonathanwalch.at`                                                                              |
+| Selseven        | `~/projects/selseven` (AGENTS.md „Stand", „Projekt", „Stack")                 | noch nicht: `https://neu.selseven-friseursalon.at` (noindex), danach `https://selseven-friseursalon.at` |
+| Werdegang       | alte Startseite (Tag `statisch-2026-09`, `index.html`, Abschnitt „Über mich") | –                                                                                                       |
 
 ## Nächste Etappen
 
@@ -243,11 +244,19 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       Search Console (Domain-Property `lucagreinecker.at`, TXT-Eintrag bei
       cloudpit, dann Sitemap `https://lucagreinecker.at/sitemap.xml`
       einreichen); prüfen, ob der Test-Push angekommen ist
-- [ ] Nach dem OZ-Umzug (geplant Ende Oktober 2026): in `projekte.ts`
-      `url` auf `https://oz-calisthenics.at`, `stand` auf `null`, OZ wieder
-      an die gewünschte Stelle (seit 26.09.2026 an 3. Stelle nach der
-      Punktetafel, Luca), OZ neu aufnehmen
-      (`node scripts/projekt-screenshots.mjs oz-calisthenics`)
+- [x] Nach dem OZ-Umzug (live seit 04.10.2026): `url` auf
+      `https://oz-calisthenics.at`, `stand` auf `null`, OZ neu aufgenommen;
+      Reihenfolge OZ, Punktetafel, USTA, Jonathan (Luca, 07.10.2026)
+- [ ] Selseven als 5. Projekt ans Ende (Luca, 07.10.2026), sobald
+      `selseven-friseursalon.at` die Seite zeigt und Selins Begrüßung und
+      Foto drin sind – am 07.10.2026 zeigte die Domain noch auf einen
+      fremden Server, `neu.` hatte `[TEXT SELIN]` und die leere Fotofläche
+      im ersten Bildschirm. Dann: Eintrag in `projekte.ts` (Fakten aus
+      `~/projects/selseven`), Adresse in `scripts/projekt-screenshots.mjs`,
+      `node scripts/projekt-screenshots.mjs selseven`, und die Reihe ab lg
+      für fünf Handys umbauen (`wischleiste` in `globals.css` hat vier
+      Spalten, das fünfte stünde allein in einer zweiten Zeile; `sizes` auf
+      der Startseite anpassen), angesehen in 1024, 1440 und 1920 px
 - [ ] Repo privat? Pages ist aus, damit fällt der Grund für „öffentlich"
       weg (Offene Entscheidungen). Vorher klären: das Image in GHCR ist
       öffentlich, weil das Repo es ist; privat braucht der Server

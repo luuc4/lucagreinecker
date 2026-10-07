@@ -108,6 +108,9 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   99/100/100/100, Desktop 100 überall. OZ ohne „öffnen"-Knopf bis zu
   seinem Umzug, USTA auf `ustastreetfood.com`. Offen: Prüfstellen 1 und 4
   (WKO), Gegenlesen, Zustimmungen, `neu` im DNS löschen, Search Console.
+- 07.10.2026: OZ ist seit dem 04.10.2026 unter `oz-calisthenics.at` live –
+  Knopf gesetzt, „In Arbeit" weg, Screenshots neu, OZ an erster Stelle
+  (Entscheidungen). Selseven kommt erst nach seinem Go-live dazu (TODO.md).
 
 ## Projekt
 
@@ -438,6 +441,14 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   (Tinte statt leise, damit er sich abhebt), lang als Zeile „Stand" in den
   Fakten der Projektseite. Reihenfolge USTA, Punktetafel, OZ, Jonathan.
   Test: ein Projekt ohne Knopf braucht einen Stand-Hinweis.
+- **07.10.2026 – OZ zuerst, Selseven erst nach dem Go-live** (Luca: „oz
+  calisthenics ist neu online … neue reihenfolge dann: ozcalisthenics ->
+  punktetafel -> usta streetfood -> jonathanwalch -> selseven"). OZ
+  verlinkt auf `https://oz-calisthenics.at`, `stand` ist `null`. Selseven
+  läuft noch nicht unter seiner Domain, und der erste Bildschirm auf `neu.`
+  zeigt Selins Platzhalter; der Screenshot wäre genau dieser Bildschirm.
+  Luca wählte deshalb, Selseven erst nach dessen Go-live ans Ende zu
+  setzen (TODO.md, Etappe 3). Die Reihe bleibt bis dahin bei vier.
 - **27.09.2026 – Wisch-Hinweis unter der Handy-Reihe** (Luca: am Handy
   „checkt" man nicht, dass man zu den anderen Projekten wischen muss; das
   angeschnittene nächste Handy reichte nicht). Unter lg zeigen vier kurze

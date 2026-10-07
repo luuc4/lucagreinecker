@@ -1,7 +1,9 @@
 // Die vier Projekte der Seite (AGENTS.md, Entscheidungen 25.09.2026). Nur
 // Fakten aus den Repos (AGENTS.md „Stand", Stack-Tabellen, Routen). Die
 // Sätze (`satz`) hat Claude am 26.09.2026 auf Lucas Wunsch aus den Fakten
-// geschrieben; Luca liest gegen. `null` würde als PLATZHALTER erscheinen. Reihenfolge = Reihenfolge auf der Startseite (Luca, 26.09.2026: OZ an 3. Stelle nach der Punktetafel, solange es in Arbeit ist).
+// geschrieben; Luca liest gegen. `null` würde als PLATZHALTER erscheinen.
+// Reihenfolge = Reihenfolge auf der Startseite (Luca, 07.10.2026: OZ,
+// Punktetafel, USTA, Jonathan; Selseven kommt nach seinem Go-live ans Ende).
 //
 // Bilder: public/bilder/projekt-<slug>-{handy,desktop}-<breite>.{avif,webp,jpg}
 // aus scripts/projekt-screenshots.mjs (echte Screenshots der Live-Seiten;
@@ -36,24 +38,24 @@ export type Projekt = {
 
 export const PROJEKTE: readonly Projekt[] = [
   {
-    slug: "usta-streetfood",
-    name: "USTA Streetfood",
-    art: "Website mit Mini‑CMS für einen Foodtruck in Nenzing",
-    kurz: "Website mit Mini‑CMS für einen Foodtruck, Nenzing",
-    kunde: "Akin Akgün, USTA Streetfood, Foodtruck in Nenzing",
-    zeitraum: "September 2026",
+    slug: "oz-calisthenics",
+    name: "OZ Calisthenics",
+    art: "Kursbuchung und Website für einen Calisthenics‑Coach in Bludenz und Rankweil",
+    kurz: "Kursbuchung für einen Calisthenics‑Coach, Bludenz",
+    kunde: "Olcay Zengin, Calisthenics-Coach, Bludenz und Rankweil",
+    zeitraum: "seit September 2026",
     seiten:
-      "Start (Status, News, Kacheln), Speisekarte, Über mich, Kontakt und Anfahrt, Bilder, Impressum, Datenschutz; Admin am Handy",
+      "Start, Kurse, Preise, Über mich, FAQ, Kontakt, Buchen, Konto, Admin",
     funktionen:
-      "Status „Ausverkauft“ mit Zusatztext, Öffnungszeiten mit Ausnahmen, News, Speisekarte mit „verfügbar“, Bild-Upload mit Zuschnitt, Texte – Akin pflegt alles selbst am Handy; Karten-Knöpfe, vCard, Öffnungszeiten als Kalenderdatei",
+      "Kurse buchen und bezahlen (Stripe Checkout), Konto mit Passkeys, Belege, Erinnerungen und Tageslisten per Mail, Storno und Widerruf; Admin für Termine, Kurse, Buchungen und Kunden",
     stack:
-      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth (Code und Passkeys), sharp, Umami",
+      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth, Stripe, pg-boss, Scaleway Mail, Umami",
     betrieb:
-      "Docker-Image aus GitHub Actions, Coolify auf einem IONOS-VPS, PostgreSQL",
-    domain: "ustastreetfood.com",
-    // Seit 26.09.2026 live unter der Domain (USTA-Go-live).
-    url: "https://ustastreetfood.com",
-    satz: "Akin wollte seinen Foodtruck selbst pflegen: Ausverkauft melden, Öffnungszeiten ändern, die Speisekarte anpassen, Fotos hochladen. Das macht er jetzt am Handy im Admin, ohne jemanden fragen zu müssen.",
+      "Docker-Image aus GitHub Actions, Coolify auf einem Hetzner-Server, Staging vor jeder Änderung an Buchung und Zahlung",
+    domain: "oz-calisthenics.at",
+    // Seit 04.10.2026 live unter der Domain (OZ-Umzug).
+    url: "https://oz-calisthenics.at",
+    satz: "Olcay wollte, dass seine Leute Kursplätze direkt online buchen und bezahlen können. Daraus ist eine komplette Kursverwaltung geworden: Termine, Buchungen, Zahlung über Stripe, Belege und Erinnerungen, alles in einem Admin, das Olcay am Handy bedient.",
     stand: null,
   },
   {
@@ -76,34 +78,25 @@ export const PROJEKTE: readonly Projekt[] = [
     stand: null,
   },
   {
-    slug: "oz-calisthenics",
-    name: "OZ Calisthenics",
-    art: "Kursbuchung und Website für einen Calisthenics‑Coach in Bludenz und Rankweil",
-    kurz: "Kursbuchung für einen Calisthenics‑Coach, Bludenz",
-    kunde: "Olcay Zengin, Calisthenics-Coach, Bludenz und Rankweil",
-    zeitraum: "seit September 2026",
+    slug: "usta-streetfood",
+    name: "USTA Streetfood",
+    art: "Website mit Mini‑CMS für einen Foodtruck in Nenzing",
+    kurz: "Website mit Mini‑CMS für einen Foodtruck, Nenzing",
+    kunde: "Akin Akgün, USTA Streetfood, Foodtruck in Nenzing",
+    zeitraum: "September 2026",
     seiten:
-      "Start, Kurse, Preise, Über mich, FAQ, Kontakt, Buchen, Konto, Admin",
+      "Start (Status, News, Kacheln), Speisekarte, Über mich, Kontakt und Anfahrt, Bilder, Impressum, Datenschutz; Admin am Handy",
     funktionen:
-      "Kurse buchen und bezahlen (Stripe Checkout), Konto mit Passkeys, Belege, Erinnerungen und Tageslisten per Mail, Storno und Widerruf; Admin für Termine, Kurse, Buchungen und Kunden",
+      "Status „Ausverkauft“ mit Zusatztext, Öffnungszeiten mit Ausnahmen, News, Speisekarte mit „verfügbar“, Bild-Upload mit Zuschnitt, Texte – Akin pflegt alles selbst am Handy; Karten-Knöpfe, vCard, Öffnungszeiten als Kalenderdatei",
     stack:
-      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth, Stripe, pg-boss, Scaleway Mail, Umami",
+      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth (Code und Passkeys), sharp, Umami",
     betrieb:
-      "Docker-Image aus GitHub Actions, Coolify auf einem Hetzner-Server, Staging vor jeder Änderung an Buchung und Zahlung",
-    domain: "oz-calisthenics.at",
-    // Kein Knopf bis zum Umzug von OZ: oz-calisthenics.at zeigt noch die
-    // alte Seite, neu.oz-calisthenics.at ist nicht öffentlich gedacht.
-    // Nach dem Umzug "https://oz-calisthenics.at" (TODO.md).
-    url: null,
-    satz: "Olcay wollte, dass seine Leute Kursplätze direkt online buchen und bezahlen können. Daraus ist eine komplette Kursverwaltung geworden: Termine, Buchungen, Zahlung über Stripe, Belege und Erinnerungen, alles in einem Admin, das Olcay am Handy bedient.",
-    // Luca, 26.09.2026: „noch in arbeit, release ende oktober, bis dahin ist
-    // alte version online". In `lang` ein geschützter Bindestrich (U+2011) in
-    // der Domain, sonst bricht die Zeile nach „oz-" um; die Faktenwerte
-    // tragen wrap-anywhere, 360 px bleibt ohne Überlauf (e2e/seiten).
-    stand: {
-      kurz: "In Arbeit, online ab Ende Oktober 2026",
-      lang: "In Arbeit, geht Ende Oktober 2026 online. Bis dahin läuft unter oz‑calisthenics.at noch die alte Version.",
-    },
+      "Docker-Image aus GitHub Actions, Coolify auf einem IONOS-VPS, PostgreSQL",
+    domain: "ustastreetfood.com",
+    // Seit 26.09.2026 live unter der Domain (USTA-Go-live).
+    url: "https://ustastreetfood.com",
+    satz: "Akin wollte seinen Foodtruck selbst pflegen: Ausverkauft melden, Öffnungszeiten ändern, die Speisekarte anpassen, Fotos hochladen. Das macht er jetzt am Handy im Admin, ohne jemanden fragen zu müssen.",
+    stand: null,
   },
   {
     slug: "jonathan-walch",
