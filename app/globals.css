@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* Design „Reihe" (Luca, 25.09.2026: Typografie und Farben der Richtung A
-   „Schautafel", Aufbau der Richtung B „Vier Handys"; Entwürfe in
-   docs/design/richtungen/, Regeln in AGENTS.md „Design"). Papier, Tinte,
+   „Schautafel", Aufbau der Richtung B „Vier Handys"; Entwürfe im Tag
+   entwuerfe-2026-09, Regeln in AGENTS.md „Design"). Papier, Tinte,
    Linien statt Kästen, Gelb nur als Signal für die eine Hauptaktion.
 
    `--color-*: initial` löscht die Standardpalette: es gibt nur die Farben

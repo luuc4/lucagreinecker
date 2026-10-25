@@ -9,7 +9,7 @@ import { PROJEKTE } from "@/lib/inhalte/projekte";
 import { KONTAKT, PAKET, SEITE, START } from "@/lib/inhalte/statisch";
 import { siteUrl } from "@/lib/site";
 
-// Startseite (Design „Reihe", Vorlage docs/design/richtungen/ab-start.html?v=1):
+// Startseite (Design „Reihe", Vorlage ab-start.html?v=1 im Tag entwuerfe-2026-09):
 // Lucas Satz mittig, die vier Handy-Screens als Reihe (am Handy eine
 // Wischleiste mit Hinweis), das Rundum-sorglos-Paket als Tabelle, dann die Anfrage.
 // Jeder Block trägt pb-abschnitt unten (leitfaden/05). Texte in statisch.ts

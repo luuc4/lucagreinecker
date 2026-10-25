@@ -8,7 +8,7 @@ import { PROJEKTE, projektNachSlug } from "@/lib/inhalte/projekte";
 import { PLATZHALTER } from "@/lib/inhalte/statisch";
 
 // Eine Seite je Projekt (Design „Reihe", Vorlage
-// docs/design/richtungen/ab-projekt.html?v=1): Titel und Art-Zeile mittig,
+// ab-projekt.html?v=1 im Tag entwuerfe-2026-09): Titel und Art-Zeile mittig,
 // Lucas Satz als Vorspann, dann das Handy-Bild links und die Fakten rechts
 // mit dem Knopf zur Seite, darunter das Desktop-Bild in voller Breite,
 // zuletzt die drei anderen Projekte als Zeile. Statisch gebaut, eine Seite

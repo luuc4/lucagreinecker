@@ -14,8 +14,8 @@ robots sperrt, noindex, CSP und HSTS da). Offen: Umami, ntfy, Renovate.
 Etappe 1 abgeschlossen (25.09.2026): zwei Richtungen, Lucas Wahl (Design
 von A, Aufbau von B, dazu der Inhalt „Rundum-sorglos-Paket"), drei
 Versionen, Wahl Version 1 „Reihe" mit dem Kickoff-Wortlaut; Tokens,
-Schrift und Bausteine im Code (AGENTS.md „Design"). Entwürfe in
-`docs/design/richtungen/` (Artifact
+Schrift und Bausteine im Code (AGENTS.md „Design"). Entwürfe im Tag
+`entwuerfe-2026-09`, bis 25.10.2026 in `docs/design/richtungen/` (Artifact
 `https://claude.ai/artifact/25576desS8jAzH66a8AtPe`), echte Screenshots der
 vier Projekte in `public/bilder/`. Der Deploy läuft seit Lucas
 Docker-Neustart wieder; `neu.` zeigt den jeweils letzten Push.

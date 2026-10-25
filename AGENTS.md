@@ -119,6 +119,8 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
 - 25.10.2026: Mail auf der eigenen Domain – `mail@lucagreinecker.at` über
   iCloud+ (Entscheidungen), auf der Seite, im Impressum und in der
   Datenschutzerklärung statt Hotmail; Rechtstexte mit Stand 25.10.2026.
+  Danach aufgeräumt: die Design-Entwürfe (`docs/design/`) sind raus, die
+  Seite steht; erhalten im Tag `entwuerfe-2026-09`.
 
 ## Projekt
 
@@ -161,7 +163,6 @@ pnpm start -p 3100 &          # für Screenshots, dann:
 OUT=/tmp/shots node scripts/screenshots.mjs   # alle Seiten der Sitemap in 390/768/1440
 
 node scripts/projekt-screenshots.mjs [slug]   # Projektbilder neu aufnehmen (Live-Adressen im Script)
-open docs/design/richtungen/index.html        # die zwei Design-Richtungen ansehen
 bash scripts/server-fakten.sh                 # Server nur lesen (Logs, ntfy, Umami, Speicher) – Luca, nicht Claude
 ```
 
@@ -194,7 +195,6 @@ scripts/              screenshots.mjs, bilder.mjs (Varianten ohne Metadaten), se
                       projekt-screenshots.mjs (Startseiten der Projekte in 390 und 1440 px → public/bilder),
                       server-fakten.sh (nur lesen: Log-Rotation, ntfy, Umami, Speicher – Luca führt aus)
 public/bilder/        projekt-<slug>-handy-{390,560,780} und -desktop-{720,1200,1440,1800} als AVIF/WebP/JPEG
-docs/design/richtungen/  Design-Richtungen A und B (index.html = Leinwand, a-*/b-* = Entwürfe), Archiv
 screenshots/          Originale und Durchsichts-Screenshots, nicht im Repo
 ```
 
@@ -251,9 +251,11 @@ Verbindlich, in dieser Reihenfolge (leitfaden/06):
 **„Reihe", gewählt von Luca am 25.09.2026.** Runde 1: Typografie und
 Farben der Richtung A „Schautafel" mit dem Aufbau der Richtung B „Vier
 Handys"; Runde 2: Version 1 von drei („ist am coolsten"), der Satz oben im
-Kickoff-Wortlaut. Entwürfe in `docs/design/richtungen/` (Leinwand
-`index.html`, Artifact `https://claude.ai/artifact/25576desS8jAzH66a8AtPe`);
-`ab.css`, `ab-start.html?v=1` und `ab-projekt.html?v=1` sind die Vorlage
+Kickoff-Wortlaut. Entwürfe (Leinwand `index.html`, Artifact
+`https://claude.ai/artifact/25576desS8jAzH66a8AtPe`) lagen bis zum
+25.10.2026 in `docs/design/richtungen/`, seitdem nur noch im Tag
+`entwuerfe-2026-09` (`git checkout entwuerfe-2026-09 -- docs/design`);
+`ab.css`, `ab-start.html?v=1` und `ab-projekt.html?v=1` waren die Vorlage
 für den Code.
 
 - **Farben** (`app/globals.css`, Kontraste gemessen 25.09.2026): Papier
