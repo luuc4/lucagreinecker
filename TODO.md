@@ -321,7 +321,7 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 ## Betrieb, mit Termin
 
 - [ ] ab 22.11.2026: DMARC von `p=none` auf `p=quarantine` stellen (TXT
-      `_dmarc` bei dogado), wenn Mails von `mail@lucagreinecker.at` bis
+      `_dmarc` in der cloudpit-Verwaltung), wenn Mails von `mail@lucagreinecker.at` bis
       dahin zuverlässig ankommen
 
 ## Bugs und Kleinigkeiten

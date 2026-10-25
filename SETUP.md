@@ -25,7 +25,7 @@ laufen seit dem 26.09.2026.
 | Coolify    | 4.3.23 (seit 25.09.2026, vorher 4.0.0), `http://178.104.239.44:8000` (von außen erreichbar, TODO.md)                                                       |
 | Repo       | `github.com/luuc4/lucagreinecker` (öffentlich, AGENTS.md), `main` → Prod                                                                                   |
 | Image      | `ghcr.io/luuc4/lucagreinecker:{main,sha-<kurz>}`, gebaut von GitHub Actions                                                                                |
-| Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), Nameserver cloudpit (`cns1.cloudpit.de` u. a.)                                                             |
+| Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), DNS-Verwaltung im cloudpit-Kundenbereich (Nameserver `cns1.cloudpit.de` u. a.)                             |
 | DNS        | Apex A → `178.104.239.44` (seit 26.09.2026, TTL 600), `www` CNAME → Apex; `neu` A → `178.104.239.44` (löschen, zeigt ins Leere)                            |
 | Postfächer | iCloud+ „Eigene E-Mail-Domain" (seit 25.10.2026), `mail@lucagreinecker.at`; MX `mx01`/`mx02.mail.icloud.com`, SPF, DKIM `sig1._domainkey`, DMARC `p=none`  |
 | Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                                                                               |

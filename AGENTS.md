@@ -497,7 +497,7 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   es ein, Adresse `mail@lucagreinecker.at`). Postfach statt
   Transaktionsmails: das Kontaktformular bleibt bei ntfy, die Seite
   verschickt nichts. iCloud+ hatte Luca schon (keine Zusatzkosten, Mail auf
-  Mac und iPhone); DNS bei dogado: MX `mx01`/`mx02.mail.icloud.com`, TXT
+  Mac und iPhone); DNS in der cloudpit-Verwaltung (Registrar dogado): MX `mx01`/`mx02.mail.icloud.com`, TXT
   `apple-domain=…`, SPF `v=spf1 include:icloud.com ~all`, DKIM-CNAME
   `sig1._domainkey`, dazu selbst DMARC `p=none` (nach einigen Wochen ohne
   Probleme `quarantine`). Datenschutz nach Apples Datenschutzrichtlinie:
