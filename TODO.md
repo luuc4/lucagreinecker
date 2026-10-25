@@ -138,11 +138,11 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
      Firebase und APNs. Absatz „Kontaktformular" nennt jetzt 24 Stunden,
      den Weg über ntfy.sh/Firebase/Apple ohne Inhalt und die Drossel (IP im
      Arbeitsspeicher bis zum Neustart).
-  4. **WKO/Anwalt:** Antwort per Hotmail. Der Absatz nennt seit dem
-     26.09.2026 Microsoft Ireland Operations Ltd. als Vertragspartner, die
-     Verarbeitung in den USA und die Zertifizierung nach dem EU‑US Data
-     Privacy Framework – reicht das als Hinweis auf die Drittland-
-     übermittlung (Art. 13 Abs. 1 lit. f DSGVO)?
+  4. **WKO/Anwalt:** Antwort per E-Mail, seit dem 25.10.2026 über iCloud
+     Mail (vorher Hotmail). Der Absatz nennt Apple Distribution
+     International Ltd. (Irland) als Vertragspartner, die Speicherung bei
+     Apple Inc. in den USA und Standardvertragsklauseln – reicht das als
+     Hinweis auf die Drittlandübermittlung (Art. 13 Abs. 1 lit. f DSGVO)?
   5. ~~Umami~~ erledigt 26.09.2026: gegen den Quellcode von Umami 3.0.3
      geprüft (Version laut `docker ps`): Tabelle `session` hat keine
      IP-Spalte (browser, os, device, screen, language, country, region,
@@ -320,7 +320,9 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 ## Betrieb, mit Termin
 
-- (keine; die Seite hat keine Schlüssel mit Ablauf)
+- [ ] ab 22.11.2026: DMARC von `p=none` auf `p=quarantine` stellen (TXT
+      `_dmarc` bei dogado), wenn Mails von `mail@lucagreinecker.at` bis
+      dahin zuverlässig ankommen
 
 ## Bugs und Kleinigkeiten
 

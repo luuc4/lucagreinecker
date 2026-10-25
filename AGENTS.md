@@ -116,6 +116,9 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   der Meta-Description und im JSON-LD; die OZ-Fakten (Art, Zeitraum,
   Seiten, Funktionen, Stack, Betrieb, Satz) auf den Stand des OZ-Repos vom
   04.10.2026 (Blöcke, Einzeltraining, Trainingsplan, bar vor Ort, Mini-CMS).
+- 25.10.2026: Mail auf der eigenen Domain – `mail@lucagreinecker.at` über
+  iCloud+ (Entscheidungen), auf der Seite, im Impressum und in der
+  Datenschutzerklärung statt Hotmail; Rechtstexte mit Stand 25.10.2026.
 
 ## Projekt
 
@@ -488,3 +491,14 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   Ende, und der Mechanismus (Bandbreite teilen) spricht gegen sie. Der
   DevTools-Hinweis ist kein Grund, Lighthouse-Zahlen mit Wiederholung sind
   einer.
+- **25.10.2026 – Mail über iCloud+ auf der eigenen Domain** (Luca richtet
+  es ein, Adresse `mail@lucagreinecker.at`). Postfach statt
+  Transaktionsmails: das Kontaktformular bleibt bei ntfy, die Seite
+  verschickt nichts. iCloud+ hatte Luca schon (keine Zusatzkosten, Mail auf
+  Mac und iPhone); DNS bei dogado: MX `mx01`/`mx02.mail.icloud.com`, TXT
+  `apple-domain=…`, SPF `v=spf1 include:icloud.com ~all`, DKIM-CNAME
+  `sig1._domainkey`, dazu selbst DMARC `p=none` (nach einigen Wochen ohne
+  Probleme `quarantine`). Datenschutz nach Apples Datenschutzrichtlinie:
+  Verantwortlich Apple Distribution International Ltd. (Irland), Speicherung
+  in der Regel bei Apple Inc. in den USA, Übermittlung über
+  Standardvertragsklauseln (keine DPF-Zertifizierung genannt).

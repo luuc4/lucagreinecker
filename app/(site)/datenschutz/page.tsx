@@ -146,12 +146,13 @@ export default function Datenschutz() {
                 <p>
                   Ich verwende die Angaben nur, um dir zu antworten (Art. 6 Abs.
                   1 lit. b DSGVO). Antworte ich per E-Mail, läuft der
-                  Schriftverkehr über mein Postfach bei Microsoft (Outlook.com;
-                  Vertragspartner Microsoft Ireland Operations Ltd., Dublin).
-                  Microsoft kann Daten dabei auch in den USA verarbeiten und ist
-                  nach dem EU‑US Data Privacy Framework zertifiziert. Ist deine
-                  Anfrage erledigt, lösche ich sie. Statt des Formulars kannst
-                  du mir jederzeit direkt eine E-Mail schreiben.
+                  Schriftverkehr über mein Postfach bei Apple (iCloud Mail;
+                  Vertragspartner Apple Distribution International Ltd.,
+                  Irland). Apple speichert die Daten in der Regel bei Apple Inc.
+                  in den USA; die Übermittlung ist über Standardvertragsklauseln
+                  abgesichert. Ist deine Anfrage erledigt, lösche ich sie. Statt
+                  des Formulars kannst du mir jederzeit direkt eine E-Mail
+                  schreiben.
                 </p>
               </>
             ),

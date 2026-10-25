@@ -45,14 +45,15 @@ export type Kontakt = {
   profile: { name: string; url: string }[];
 };
 
-// Mail und LinkedIn standen schon auf der alten Seite. Keine Telefonnummer
-// und keine Anschrift auf der Seite (Luca, 26.09.2026); die Anschrift steht
-// nur im Impressum.
+// LinkedIn stand schon auf der alten Seite; Mail seit 25.10.2026 auf der
+// eigenen Domain (iCloud+, vorher Hotmail). Keine Telefonnummer und keine
+// Anschrift auf der Seite (Luca, 26.09.2026); die Anschrift steht nur im
+// Impressum.
 export const KONTAKT: Kontakt = {
   firma: SEITE.name,
   person: { vorname: "Luca", nachname: "Greinecker" },
   telefon: null,
-  email: "greineckerluca@hotmail.com",
+  email: "mail@lucagreinecker.at",
   whatsapp: null,
   adresse: null,
   profile: [
@@ -67,7 +68,7 @@ export const IMPRESSUM = {
   strasse: "Haldenweg 56b/1",
   ort: "6700 Bludenz",
   land: "Österreich",
-  stand: "26.09.2026",
+  stand: "25.10.2026",
 } as const;
 
 // Kontaktformular auf /kontakt (leitfaden/12, Baustein A), Zustellung als

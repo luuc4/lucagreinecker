@@ -27,7 +27,7 @@ laufen seit dem 26.09.2026.
 | Image      | `ghcr.io/luuc4/lucagreinecker:{main,sha-<kurz>}`, gebaut von GitHub Actions                                                                                |
 | Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), Nameserver cloudpit (`cns1.cloudpit.de` u. a.)                                                             |
 | DNS        | Apex A → `178.104.239.44` (seit 26.09.2026, TTL 600), `www` CNAME → Apex; `neu` A → `178.104.239.44` (löschen, zeigt ins Leere)                            |
-| Postfächer | keine (kein MX am Apex, Stand 25.09.2026); Kontakt über `greineckerluca@hotmail.com`                                                                       |
+| Postfächer | iCloud+ „Eigene E-Mail-Domain" (seit 25.10.2026), `mail@lucagreinecker.at`; MX `mx01`/`mx02.mail.icloud.com`, SPF, DKIM `sig1._domainkey`, DMARC `p=none`  |
 | Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                                                                               |
 | Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website „lucagreinecker.at“, ID in secrets.env                                                      |
 | ntfy       | bestehende Instanz `https://ntfy.punktetafel.at`, dasselbe Topic und Token wie das punktetafel-Feedback                                                    |
