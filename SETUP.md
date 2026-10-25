@@ -18,19 +18,19 @@ direkt auf die Live-Seite. Die alte statische Seite liegt auf Branch `alt`
 (Tag `statisch-2026-09`); GitHub Pages wird abgeschaltet. Umami und ntfy
 laufen seit dem 26.09.2026.
 
-| Was        | Wert                                                                                                                                                       |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Konten     | alle auf Luca (eigene Seite)                                                                                                                               |
-| Server     | Lucas eigener Server (punktetafel, ländle isst geparkt): Hetzner Cloud CPX22, `178.104.239.44`, 3,8 GB RAM (26.09.2026: 1,8 GB belegt, Platte 75 GB, 20 %) |
-| Coolify    | 4.3.23 (seit 25.09.2026, vorher 4.0.0), `http://178.104.239.44:8000` (von außen erreichbar, TODO.md)                                                       |
-| Repo       | `github.com/luuc4/lucagreinecker` (öffentlich, AGENTS.md), `main` → Prod                                                                                   |
-| Image      | `ghcr.io/luuc4/lucagreinecker:{main,sha-<kurz>}`, gebaut von GitHub Actions                                                                                |
-| Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), DNS-Verwaltung im cloudpit-Kundenbereich (Nameserver `cns1.cloudpit.de` u. a.)                             |
-| DNS        | Apex A → `178.104.239.44` (seit 26.09.2026, TTL 600), `www` CNAME → Apex; `neu` A → `178.104.239.44` (löschen, zeigt ins Leere)                            |
-| Postfächer | iCloud+ „Eigene E-Mail-Domain" (seit 25.10.2026), `mail@lucagreinecker.at`; MX `mx01`/`mx02.mail.icloud.com`, SPF, DKIM `sig1._domainkey`, DMARC `p=none`  |
-| Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                                                                               |
-| Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website „lucagreinecker.at“, ID in secrets.env                                                      |
-| ntfy       | bestehende Instanz `https://ntfy.punktetafel.at`, dasselbe Topic und Token wie das punktetafel-Feedback                                                    |
+| Was        | Wert                                                                                                                                                                              |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Konten     | alle auf Luca (eigene Seite)                                                                                                                                                      |
+| Server     | Lucas eigener Server (punktetafel, ländle isst geparkt): Hetzner Cloud CPX22, `178.104.239.44`, 3,8 GB RAM (26.09.2026: 1,8 GB belegt, Platte 75 GB, 20 %)                        |
+| Coolify    | 4.3.23 (seit 25.09.2026, vorher 4.0.0), `http://178.104.239.44:8000` (von außen erreichbar, TODO.md)                                                                              |
+| Repo       | `github.com/luuc4/lucagreinecker` (öffentlich, AGENTS.md), `main` → Prod                                                                                                          |
+| Image      | `ghcr.io/luuc4/lucagreinecker:{main,sha-<kurz>}`, gebaut von GitHub Actions                                                                                                       |
+| Domain     | `lucagreinecker.at`, Registrar dogado (nic.at), DNS-Verwaltung im cloudpit-Kundenbereich (Nameserver `cns1.cloudpit.de` u. a.)                                                    |
+| DNS        | Apex A → `178.104.239.44` (seit 26.09.2026, TTL 600), `www` CNAME → Apex; `neu` A → `178.104.239.44` (löschen, zeigt ins Leere)                                                   |
+| Postfächer | iCloud+ „Eigene E-Mail-Domain" (seit 25.10.2026), `mail@lucagreinecker.at`; MX `mx01`/`mx02.mail.icloud.com`, SPF, DKIM `sig1._domainkey`, DMARC `p=quarantine` (seit 25.10.2026) |
+| Secrets    | `~/.config/lucagreinecker/secrets.env` (chmod 600) und 1Password „‹Eintrag›"                                                                                                      |
+| Umami      | bestehende Instanz `https://analytics.punktetafel.at`, Website „lucagreinecker.at“, ID in secrets.env                                                                             |
+| ntfy       | bestehende Instanz `https://ntfy.punktetafel.at`, dasselbe Topic und Token wie das punktetafel-Feedback                                                                           |
 
 Coolify-Projekte auf dem Server: „My first project" (punktetafel, Umami
 `analytics.punktetafel.at`, ntfy `ntfy.punktetafel.at`, Uptime Kuma

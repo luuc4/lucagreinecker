@@ -320,9 +320,8 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 ## Betrieb, mit Termin
 
-- [ ] ab 22.11.2026: DMARC von `p=none` auf `p=quarantine` stellen (TXT
-      `_dmarc` in der cloudpit-Verwaltung), wenn Mails von `mail@lucagreinecker.at` bis
-      dahin zuverlässig ankommen
+- (keine; DMARC steht seit 25.10.2026 auf `p=quarantine` – Luca hat früher
+  umgestellt, Testmails kamen an)
 
 ## Bugs und Kleinigkeiten
 
