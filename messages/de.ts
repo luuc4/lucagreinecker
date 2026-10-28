@@ -146,7 +146,10 @@ export const de = {
   start: {
     ueberLuca:
       "Ich bin Luca aus Bludenz. Hauptberuflich mache ich bei Ball Datenanalyse für die Produktion, Websites baue ich nebenbei, von der ersten Skizze bis zum laufenden Server.",
-    kontakt: "Kontakt",
+    // Der Knopf unter dem Satz: sagt, was passiert, und heißt wie der im
+    // Anfrage-Block unten – nicht „Kontakt" wie der Knopf im Kopf daneben
+    // (Durchsicht 28.10.2026).
+    knopf: "Nachricht schreiben",
     projekte: "Projekte",
     zurProjektseite: "{name}: zur Projektseite",
     wischen: "Wischen",
@@ -218,12 +221,15 @@ export const de = {
     beschreibung:
       "Luca Greinecker aus Bludenz: Datenanalyse bei Ball, Informatiker (BSc), baut nebenbei Websites und Web‑Apps für Vorarlberg.",
     art: "Luca Greinecker, Bludenz",
+    foto: "Luca Greinecker, Porträt",
     zurPerson: "Zur Person",
     saetze: [
       "Ich bin Luca Greinecker aus Bludenz. Gelernt habe ich Elektrotechniker bei Ball in Ludesch, danach Instandhaltung im Schichtbetrieb, Zivildienst beim Roten Kreuz und zurück zu Ball ins Trainee-Programm. Ab November 2025 war ich dort Continuous Improvement / Lean Leader im Werk Ludesch. Seit Oktober 2026 bin ich Specialist, Data Analytics and Insights, eine globale Rolle: Ich baue Werkzeuge für Datenanalyse, Kennzahlen und Automatisierung in den Werken von Ball.",
       "Nebenbei habe ich Informatik an der FH Vorarlberg studiert, Schwerpunkt Digital Innovation, seit 2026 mit Bachelor. Aus Job und Studium kommt die Mischung, die ich für Websites brauche: zuerst verstehen, was jemand im Alltag wirklich braucht, dann sauber bauen.",
       "Websites baue ich nebenbei für Leute und Betriebe aus der Region. Die Punktetafel ist mein eigenes Projekt: Punkte zählen bei Kartenspielen am Tisch, ohne Zettel.",
     ],
+    // Ohne Zeile „Werdegang": die stand schon im ersten Absatz (Durchsicht
+    // 28.10.2026).
     fakten: [
       {
         begriff: "Beruf",
@@ -232,10 +238,6 @@ export const de = {
       {
         begriff: "Ausbildung",
         wert: "Informatik (BSc, Digital Innovation) an der FH Vorarlberg, berufsbegleitend, 2026; Lehre Elektrotechnik bei Ball",
-      },
-      {
-        begriff: "Werdegang",
-        wert: "Lehre Elektrotechnik bei Ball, Instandhaltung im Schichtbetrieb, Zivildienst beim Roten Kreuz, Trainee-Programm bei Ball, Continuous Improvement / Lean Leader in Ludesch, seit Oktober 2026 Data Analytics",
       },
       {
         begriff: "Nebenbei",

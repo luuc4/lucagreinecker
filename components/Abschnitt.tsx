@@ -94,18 +94,24 @@ export function Spalte({
 
 // Fakten als Tabelle mit Linien (Design „Reihe"): Begriff links, Wert
 // rechts, Tinte-Linie oben, leise Linien zwischen den Zeilen. Am Handy
-// bleibt es zweispaltig mit schmaler Begriffsspalte.
+// bleibt es zweispaltig mit schmaler Begriffsspalte (`spalten`, Fakten
+// eines Projekts) – oder Begriff und Wert stehen untereinander
+// (`untereinander`, Paket und Über mich: dort sind die Werte ganze Sätze,
+// die in der schmalen Spalte dreimal umbrachen; Durchsicht 28.10.2026).
 export type Fakt = { begriff: string; wert: ReactNode };
 
 export function Fakten({
   zeilen,
   betont = "wert",
+  handy = "spalten",
   className,
 }: {
   zeilen: readonly Fakt[];
   // Was in Tinte steht: der Wert (Projektfakten) oder der Begriff (Paket,
   // dort ist der Begriff die Aussage und der Wert die Erklärung).
   betont?: "wert" | "begriff";
+  // Unter md: zwei Spalten oder Begriff über Wert.
+  handy?: "spalten" | "untereinander";
   className?: string;
 }) {
   return (
@@ -113,7 +119,12 @@ export function Fakten({
       {zeilen.map((zeile) => (
         <div
           key={zeile.begriff}
-          className="grid grid-cols-[7rem_minmax(0,1fr)] gap-3 border-b border-linie py-3 lg:grid-cols-[9rem_minmax(0,1fr)]"
+          className={clsx(
+            "grid border-b border-linie py-3",
+            handy === "spalten"
+              ? "grid-cols-[7rem_minmax(0,1fr)] gap-3 lg:grid-cols-[9rem_minmax(0,1fr)]"
+              : "gap-1 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-3",
+          )}
         >
           <dt
             className={betont === "begriff" ? "font-medium" : "text-fg-leise"}

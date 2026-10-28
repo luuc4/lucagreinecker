@@ -322,8 +322,8 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 - [x] Texte: Luca hat Claude am 26.09.2026 gebeten, sie aus den Fakten zu
       schreiben; Gegenlesen steht in Etappe 3
-- [ ] Foto von dir (ja/nein) – die Seite kommt ohne aus; mit Foto käme es
-      auf „Über mich"
+- [x] Foto von dir: `Portraitbild-neu.jpg` (28.10.2026), als 4:5-Ausschnitt
+      auf „Über mich"; Original in `screenshots/portrait/`
 - [x] Telefon oder WhatsApp auf der Seite: nein (26.09.2026)
 - [x] Impressum: kein Gewerbe derzeit, Anschrift wie bisher (Haldenweg
       56b/1, 6700 Bludenz), nur im Impressum (26.09.2026)
@@ -385,33 +385,6 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 ## Ideen (nicht eingeplant)
 
-Aus der Durchsicht am 28.10.2026 (Screenshots 390/768/1440, alle Seiten),
-Luca entscheidet:
-
-- **Handy-Bilder enden mit einem halben Knopf.** Der Screenshot schneidet
-  bei 844 px, bei OZ sitzt dort „Alle Kurse" halb im Bild – genau der
-  Befund aus Runde 1 („ein halber Knopf am Rand sieht wie ein Fehler
-  aus"). Möglich: unten weich in Papier auslaufen lassen (`mask-image`,
-  ein Verlauf nur in der Transparenz, nicht als Farbe) oder die
-  Screenshots auf eine Höhe schneiden, an der nichts angeschnitten ist
-  (`scripts/projekt-screenshots.mjs`, je Projekt prüfen).
-- **Vorschaubild je Projektseite** (`app/[locale]/(site)/projekte/[slug]/opengraph-image.tsx`):
-  beim Teilen einer Projektseite auf LinkedIn erschiene der Screenshot
-  des Projekts statt des allgemeinen Satzes. Satori kann das JPEG aus
-  `public/bilder` als Data-URL einbetten.
-- **Der Knopf im Hero heißt „Kontakt" wie der im Kopf daneben.** Zwei
-  gleiche Knöpfe im ersten Bildschirm; der untere Block sagt „Nachricht
-  schreiben". Eine Benennung für alle drei Stellen, oder der Hero-Knopf
-  sagt, was passiert („Schreib mir").
-- **Paket-Tabelle am Handy:** die Begriffsspalte (7 rem) lässt den Werten
-  wenig Platz, „Umami-Reichweitenmessung" bricht dreimal. Unter md Begriff
-  und Wert untereinander (wie der Rechtstext), oder die Spalte schmaler.
-- **Über mich doppelt:** die Zeile „Werdegang" in der Tabelle wiederholt
-  den ersten Absatz. Zeile streichen oder auf Stationen mit Jahr kürzen.
-- **Foto auf „Über mich"** (Zuarbeit, offen seit 26.09.2026): die Seite
-  wirkt ohne Foto wie eine Visitenkarte ohne Gesicht; für LinkedIn-Besucher
-  wäre der Wiedererkennungswert hoch.
-
 - **Dunkelmodus nach Systemeinstellung** (Luca, 26.09.2026: „benutzerfreundlich,
   je nach Systemeinstellung voreingestellt"). Passt zum Design „Reihe" nur
   mit eigenem Entwurf: Grund Tinte statt Papier, Text Papier, Gelb bleibt
@@ -443,5 +416,6 @@ Kundenserver.
 
 - 26.09.2026: Etappe 3, Teil 3 – Updates vorgezogen (pnpm 12, TS 6, Vitest 5), Screenshots neu, Prüfstellen 2 und 3 aus den Server-Fakten; **Go-live auf lucagreinecker.at um 21:48** (golive.sh), OZ ohne Knopf, USTA auf seiner Domain.
 - 28.10.2026: Etappe 4 – Englisch unter `/en` mit next-intl, alle Texte in `messages/`, Sprachlink, hreflang, Sitemap, OG-Bild und 404 je Sprache, Formular mit Fehlercodes. Offen: Luca liest Englisch gegen, Rücktrag in die Vorlage.
+- 28.10.2026: Durchsicht umgesetzt – Screenshots laufen unten aus, Vorschaubild je Projekt, Hero-Knopf „Nachricht schreiben", Fakten am Handy untereinander, Werdegang-Zeile raus, Porträt auf „Über mich".
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

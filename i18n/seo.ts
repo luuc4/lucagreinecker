@@ -21,22 +21,23 @@ export async function sprachvarianten(href: Pfad): Promise<Sprachvarianten> {
 // der öffentlichen Adresse. Jede Seite setzt das selbst (`generateMetadata`),
 // weil ein `alternates` oder `openGraph` auf einer Seite das des Layouts
 // vollständig ersetzt (Next merged nicht tief, Stolperstein laendle-isst).
-// og:url und og:image stehen absolut und ohne das interne `/de`-Präfix:
-// ein relatives „./" löste Next gegen den umgeschriebenen Pfad auf
-// (`/de/ueber-mich`), und das OG-Bild unter app/[locale] hieße sonst
-// `/de/opengraph-image` – beides Adressen, die der Proxy nur per
-// Umleitung bedient, und LinkedIn folgt Umleitungen für Vorschauen nicht
-// zuverlässig (Review 28.10.2026).
+// og:url steht absolut und ohne das interne `/de`-Präfix: ein relatives
+// „./" löste Next gegen den umgeschriebenen Pfad auf (`/de/ueber-mich`),
+// eine Adresse, die der Proxy nur per Umleitung bedient (Review
+// 28.10.2026). og:image: Weil eine Seite mit eigenem `openGraph` das
+// dateibasierte Bild des Layouts (app/[locale]/opengraph-image.tsx)
+// verliert, steht das allgemeine Bild hier ausdrücklich, mit Sprache im
+// Pfad (`/de/opengraph-image`): proxy.ts nimmt Bildrouten aus, der Server
+// liefert sie so direkt. Projektseiten haben ein eigenes Bild im selben
+// Segment (`bild: "eigenes"`): das merged Next selbst – mit einem
+// Hash-Anhang, den nur Next kennt, deshalb nicht von Hand.
 export async function sprachMetadaten(
   href: Pfad,
   sprache: Sprache,
+  bild: "allgemein" | "eigenes" = "allgemein",
 ): Promise<Pick<Metadata, "alternates" | "openGraph">> {
   const varianten = await sprachvarianten(href);
   const canonical = varianten[sprache];
-  const start = (await getPathname({ locale: sprache, href: "/" })).replace(
-    /\/$/,
-    "",
-  );
   return {
     alternates: { canonical, languages: varianten },
     openGraph: {
@@ -44,14 +45,18 @@ export async function sprachMetadaten(
       locale: OG_LOCALE[sprache],
       siteName: SEITE.name,
       url: canonical,
-      images: [
-        {
-          url: `${siteUrl()}${start}/opengraph-image`,
-          width: 1200,
-          height: 630,
-          alt: SEITE.name,
-        },
-      ],
+      ...(bild === "allgemein"
+        ? {
+            images: [
+              {
+                url: `${siteUrl()}/${sprache}/opengraph-image`,
+                width: 1200,
+                height: 630,
+                alt: SEITE.name,
+              },
+            ],
+          }
+        : {}),
     },
   };
 }

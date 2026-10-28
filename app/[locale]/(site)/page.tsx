@@ -40,7 +40,7 @@ export default async function Startseite({ params }: Props) {
         </p>
         <p>
           <KnopfLink href="/kontakt" groesse="lg">
-            {t("start.kontakt")}
+            {t("start.knopf")}
           </KnopfLink>
         </p>
       </section>
@@ -111,7 +111,11 @@ export default async function Startseite({ params }: Props) {
             </h2>
             <p className="mt-3 max-w-[40ch]">{t("paket.satz")}</p>
           </div>
-          <Fakten zeilen={m.paket.punkte} betont="begriff" />
+          <Fakten
+            zeilen={m.paket.punkte}
+            betont="begriff"
+            handy="untereinander"
+          />
         </div>
       </section>
 

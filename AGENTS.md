@@ -137,12 +137,23 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   nannten „Telefon", obwohl keine Nummer auf der Seite steht. Review
   (`/code-review`) danach: og:url und og:image deutscher Seiten trugen das
   interne `/de`-Präfix (nur per Umleitung erreichbar, LinkedIn folgt der
-  nicht zuverlässig) → beide absolut aus `i18n/seo.ts`; Adressen mit
+  nicht zuverlässig) → og:url und das allgemeine og:image absolut aus
+  `i18n/seo.ts` (`/de/opengraph-image`, der Proxy nimmt Bildrouten aus und
+  liefert sie direkt; Projektseiten lassen Next ihr eigenes Bild samt
+  Hash-Anhang verlinken); Adressen mit
   Punkt (`/impressum.htm`) bekamen Nexts nackte 404 → der Proxy lässt nur
   echte Dateiendungen aus; „Apple Maps" stand fest in der Komponente →
   in die Nachrichten; 404-Titel, Fallback bei Zod-Regeln ohne Code,
   Doppelungen (Rechtshinweis, Menü-Zeile, Projekt-Suche). Offen: Luca
   liest die englischen Texte gegen (TODO.md).
+- 28.10.2026 (Durchsicht, Luca: „ja fixe die dinger"): Screenshots laufen
+  unten weich in Papier aus (kein halber Knopf mehr am Schnitt),
+  Vorschaubild je Projektseite mit dem Handy-Screenshot, der Knopf unter
+  dem Satz heißt „Nachricht schreiben" wie der im Anfrage-Block, Paket
+  und Über-mich-Fakten stehen am Handy untereinander, die doppelte Zeile
+  „Werdegang" ist raus, und auf „Über mich" steht Lucas Porträt
+  (`public/bilder/portrait-*`, Ausschnitt 4:5 aus seinem Foto, Original
+  in `screenshots/portrait/`, nicht im Repo).
 
 ## Projekt
 
@@ -327,7 +338,9 @@ für den Code.
   Fuß oben, Fakten und Rechtstexte oben, `Spalte` oben), Zeilenlinien leise
   (`border-linie`). Keine Karten, keine Schatten, keine Farbverläufe.
 - **Startseite** (Etappe 2): Kopf; der Satz mittig im Display-Schnitt
-  (`SEITE.satz`), darunter ein Satz über Luca und der gelbe Knopf; die vier
+  (`seite.satz`), darunter ein Satz über Luca und der gelbe Knopf
+  „Nachricht schreiben" (seit 28.10.2026 derselbe Wortlaut wie unten im
+  Anfrage-Block; „Kontakt" heißt nur der Knopf im Kopf); die vier
   Handy-Screens in einer Reihe (am Handy Wischleiste mit Scroll-Snap, 76 %
   breit, darunter bis lg ein Strich je Projekt und „Wischen" mit Pfeil),
   je mit Name und einer Zeile; „Rundum-sorglos-Paket" (links Titel
@@ -340,11 +353,26 @@ für den Code.
   Funktionen, Stack, Betrieb) mit dem gelben Knopf „‹domain› öffnen";
   darunter das Desktop-Bild in voller Breite mit Tinte-Linie; dann
   „Weitere Projekte" als Zeile mit den drei anderen Namen. Am Handy alles
-  untereinander, das Handy-Bild 320 px mittig.
+  untereinander, das Handy-Bild 320 px mittig. Eigenes Vorschaubild
+  (`opengraph-image.tsx` neben der Seite): Name, Art-Zeile, gelber Balken,
+  rechts der Handy-Screenshot.
+- **Über mich:** derselbe Aufbau wie die Projektseite: links das Porträt
+  (max. 420 px), rechts die Sätze, die `Fakten` (am Handy untereinander)
+  und die Knöpfe.
+- **Fakten:** zwei Spalten (`handy="spalten"`, Projektfakten: Begriff
+  leise, Wert in Tinte) oder am Handy Begriff über Wert
+  (`handy="untereinander"`, Paket und Über mich: dort sind die Werte ganze
+  Sätze).
 - **Bilder:** echte Screenshots (Absatz unten), flach mit 1-px-Linie in
   Tinte; Handy-Bilder 16 px gerundet, Desktop-Bilder eckig. Keine
   Geräterahmen, keine Neigung, kein Anschnitt (ein halber Knopf am Rand
-  sieht wie ein Fehler aus, Befund Runde 1).
+  sieht wie ein Fehler aus, Befund Runde 1). Der untere Rand der
+  Screenshots läuft weich in Papier aus (`mask-b-from-82%` in
+  `ProjektBild`, seit 28.10.2026): der erste Bildschirm endet sonst an
+  einem harten Schnitt mitten in einem Knopf. Das ist eine Maske in der
+  Transparenz, kein Farbverlauf. Lucas Porträt auf „Über mich"
+  (`components/Portrait.tsx`) bekommt dieselbe Linie und denselben Radius,
+  ohne Maske.
 - **Knöpfe** (`Knopf`, `KnopfLink`): `voll` Gelb mit Tinte (Hauptaktion),
   `umriss` mit Rahmen (Nebenaktion), `text` Tinte unterstrichen; Größen sm
   44 / md 52 / lg 60 nur über `groesse`. Links (`Textlink`,

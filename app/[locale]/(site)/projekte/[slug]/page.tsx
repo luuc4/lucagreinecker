@@ -46,9 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       art: texte.art,
       zeitraum: texte.zeitraum,
     }),
+    // Das eigene Vorschaubild (opengraph-image.tsx daneben) verlinkt Next
+    // selbst.
     ...(await sprachMetadaten(
       { pathname: "/projekte/[slug]", params: { slug } },
       sprache,
+      "eigenes",
     )),
   };
 }

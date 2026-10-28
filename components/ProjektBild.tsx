@@ -7,6 +7,11 @@ import type { Projekt } from "@/lib/inhalte/projekte";
 // Kein next/image: die Varianten liegen vorab da, width/height verhindern
 // Layoutsprünge. `sizes` beschreibt, wie breit das Bild im Layout steht.
 // `alt` kommt von der Seite in ihrer Sprache (messages, projekt.bildHandy).
+// Der untere Rand läuft weich in Papier aus (mask-b-from-82%): der
+// Screenshot zeigt den ersten Bildschirm einer längeren Seite, und am
+// harten Schnitt stand sonst ein halber Knopf („Alle Kurse" bei OZ) – der
+// Befund aus Runde 1. Eine Maske in der Transparenz, kein Farbverlauf
+// (Luca, 28.10.2026).
 const VARIANTEN = {
   handy: { breiten: [390, 560, 780], seite: 844 / 390 },
   desktop: { breiten: [720, 1200, 1440, 1800], seite: 900 / 1440 },
@@ -45,7 +50,10 @@ export function ProjektBild({
         loading={zuerst ? "eager" : "lazy"}
         fetchPriority={zuerst ? "high" : undefined}
         decoding="async"
-        className={clsx("h-auto w-full border border-fg", className)}
+        className={clsx(
+          "h-auto w-full border border-fg mask-b-from-82%",
+          className,
+        )}
       />
     </picture>
   );

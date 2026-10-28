@@ -9,10 +9,14 @@ import { routing } from "./i18n/routing";
 // public/bilder, icon.svg, robots.txt, sitemap.xml, Schriften, Scripts).
 // Alles andere mit Punkt (`/impressum.htm`, `/kontakt.vcf`) läuft durch den
 // Proxy, damit es die 404-Seite in der Sprache der Seite bekommt statt
-// Nexts nackter Standardseite (Review 28.10.2026).
+// Nexts nackter Standardseite (Review 28.10.2026). Ebenfalls ausgenommen:
+// die Vorschaubilder (`…/opengraph-image…`), die Next unter dem internen
+// Pfad mit Sprache verlinkt (`/de/opengraph-image`, bei Projektseiten mit
+// Hash-Anhang) – so liefert der Server sie direkt, statt `/de` per
+// Umleitung abzustreifen, und LinkedIn bekommt ein Bild ohne Umweg.
 export default createMiddleware(routing);
 
 export const config = {
   matcher:
-    "/((?!api|_next|_vercel|.*\\.(?:avif|webp|jpe?g|png|gif|svg|ico|txt|xml|json|webmanifest|woff2?|js|css|map)$).*)",
+    "/((?!api|_next|_vercel|.*opengraph-image|.*\\.(?:avif|webp|jpe?g|png|gif|svg|ico|txt|xml|json|webmanifest|woff2?|js|css|map)$).*)",
 };

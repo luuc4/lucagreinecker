@@ -112,7 +112,10 @@ export const en: Nachrichten = {
   start: {
     ueberLuca:
       "I'm Luca from Bludenz, Austria. My day job is data analytics for manufacturing at Ball; I build websites on the side, from the first sketch to the running server.",
-    kontakt: "Contact",
+    // Der Knopf unter dem Satz: sagt, was passiert, und heißt wie der im
+    // Anfrage-Block unten – nicht „Kontakt" wie der Knopf im Kopf daneben
+    // (Durchsicht 28.10.2026).
+    knopf: "Send a message",
     projekte: "Projects",
     zurProjektseite: "{name}: go to the project page",
     wischen: "Swipe",
@@ -173,6 +176,7 @@ export const en: Nachrichten = {
     beschreibung:
       "Luca Greinecker from Bludenz, Austria: data analytics at Ball, BSc in computer science, builds websites and web apps for Vorarlberg on the side.",
     art: "Luca Greinecker, Bludenz, Austria",
+    foto: "Luca Greinecker, portrait",
     zurPerson: "About the person",
     saetze: [
       "I'm Luca Greinecker from Bludenz in Vorarlberg, Austria. I trained as an electrical technician at Ball in Ludesch, then worked in shift maintenance, did my alternative civilian service with the Red Cross and returned to Ball for the trainee programme. From November 2025 I was Continuous Improvement / Lean Leader at the Ludesch plant. Since October 2026 I've been Specialist, Data Analytics and Insights, a global role: I build tools for data analysis, KPIs and automation across Ball's plants.",
@@ -187,10 +191,6 @@ export const en: Nachrichten = {
       {
         begriff: "Education",
         wert: "BSc Computer Science (Digital Innovation), FH Vorarlberg, part-time alongside work, 2026; apprenticeship in electrical engineering at Ball",
-      },
-      {
-        begriff: "Career",
-        wert: "Electrical engineering apprenticeship at Ball, shift maintenance, civilian service with the Red Cross, Ball trainee programme, Continuous Improvement / Lean Leader in Ludesch, Data Analytics since October 2026",
       },
       {
         begriff: "On the side",

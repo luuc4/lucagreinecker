@@ -3,6 +3,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { Fakten, SeitenKopf } from "@/components/Abschnitt";
 import { KnopfLink } from "@/components/KnopfLink";
 import { NeuerTab } from "@/components/NeuerTab";
+import { Portrait } from "@/components/Portrait";
 import { textlinkKlassen } from "@/components/Textlink";
 import { sprachMetadaten } from "@/i18n/seo";
 import { seitenSprache } from "@/i18n/sprache";
@@ -21,9 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Über mich, kurz und nebensächlich (AGENTS.md „Projekt"): links Lucas
-// Sätze, rechts die Fakten aus der alten Seite als Tabelle, darunter die
-// Wege zu ihm. Kein Foto, solange Luca keines will (TODO.md, Zuarbeit).
+// Über mich, kurz und nebensächlich (AGENTS.md „Projekt"): links das
+// Porträt (seit 28.10.2026, Aufbau wie die Projektseite: Bild links,
+// Text rechts), rechts Lucas Sätze, die Fakten aus der alten Seite als
+// Tabelle und die Wege zu ihm. Am Handy alles untereinander, das Bild
+// 320 px mittig.
 export default async function UeberMich({ params }: Props) {
   await seitenSprache(params);
   const t = await getTranslations("ueberMich");
@@ -32,14 +35,25 @@ export default async function UeberMich({ params }: Props) {
     <>
       <SeitenKopf titel={t("titel")} art={t("art")} />
       <section className="inhalt" aria-label={t("zurPerson")}>
-        <div className="grid gap-8 pb-abschnitt lg:grid-cols-[5fr_7fr] lg:gap-x-14">
-          <div className="flex flex-col gap-4 text-lg">
-            {m.ueberMich.saetze.map((satz) => (
-              <p key={satz}>{satz}</p>
-            ))}
+        <div className="grid items-start gap-8 pb-abschnitt lg:grid-cols-[5fr_7fr] lg:gap-x-14">
+          <div className="mx-auto w-full max-w-[320px] lg:mx-0 lg:max-w-[420px]">
+            <Portrait
+              alt={t("foto")}
+              sizes="(min-width: 1024px) 420px, 320px"
+            />
           </div>
           <div>
-            <Fakten zeilen={m.ueberMich.fakten} betont="begriff" />
+            <div className="flex flex-col gap-4 text-lg">
+              {m.ueberMich.saetze.map((satz) => (
+                <p key={satz}>{satz}</p>
+              ))}
+            </div>
+            <Fakten
+              zeilen={m.ueberMich.fakten}
+              betont="begriff"
+              handy="untereinander"
+              className="mt-8"
+            />
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <KnopfLink href="/kontakt">{t("nachricht")}</KnopfLink>
               {KONTAKT.email ? (
