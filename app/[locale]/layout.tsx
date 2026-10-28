@@ -42,8 +42,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export const viewport: Viewport = {
-  // Farbe der Browserleiste am Handy = Hintergrund (globals.css, grund).
-  themeColor: "#f5f5f2",
+  // <meta name="color-scheme">: der Browser malt die Fläche schon vor dem
+  // Stylesheet im richtigen Schema, sonst blitzt es im Dunkelmodus hell
+  // auf (Review 28.10.2026). globals.css setzt dasselbe am html-Element.
+  colorScheme: "light dark",
+  // Farbe der Browserleiste am Handy = Hintergrund (globals.css, grund),
+  // je Schema.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#141413" },
+  ],
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

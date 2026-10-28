@@ -18,3 +18,8 @@ export function istNeuerTab(href: string): boolean {
 export function istNacktesA(href: string): boolean {
   return /^[a-z][a-z0-9+.-]*:/i.test(href) || href.startsWith("/api/");
 }
+
+// Hover auf jedem Textlink (Design „Reihe"): der gelbe Marker legt sich
+// dahinter, und der Text wird Tinte – im Dunkelmodus wäre er sonst Papier
+// auf Gelb (1,2:1). Eine Stelle für Knopf (Variante text) und Textlink.
+export const linkHoverKlassen = "hover:bg-akzent hover:text-auf-akzent";

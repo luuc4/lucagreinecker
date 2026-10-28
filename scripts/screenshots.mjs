@@ -3,7 +3,8 @@
 // und 1440 px, selbst ansehen. Vorher `pnpm build` und `pnpm start -p 3100`,
 // dann:
 //   OUT=/tmp/shots PFADE=/,/kontakt VIEWPORTS=390x844,768x1024,1440x900 node scripts/screenshots.mjs
-// Ohne PFADE nimmt das Script alle Seiten aus der Sitemap.
+// Ohne PFADE nimmt das Script alle Seiten aus der Sitemap. FARBSCHEMA=dunkel
+// nimmt die Seiten im Dunkelmodus auf (Dateiname mit _dunkel).
 //
 // Vor dem Bild scrollt das Script einmal durch die Seite und wartet, bis
 // alle Bilder geladen sind: Bilder mit loading="lazy" unterhalb des ersten
@@ -14,6 +15,7 @@ import { chromium } from "@playwright/test";
 
 const base = process.env.BASE ?? "http://localhost:3100";
 const out = process.env.OUT ?? "screenshots";
+const dunkel = process.env.FARBSCHEMA === "dunkel";
 const viewports = (process.env.VIEWPORTS ?? "390x844,768x1024,1440x900")
   .split(",")
   .map((v) => v.split("x").map(Number));
@@ -59,13 +61,14 @@ for (const [width, height] of viewports) {
     viewport: { width, height },
     deviceScaleFactor: 1,
     reducedMotion: "reduce",
+    colorScheme: dunkel ? "dark" : "light",
   });
   for (const pfad of pfade) {
     await page.goto(base + pfad, { waitUntil: "load", timeout: 60_000 });
     await allesLaden(page);
     await page.waitForTimeout(300);
     const name = pfad === "/" ? "start" : pfad.replace(/\//g, "_").slice(1);
-    const datei = `${out}/${width}_${name}.png`;
+    const datei = `${out}/${width}_${name}${dunkel ? "_dunkel" : ""}.png`;
     await page.screenshot({ path: datei, fullPage: true });
     console.log(datei);
   }

@@ -154,6 +154,14 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   „Werdegang" ist raus, und auf „Über mich" steht Lucas Porträt
   (`public/bilder/portrait-*`, Ausschnitt 4:5 aus seinem Foto, Original
   in `screenshots/portrait/`, nicht im Repo).
+- 28.10.2026 (Dunkelmodus, Luca: „ja dann mach das"): nach
+  Systemeinstellung, ohne Schalter – ein Block in `globals.css` tauscht die
+  Farbvariablen, Gelb bleibt. Dazu wird beim Link-Hover der Text Tinte
+  (sonst Papier auf Gelb), das Fehlerrot ist im Dunkeln heller, die
+  Browserleiste kennt beide Farben, gedruckt bleibt es hell.
+  `app/globals.test.ts` misst beide Paletten gegen WCAG, axe läuft in
+  beiden Schemata, `e2e/farben.spec.ts` prüft den Wechsel; Screenshots
+  mit `FARBSCHEMA=dunkel`.
 
 ## Projekt
 
@@ -325,7 +333,14 @@ für den Code.
   Rahmen `#7a7a76` (4,0:1), Gelb `#ffe600` (akzent; Tinte darauf 16,6:1,
   Hover `#f0d600`), Fehler `#b91c1c` (5,5:1). Gelb ist der Marker: nur als
   Fläche für die eine Hauptaktion je Seite (Knopf „Kontakt"), für den
-  Hover auf Links und die Textauswahl.
+  Hover auf Links (der Text wird dabei Tinte) und die Textauswahl.
+  **Dunkel** (seit 28.10.2026, `@media screen and (prefers-color-scheme:
+dark)` in `globals.css`, gemessen und von `app/globals.test.ts`
+  geprüft): Grund `#141413`, Fläche `#1f1f1d`, Text Papier `#f5f5f2`
+  (16,9:1), leise `#a9a9a4` (7,8:1), Zeilenlinie `#3a3a37`, Rahmen
+  `#8c8c87` (5,5:1), Fehler `#f87171` (6,7:1); Gelb, Hover-Gelb und die
+  Tinte darauf bleiben gleich (Gelb auf Grund 14,5:1). Kein Schalter, das
+  System entscheidet; gedruckt bleibt es hell.
 - **Schrift:** IBM Plex Sans variable (`app/fonts.ts`, `--font-plex`), eine
   Schrift für alles. Titel in Gewicht 500 (`font-medium`), Knöpfe 600,
   Text 400 in 17 px / 1,55. Das OG-Bild nimmt die statische WOFF in 500.
@@ -634,3 +649,22 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   „English"/„Deutsch" statt „EN"/„DE": Wörter statt Kürzel in
   Großbuchstaben (Design, „Verboten"), jeweils in der Zielsprache mit
   `lang`-Attribut.
+- **28.10.2026 – Dunkelmodus nach Systemeinstellung, als Ausnahme vom
+  Leitfaden** (Luca, 26.09.2026: „benutzerfreundlich, je nach
+  Systemeinstellung voreingestellt"; 28.10.2026: „ja dann mach das"). Der
+  Leitfaden sagt „ein Theme, nicht beides" (leitfaden/05); hier bewusst
+  beides, weil es Lucas eigene Seite ist und Besucher von LinkedIn oft im
+  Dunkelmodus kommen. Umsetzung ohne Klassenänderung: die Utilities
+  verweisen auf die Farbvariablen aus `@theme`, ein Block unter `@media
+screen and (prefers-color-scheme: dark)` tauscht die Werte. Kein
+  Schalter: er bräuchte einen Speicher im Browser und Platz im Kopf, der am
+  Handy voll ist. Drei Dinge brauchten mehr als Werte: beim Link-Hover wird
+  der Text Tinte (`hover:text-auf-akzent` in den drei Link-Klassen; Papier
+  auf Gelb hätte 1,2:1), das Fehlerrot ist im Dunkeln `#f87171` (das helle
+  `#b91c1c` hätte 2,8:1), und `theme-color` steht je Schema. Der
+  Fokusring braucht nichts: er liegt mit 2 px Abstand außerhalb, also auf
+  dem Grund, nie auf Gelb. Gedruckt bleibt die Seite hell (`screen` im
+  Media-Query, Druckregeln unverändert). Die Vorschaubilder bleiben hell.
+  Gelb auf Papier hat 1,1:1 und braucht keine Grenze: der Knopf lebt von
+  Tinte-Text und Form, `globals.test.ts` prüft deshalb Text, Rahmen und
+  Fehler, nicht die Gelb-Fläche.

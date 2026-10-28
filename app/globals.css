@@ -62,7 +62,9 @@
    Utilities und würden z. B. jedes text-* an einem Eingabefeld schlucken. */
 @layer base {
   html {
-    color-scheme: light;
+    /* Beide Schemata: Formularfelder und Scrollbalken folgen dem System
+       (Dunkelmodus seit 28.10.2026). */
+    color-scheme: light dark;
     scroll-padding-top: var(--spacing-kopf);
     -webkit-text-size-adjust: 100%;
     /* Klassische Scrollbalken (Windows, iPad mit Maus) schieben beim
@@ -113,6 +115,28 @@
   ::selection {
     background-color: var(--color-akzent);
     color: var(--color-auf-akzent);
+  }
+
+  /* Dunkelmodus nach Systemeinstellung (Luca, 26.09.2026 „je nach
+     Systemeinstellung voreingestellt", gebaut 28.10.2026): dieselben Rollen,
+     andere Werte – Grund fast Tinte, Text Papier, Gelb bleibt das eine
+     Signal (Knopf, Hover, Auswahl, weiter mit Tinte darauf). Nur am
+     Bildschirm: gedruckt bleibt die Seite hell (unten). Die Utilities
+     verweisen auf die Variablen, deshalb reicht der Block; kein Schalter.
+     Gemessen: Papier auf Grund 16,9:1, leise 7,8:1, Rahmen 5,5:1, Fehler
+     6,7:1 (#b91c1c hätte nur 2,8:1), Gelb-Fläche 14,5:1;
+     app/globals.test.ts hält Text, Rahmen, Fehler und im Dunkeln die
+     Gelb-Fläche über der Grenze. Linien bleiben Deko. */
+  @media screen and (prefers-color-scheme: dark) {
+    :root {
+      --color-grund: #141413;
+      --color-flaeche: #1f1f1d;
+      --color-fg: #f5f5f2;
+      --color-fg-leise: #a9a9a4;
+      --color-linie: #3a3a37;
+      --color-rahmen: #8c8c87;
+      --color-fehler: #f87171;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -198,7 +222,8 @@
   text-underline-offset: 4px;
 }
 
-/* Druck: hell, ohne Kopf und Knöpfe (die tragen print:hidden). */
+/* Druck: hell, ohne Kopf und Knöpfe (die tragen print:hidden). Der
+   Dunkelmodus oben gilt nur für screen, die Variablen bleiben hier hell. */
 @media print {
   body {
     background-color: #fff;

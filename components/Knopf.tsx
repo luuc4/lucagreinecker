@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import type { ButtonHTMLAttributes } from "react";
+import { linkHoverKlassen } from "./Links";
 
 // Eine Quelle je Look: Knopf für <button>, KnopfLink (eigene Datei, weil
 // er Texte je Sprache braucht und Client-Komponenten nur den Knopf
 // importieren) für Links, beide über knopfKlassen(). Varianten: voll (die
 // Hauptaktion, Gelb mit Tinte – das einzige Gelb einer Seite neben Hover
 // und Auswahl), umriss (Nebenaktion, Rahmen), text (Link in Knopfhöhe,
-// Gelb erst beim Hover). Größen: sm 44 px (Kopf am Handy, Nebenknöpfe wie
+// Gelb erst beim Hover, der Text dann Tinte: linkHoverKlassen in Links.ts). Größen: sm 44 px (Kopf am Handy, Nebenknöpfe wie
 // Karten-Links), md 52 px, lg 60 px. Die Größe kommt immer über `groesse`,
 // nie über className: ohne tailwind-merge gewinnt bei zwei min-h-Klassen
 // die zufällig spätere im CSS (Befund OZ, 17.09.2026). Das Gewicht steht
@@ -34,7 +35,7 @@ export function knopfKlassen({
     {
       voll: "bg-akzent font-semibold text-auf-akzent hover:bg-akzent-hover",
       umriss: "border border-rahmen font-medium text-fg hover:border-fg",
-      text: "min-h-11 px-0 font-medium text-fg underline decoration-1 underline-offset-4 hover:bg-akzent",
+      text: `min-h-11 px-0 font-medium text-fg underline decoration-1 underline-offset-4 ${linkHoverKlassen}`,
     }[variante],
     className,
   );

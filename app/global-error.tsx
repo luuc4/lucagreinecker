@@ -2,8 +2,9 @@
 
 // Greift nur, wenn das Root-Layout selbst wirft; muss html und body
 // mitbringen, weil das Layout dann nicht gerendert wurde (deshalb auch
-// Inline-Styles statt Tailwind). Ohne Layout gibt es keine Sprache und
-// keine Nachrichten: beide Sätze stehen hier fest, Deutsch zuerst.
+// Inline-Styles statt Tailwind; light-dark() folgt dem System wie
+// globals.css). Ohne Layout gibt es keine Sprache und keine Nachrichten:
+// beide Sätze stehen hier fest, Deutsch zuerst.
 export default function GlobalerFehler({
   reset,
 }: {
@@ -18,8 +19,9 @@ export default function GlobalerFehler({
           minHeight: "100dvh",
           display: "grid",
           placeItems: "center",
-          background: "#f5f5f2",
-          color: "#000000",
+          colorScheme: "light dark",
+          background: "light-dark(#f5f5f2, #141413)",
+          color: "light-dark(#000000, #f5f5f2)",
           fontFamily: "system-ui, sans-serif",
         }}
       >

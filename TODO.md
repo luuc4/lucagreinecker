@@ -385,15 +385,6 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 ## Ideen (nicht eingeplant)
 
-- **Dunkelmodus nach Systemeinstellung** (Luca, 26.09.2026: „benutzerfreundlich,
-  je nach Systemeinstellung voreingestellt"). Passt zum Design „Reihe" nur
-  mit eigenem Entwurf: Grund Tinte statt Papier, Text Papier, Gelb bleibt
-  als einziges Signal (auf Dunkel rund 14:1), Linien heller, die dunklen
-  Projektbilder brauchen dann eine helle Linie zur Abgrenzung. Kein
-  Schalter, `prefers-color-scheme` entscheidet; Kontraste neu messen,
-  Screenshots in beiden Modi. Die Vorlage sagt „ein Theme, nicht beides"
-  (leitfaden/05) – hier bewusst als Ausnahme, weil es Lucas eigene Seite
-  ist. Frühestens nach dem Go-live, als eigene kleine Etappe.
 - Zentrale Überwachung (leitfaden/11): Uptime Kuma läuft schon auf diesem
   Server; OZ und USTA dort eintragen, Beszel-Hub dazu
 
@@ -402,9 +393,10 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 Aus der Vorlage (leitfaden/02): Bootstrap, tailwind-merge, React Email,
 next-safe-action, t3-env, TanStack Table, Recharts, Datepicker-Bibliothek,
 Nixpacks, `docker-compose.yml`, Google Fonts per CDN, eingebettete Karte,
-YouTube- und Social-iframes, Cookie-Banner-Tool, Hell und Dunkel
-gleichzeitig, `src/`-Ordner, GlitchTip und Uptime Kuma auf dem
-Kundenserver.
+YouTube- und Social-iframes, Cookie-Banner-Tool, `src/`-Ordner, GlitchTip
+und Uptime Kuma auf dem Kundenserver. „Hell und Dunkel gleichzeitig" stand
+hier bis zum 28.10.2026; der Dunkelmodus nach Systemeinstellung ist eine
+bewusste Ausnahme für Lucas eigene Seite (AGENTS.md, Entscheidungen).
 
 ## Erledigt
 
@@ -417,5 +409,6 @@ Kundenserver.
 - 26.09.2026: Etappe 3, Teil 3 – Updates vorgezogen (pnpm 12, TS 6, Vitest 5), Screenshots neu, Prüfstellen 2 und 3 aus den Server-Fakten; **Go-live auf lucagreinecker.at um 21:48** (golive.sh), OZ ohne Knopf, USTA auf seiner Domain.
 - 28.10.2026: Etappe 4 – Englisch unter `/en` mit next-intl, alle Texte in `messages/`, Sprachlink, hreflang, Sitemap, OG-Bild und 404 je Sprache, Formular mit Fehlercodes. Offen: Luca liest Englisch gegen, Rücktrag in die Vorlage.
 - 28.10.2026: Durchsicht umgesetzt – Screenshots laufen unten aus, Vorschaubild je Projekt, Hero-Knopf „Nachricht schreiben", Fakten am Handy untereinander, Werdegang-Zeile raus, Porträt auf „Über mich".
+- 28.10.2026: Dunkelmodus nach Systemeinstellung – Farbvariablen in `globals.css`, Link-Hover mit Tinte, helleres Fehlerrot, theme-color je Schema; Kontrast-Test, axe und Screenshots in beiden Modi.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").
