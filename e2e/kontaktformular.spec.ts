@@ -110,6 +110,46 @@ test("honeypot: sieht aus wie gesendet, schickt aber nichts", async ({
   expect(await anfragenVon(request, email)).toHaveLength(0);
 });
 
+test("auf englisch: beschriftungen, fehler und push-hinweis", async ({
+  page,
+  request,
+}) => {
+  const email = adresse("englisch");
+  await page.goto("/en/contact");
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Contact" }),
+  ).toBeVisible();
+  await page.getByLabel("Name", { exact: true }).fill("Anna Test");
+  await page.getByLabel("Email", { exact: true }).fill("not-an-address");
+  await page.getByLabel("Message", { exact: true }).fill("too short");
+  await page.getByRole("button", { name: "Send message" }).click();
+  // Die Codes vom Server werden in der Sprache der Seite zu Sätzen.
+  await expect(
+    page.getByText("This email address doesn't look right."),
+  ).toBeVisible();
+  await expect(
+    page.getByText("The message needs at least 10 characters."),
+  ).toBeVisible();
+
+  await page.getByLabel("Email", { exact: true }).fill(email);
+  await page
+    .getByLabel("Message", { exact: true })
+    .fill("I would like a website for my business.");
+  await page.getByRole("button", { name: "Send message" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Message sent" }),
+  ).toBeVisible();
+
+  await expect
+    .poll(async () => (await anfragenVon(request, email)).length)
+    .toBe(1);
+  const [anfrage] = await anfragenVon(request, email);
+  // Die Push-Nachricht an Luca bleibt deutsch, sagt aber, dass die Antwort
+  // auf Englisch rausgehen soll.
+  expect(anfrage!.titel).toBe("Anfrage Website (EN)");
+  expect(anfrage!.text).toContain("auf Englisch antworten");
+});
+
 test.describe("ohne javascript", () => {
   test.use({ javaScriptEnabled: false });
 

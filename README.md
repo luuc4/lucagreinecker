@@ -1,6 +1,7 @@
 # Luca Greinecker
 
-Lucas eigene Website: seine Webprojekte, kurz über ihn, Kontakt.
+Lucas eigene Website: seine Webprojekte, kurz über ihn, Kontakt. Deutsch
+unter `/`, Englisch unter `/en` (next-intl, Texte in `messages/`).
 Die alte statische Seite liegt auf Branch `alt` (Tag `statisch-2026-09`).
 
 Entstanden aus dem Starter der webprojekt-vorlage

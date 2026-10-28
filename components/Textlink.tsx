@@ -1,5 +1,7 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { Link, type Ziel } from "@/i18n/navigation";
+import { istNacktesA, istNeuerTab, type ExternerLink } from "./Links";
+import { NeuerTab } from "./NeuerTab";
 
 // Drei Link-Formen, eine Quelle (Muster aus OZ, 19.09.2026). Links sind
 // Tinte mit Unterstrich; beim Hover legt sich der gelbe Marker dahinter
@@ -8,6 +10,8 @@ import type { ReactNode } from "react";
 // - inlineLinkKlassen: im Fließtext, auf der Grundlinie des Satzes.
 // - zeilenLinkKlassen: als Wert in einer Datenzeile, Tippfläche unsichtbar
 //   auf 48 px vergrößert, ohne die Zeile höher zu machen.
+// Die Klassen dürfen Client-Komponenten importieren (reine Strings); die
+// Komponente Textlink ist eine Server-Komponente (Hinweis je Sprache).
 export const inlineLinkKlassen =
   "font-medium text-fg underline decoration-1 underline-offset-4 hover:bg-akzent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg";
 
@@ -20,10 +24,10 @@ export function Textlink({
   href,
   children,
 }: {
-  href: string;
+  href: Ziel | ExternerLink;
   children: ReactNode;
 }) {
-  if (/^https?:\/\//.test(href)) {
+  if (typeof href === "string" && istNeuerTab(href)) {
     return (
       <a
         href={href}
@@ -32,11 +36,11 @@ export function Textlink({
         rel="noopener noreferrer"
       >
         {children}
-        <span className="sr-only"> (öffnet in neuem Tab)</span>
+        <NeuerTab />
       </a>
     );
   }
-  if (/^[a-z][a-z0-9+.-]*:/i.test(href) || href.startsWith("/api/")) {
+  if (typeof href === "string" && istNacktesA(href)) {
     return (
       <a href={href} className={textlinkKlassen}>
         {children}
@@ -44,7 +48,7 @@ export function Textlink({
     );
   }
   return (
-    <Link href={href} className={textlinkKlassen}>
+    <Link href={href as Ziel} className={textlinkKlassen}>
       {children}
     </Link>
   );

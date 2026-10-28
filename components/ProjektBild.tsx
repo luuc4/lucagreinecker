@@ -6,6 +6,7 @@ import type { Projekt } from "@/lib/inhalte/projekte";
 // Handy 390 × 844, Desktop 1440 × 900, jeweils in doppelter Auflösung.
 // Kein next/image: die Varianten liegen vorab da, width/height verhindern
 // Layoutsprünge. `sizes` beschreibt, wie breit das Bild im Layout steht.
+// `alt` kommt von der Seite in ihrer Sprache (messages, projekt.bildHandy).
 const VARIANTEN = {
   handy: { breiten: [390, 560, 780], seite: 844 / 390 },
   desktop: { breiten: [720, 1200, 1440, 1800], seite: 900 / 1440 },
@@ -14,12 +15,14 @@ const VARIANTEN = {
 export function ProjektBild({
   projekt,
   ansicht,
+  alt,
   sizes,
   className,
   zuerst = false,
 }: {
-  projekt: Pick<Projekt, "slug" | "name">;
+  projekt: Pick<Projekt, "slug">;
   ansicht: keyof typeof VARIANTEN;
+  alt: string;
   sizes: string;
   className?: string;
   // Das erste Bild im Blick lädt sofort (LCP), alle anderen erst bei Bedarf.
@@ -38,7 +41,7 @@ export function ProjektBild({
         src={`${basis}-${groesste}.jpg`}
         width={groesste}
         height={Math.round(groesste * seite)}
-        alt={`Startseite von ${projekt.name} am ${ansicht === "handy" ? "Handy" : "Desktop"}`}
+        alt={alt}
         loading={zuerst ? "eager" : "lazy"}
         fetchPriority={zuerst ? "high" : undefined}
         decoding="async"

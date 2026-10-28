@@ -36,7 +36,7 @@ function pfeilZurueck(container: HTMLElement) {
 
 it("zeigt einen Strich je Projekt, zu Beginn das erste im Blick", () => {
   const { container, getByText } = render(
-    <Wischleiste>
+    <Wischleiste hinweis="Wischen">
       <li>A</li>
       <li>B</li>
       <li>C</li>
@@ -49,7 +49,7 @@ it("zeigt einen Strich je Projekt, zu Beginn das erste im Blick", () => {
 
 it("folgt beim Wischen den Projekten, die zu mehr als der Hälfte sichtbar sind", () => {
   const { container, getByText } = render(
-    <Wischleiste>
+    <Wischleiste hinweis="Wischen">
       <li>A</li>
       <li>B</li>
       <li>C</li>

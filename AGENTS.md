@@ -121,27 +121,50 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   Datenschutzerklärung statt Hotmail; Rechtstexte mit Stand 25.10.2026.
   Danach aufgeräumt: die Design-Entwürfe (`docs/design/`) sind raus, die
   Seite steht; erhalten im Tag `entwuerfe-2026-09`.
+- 28.10.2026 (Etappe 4 – Englisch): Die Seite gibt es auf Deutsch (wie
+  bisher, ohne Präfix) und Englisch unter `/en` (Luca: Leute aus dem
+  Ausland kommen über LinkedIn). Aufbau mit next-intl nach leitfaden/15
+  (`i18n/`, `proxy.ts`, `app/[locale]/`), alle Texte in
+  `messages/de.ts` und `messages/en.ts` (TypeScript statt JSON,
+  Entscheidungen), übersetzte Adressen (`/en/about`, `/en/contact`,
+  `/en/projects/<slug>`, `/en/legal-notice`, `/en/privacy`), Sprachlink
+  „English"/„Deutsch" im Kopf (ab sm), im Menü am Handy und im Fuß,
+  Canonical und hreflang mit x-default aus einer Funktion (`i18n/seo.ts`)
+  im HTML und in der Sitemap, OG-Bild je Sprache, 404 je Sprache mit Kopf
+  und Fuß, Kontaktformular mit Fehlercodes statt Sätzen und Sprachvermerk
+  in der Push-Nachricht. Rechtstexte als Übersetzung mit Hinweis auf die
+  verbindliche deutsche Fassung. Dabei behoben: die Formular-Fehlermeldungen
+  nannten „Telefon", obwohl keine Nummer auf der Seite steht. Review
+  (`/code-review`) danach: og:url und og:image deutscher Seiten trugen das
+  interne `/de`-Präfix (nur per Umleitung erreichbar, LinkedIn folgt der
+  nicht zuverlässig) → beide absolut aus `i18n/seo.ts`; Adressen mit
+  Punkt (`/impressum.htm`) bekamen Nexts nackte 404 → der Proxy lässt nur
+  echte Dateiendungen aus; „Apple Maps" stand fest in der Komponente →
+  in die Nachrichten; 404-Titel, Fallback bei Zod-Regeln ohne Code,
+  Doppelungen (Rechtshinweis, Menü-Zeile, Projekt-Suche). Offen: Luca
+  liest die englischen Texte gegen (TODO.md).
 
 ## Projekt
 
-| Was         | Wert                                                             |
-| ----------- | ---------------------------------------------------------------- |
-| Kunde       | Luca selbst (Privatperson; Gewerbe für Webprojekte: ‹klären›)    |
-| Domain      | `lucagreinecker.at` (live seit 26.09.2026)                       |
-| Projekttyp  | einfach (leitfaden/12): Portfolio, Inhalte im Code               |
-| Seiten      | Start, je Projekt eine Seite, Über mich, Kontakt, Impressum, DSE |
-| Funktionen  | Kontaktformular → ntfy (Push an Luca), vCard, Mail-Link          |
-| Sprache     | Du, locker und regional wie Luca selbst schreibt                 |
-| Platzhalter | `[TEXT LUCA]` (`lib/inhalte/statisch.ts`, `PLATZHALTER`)         |
-| Sperrzeiten | keine                                                            |
+| Was         | Wert                                                                                                              |
+| ----------- | ----------------------------------------------------------------------------------------------------------------- |
+| Kunde       | Luca selbst (Privatperson; Gewerbe für Webprojekte: ‹klären›)                                                     |
+| Domain      | `lucagreinecker.at` (live seit 26.09.2026)                                                                        |
+| Projekttyp  | einfach (leitfaden/12): Portfolio, Inhalte im Code                                                                |
+| Seiten      | Start, je Projekt eine Seite, Über mich, Kontakt, Impressum, DSE                                                  |
+| Funktionen  | Kontaktformular → ntfy (Push an Luca), vCard, Mail-Link                                                           |
+| Sprache     | Deutsch (Du, locker und regional wie Luca selbst schreibt), dazu Englisch unter `/en` (britisch, seit 28.10.2026) |
+| Platzhalter | `[TEXT LUCA]` (`PLATZHALTER` in `lib/inhalte/statisch.ts`, sichtbar im Text in `messages/`)                       |
+| Sperrzeiten | keine                                                                                                             |
 
 ## Stack
 
 Next.js 16 (App Router, `output: "standalone"`), React 19, TypeScript 6
 strict mit `noUncheckedIndexedAccess`, Tailwind 4 CSS-first (`@theme` in
-`app/globals.css`), pnpm 12, Node 24, Vitest 5 (`unit`, `ui`), Playwright
-mit axe, ESLint 9, Prettier (Stand 26.09.2026; ESLint 10 und TypeScript 7
-bewusst nicht, Entscheidungen). Build in GitHub Actions → GHCR, Coolify zieht
+`app/globals.css`), next-intl 4 für Deutsch und Englisch (seit
+28.10.2026, leitfaden/15), pnpm 12, Node 24, Vitest 5 (`unit`, `ui`),
+Playwright mit axe, ESLint 9, Prettier (Stand 26.09.2026; ESLint 10 und
+TypeScript 7 bewusst nicht, Entscheidungen). Build in GitHub Actions → GHCR, Coolify zieht
 das Image. Umami für Statistik (Pflicht). Zusatzdienste aus Coolify nur
 mit Anwendungsfall (leitfaden/11): keine eigenen; die Seite nutzt Umami
 und ntfy, die auf Lucas Server schon laufen. Bausteine nach Bedarf (Datenbank, Mail,
@@ -169,28 +192,46 @@ bash scripts/server-fakten.sh                 # Server nur lesen (Logs, ntfy, Um
 ## Struktur
 
 ```
-app/                  Routen. (site) öffentlich mit Kopf, Fuß, Umami: Start, projekte/[slug],
-                      ueber-mich, kontakt, impressum, datenschutz; api/ nur für Fremdaufrufer
-                      und Nicht-HTML (health, kontakt.vcf, test/anfragen nur mit memory)
+app/[locale]/         Routen je Sprache (de ohne Präfix, en unter /en; proxy.ts verteilt).
+                      layout.tsx = Root-Layout (html lang, Schrift, Provider), error.tsx,
+                      opengraph-image.tsx je Sprache. (site) öffentlich mit Kopf, Fuß, Umami:
+                      Start, projekte/[slug], ueber-mich, kontakt, impressum, datenschutz,
+                      not-found + [...rest] (404 je Sprache). Ordnernamen sind die internen
+                      Pfade; die englischen Adressen stehen in i18n/routing.ts (pathnames)
+app/api/              nur für Fremdaufrufer und Nicht-HTML (health, kontakt.vcf, test/anfragen
+                      nur mit memory); ohne Sprache
 app/globals.css       Design-Tokens (@theme), Grundregeln, Utilities inhalt/zahlen
-app/sitemap.ts        öffentliche Routen – neue Seiten hier eintragen (E2E liest sie)
-components/           KontaktFormular, formular/Feld (Feld, Textbereich), Knopf/KnopfLink,
-                      Textlink, Icon, Kopf, MobilMenue, Fuss,
+app/sitemap.ts        öffentliche Seiten je Sprache mit hreflang – neue Seiten hier eintragen
+                      (E2E liest sie)
+proxy.ts              next-intl-Middleware (Next 16: proxy statt middleware)
+i18n/                 routing (Sprachen, pathnames, HTML_LANG – die eine Stelle), request
+                      (Nachrichten je Anfrage), navigation (Link, usePathname, getPathname),
+                      sprache (seitenSprache: prüfen + setRequestLocale), seo (Canonical,
+                      hreflang, Sitemap aus einer Funktion), next-intl.d.ts (Typen)
+messages/             de.ts (die Form, mit Warum-Kommentaren), en.ts (typisiert als
+                      Nachrichten), messages.test.ts – jedes Wort, das ein Besucher liest
+components/           KontaktFormular (Texte als Props), formular/Feld (Feld, Textbereich),
+                      Knopf (Button), KnopfLink, Textlink, Links (Zielsorten), NeuerTab,
+                      SprachWechsel, Icon, Kopf, MobilMenue, NavLink, Fuss,
                       Abschnitt (SeitenKopf, Abschnitt, Spalten, Spalte, Fakten), KartenKnoepfe,
                       Rechtstext, SeitenFokus, Analytics, JsonLd, ProjektBild (<picture> aus
                       public/bilder), Wischleiste (Handy-Reihe mit Wisch-Hinweis)
-lib/inhalte/statisch.ts  Texte und Fakten (SEITE, KONTAKT, PAKET, UEBER_MICH), Navigation,
-                      PLATZHALTER, KONTAKTFORMULAR (an/aus)
-lib/inhalte/projekte.ts  die vier Projekte: Fakten, Adressen, Lucas Sätze (null = Platzhalter)
-lib/anfrage/          Kontaktformular: felder (Namen, Längen – ohne Zod, für den Client), schema
-                      (Zod, Honeypot – nur Server), drossel (im Prozess), vorlage (Push-Text),
+lib/inhalte/statisch.ts  Fakten, die in jeder Sprache gleich sind (SEITE, KONTAKT, IMPRESSUM),
+                      NAVIGATION (Pfade + Label-Schlüssel), PLATZHALTER, KONTAKTFORMULAR
+lib/inhalte/projekte.ts  die vier Projekte: Slug, Name, Domain, Knopf-Ziel, Reihenfolge
+                      (Texte je Sprache in messages/<sprache>.ts, `projekte`)
+lib/inhalte/datum.ts  ISO-Datum → Text je Sprache (Stand der Rechtstexte)
+lib/anfrage/          Kontaktformular: felder (Namen, Längen, Fehlercodes – ohne Zod, für den
+                      Client), schema (Zod mit Codes, Sprache, Honeypot – nur Server), drossel
+                      (im Prozess), vorlage (Push-Text, deutsch, mit Sprachvermerk),
                       ntfy (Transporte konsole/memory/ntfy), actions (Server Action)
 lib/env.ts            Zod-Schema aller Laufzeit-Variablen; lib/betrieb/start.ts prüft beim Start
 lib/kontakt/          vCard, Kalenderdatei (Serien, Einzeltermine), Links (tel, mail,
                       WhatsApp, Google Maps, Apple Karten) – rein und getestet
 lib/site.ts           SITE_URL, OEFFENTLICHE_HOSTS (nur die werden indexiert)
-e2e/                  seiten (Rauchtest, Überlauf), a11y (axe, 390/1440), platzhalter,
-                      kontaktformular
+e2e/                  seiten (Rauchtest, Überlauf, 404 je Sprache), a11y (axe, 390/1440),
+                      platzhalter, kontaktformular (auch englisch), sprachen (lang, Canonical,
+                      hreflang, Sprachlink, /de-Umleitung, Sitemap)
 scripts/              screenshots.mjs, bilder.mjs (Varianten ohne Metadaten), server-einrichten.sh,
                       projekt-screenshots.mjs (Startseiten der Projekte in 390 und 1440 px → public/bilder),
                       server-fakten.sh (nur lesen: Log-Rotation, ntfy, Umami, Speicher – Luca führt aus)
@@ -208,12 +249,21 @@ Alias `@/*` auf das Repo-Root. Kein `src/`.
 - **Texte:** nur echte Inhalte vom Kunden oder von Luca, nie erfinden;
   Lücken als `PLATZHALTER`. Keine KI-Floskeln (leitfaden/05, „Texte").
   Knöpfe groß beginnend, Statuszeilen klein, U+202F vor Tausendern, echtes
-  Minus.
+  Minus. Jedes Wort, das ein Besucher liest, steht in `messages/de.ts`
+  und `messages/en.ts` (seit 28.10.2026) – nie in einer Komponente oder
+  Seite; `lib/inhalte/` hält nur, was in jeder Sprache gleich ist.
+  Server-Komponenten lesen mit `useTranslations`/`getTranslations`
+  (Strings, Platzhalter `{name}`) und `getMessages` (Listen);
+  Client-Komponenten bekommen ihre Wörter als Props. Englisch britisch,
+  „Austria" dazu, wo Vorarlberg oder Bludenz sonst niemand einordnet.
+  Interne Links immer über `Link` aus `i18n/navigation`, nie `next/link`.
 - **Komponenten:** Server Components by default, `"use client"` nur an der
   Wurzel einer interaktiven Ansicht. Eine Quelle je Look (`knopfKlassen`,
   `textlinkKlassen`), `clsx` ohne `tailwind-merge`, Größen über Props.
   Named Exports, Rest-Props aufs native Element, `type="button"`. Kein
-  `new Date()` im Render. Klassen nie von Hand sortieren (Prettier).
+  `new Date()` ohne Argument und kein `Date.now()` im Render (ein festes
+  ISO-Datum formatieren, wie `lib/inhalte/datum.ts`, ist in Ordnung: das
+  Ergebnis hängt nicht vom Zeitpunkt ab). Klassen nie von Hand sortieren (Prettier).
 - **Env:** Werte nur in Funktionen lesen. `SITE_URL` und `NEXT_PUBLIC_*`
   sind Build-Zeit (Repository-Variablen). Vorlage aller Variablen:
   `.env.tpl`.
@@ -300,13 +350,15 @@ für den Code.
   44 / md 52 / lg 60 nur über `groesse`. Links (`Textlink`,
   `inlineLinkKlassen`, `zeilenLinkKlassen`) Tinte mit Unterstrich, der
   Hover legt Gelb dahinter. Fokusring 2 px Tinte, außen.
-- **Kopf:** Name links, ab lg die Navigation, rechts der gelbe Knopf
-  „Kontakt", Tinte-Linie darunter; am Handy Knopf und „Menü". `NAVIGATION`
+- **Kopf:** Name links, ab lg die Navigation, rechts der Sprachlink
+  („English" bzw. „Deutsch", leise wie ein inaktiver Nav-Eintrag, ab sm)
+  und der gelbe Knopf „Kontakt", Tinte-Linie darunter; am Handy Knopf und
+  „Menü", der Sprachlink unter sm als letzter Menü-Eintrag. `NAVIGATION`
   führt die anderen Seiten (Etappe 2: Projekte, Paket, Über mich); Kontakt
   steht dann nur als Knopf, nicht doppelt im Menü.
-- **Fuß:** Tinte-Linie, drei Spalten (Name und Ort, Seiten, Kontakt mit
-  Mail, „Kontakt speichern", Profile), darunter Impressum und Datenschutz
-  an einer leisen Linie.
+- **Fuß:** Tinte-Linie, drei Spalten (Name, Ort und Sprachlink; Seiten;
+  Kontakt mit Mail, „Kontakt speichern", Profile), darunter Impressum und
+  Datenschutz an einer leisen Linie.
 - **Bewegung:** nichts beim Laden, Hover nur Farbwechsel,
   `prefers-reduced-motion` gilt.
 - **Verboten:** eine zweite Akzentfarbe, Gelb als Textfarbe, Weiß auf
@@ -504,3 +556,53 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   Verantwortlich Apple Distribution International Ltd. (Irland), Speicherung
   in der Regel bei Apple Inc. in den USA, Übermittlung über
   Standardvertragsklauseln (keine DPF-Zertifizierung genannt).
+- **28.10.2026 – Englisch mit next-intl, Deutsch bleibt ohne Präfix**
+  (Luca: „language switch zu englisch, habe auch leute aus ausland die
+  von linkedin zb auf seite stossen. saubere menschliche übersetzungen").
+  Aufbau nach leitfaden/15: `localePrefix: "as-needed"`, keine
+  Spracherkennung, kein Cookie (stünde in der Datenschutzerklärung), die
+  Sprachen stehen nur in `i18n/routing.ts`. Adressen übersetzt
+  (`/en/about`, `/en/contact`, `/en/projects/<slug>`, `/en/legal-notice`,
+  `/en/privacy`), weil englische Leser sie so erwarten; Projekt-Slugs
+  gleich (Eigennamen). `alternateLinks` aus: Canonical, hreflang und
+  Sitemap kommen aus `i18n/seo.ts`, damit die drei nie auseinanderlaufen
+  (Stolperstein laendle-isst). Englisch britisch (`en-GB`, Texte mit
+  programme, licence, travelling), OG-Locale `en_GB`.
+- **28.10.2026 – Nachrichten als TypeScript statt JSON.** Die Vorlage
+  nennt `messages/de.json`; hier sind es `messages/de.ts` und `en.ts`,
+  weil die Sätze ihre Warum-Kommentare (Quelle, Datum, Lucas Wortlaut)
+  behalten sollen und `en` als `Nachrichten` typisiert ist – fehlende
+  oder überzählige Schlüssel fallen beim Typecheck auf, nicht erst im
+  Test. `messages.test.ts` prüft, was der Typ nicht sieht (leere Texte,
+  Punkte in Schlüsseln, Stand-Hinweis ohne Knopf, Länge der
+  Meta-Beschreibungen). Die Texte je Projekt liegen unter `projekte`
+  (Slug als Schlüssel), `lib/inhalte/projekte.ts` behält nur Slug, Name,
+  Domain und Knopf-Ziel.
+- **28.10.2026 – Keine Nachrichten im Browser, bis auf die Fehlerseite.**
+  `NextIntlClientProvider` bekommt nur den Namespace `fehler` (für
+  `app/[locale]/error.tsx`); der Provider ist trotzdem nötig, weil `Link`
+  und `usePathname` aus `i18n/navigation` die Sprache daraus lesen.
+  Client-Komponenten (KontaktFormular, MobilMenue, Wischleiste) bekommen
+  ihre Wörter als Props vom Server. `KnopfLink` ist deshalb aus `Knopf.tsx`
+  in eine eigene Datei gezogen: er braucht den Hinweis „öffnet in neuem
+  Tab" je Sprache, der Button nicht – und Client-Dateien importieren nur
+  den Button.
+- **28.10.2026 – Formular-Fehler als Codes.** Zod meldet `nameMin`,
+  `emailFormat` … (`lib/anfrage/felder.ts`), die Kontaktseite macht
+  daraus Sätze in ihrer Sprache und gibt sie dem Formular als Props. So
+  bleibt Zod sprachfrei und läuft weiter nur am Server. Das Formular
+  schickt die Sprache als verstecktes Feld mit; die Push-Nachricht an Luca
+  bleibt deutsch und sagt „englische Seite, auf Englisch antworten".
+- **28.10.2026 – Rechtstexte auf Englisch als Übersetzung, Deutsch
+  verbindlich.** Impressum („Legal notice") und Datenschutz („Privacy")
+  sind übersetzt, mit dem Satz unter dem Titel, dass die deutsche Fassung
+  die verbindliche ist (Link dorthin). Die Prüfstellen 1 und 4 (TODO.md)
+  gelten für beide Fassungen. Das Datum des Stands steht als ISO in
+  `IMPRESSUM.stand`, `lib/inhalte/datum.ts` schreibt es je Sprache.
+- **28.10.2026 – Sprachlink im Kopf ab sm, darunter im Menü.** Bei 360
+  und 390 px passt „English" nicht mehr neben Name, „Kontakt" und „Menü",
+  ohne dass der Name umbricht; deshalb unter sm als letzter Eintrag im
+  Menü (dort groß wie die anderen Einträge) und immer im Fuß. Wortlaut
+  „English"/„Deutsch" statt „EN"/„DE": Wörter statt Kürzel in
+  Großbuchstaben (Design, „Verboten"), jeweils in der Zielsprache mit
+  `lang`-Attribut.

@@ -1,4 +1,6 @@
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { andereSprache } from "@/i18n/routing";
 import {
   KONTAKT,
   NAVIGATION,
@@ -6,14 +8,19 @@ import {
   SEITE,
 } from "@/lib/inhalte/statisch";
 import { mailLink, telLink } from "@/lib/kontakt/links";
+import { NeuerTab } from "./NeuerTab";
+import { SprachWechsel } from "./SprachWechsel";
 import { zeilenLinkKlassen } from "./Textlink";
 
 // Fuß (Design „Reihe"): Tinte-Linie oben, drei Spalten mit kleinem Titel
-// (Marke, Seiten, Kontakt), darunter eine leise Zeile mit Impressum und
-// Datenschutz – keine lose Linkwolke (leitfaden/05). Am Handy stehen die
-// Spalten untereinander. Telefon steht nur, wenn Luca eines nennt
-// (TODO.md, Zuarbeit); eine fehlende Nummer ist keine Lücke.
+// (Marke mit Ort und Sprachlink, Seiten, Kontakt), darunter eine leise
+// Zeile mit Impressum und Datenschutz – keine lose Linkwolke
+// (leitfaden/05). Am Handy stehen die Spalten untereinander. Telefon steht
+// nur, wenn Luca eines nennt (TODO.md, Zuarbeit); eine fehlende Nummer ist
+// keine Lücke.
 export function Fuss() {
+  const t = useTranslations();
+  const sprache = useLocale();
   const titel = "text-sm font-semibold";
   const liste = "mt-2 flex flex-col gap-1.5 text-fg-leise";
   return (
@@ -22,33 +29,50 @@ export function Fuss() {
         <div>
           <p className={titel}>{SEITE.name}</p>
           <p className="mt-2 text-fg-leise">{SEITE.ort}</p>
+          <p className="mt-2 text-fg-leise">
+            <SprachWechsel
+              ziel={andereSprache(sprache)}
+              label={t("sprache.wechsel")}
+              className={zeilenLinkKlassen}
+            />
+          </p>
         </div>
 
-        <nav aria-label="Seiten">
-          <h2 className={titel}>Seiten</h2>
+        <nav aria-label={t("fuss.seiten")}>
+          <h2 className={titel}>{t("fuss.seiten")}</h2>
           <ul className={liste}>
             <li>
               <Link href="/" className={zeilenLinkKlassen}>
-                Start
+                {t("fuss.start")}
               </Link>
             </li>
             {NAVIGATION.map((eintrag) => (
-              <li key={eintrag.href}>
-                <Link href={eintrag.href} className={zeilenLinkKlassen}>
-                  {eintrag.label}
+              <li key={`${eintrag.pfad}#${eintrag.anker ?? ""}`}>
+                <Link
+                  href={
+                    eintrag.anker
+                      ? {
+                          pathname: eintrag.pfad,
+                          hash: t(`anker.${eintrag.anker}`),
+                        }
+                      : eintrag.pfad
+                  }
+                  className={zeilenLinkKlassen}
+                >
+                  {t(`navigation.${eintrag.label}`)}
                 </Link>
               </li>
             ))}
             <li>
               <Link href="/kontakt" className={zeilenLinkKlassen}>
-                Kontakt
+                {t("fuss.kontakt")}
               </Link>
             </li>
           </ul>
         </nav>
 
         <div>
-          <h2 className={titel}>Kontakt</h2>
+          <h2 className={titel}>{t("fuss.kontakt")}</h2>
           <ul className={liste}>
             {KONTAKT.email ? (
               <li>
@@ -69,7 +93,7 @@ export function Fuss() {
             ) : null}
             <li>
               <a href="/api/kontakt.vcf" className={zeilenLinkKlassen}>
-                Kontakt speichern
+                {t("fuss.kontaktSpeichern")}
               </a>
             </li>
             {KONTAKT.profile.map((profil) => (
@@ -81,7 +105,7 @@ export function Fuss() {
                   rel="noopener noreferrer"
                 >
                   {profil.name}
-                  <span className="sr-only"> (öffnet in neuem Tab)</span>
+                  <NeuerTab />
                 </a>
               </li>
             ))}
@@ -89,16 +113,16 @@ export function Fuss() {
         </div>
 
         <nav
-          aria-label="Rechtliches"
+          aria-label={t("fuss.rechtliches")}
           className="flex flex-wrap gap-x-6 gap-y-2 border-t border-linie pt-4 text-fg-leise md:col-span-3"
         >
           {RECHTLICHES.map((eintrag) => (
             <Link
-              key={eintrag.href}
-              href={eintrag.href}
+              key={eintrag.pfad}
+              href={eintrag.pfad}
               className={zeilenLinkKlassen}
             >
-              {eintrag.label}
+              {t(`fuss.${eintrag.label}`)}
             </Link>
           ))}
         </nav>

@@ -38,8 +38,14 @@ eager geladenen Hero-Bildern nach der Nachmessung zurückgenommen;
 `renovate.json` auf dieses Repo umgestellt;
 `scripts/server-fakten.sh` für die Prüfstellen 2 und 3 liegt bereit.
 
+Etappe 4 erledigt (28.10.2026): Englisch unter `/en` mit next-intl
+(AGENTS.md „Stand", Entscheidungen), alle Texte in `messages/`, Sprachlink
+im Kopf, Menü und Fuß, hreflang und Sitemap je Sprache, Rechtstexte
+übersetzt mit Hinweis auf die verbindliche deutsche Fassung.
+
 **Seit 26.09.2026, 21:48 live unter `https://lucagreinecker.at`.**
-**Nächste Sitzung zuerst:** GitHub Pages im Repo ausschalten, falls noch
+**Nächste Sitzung zuerst:** Lucas Rückmeldung zu den englischen Texten
+(Etappe 4); GitHub Pages im Repo ausschalten, falls noch
 an; Lucas Nacharbeiten (Etappe 3, „Nach dem Go-live": `neu` im DNS löschen,
 Search Console); Lucas Rückmeldung zu den Texten und die WKO-Antworten zu
 den Prüfstellen 1 und 4 einarbeiten; Selseven aufnehmen, sobald es live
@@ -262,6 +268,37 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       öffentlich, weil das Repo es ist; privat braucht der Server
       `docker login ghcr.io` (SETUP.md, Schritt 4)
 
+### Etappe 4 – Englisch (28.10.2026)
+
+- [x] next-intl nach leitfaden/15: `i18n/`, `proxy.ts`, `app/[locale]/`,
+      übersetzte Adressen, kein Cookie, keine Erkennung
+- [x] Alle Texte in `messages/de.ts` und `messages/en.ts`, Projekte unter
+      `projekte`, Rechtstexte übersetzt mit Hinweis auf die deutsche
+      Fassung; `messages.test.ts`
+- [x] Sprachlink „English"/„Deutsch" im Kopf (ab sm), Menü (unter sm) und
+      Fuß; bleibt auf derselben Seite
+- [x] Canonical, hreflang mit x-default und Sitemap aus `i18n/seo.ts`;
+      OG-Bild je Sprache; 404 je Sprache mit Kopf und Fuß
+- [x] Kontaktformular: Fehlercodes statt Sätze, Sprache in der
+      Push-Nachricht; Fehlermeldungen ohne „Telefon" (es steht keine
+      Nummer auf der Seite)
+- [x] E2E `sprachen.spec.ts` (lang, Canonical, hreflang, Sprachlink,
+      /de-Umleitung, Sitemap), Kontaktformular auf Englisch, 404 auf
+      Englisch; axe über alle Seiten beider Sprachen
+- [ ] Luca liest die englischen Texte gegen (`messages/en.ts`: start,
+      paket, ueberMich, projekte, kontakt, formular, impressum,
+      datenschutz) und sagt, was nicht nach ihm klingt
+- [ ] LinkedIn: für Kontakte aus dem Ausland den Link
+      `https://lucagreinecker.at/en` teilen (die Seite erkennt keine
+      Sprache, bewusst)
+- [ ] Search Console nach dem Deploy: beide Sprachen in der Sitemap,
+      hreflang-Bericht ohne Fehler
+- [ ] Baustein in die Vorlage zurücktragen (leitfaden/15, „Wann gebaut
+      wird"): `i18n/`, `proxy.ts`, `messages/` als TypeScript,
+      `SprachWechsel`, `seo.ts`, die E2E-Tests; den Leitfaden um die
+      Entscheidungen von hier ergänzen (TS statt JSON, Provider ohne
+      Nachrichten, Fehlercodes)
+
 ## Zuarbeit
 
 ### Luca – Server (Etappe 0)
@@ -348,6 +385,33 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 
 ## Ideen (nicht eingeplant)
 
+Aus der Durchsicht am 28.10.2026 (Screenshots 390/768/1440, alle Seiten),
+Luca entscheidet:
+
+- **Handy-Bilder enden mit einem halben Knopf.** Der Screenshot schneidet
+  bei 844 px, bei OZ sitzt dort „Alle Kurse" halb im Bild – genau der
+  Befund aus Runde 1 („ein halber Knopf am Rand sieht wie ein Fehler
+  aus"). Möglich: unten weich in Papier auslaufen lassen (`mask-image`,
+  ein Verlauf nur in der Transparenz, nicht als Farbe) oder die
+  Screenshots auf eine Höhe schneiden, an der nichts angeschnitten ist
+  (`scripts/projekt-screenshots.mjs`, je Projekt prüfen).
+- **Vorschaubild je Projektseite** (`app/[locale]/(site)/projekte/[slug]/opengraph-image.tsx`):
+  beim Teilen einer Projektseite auf LinkedIn erschiene der Screenshot
+  des Projekts statt des allgemeinen Satzes. Satori kann das JPEG aus
+  `public/bilder` als Data-URL einbetten.
+- **Der Knopf im Hero heißt „Kontakt" wie der im Kopf daneben.** Zwei
+  gleiche Knöpfe im ersten Bildschirm; der untere Block sagt „Nachricht
+  schreiben". Eine Benennung für alle drei Stellen, oder der Hero-Knopf
+  sagt, was passiert („Schreib mir").
+- **Paket-Tabelle am Handy:** die Begriffsspalte (7 rem) lässt den Werten
+  wenig Platz, „Umami-Reichweitenmessung" bricht dreimal. Unter md Begriff
+  und Wert untereinander (wie der Rechtstext), oder die Spalte schmaler.
+- **Über mich doppelt:** die Zeile „Werdegang" in der Tabelle wiederholt
+  den ersten Absatz. Zeile streichen oder auf Stationen mit Jahr kürzen.
+- **Foto auf „Über mich"** (Zuarbeit, offen seit 26.09.2026): die Seite
+  wirkt ohne Foto wie eine Visitenkarte ohne Gesicht; für LinkedIn-Besucher
+  wäre der Wiedererkennungswert hoch.
+
 - **Dunkelmodus nach Systemeinstellung** (Luca, 26.09.2026: „benutzerfreundlich,
   je nach Systemeinstellung voreingestellt"). Passt zum Design „Reihe" nur
   mit eigenem Entwurf: Grund Tinte statt Papier, Text Papier, Gelb bleibt
@@ -378,5 +442,6 @@ Kundenserver.
 - 26.09.2026: Etappe 3, Teil 2 – Prüfstelle 5 am Umami-Quellcode erledigt, 4 konkretisiert, Lighthouse gemessen und nachgemessen, Zod aus dem Client-Bundle (CSP), renovate.json für dieses Repo, `scripts/server-fakten.sh`. Offen: Zuarbeit Luca (Gegenlesen, Server-Fakten, Renovate-App, WKO, Zustimmungen), Umzug.
 
 - 26.09.2026: Etappe 3, Teil 3 – Updates vorgezogen (pnpm 12, TS 6, Vitest 5), Screenshots neu, Prüfstellen 2 und 3 aus den Server-Fakten; **Go-live auf lucagreinecker.at um 21:48** (golive.sh), OZ ohne Knopf, USTA auf seiner Domain.
+- 28.10.2026: Etappe 4 – Englisch unter `/en` mit next-intl, alle Texte in `messages/`, Sprachlink, hreflang, Sitemap, OG-Bild und 404 je Sprache, Formular mit Fehlercodes. Offen: Luca liest Englisch gegen, Rücktrag in die Vorlage.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

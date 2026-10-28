@@ -16,6 +16,7 @@ test("offene stellen stehen nur auf den bekannten seiten", async ({
   page,
   request,
 }) => {
+  test.setTimeout(120_000);
   const pfade = await seitenAusSitemap(request);
   const mitOffenem: string[] = [];
   for (const pfad of pfade) {

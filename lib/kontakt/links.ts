@@ -13,11 +13,14 @@ export type Adresse = {
 };
 
 // „+43 660 123 45 67" → „tel:+436601234567".
-export function telLink(nummer: string): string {
+export function telLink(nummer: string): `tel:${string}` {
   return `tel:${nummer.replace(/[^\d+]/g, "")}`;
 }
 
-export function mailLink(adresse: string, betreff?: string): string {
+export function mailLink(
+  adresse: string,
+  betreff?: string,
+): `mailto:${string}` {
   return betreff
     ? `mailto:${adresse}?subject=${encodeURIComponent(betreff)}`
     : `mailto:${adresse}`;
@@ -25,9 +28,14 @@ export function mailLink(adresse: string, betreff?: string): string {
 
 // wa.me will die Nummer ohne „+" und ohne Leerzeichen. Der Text steht in
 // der Stimme dessen, der schreibt („Hallo, ich hätte gern einen Termin …").
-export function whatsappLink(nummer: string, text?: string): string {
-  const basis = `https://wa.me/${nummer.replace(/\D/g, "")}`;
-  return text ? `${basis}?text=${encodeURIComponent(text)}` : basis;
+export function whatsappLink(
+  nummer: string,
+  text?: string,
+): `https://${string}` {
+  const nummerRoh = nummer.replace(/\D/g, "");
+  return text
+    ? `https://wa.me/${nummerRoh}?text=${encodeURIComponent(text)}`
+    : `https://wa.me/${nummerRoh}`;
 }
 
 export function adresseText(a: Adresse): string {
@@ -36,11 +44,11 @@ export function adresseText(a: Adresse): string {
 }
 
 // Route zum Ziel in Google Maps (Maps URLs, funktioniert in App und Web).
-export function googleMapsLink(a: Adresse): string {
+export function googleMapsLink(a: Adresse): `https://${string}` {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(adresseText(a))}`;
 }
 
 // Route zum Ziel in Apple Karten (öffnet auf iPhone und Mac die App).
-export function appleKartenLink(a: Adresse): string {
+export function appleKartenLink(a: Adresse): `https://${string}` {
   return `https://maps.apple.com/?daddr=${encodeURIComponent(adresseText(a))}`;
 }

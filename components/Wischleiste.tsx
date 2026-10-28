@@ -6,11 +6,18 @@ import { Icon } from "./Icon";
 
 // Die Reihe der Projekt-Handys auf der Startseite (Utility `wischleiste` in
 // globals.css). Unter lg läuft sie seitlich; darunter zeigen Striche, welche
-// Projekte gerade im Blick sind, und „Wischen" sagt, dass es weitergeht
-// (Luca, 27.09.2026: am Handy merkt man nicht, dass man wischen muss). Der
-// Hinweis ist Deko (aria-hidden): Tastatur und Screenreader erreichen alle
-// Projekte über die Liste. Ohne JavaScript bleibt der erste Strich aktiv.
-export function Wischleiste({ children }: { children: ReactNode }) {
+// Projekte gerade im Blick sind, und „Wischen" (Text vom Server, je
+// Sprache) sagt, dass es weitergeht (Luca, 27.09.2026: am Handy merkt man
+// nicht, dass man wischen muss). Der Hinweis ist Deko (aria-hidden):
+// Tastatur und Screenreader erreichen alle Projekte über die Liste. Ohne
+// JavaScript bleibt der erste Strich aktiv.
+export function Wischleiste({
+  hinweis,
+  children,
+}: {
+  hinweis: string;
+  children: ReactNode;
+}) {
   const leiste = useRef<HTMLUListElement>(null);
   const anzahl = Children.count(children);
   const [imBlick, setImBlick] = useState(() =>
@@ -59,7 +66,7 @@ export function Wischleiste({ children }: { children: ReactNode }) {
           ))}
         </div>
         <p className="flex items-center gap-1.5 text-[0.9375rem] text-fg-leise">
-          Wischen
+          {hinweis}
           {/* Am Ende der Reihe geht es nur noch zurück. */}
           <Icon
             name="weiter"

@@ -5,6 +5,10 @@ packages: []
 # Migrationen kommt esbuild dazu, mit Bild-Uploads sharp).
 allowBuilds:
   "@parcel/watcher": true
+  # @swc/core kommt mit next-intl (Extractor); das Build-Script lädt nur
+  # ein WASM-Fallback nach, der native Binary liegt als optionale
+  # Abhängigkeit bei – kein Script nötig (28.10.2026).
+  "@swc/core": false
   "@tailwindcss/oxide": true
   sharp: true
   unrs-resolver: true

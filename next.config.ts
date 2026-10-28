@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 // Sicherheits-Header für alle Antworten (Block aus punktetafel und OZ). Die
 // Seite lädt außer dem optionalen Umami-Script nichts von fremden Hosts,
@@ -107,4 +108,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// next-intl: bindet i18n/request.ts ein (Nachrichten je Sprache); die
+// Sprach-Routen selbst macht proxy.ts (Entscheidungen, 28.10.2026).
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+export default withNextIntl(nextConfig);

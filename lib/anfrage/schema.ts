@@ -1,51 +1,59 @@
 import { z } from "zod";
+import { routing } from "@/i18n/routing";
 import {
   EMAIL_MAX,
   NACHRICHT_MAX,
   NACHRICHT_MIN,
   NAME_MAX,
   TELEFON_MAX,
+  type FeldFehlerCode,
 } from "./felder";
 
 // Kontaktformular (leitfaden/04, „Kontaktformular"): Name, E-Mail, Telefon
-// (freiwillig), Nachricht und ein Honeypot-Feld, das Menschen nicht sehen.
-// Die Anfrage wird nur gemailt, nie gespeichert. Die Meldungen sind neutral
-// formuliert (weder Du noch Sie), damit sie in jedes Projekt passen.
+// (freiwillig), Nachricht, die Sprache der Seite und ein Honeypot-Feld, das
+// Menschen nicht sehen. Die Anfrage wird nur zugestellt, nie gespeichert.
+// Die Meldungen sind Codes (felder.ts), die Seite macht daraus Sätze in
+// ihrer Sprache (messages, `formular.feld`).
 //
 // Nur am Server importieren (actions.ts, Tests): Feldnamen und Längen für
 // den Client stehen in felder.ts, damit Zod nicht ins Bundle kommt.
 
 export * from "./felder";
 
+const code = (c: FeldFehlerCode) => c;
+
 export const Anfrage = z.object({
   name: z
     .string()
     .trim()
-    .min(2, "Bitte den Namen angeben.")
-    .max(NAME_MAX, `Höchstens ${NAME_MAX} Zeichen.`),
+    .min(2, code("nameMin"))
+    .max(NAME_MAX, code("nameMax")),
   email: z
     .string()
     .trim()
-    .min(1, "Bitte die E-Mail-Adresse angeben.")
-    .max(EMAIL_MAX, `Höchstens ${EMAIL_MAX} Zeichen.`)
-    .pipe(z.email("Diese E-Mail-Adresse stimmt nicht."))
+    .min(1, code("emailMin"))
+    .max(EMAIL_MAX, code("emailMax"))
+    .pipe(z.email(code("emailFormat")))
     .transform((s) => s.toLowerCase()),
   telefon: z
     .string()
     .trim()
-    .max(TELEFON_MAX, `Höchstens ${TELEFON_MAX} Zeichen.`)
-    .regex(/^[0-9 +()/.-]*$/, "Nur Ziffern, Leerzeichen und + ( ) / - .")
+    .max(TELEFON_MAX, code("telefonMax"))
+    .regex(/^[0-9 +()/.-]*$/, code("telefonFormat"))
     .default(""),
   nachricht: z
     .string()
     .trim()
-    .min(
-      NACHRICHT_MIN,
-      `Die Nachricht braucht mindestens ${NACHRICHT_MIN} Zeichen.`,
-    )
-    .max(NACHRICHT_MAX, `Höchstens ${NACHRICHT_MAX} Zeichen.`),
-  // Honeypot: bleibt leer, wenn ein Mensch schreibt.
-  website: z.string().max(500).default(""),
+    .min(NACHRICHT_MIN, code("nachrichtMin"))
+    .max(NACHRICHT_MAX, code("nachrichtMax")),
+  // Sprache der Seite, auf der geschrieben wurde: steht in der
+  // Push-Nachricht, damit Luca in derselben Sprache antwortet. Alles
+  // Unbekannte zählt als Deutsch.
+  sprache: z.enum(routing.locales).catch(routing.defaultLocale),
+  // Honeypot: bleibt leer, wenn ein Mensch schreibt. Ohne Längenregel: die
+  // hätte keinen Code, und jede Regel hier muss einen haben (Test), sonst
+  // stünde der Besucher vor einem Formular ohne Meldung.
+  website: z.string().default(""),
 });
 
 export type AnfrageDaten = z.infer<typeof Anfrage>;

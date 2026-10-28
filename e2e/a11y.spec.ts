@@ -6,7 +6,7 @@ import { seitenAusSitemap } from "./hilfen";
 // Handy und am Desktop ohne Verstoß gegen WCAG 2.2 AA. Ein neuer Verstoß
 // bricht die CI. Seiten außerhalb der Sitemap (Formulare hinter Login,
 // Fehlerseiten) hier zusätzlich eintragen.
-const ZUSAETZLICH = ["/gibt-es-nicht"];
+const ZUSAETZLICH = ["/gibt-es-nicht", "/en/does-not-exist"];
 
 const BREITEN: [string, number, number][] = [
   ["handy", 390, 844],
@@ -15,7 +15,8 @@ const BREITEN: [string, number, number][] = [
 
 for (const [name, width, height] of BREITEN) {
   test(`keine axe-verstöße (${name})`, async ({ page, request }) => {
-    test.setTimeout(90_000);
+    // Je Sprache neun Seiten: axe braucht rund zwei Sekunden je Seite.
+    test.setTimeout(180_000);
     const pfade = [...(await seitenAusSitemap(request)), ...ZUSAETZLICH];
     await page.setViewportSize({ width, height });
     const befunde: unknown[] = [];

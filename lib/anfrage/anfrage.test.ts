@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { PLATZHALTER } from "@/lib/inhalte/statisch";
 import { clientIp, neueDrossel } from "./drossel";
 import { ohneAdressen } from "./ntfy";
-import { Anfrage } from "./schema";
+import { Anfrage, istFeldFehlerCode } from "./schema";
 import { anfrageNachricht } from "./vorlage";
 
 const gueltig = {
@@ -78,6 +78,38 @@ describe("push-nachricht an luca", () => {
     expect(text).toContain("Website für meinen Betrieb");
     expect(text).toContain("lucagreinecker.at");
     expect(text).not.toContain(PLATZHALTER);
+  });
+
+  it("sagt, wenn die Anfrage über die englische Seite kam", () => {
+    const { titel, text } = anfrageNachricht(
+      Anfrage.parse({ ...gueltig, sprache: "en" }),
+      "lucagreinecker.at",
+    );
+    expect(titel).toBe("Anfrage Website (EN)");
+    expect(text).toContain("lucagreinecker.at/en");
+    expect(text).toContain("auf Englisch antworten");
+    // Alles Unbekannte zählt als Deutsch.
+    expect(Anfrage.parse({ ...gueltig, sprache: "fr" }).sprache).toBe("de");
+    expect(Anfrage.parse(gueltig).sprache).toBe("de");
+  });
+
+  it("meldet jeden Feldfehler als Code, nie als Zod-Satz", () => {
+    const e = Anfrage.safeParse({ ...gueltig, email: "keine-adresse" });
+    expect(e.error?.issues[0]?.message).toBe("emailFormat");
+    // Jede Regel im Schema braucht einen Code: die Seite macht nur aus
+    // Codes Sätze, alles andere fiele still unter den Tisch.
+    const alles = Anfrage.safeParse({
+      name: "",
+      email: "x".repeat(300),
+      telefon: "abc".repeat(20),
+      nachricht: "x".repeat(4000),
+      website: "x".repeat(600),
+      sprache: "xx",
+    });
+    expect(alles.success).toBe(false);
+    for (const issue of alles.error?.issues ?? []) {
+      expect(istFeldFehlerCode(issue.message), issue.message).toBe(true);
+    }
   });
 
   it("lässt die Telefonzeile weg, wenn keine Nummer da ist", () => {

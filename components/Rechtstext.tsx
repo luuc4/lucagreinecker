@@ -1,8 +1,12 @@
+import { useMessages, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
+import { Link } from "@/i18n/navigation";
+import { inlineLinkKlassen } from "./Textlink";
 
 // Impressum und Datenschutz: je Punkt eine Zeile, Titel links, Text rechts,
 // Linien dazwischen (Muster aus OZ, DokumentAbschnitte). Am Handy stehen
-// Titel und Text untereinander.
+// Titel und Text untereinander. `stand` ist der fertige Satz in der Sprache
+// der Seite („Stand: 25.10.2026", „Last updated: 25 October 2026").
 export type RechtsZeile = { titel: string; inhalt: ReactNode };
 
 export function Rechtstext({
@@ -10,7 +14,6 @@ export function Rechtstext({
   stand,
 }: {
   zeilen: RechtsZeile[];
-  // „Stand: 23.09.2026" – Datum der geprüften Fassung.
   stand: string;
 }) {
   return (
@@ -28,7 +31,30 @@ export function Rechtstext({
           </div>
         ))}
       </dl>
-      <p className="mt-6 text-sm text-fg-leise">Stand: {stand}</p>
+      <p className="mt-6 text-sm text-fg-leise">{stand}</p>
     </div>
   );
+}
+
+// Der Satz unter dem Titel einer Übersetzung: „Courtesy translation. The
+// German version is the legally binding one." mit Link auf die deutsche
+// Seite. Auf Deutsch ist `hinweis` leer, dann gibt es den Satz nicht
+// (leitfaden/15, „Recht").
+export function RechtsHinweis({
+  bereich,
+  pfad,
+}: {
+  bereich: "impressum" | "datenschutz";
+  pfad: "/impressum" | "/datenschutz";
+}) {
+  const t = useTranslations(bereich);
+  const nachrichten = useMessages();
+  if (!nachrichten[bereich].hinweis) return null;
+  return t.rich("hinweis", {
+    de: (text) => (
+      <Link href={pfad} locale="de" lang="de" className={inlineLinkKlassen}>
+        {text}
+      </Link>
+    ),
+  });
 }

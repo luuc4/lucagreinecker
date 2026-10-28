@@ -8,8 +8,11 @@ test("jede seite der sitemap antwortet mit genau einer h1", async ({
   page,
   request,
 }) => {
+  test.setTimeout(120_000);
   const pfade = await seitenAusSitemap(request);
-  expect(pfade.length).toBeGreaterThanOrEqual(4);
+  // Je Sprache: Start, vier Projekte, Über mich, Kontakt, Impressum,
+  // Datenschutz.
+  expect(pfade.length).toBeGreaterThanOrEqual(18);
   for (const pfad of pfade) {
     const antwort = await page.goto(pfad);
     expect(antwort?.status(), pfad).toBe(200);
@@ -29,6 +32,7 @@ for (const [breite, hoehe] of [
     page,
     request,
   }) => {
+    test.setTimeout(120_000);
     await page.setViewportSize({ width: breite, height: hoehe });
     const zuBreit: string[] = [];
     for (const pfad of await seitenAusSitemap(request)) {
@@ -65,12 +69,35 @@ test("kontakt speichern liefert eine vcard", async ({ request }) => {
   expect(await antwort.text()).toContain("BEGIN:VCARD");
 });
 
-test("unbekannte adresse liefert 404 mit eigener seite", async ({ page }) => {
+test("unbekannte adresse liefert 404 mit eigener seite, je sprache", async ({
+  page,
+}) => {
   const antwort = await page.goto("/gibt-es-nicht");
   expect(antwort?.status()).toBe(404);
   await expect(
     page.getByRole("heading", { level: 1, name: "Seite nicht gefunden" }),
   ).toBeVisible();
+  // Mit Kopf und Fuß, nicht Nexts nackte Standardseite.
+  await expect(page.getByRole("banner")).toBeVisible();
+
+  const englisch = await page.goto("/en/does-not-exist");
+  expect(englisch?.status()).toBe(404);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Page not found" }),
+  ).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("lang", "en-GB");
+  // Der Titel „Page not found" steht im gelieferten HTML (not-found.tsx,
+  // generateMetadata – für Suchmaschinen und Verlauf); nach der Hydration
+  // setzt Next ihn auf den Standard zurück, deshalb hier nicht geprüft.
+
+  // Eine Adresse mit Punkt, die keine Datei ist, läuft durch den Proxy
+  // (proxy.ts, Endungen) und bekommt dieselbe Seite – nicht Nexts nackte.
+  const mitPunkt = await page.goto("/impressum.htm");
+  expect(mitPunkt?.status()).toBe(404);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Seite nicht gefunden" }),
+  ).toBeVisible();
+  await expect(page.getByRole("banner")).toBeVisible();
 });
 
 test("menü am handy öffnet, führt zur seite und setzt den fokus", async ({

@@ -1,18 +1,35 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { ImageResponse } from "next/og";
+import { routing } from "@/i18n/routing";
 import { SEITE } from "@/lib/inhalte/statisch";
 import { siteHost } from "@/lib/site";
 
-// Vorschaubild für geteilte Links (1200 × 630), beim Build erzeugt, im
-// Design „Reihe": Papier, der Satz in Tinte, der gelbe Marker als Balken,
-// unten der Name und die Adresse. Schrift: IBM Plex Sans 500 als statische
-// WOFF aus @fontsource/ibm-plex-sans (Satori liest kein woff2).
+// Vorschaubild für geteilte Links (1200 × 630), je Sprache beim Build
+// erzeugt, im Design „Reihe": Papier, der Satz in Tinte, der gelbe Marker
+// als Balken, unten der Name und die Adresse. Schrift: IBM Plex Sans 500
+// als statische WOFF aus @fontsource/ibm-plex-sans (Satori liest kein
+// woff2).
 export const alt = SEITE.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function OpengraphImage() {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function OpengraphImage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const sprache = hasLocale(routing.locales, locale)
+    ? locale
+    : routing.defaultLocale;
+  const t = await getTranslations({ locale: sprache, namespace: "seite" });
   const plex = await readFile(
     join(
       process.cwd(),
@@ -42,7 +59,7 @@ export default async function OpengraphImage() {
           maxWidth: 1000,
         }}
       >
-        {SEITE.satz}
+        {t("satz")}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
         <div style={{ width: 120, height: 14, background: "#ffe600" }} />
