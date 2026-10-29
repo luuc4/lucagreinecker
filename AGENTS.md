@@ -172,6 +172,11 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   angesehen in 390, 1024, 1440 und 1920 px, die Projektseite in 390 und
   1440 (auch englisch). Selseven im Impressum unter „Projekte anderer",
   Stand der Rechtstexte 29.10.2026.
+- 29.10.2026 abends (Selseven-Go-live): Knopf und Adresse auf
+  `https://selseven-friseursalon.at`, `stand` raus (de und en), Zeitraum
+  „online seit Ende Oktober 2026", Kunde mit vollem Namen wie im
+  Impressum von Selseven. Screenshots neu von der Domain (um 22:40, der
+  Status zeigt deshalb „Geschlossen").
 
 ## Projekt
 

@@ -15,16 +15,14 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync } from "node:fs";
 import { chromium } from "@playwright/test";
 
-// Adressen, unter denen die Projekte live sind (seit dem OZ-Umzug am
-// 04.10.2026 alle unter ihrer echten Domain, außer Selseven: bis zu seinem
-// Go-live im November 2026 auf `neu.`, Luca 29.10.2026; danach hier und in
-// lib/inhalte/projekte.ts umstellen und neu aufnehmen).
+// Adressen, unter denen die Projekte live sind (seit dem Selseven-Go-live am
+// 29.10.2026 alle unter ihrer echten Domain).
 const PROJEKTE = [
   { slug: "oz-calisthenics", url: "https://oz-calisthenics.at/" },
   { slug: "usta-streetfood", url: "https://ustastreetfood.com/" },
   { slug: "punktetafel", url: "https://punktetafel.at/" },
   { slug: "jonathan-walch", url: "https://jonathanwalch.at/" },
-  { slug: "selseven", url: "https://neu.selseven-friseursalon.at/" },
+  { slug: "selseven", url: "https://selseven-friseursalon.at/" },
 ];
 
 // Breiten der Varianten je Ansicht, passend zu `VARIANTEN` in

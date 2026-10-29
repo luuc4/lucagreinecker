@@ -71,8 +71,8 @@ const projekte: Record<ProjektSlug, ProjektTexte> = {
   selseven: {
     art: "Website with a mini CMS for a hair salon in Feldkirch, Austria",
     kurz: "Website with a mini CMS for a hair salon, Feldkirch",
-    kunde: "Selin, Selseven hair salon in Feldkirch's old town",
-    zeitraum: "since October 2026, live from November 2026",
+    kunde: "Selin Zengin, Selseven hair salon in Feldkirch's old town",
+    zeitraum: "since October 2026, live since late October 2026",
     seiten:
       "Home (status, call and WhatsApp, services, about the salon), services & prices, news, contact with directions and opening hours, legal notice, privacy; admin on the phone",
     funktionen:
@@ -82,10 +82,6 @@ const projekte: Record<ProjektSlug, ProjektTexte> = {
     betrieb:
       "Docker image from GitHub Actions, Coolify on a Hetzner server (shared with OZ Calisthenics)",
     satz: "Selin wanted people in Feldkirch to see at a glance whether her salon is open, what things cost and where it is, and then call or message her on WhatsApp straight away. She keeps the opening hours, holidays, prices and news up to date herself in the admin on her phone.",
-    stand: {
-      kurz: "In progress, live from November 2026",
-      lang: "In progress, goes live on its own domain in November 2026. Until then it runs at a preview address.",
-    },
   },
 };
 

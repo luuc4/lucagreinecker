@@ -58,14 +58,14 @@ Analytics, SuperSaaS, Formspree) geht vom Netz; was die alte
 lucagreinecker-Seite und `docs/alt/projekt-notizen.md` dazu sagen, gilt
 nicht mehr.
 
-| Projekt         | Quelle                                                                        | Live                                                                                                    |
-| --------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| OZ Calisthenics | `~/projects/ozcalisthenics` (AGENTS.md „Stand", `docs/konzept/`)              | `https://oz-calisthenics.at` (seit 04.10.2026)                                                          |
-| USTA Streetfood | `~/projects/usta-streetfood` (AGENTS.md „Stand")                              | `https://ustastreetfood.com` (seit 26.09.2026)                                                          |
-| punktetafel     | `~/projects/punktetafel` (AGENTS.md)                                          | `https://punktetafel.at`                                                                                |
-| Jonathan Walch  | `docs/alt/projekt-notizen.md`                                                 | `https://jonathanwalch.at`                                                                              |
-| Selseven        | `~/projects/selseven` (AGENTS.md „Stand", „Projekt", „Stack")                 | noch nicht: `https://neu.selseven-friseursalon.at` (noindex), danach `https://selseven-friseursalon.at` |
-| Werdegang       | alte Startseite (Tag `statisch-2026-09`, `index.html`, Abschnitt „Über mich") | –                                                                                                       |
+| Projekt         | Quelle                                                                        | Live                                                 |
+| --------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------- |
+| OZ Calisthenics | `~/projects/ozcalisthenics` (AGENTS.md „Stand", `docs/konzept/`)              | `https://oz-calisthenics.at` (seit 04.10.2026)       |
+| USTA Streetfood | `~/projects/usta-streetfood` (AGENTS.md „Stand")                              | `https://ustastreetfood.com` (seit 26.09.2026)       |
+| punktetafel     | `~/projects/punktetafel` (AGENTS.md)                                          | `https://punktetafel.at`                             |
+| Jonathan Walch  | `docs/alt/projekt-notizen.md`                                                 | `https://jonathanwalch.at`                           |
+| Selseven        | `~/projects/selseven` (AGENTS.md „Stand", „Projekt", „Stack")                 | `https://selseven-friseursalon.at` (seit 29.10.2026) |
+| Werdegang       | alte Startseite (Tag `statisch-2026-09`, `index.html`, Abschnitt „Über mich") | –                                                    |
 
 ## Nächste Etappen
 
@@ -266,7 +266,7 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       für fünf Handys umbauen (`wischleiste` in `globals.css` hat vier
       Spalten, das fünfte stünde allein in einer zweiten Zeile; `sizes` auf
       der Startseite anpassen), angesehen in 1024, 1440 und 1920 px
-- [ ] Nach dem Selseven-Go-live (geplant November 2026): in
+- [x] Nach dem Selseven-Go-live (29.10.2026): in
       `lib/inhalte/projekte.ts` `domain` auf `selseven-friseursalon.at`
       und `url` ohne `neu.`, `stand` in `messages/de.ts` und `en.ts` raus,
       Zeitraum „online seit …", Adresse in `scripts/projekt-screenshots.mjs`
@@ -419,6 +419,6 @@ bewusste Ausnahme für Lucas eigene Seite (AGENTS.md, Entscheidungen).
 - 28.10.2026: Etappe 4 – Englisch unter `/en` mit next-intl, alle Texte in `messages/`, Sprachlink, hreflang, Sitemap, OG-Bild und 404 je Sprache, Formular mit Fehlercodes. Offen: Luca liest Englisch gegen, Rücktrag in die Vorlage.
 - 28.10.2026: Durchsicht umgesetzt – Screenshots laufen unten aus, Vorschaubild je Projekt, Hero-Knopf „Nachricht schreiben", Fakten am Handy untereinander, Werdegang-Zeile raus, Porträt auf „Über mich".
 - 28.10.2026: Dunkelmodus nach Systemeinstellung – Farbvariablen in `globals.css`, Link-Hover mit Tinte, helleres Fehlerrot, theme-color je Schema; Kontrast-Test, axe und Screenshots in beiden Modi.
-- 29.10.2026: Selseven als fünftes Projekt – Knopf auf `neu.`, Stand „online ab November 2026", Reihe ab lg mit fünf Spalten, Impressum. Offen: Umstellung nach dem Selseven-Go-live, Luca liest den Satz gegen.
+- 29.10.2026: Selseven als fünftes Projekt – Knopf auf `neu.`, Stand „online ab November 2026", Reihe ab lg mit fünf Spalten, Impressum. Abends nach dem Selseven-Go-live auf die Domain umgestellt. Offen: Luca liest den Satz gegen.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

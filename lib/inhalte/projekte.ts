@@ -4,8 +4,8 @@
 // Stand) stehen je Sprache in messages/<sprache>.ts unter `projekte`
 // (seit 28.10.2026); vorher lagen sie hier.
 // Reihenfolge = Reihenfolge auf der Startseite (Luca, 07.10.2026: OZ,
-// Punktetafel, USTA, Jonathan, Selseven; Selseven seit 29.10.2026 schon vor
-// seinem Go-live, mit Link auf `neu.`).
+// Punktetafel, USTA, Jonathan, Selseven; Selseven seit 29.10.2026, zuerst
+// mit Link auf `neu.`, seit seinem Go-live am selben Abend auf der Domain).
 //
 // Bilder: public/bilder/projekt-<slug>-{handy,desktop}-<breite>.{avif,webp,jpg}
 // aus scripts/projekt-screenshots.mjs (echte Screenshots der Live-Seiten;
@@ -56,11 +56,9 @@ export const PROJEKTE = [
   {
     slug: "selseven",
     name: "Selseven",
-    // Bis zum Go-live im November 2026 auf `neu.` (Luca, 29.10.2026: „noch
-    // mit verlinken auf neu"); danach Domain und Adresse ohne `neu.`, den
-    // `stand` in messages/ raus und die Screenshots neu (TODO.md).
-    domain: "neu.selseven-friseursalon.at",
-    url: "https://neu.selseven-friseursalon.at",
+    // Seit 29.10.2026 live unter der Domain (Selseven-Go-live).
+    domain: "selseven-friseursalon.at",
+    url: "https://selseven-friseursalon.at",
   },
 ] as const satisfies readonly Projekt[];
 

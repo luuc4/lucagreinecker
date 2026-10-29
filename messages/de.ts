@@ -17,7 +17,7 @@ import type { ProjektSlug } from "@/lib/inhalte/projekte";
 // Stack-Tabellen, Routen); `satz` ist Lucas Satz zum Projekt (was der
 // Kunde wollte, was schwierig war). `stand` nur, solange ein Projekt noch
 // nicht unter seiner Domain live ist (ohne Knopf wie OZ bis 04.10.2026, oder
-// mit Knopf auf die Übergangsadresse wie Selseven): `kurz` unter der Zeile
+// mit Knopf auf die Übergangsadresse wie Selseven bis 29.10.2026): `kurz` unter der Zeile
 // auf der Startseite, `lang` als Zeile in den Fakten.
 export type ProjektTexte = {
   // Eine Zeile: was es ist, für wen, wo (Art-Zeile unter dem Titel).
@@ -98,10 +98,10 @@ const projekte: Record<ProjektSlug, ProjektTexte> = {
     art: "Website mit Mini‑CMS für einen Friseursalon in Feldkirch",
     kurz: "Website mit Mini‑CMS für einen Friseursalon, Feldkirch",
     // Fakten am 29.10.2026 aus ~/projects/selseven (AGENTS.md „Projekt",
-    // „Stack", „Stand", Routen, package.json). Selins Nachname steht dort
-    // noch nicht, deshalb nur der Vorname.
-    kunde: "Selin, Friseursalon Selseven in der Altstadt von Feldkirch",
-    zeitraum: "seit Oktober 2026, online ab November 2026",
+    // „Stack", „Stand", Routen, package.json); voller Name wie im Impressum
+    // von Selseven.
+    kunde: "Selin Zengin, Friseursalon Selseven in der Altstadt von Feldkirch",
+    zeitraum: "seit Oktober 2026, online seit Ende Oktober 2026",
     seiten:
       "Start (Status, Anrufen und WhatsApp, Leistungen, Über den Salon), Leistungen & Preise, News, Kontakt mit Anfahrt und Öffnungszeiten, Impressum, Datenschutz; Admin am Handy",
     funktionen:
@@ -113,12 +113,6 @@ const projekte: Record<ProjektSlug, ProjektTexte> = {
     // Von Claude am 29.10.2026 aus den Fakten geschrieben wie die anderen
     // Sätze (26.09.2026); Luca liest gegen.
     satz: "Selin wollte, dass man in Feldkirch schnell sieht, ob ihr Salon offen hat, was es kostet und wo er ist, und dann gleich anruft oder auf WhatsApp schreibt. Öffnungszeiten, Betriebsurlaub, Preise und News pflegt sie selbst im Admin am Handy.",
-    // Luca, 29.10.2026: „release november oder so". Ohne Adresse im Satz:
-    // der Knopf darunter nennt sie, und am Handy brach sie mitten im Wort.
-    stand: {
-      kurz: "In Arbeit, online ab November 2026",
-      lang: "In Arbeit, geht im November 2026 unter der eigenen Domain online. Bis dahin läuft sie unter einer Vorschau-Adresse.",
-    },
   },
 };
 
