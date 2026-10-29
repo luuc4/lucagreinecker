@@ -1,10 +1,11 @@
-// Die vier Projekte der Seite (AGENTS.md, Entscheidungen 25.09.2026): hier
+// Die fünf Projekte der Seite (AGENTS.md, Entscheidungen 25.09.2026): hier
 // nur, was in jeder Sprache gleich ist – Slug, Name, Domain, Ziel des
 // Knopfs und die Reihenfolge. Alle Texte dazu (Art, Fakten, Lucas Satz,
 // Stand) stehen je Sprache in messages/<sprache>.ts unter `projekte`
 // (seit 28.10.2026); vorher lagen sie hier.
 // Reihenfolge = Reihenfolge auf der Startseite (Luca, 07.10.2026: OZ,
-// Punktetafel, USTA, Jonathan; Selseven kommt nach seinem Go-live ans Ende).
+// Punktetafel, USTA, Jonathan, Selseven; Selseven seit 29.10.2026 schon vor
+// seinem Go-live, mit Link auf `neu.`).
 //
 // Bilder: public/bilder/projekt-<slug>-{handy,desktop}-<breite>.{avif,webp,jpg}
 // aus scripts/projekt-screenshots.mjs (echte Screenshots der Live-Seiten;
@@ -14,10 +15,13 @@ export type Projekt = {
   slug: string;
   name: string;
   // Anzeige der Adresse („oz-calisthenics.at") und das Ziel des Knopfs
-  // „<domain> öffnen". `null`: kein Knopf, solange die Domain noch nicht die
-  // Seite zeigt, die hier beschrieben ist (OZ bis zum Umzug, Luca
-  // 26.09.2026) – lieber kein Link als einer auf eine Übergangsadresse. Ohne
-  // Knopf braucht das Projekt einen `stand` in den Texten (messages.test).
+  // „<domain> öffnen"; `domain` ist immer der Host von `url`, damit der Knopf
+  // nennt, was er öffnet. `null`: kein Knopf, solange die Seite nirgends
+  // läuft, wo man sie zeigen kann (OZ bis zum Umzug, Luca 26.09.2026: dort
+  // lief unter der Domain noch die alte Version). Ohne Knopf braucht das
+  // Projekt einen `stand` in den Texten (messages.test). Eine
+  // Übergangsadresse nur, wenn Luca sie will (Selseven auf `neu.`,
+  // 29.10.2026), dann mit `stand`.
   domain: string;
   url: `https://${string}` | null;
 };
@@ -48,6 +52,15 @@ export const PROJEKTE = [
     name: "Jonathan Walch",
     domain: "jonathanwalch.at",
     url: "https://jonathanwalch.at",
+  },
+  {
+    slug: "selseven",
+    name: "Selseven",
+    // Bis zum Go-live im November 2026 auf `neu.` (Luca, 29.10.2026: „noch
+    // mit verlinken auf neu"); danach Domain und Adresse ohne `neu.`, den
+    // `stand` in messages/ raus und die Screenshots neu (TODO.md).
+    domain: "neu.selseven-friseursalon.at",
+    url: "https://neu.selseven-friseursalon.at",
   },
 ] as const satisfies readonly Projekt[];
 

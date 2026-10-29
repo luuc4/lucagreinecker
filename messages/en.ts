@@ -68,6 +68,25 @@ const projekte: Record<ProjektSlug, ProjektTexte> = {
     betrieb: "GitHub Pages with a custom domain",
     satz: "Jonathan studies InterMedia at FH Vorarlberg and wanted to show his design work: four projects with galleries and his CV as a PDF, as a lean site without a framework.",
   },
+  selseven: {
+    art: "Website with a mini CMS for a hair salon in Feldkirch, Austria",
+    kurz: "Website with a mini CMS for a hair salon, Feldkirch",
+    kunde: "Selin, Selseven hair salon in Feldkirch's old town",
+    zeitraum: "since October 2026, live from November 2026",
+    seiten:
+      "Home (status, call and WhatsApp, services, about the salon), services & prices, news, contact with directions and opening hours, legal notice, privacy; admin on the phone",
+    funktionen:
+      "“Open now” status from the opening hours, holidays and closures as exceptions, price list with prices by hair length, news, texts, contact form – Selin keeps everything up to date herself in the admin, sign-in with a code or passkey",
+    stack:
+      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL with Drizzle, Better Auth (code and passkeys), pg-boss, Umami",
+    betrieb:
+      "Docker image from GitHub Actions, Coolify on a Hetzner server (shared with OZ Calisthenics)",
+    satz: "Selin wanted people in Feldkirch to see at a glance whether her salon is open, what things cost and where it is, and then call or message her on WhatsApp straight away. She keeps the opening hours, holidays, prices and news up to date herself in the admin on her phone.",
+    stand: {
+      kurz: "In progress, live from November 2026",
+      lang: "In progress, goes live on its own domain in November 2026. Until then it runs at a preview address.",
+    },
+  },
 };
 
 export const en: Nachrichten = {
@@ -268,7 +287,7 @@ export const en: Nachrichten = {
     },
     projekte: {
       titel: "Other people's projects",
-      text: "The screenshots and names of client projects (OZ Calisthenics, USTA Streetfood, Jonathan Walch) show websites I built for their respective operators. They are responsible for the content of those websites.",
+      text: "The screenshots and names of client projects (OZ Calisthenics, USTA Streetfood, Jonathan Walch, Selseven) show websites I built for their respective operators. They are responsible for the content of those websites.",
     },
     links: {
       titel: "Links",

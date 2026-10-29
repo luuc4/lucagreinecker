@@ -10,9 +10,9 @@ test("jede seite der sitemap antwortet mit genau einer h1", async ({
 }) => {
   test.setTimeout(120_000);
   const pfade = await seitenAusSitemap(request);
-  // Je Sprache: Start, vier Projekte, Über mich, Kontakt, Impressum,
+  // Je Sprache: Start, fünf Projekte, Über mich, Kontakt, Impressum,
   // Datenschutz.
-  expect(pfade.length).toBeGreaterThanOrEqual(18);
+  expect(pfade.length).toBeGreaterThanOrEqual(20);
   for (const pfad of pfade) {
     const antwort = await page.goto(pfad);
     expect(antwort?.status(), pfad).toBe(200);

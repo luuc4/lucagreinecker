@@ -48,8 +48,9 @@ im Kopf, Menü und Fuß, hreflang und Sitemap je Sprache, Rechtstexte
 (Etappe 4); GitHub Pages im Repo ausschalten, falls noch
 an; Lucas Nacharbeiten (Etappe 3, „Nach dem Go-live": `neu` im DNS löschen,
 Search Console); Lucas Rückmeldung zu den Texten und die WKO-Antworten zu
-den Prüfstellen 1 und 4 einarbeiten; Selseven aufnehmen, sobald es live
-ist (Etappe 3, „Nach dem Go-live").
+den Prüfstellen 1 und 4 einarbeiten; Selseven nach seinem Go-live
+(November 2026) von `neu.` auf die Domain umstellen (Etappe 3, „Nach dem
+Go-live").
 
 Faktenquellen für die Projektseiten (nur Fakten übernehmen, Sätze kommen
 von Luca). OZ nur in der neuen Version: Die alte statische OZ-Seite (Google
@@ -163,8 +164,8 @@ Jede Etappe passt in eine Sitzung und endet mit Commit, Deploy und Bericht
   6. **Zustimmung:** Das Impressum behauptete „mit Zustimmung der
      jeweiligen Betreiber"; für den Go-live am 26.09.2026 auf „zeigen
      Websites, die ich für die jeweiligen Betreiber gebaut habe"
-     geändert, weil die Zusagen noch fehlen. Olcay, Akin und Jonathan
-     trotzdem fragen (Zuarbeit); danach kann der Satz wieder rein.
+     geändert, weil die Zusagen noch fehlen. Olcay, Akin, Jonathan und
+     (seit 29.10.2026) Selin trotzdem fragen (Zuarbeit); danach kann der Satz wieder rein.
 - [x] Renovate läuft (26.09.2026, 11:39: Issue #7 „Dependency Dashboard").
       App von Luca freigegeben, danach stand das Repo im Mend-Portal auf
       „Silent" (kein Dashboard, keine PR); Luca stellte es auf „Interactive"
@@ -253,7 +254,9 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 - [x] Nach dem OZ-Umzug (live seit 04.10.2026): `url` auf
       `https://oz-calisthenics.at`, `stand` auf `null`, OZ neu aufgenommen;
       Reihenfolge OZ, Punktetafel, USTA, Jonathan (Luca, 07.10.2026)
-- [ ] Selseven als 5. Projekt ans Ende (Luca, 07.10.2026), sobald
+- [x] Selseven als 5. Projekt ans Ende (29.10.2026, schon vor dem Go-live
+      mit Knopf auf `neu.` und Stand „online ab November 2026", Luca;
+      AGENTS.md Entscheidungen). Ursprünglich geplant (07.10.2026): sobald
       `selseven-friseursalon.at` die Seite zeigt und Selins Begrüßung und
       Foto drin sind – am 07.10.2026 zeigte die Domain noch auf einen
       fremden Server, `neu.` hatte `[TEXT SELIN]` und die leere Fotofläche
@@ -263,6 +266,12 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
       für fünf Handys umbauen (`wischleiste` in `globals.css` hat vier
       Spalten, das fünfte stünde allein in einer zweiten Zeile; `sizes` auf
       der Startseite anpassen), angesehen in 1024, 1440 und 1920 px
+- [ ] Nach dem Selseven-Go-live (geplant November 2026): in
+      `lib/inhalte/projekte.ts` `domain` auf `selseven-friseursalon.at`
+      und `url` ohne `neu.`, `stand` in `messages/de.ts` und `en.ts` raus,
+      Zeitraum „online seit …", Adresse in `scripts/projekt-screenshots.mjs`
+      umstellen und `node scripts/projekt-screenshots.mjs selseven` (falls
+      `neu.` ohne Weiterleitung wegfällt, zeigt der Knopf sonst ins Leere)
 - [ ] Repo privat? Pages ist aus, damit fällt der Grund für „öffentlich"
       weg (Offene Entscheidungen). Vorher klären: das Image in GHCR ist
       öffentlich, weil das Repo es ist; privat braucht der Server
@@ -327,7 +336,7 @@ typescript-eslint peerDependencies`); dann `allowedVersions` in
 - [x] Telefon oder WhatsApp auf der Seite: nein (26.09.2026)
 - [x] Impressum: kein Gewerbe derzeit, Anschrift wie bisher (Haldenweg
       56b/1, 6700 Bludenz), nur im Impressum (26.09.2026)
-- [ ] Olcay, Akin und Jonathan fragen, ob ihre Seite mit Screenshots und
+- [ ] Olcay, Akin, Jonathan und Selin fragen, ob ihre Seite mit Screenshots und
       Namen auf deiner Seite stehen darf (die Seite ist seit 26.09.2026
       live; das Impressum behauptet die Zustimmung nicht mehr)
 
@@ -410,5 +419,6 @@ bewusste Ausnahme für Lucas eigene Seite (AGENTS.md, Entscheidungen).
 - 28.10.2026: Etappe 4 – Englisch unter `/en` mit next-intl, alle Texte in `messages/`, Sprachlink, hreflang, Sitemap, OG-Bild und 404 je Sprache, Formular mit Fehlercodes. Offen: Luca liest Englisch gegen, Rücktrag in die Vorlage.
 - 28.10.2026: Durchsicht umgesetzt – Screenshots laufen unten aus, Vorschaubild je Projekt, Hero-Knopf „Nachricht schreiben", Fakten am Handy untereinander, Werdegang-Zeile raus, Porträt auf „Über mich".
 - 28.10.2026: Dunkelmodus nach Systemeinstellung – Farbvariablen in `globals.css`, Link-Hover mit Tinte, helleres Fehlerrot, theme-color je Schema; Kontrast-Test, axe und Screenshots in beiden Modi.
+- 29.10.2026: Selseven als fünftes Projekt – Knopf auf `neu.`, Stand „online ab November 2026", Reihe ab lg mit fünf Spalten, Impressum. Offen: Umstellung nach dem Selseven-Go-live, Luca liest den Satz gegen.
 
 Eine Zeile je Etappe; Einzelheiten in AGENTS.md („Stand", „Entscheidungen").

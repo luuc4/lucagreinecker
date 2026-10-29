@@ -53,7 +53,7 @@ export const IMPRESSUM = {
   name: "Luca Greinecker",
   strasse: "Haldenweg 56b/1",
   ort: "6700 Bludenz",
-  stand: "2026-10-25",
+  stand: "2026-10-29",
 } as const;
 
 // Kontaktformular auf /kontakt (leitfaden/12, Baustein A), Zustellung als

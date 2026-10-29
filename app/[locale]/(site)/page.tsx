@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Startseite (Design „Reihe", Vorlage ab-start.html?v=1 im Tag entwuerfe-2026-09):
-// Lucas Satz mittig, die vier Handy-Screens als Reihe (am Handy eine
+// Lucas Satz mittig, die fünf Handy-Screens als Reihe (am Handy eine
 // Wischleiste mit Hinweis), das Rundum-sorglos-Paket als Tabelle, dann die Anfrage.
 // Jeder Block trägt pb-abschnitt unten (leitfaden/05). Texte in
 // messages/<sprache>.ts (seite, start, paket, projekte).
@@ -71,7 +71,7 @@ export default async function Startseite({ params }: Props) {
                       projekt={projekt}
                       ansicht="handy"
                       alt={t("projekt.bildHandy", { name: projekt.name })}
-                      sizes="(min-width: 1024px) 22vw, (min-width: 768px) 42vw, 76vw"
+                      sizes="(min-width: 1024px) 18vw, (min-width: 768px) 42vw, 76vw"
                       className="rounded-bild"
                       zuerst={i === 0}
                     />

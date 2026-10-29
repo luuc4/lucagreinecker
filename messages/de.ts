@@ -16,8 +16,9 @@ import type { ProjektSlug } from "@/lib/inhalte/projekte";
 // Texte je Projekt. Fakten aus den Repos (AGENTS.md „Stand",
 // Stack-Tabellen, Routen); `satz` ist Lucas Satz zum Projekt (was der
 // Kunde wollte, was schwierig war). `stand` nur, solange ein Projekt noch
-// nicht unter seiner Domain live ist (dann hat es keinen Knopf): `kurz`
-// unter der Zeile auf der Startseite, `lang` als Zeile in den Fakten.
+// nicht unter seiner Domain live ist (ohne Knopf wie OZ bis 04.10.2026, oder
+// mit Knopf auf die Übergangsadresse wie Selseven): `kurz` unter der Zeile
+// auf der Startseite, `lang` als Zeile in den Fakten.
 export type ProjektTexte = {
   // Eine Zeile: was es ist, für wen, wo (Art-Zeile unter dem Titel).
   art: string;
@@ -92,6 +93,32 @@ const projekte: Record<ProjektSlug, ProjektTexte> = {
     stack: "HTML, CSS, JavaScript ohne Framework",
     betrieb: "GitHub Pages mit eigener Domain",
     satz: "Jonathan studiert InterMedia an der FH Vorarlberg und wollte seine Design-Projekte zeigen: vier Arbeiten mit Galerien und der Lebenslauf als PDF, als schlanke Seite ohne Framework.",
+  },
+  selseven: {
+    art: "Website mit Mini‑CMS für einen Friseursalon in Feldkirch",
+    kurz: "Website mit Mini‑CMS für einen Friseursalon, Feldkirch",
+    // Fakten am 29.10.2026 aus ~/projects/selseven (AGENTS.md „Projekt",
+    // „Stack", „Stand", Routen, package.json). Selins Nachname steht dort
+    // noch nicht, deshalb nur der Vorname.
+    kunde: "Selin, Friseursalon Selseven in der Altstadt von Feldkirch",
+    zeitraum: "seit Oktober 2026, online ab November 2026",
+    seiten:
+      "Start (Status, Anrufen und WhatsApp, Leistungen, Über den Salon), Leistungen & Preise, News, Kontakt mit Anfahrt und Öffnungszeiten, Impressum, Datenschutz; Admin am Handy",
+    funktionen:
+      "Status „Jetzt geöffnet“ aus den Öffnungszeiten, Betriebsurlaub und Feiertage als Ausnahmen, Preisliste mit Preisen nach Haarlänge, News, Texte, Kontaktformular – Selin pflegt alles selbst im Admin, Anmeldung mit Code oder Passkey",
+    stack:
+      "Next.js 16, React 19, TypeScript, Tailwind 4, PostgreSQL mit Drizzle, Better Auth (Code und Passkeys), pg-boss, Umami",
+    betrieb:
+      "Docker-Image aus GitHub Actions, Coolify auf einem Hetzner-Server (gemeinsam mit OZ Calisthenics)",
+    // Von Claude am 29.10.2026 aus den Fakten geschrieben wie die anderen
+    // Sätze (26.09.2026); Luca liest gegen.
+    satz: "Selin wollte, dass man in Feldkirch schnell sieht, ob ihr Salon offen hat, was es kostet und wo er ist, und dann gleich anruft oder auf WhatsApp schreibt. Öffnungszeiten, Betriebsurlaub, Preise und News pflegt sie selbst im Admin am Handy.",
+    // Luca, 29.10.2026: „release november oder so". Ohne Adresse im Satz:
+    // der Knopf darunter nennt sie, und am Handy brach sie mitten im Wort.
+    stand: {
+      kurz: "In Arbeit, online ab November 2026",
+      lang: "In Arbeit, geht im November 2026 unter der eigenen Domain online. Bis dahin läuft sie unter einer Vorschau-Adresse.",
+    },
   },
 };
 
@@ -322,11 +349,11 @@ export const de = {
       text: "Information über die Webprojekte von Luca Greinecker und den Weg, ihn zu erreichen (§ 25 Abs. 4 MedienG).",
     },
     // Bis 26.09.2026 stand hier „mit Zustimmung der jeweiligen Betreiber" –
-    // das stimmt erst, wenn alle drei zugesagt haben (TODO.md, Prüfstelle
+    // das stimmt erst, wenn alle vier zugesagt haben (TODO.md, Prüfstelle
     // 6). Für den Go-live ohne diese Aussage.
     projekte: {
       titel: "Projekte anderer",
-      text: "Die Bildschirmfotos und Namen der Kundenprojekte (OZ Calisthenics, USTA Streetfood, Jonathan Walch) zeigen Websites, die ich für die jeweiligen Betreiber gebaut habe. Für die Inhalte dieser Websites sind sie selbst verantwortlich.",
+      text: "Die Bildschirmfotos und Namen der Kundenprojekte (OZ Calisthenics, USTA Streetfood, Jonathan Walch, Selseven) zeigen Websites, die ich für die jeweiligen Betreiber gebaut habe. Für die Inhalte dieser Websites sind sie selbst verantwortlich.",
     },
     links: {
       titel: "Links",

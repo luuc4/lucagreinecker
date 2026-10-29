@@ -162,6 +162,16 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
   `app/globals.test.ts` misst beide Paletten gegen WCAG, axe läuft in
   beiden Schemata, `e2e/farben.spec.ts` prüft den Wechsel; Screenshots
   mit `FARBSCHEMA=dunkel`.
+- 29.10.2026 (Selseven, Luca: „können wir selseven auch mit einbauen, noch
+  mit verlinken auf neu. und halt release november oder so"): Selseven
+  als fünftes Projekt am Ende, Knopf auf `neu.selseven-friseursalon.at`,
+  Stand „In Arbeit, online ab November 2026" (Entscheidungen). Fakten aus
+  `~/projects/selseven`, Satz von Claude aus den Fakten (Luca liest
+  gegen), Screenshots von `neu.` (Selins Begrüßung und das Salonfoto sind
+  seit 20.10.2026 im ersten Bildschirm). Die Reihe ab lg hat fünf Spalten;
+  angesehen in 390, 1024, 1440 und 1920 px, die Projektseite in 390 und
+  1440 (auch englisch). Selseven im Impressum unter „Projekte anderer",
+  Stand der Rechtstexte 29.10.2026.
 
 ## Projekt
 
@@ -237,7 +247,7 @@ components/           KontaktFormular (Texte als Props), formular/Feld (Feld, Te
                       public/bilder), Wischleiste (Handy-Reihe mit Wisch-Hinweis)
 lib/inhalte/statisch.ts  Fakten, die in jeder Sprache gleich sind (SEITE, KONTAKT, IMPRESSUM),
                       NAVIGATION (Pfade + Label-Schlüssel), PLATZHALTER, KONTAKTFORMULAR
-lib/inhalte/projekte.ts  die vier Projekte: Slug, Name, Domain, Knopf-Ziel, Reihenfolge
+lib/inhalte/projekte.ts  die fünf Projekte: Slug, Name, Domain, Knopf-Ziel, Reihenfolge
                       (Texte je Sprache in messages/<sprache>.ts, `projekte`)
 lib/inhalte/datum.ts  ISO-Datum → Text je Sprache (Stand der Rechtstexte)
 lib/anfrage/          Kontaktformular: felder (Namen, Längen, Fehlercodes – ohne Zod, für den
@@ -355,8 +365,8 @@ dark)` in `globals.css`, gemessen und von `app/globals.test.ts`
 - **Startseite** (Etappe 2): Kopf; der Satz mittig im Display-Schnitt
   (`seite.satz`), darunter ein Satz über Luca und der gelbe Knopf
   „Nachricht schreiben" (seit 28.10.2026 derselbe Wortlaut wie unten im
-  Anfrage-Block; „Kontakt" heißt nur der Knopf im Kopf); die vier
-  Handy-Screens in einer Reihe (am Handy Wischleiste mit Scroll-Snap, 76 %
+  Anfrage-Block; „Kontakt" heißt nur der Knopf im Kopf); die fünf
+  Handy-Screens in einer Reihe (ab lg fünf Spalten, seit 29.10.2026) (am Handy Wischleiste mit Scroll-Snap, 76 %
   breit, darunter bis lg ein Strich je Projekt und „Wischen" mit Pfeil),
   je mit Name und einer Zeile; „Rundum-sorglos-Paket" (links Titel
   und Lucas Satz, rechts die Punkte als `Fakten`); die Anfrage mittig
@@ -367,7 +377,7 @@ dark)` in `globals.css`, gemessen und von `app/globals.test.ts`
   Tinte-Linie) und rechts die `Fakten` (Kunde, Zeitraum, Seiten,
   Funktionen, Stack, Betrieb) mit dem gelben Knopf „‹domain› öffnen";
   darunter das Desktop-Bild in voller Breite mit Tinte-Linie; dann
-  „Weitere Projekte" als Zeile mit den drei anderen Namen. Am Handy alles
+  „Weitere Projekte" als Zeile mit den anderen Namen. Am Handy alles
   untereinander, das Handy-Bild 320 px mittig. Eigenes Vorschaubild
   (`opengraph-image.tsx` neben der Seite): Name, Art-Zeile, gelber Balken,
   rechts der Handy-Screenshot.
@@ -563,6 +573,18 @@ Regeln, die unabhängig von der Richtung gelten (leitfaden/05):
   zeigt Selins Platzhalter; der Screenshot wäre genau dieser Bildschirm.
   Luca wählte deshalb, Selseven erst nach dessen Go-live ans Ende zu
   setzen (TODO.md, Etappe 3). Die Reihe bleibt bis dahin bei vier.
+- **29.10.2026 – Selseven schon vor dem Go-live, mit Link auf `neu.`**
+  (Luca: „können wir selseven auch mit einbauen, noch mit verlinken auf
+  neu. und halt release november oder so"). Weicht von der Regel vom
+  26.09.2026 ab (lieber kein Link als einer auf eine Übergangsadresse);
+  bei OZ lief unter der Domain noch die alte Version, bei Selseven zeigt
+  `neu.` die fertige Seite. `domain` ist der Host von `url`
+  (`neu.selseven-friseursalon.at`), damit der Knopf nennt, was er öffnet;
+  dazu ein `stand` trotz Knopf. Der lange Stand-Satz nennt keine Adresse:
+  am Handy brach `neu.selseven‑friseursalon.at` mitten im Wort, und der
+  Knopf darunter nennt sie ohnehin. Fünf Spalten ab lg statt einer
+  zweiten Zeile oder der Wischleiste bis xl: bei 1024 px brechen die
+  längeren Namen auf zwei Zeilen, das bleibt ruhig; `sizes` 18vw.
 - **27.09.2026 – Wisch-Hinweis unter der Handy-Reihe** (Luca: am Handy
   „checkt" man nicht, dass man zu den anderen Projekten wischen muss; das
   angeschnittene nächste Handy reichte nicht). Unter lg zeigen vier kurze
