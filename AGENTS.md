@@ -175,8 +175,8 @@ Stellen mit ‹spitzen Klammern› sind noch auszufüllen.
 - 29.10.2026 abends (Selseven-Go-live): Knopf und Adresse auf
   `https://selseven-friseursalon.at`, `stand` raus (de und en), Zeitraum
   „online seit Ende Oktober 2026", Kunde mit vollem Namen wie im
-  Impressum von Selseven. Screenshots neu von der Domain (um 22:40, der
-  Status zeigt deshalb „Geschlossen").
+  Impressum von Selseven. Screenshots neu von der Domain am 30.10.2026
+  um 10:20, während der Öffnungszeiten („Jetzt geöffnet").
 
 ## Projekt
 
